@@ -1,3 +1,3 @@
-===== The Amy Specification =====
+# The Amy Specification 
 
-You can access the Amy specification document [[http://lara.epfl.ch/~gschmid/clp20/amy-spec.pdf|here]].
+You can access the Amy specification document [here](https://drive.switch.ch/index.php/s/jht9KdKDu9KidB2).
