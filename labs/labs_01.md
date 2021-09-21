@@ -103,7 +103,7 @@ For example, to add a test that expects only "Hello world" to be printed, you ca
 ## Deliverables
 You are given **2 weeks** for this assignment.
 
-Deadline: **Wed, Oct 12th, 11pm**.
+Deadline: **Wed, Oct 13th, 11pm**.
 
 
 ## Related documentation 
