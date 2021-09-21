@@ -1,7 +1,7 @@
-Below you will find the instructions for the first lab assignment in which you will get to know and implement an interpreter for the Amy language. If you haven't looked at the [[Labs Setup]] page yet, please do so before starting out with the assignment.
+Below you will find the instructions for the first lab assignment in which you will get to know and implement an interpreter for the Amy language. If you haven't looked at the [Labs Setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs_setup.md) page yet, please do so before starting out with the assignment.
 
 
-====== Part 1: Your first Amy programs =====
+# Part 1: Your first Amy programs
 
 Write two example Amy programs each and make sure you can compile them using the [[Amy Reference Compiler]]. Put them under ''/examples''. Please be creative when writing your programs: they should be nontrivial and not reproduce the functionality of the examples in the ''/library'' and ''/examples'' directories of the repository. Of course you are welcome to browse these directories for inspiration.
 
@@ -10,7 +10,7 @@ Remember that you will use these programs in the remaining of the semester to te
 If you have questions about how a feature of Amy works, you can always look at the [[Amy Specification]]. It's a good idea to keep a local copy of this document handy -- it will be your reference for whenever you are asked to implement an aspect of the Amy language throughout this semester.
 
 
-====== Part 2: An Interpreter for Amy =====
+# Part 2: An Interpreter for Amy 
 
 The main task of the first lab is to write an interpreter for Amy. 
 
