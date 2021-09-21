@@ -29,7 +29,7 @@ The skeleton of the assignment is provided by us in three files:
 
 - The ''Interpreter.scala'' source file, and
 
-- the ''amyc-frontend_2.12-1.7.jar'' bytecode file, which is located under ''lib/'' .
+- the ''amyc-frontend-1.7.jar'' bytecode file, which is located under ''lib/'' .
 
 Now let's look into the code in a little more detail.
 
@@ -40,11 +40,11 @@ So what is this AST we've mentioned? For the computer to "understand" the meanin
 
 In Scala, we represent the AST as a tree-form object. The tree has different types of nodes, each one representing a different programming structure. The types of nodes are of course represented as different classes, which all inherit from a class called Tree. Conveniently enough, the classes correspond pretty much one-to-one to the rules of the BNF grammar given in the language specification. E.g. in the language spec we read that a module looks as follows:
 
- //ModuleDef// ::= **program** //Identifier// **extends** **App** **{** ( //ClassOrFunDef// )* //Expr//? **}**
+ModuleDef ::= **program** Identifier **extends** **App** **{** ( ClassOrFunDef )* Expr? **}**
 
 and indeed in the implementation we find a class 
 
-''  case class ModuleDef(name: Identifier, defs: List[ClassOrFunDef], optExpr: Option[Expr]) extends Definition''
+`case class ModuleDef(name: Identifier, defs: List[ClassOrFunDef], optExpr: Option[Expr]) extends Definition`
 
 You can find the source code of the AST [[http://lara.epfl.ch/~gschmid/clp20/SymbolicTreeModule.scala|here]].
 Note: This is not exactly the code we will use in later assignments, but it's good enough to serve as a reference while implementing this first assignment.
@@ -78,7 +78,7 @@ If you have followed [Labs Setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/
   * ''src/amyc/Main.scala'' contains the ''main'' method which runs the interpreter on the input files
   * The ''library'' directory contains library definitions you can call from your programs.
   * The ''examples'' directory contains some example programs on which you can try your implementation. Remember that most of them also use library files from ''/library''.
-  * ''lib/amy-frontend_2.12-1.7.jar'' contains the //frontend// of the compiler as a library, allowing you directly work with type-checked ASTs of input programs.
+  * ''lib/amy-frontend-1.7.jar'' contains the //frontend// of the compiler as a library, allowing you directly work with type-checked ASTs of input programs.
 
 You will have to complete the interpreter by implementing the missing methods (marked with the placeholder ''???'').
 
