@@ -1,13 +1,13 @@
-Below you will find the instructions for the first lab assignment in which you will get to know and implement an interpreter for the Amy language. If you haven't looked at the [Labs Setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs_setup.md) page yet, please do so before starting out with the assignment.
+Below you will find the instructions for the first lab assignment in which you will get to know and implement an interpreter for the Amy language. If you haven't looked at the [Labs Setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_setup.md) page yet, please do so before starting out with the assignment.
 
 
 # Part 1: Your first Amy programs
 
-Write two example Amy programs each and make sure you can compile them using the [[Amy Reference Compiler]]. Put them under ''/examples''. Please be creative when writing your programs: they should be nontrivial and not reproduce the functionality of the examples in the ''/library'' and ''/examples'' directories of the repository. Of course you are welcome to browse these directories for inspiration.
+Write two example Amy programs each and make sure you can compile them using the [Amy Reference Compiler](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_reference_compiler.md). Put them under ''/examples''. Please be creative when writing your programs: they should be nontrivial and not reproduce the functionality of the examples in the ''/library'' and ''/examples'' directories of the repository. Of course you are welcome to browse these directories for inspiration.
 
 Remember that you will use these programs in the remaining of the semester to test your compiler, so don't make them too trivial! Try to test many features of the language.
 
-If you have questions about how a feature of Amy works, you can always look at the [[Amy Specification]]. It's a good idea to keep a local copy of this document handy -- it will be your reference for whenever you are asked to implement an aspect of the Amy language throughout this semester.
+If you have questions about how a feature of Amy works, you can always look at the [Amy Specification](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_specification.md). It's a good idea to keep a local copy of this document handy -- it will be your reference for whenever you are asked to implement an aspect of the Amy language throughout this semester.
 
 
 # Part 2: An Interpreter for Amy 
@@ -17,11 +17,11 @@ The main task of the first lab is to write an interpreter for Amy.
 (If you haven't been assigned your repository yet, you can download a packaged version of the interpreter lab's skeleton [[http://lara.epfl.ch/~gschmid/clp20/735df0961cf5ca22d217ad5c495d969d/clp-lab01.zip|here]]. If you already have your repository assigned, you can simply check out the ''lab01'' branch. Note that future labs will only be distributed through the repository, so be sure to familiarize yourself with the setup.)
 
 
-===== Interpreters =====
+## Interpreters 
 
 The way to execute programs you have mostly seen so far is compilation to some kind of low-level code (bytecode for a virtual machine such as Java's; native binary code in case of languages such as C). An alternative way to execute programs is interpretation. According to Wikipedia, "an interpreter is a computer program that directly executes, i.e. performs, instructions written in a programming or scripting language, without previously compiling them into a machine language program". In other words, your interpreter is supposed to directly look at the code and //interpret// its meaning. For example, when encountering a call to the 'printString' function, your interpreter should print its argument on the standard output.
 
-===== The general structure of the Interpreter =====
+## The general structure of the Interpreter 
 
 The skeleton of the assignment is provided by us in three files:
 
@@ -50,7 +50,7 @@ You can find the source code of the AST [[http://lara.epfl.ch/~gschmid/clp20/Sym
 Note: This is not exactly the code we will use in later assignments, but it's good enough to serve as a reference while implementing this first assignment.
 
 
-===== The Interpreter class =====
+## The Interpreter class
 
 Now let's delve into ''Interpreter.scala''. This file currently only contains a partial implementation, and it is your task for to complete it! The entrypoint into the interpreter is ''interpret'', which takes an expression as input and executes its meaning. The main loop at the end of the class will just take the modules in order and interpret their expression, if present.
 
@@ -70,7 +70,7 @@ A few final notes:
   * Some functions contained in the ''Std'' module are built-in in the language, i.e. they are hard-coded in the interpreter because they cannot be implemented in Amy otherwise. An example of a built-in function is ''printString''. When you implement the interpreter for function calls, you should first check if the function is built-in, and if so, use the implementation provided in the ''builtIns'' map in the interpreter.
   * When a program fails (e.g. due to a call to ''error'' or a match fail), you should call the dedicated method in the Context: ''ctx.reporter.fatal''.
 
-===== Implementation skeleton ====
+## Implementation skeleton 
 
 If you have followed [[Labs Setup]] for Lab 01, you should have a working project with a stub implementation, containing the following files:
 
@@ -83,7 +83,7 @@ If you have followed [[Labs Setup]] for Lab 01, you should have a working projec
 You will have to complete the interpreter by implementing the missing methods (marked with the placeholder ''???'').
 
 
-===== Testing ====
+## Testing
 
 When you are done, use sbt to try some of your programs from Part 1:
 
@@ -100,12 +100,12 @@ To allow a test to also use the standard library (e.g., ''Std.printString''), yo
 For example, to add a test that expects only "Hello world" to be printed, you can add "/test/resources/interpreter/passing/Hello.scala" containing ''object Hello { Std.printString("Hello world") }'' and ''/test/resources/interpreter/outputs/Hello.txt'' containing ''Hello world'' (with a newline in the end!). You will also have to add a line to ''/test/scala/amyc/test/InterpreterTests.scala'':  ''@Test def testHello = shouldOutput(List("Std", "Hello"), "Hello")''. This will pass both files ''Std.scala'' and ''Hello.scala'' as inputs of the test. When you now run ''test'' from sbt, you should see the additional test case (called ''testHello'').
 
 
-===== Deliverables =====
+## Deliverables
 You are given **2 weeks** for this assignment.
 
 Deadline: **Wed, Sep 30th, 11pm**.
 
 
-===== Related documentation =====
+## Related documentation 
 
   * End of Chapter 1 in the Tiger Book presents a similar problem for another mini-language. A comparison of the implementation of ASTs in Java (as shown in the book) and Scala is instructive.
