@@ -8,22 +8,26 @@ Please check here regularly for course updates.
 
 ## Grading
 
-The entire grade is based on project work, which, however, has many aspects: the implementation in Scala, a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam.
+The entire grade is based on project work, which, however, has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam.
 
 ## Staff
 
 | Role        | People |
 | :---        | :--- |
-| Professors  | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak) |
-| TAs         | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/) - head TA, [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
+| Professors  | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak), [Self-Introduction](https://tube.switch.ch/videos/82f0eb14) |
+| Head PhD TA | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/)
+| PhD TA      | [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
 | Student TAs | to be completed |
 
 ## Schedule and material
 
-Monday slots will typically focus on lecture materials. The remaining slots will focus on labs, except for the first Wednesday when we will have an introductory lecture. We will provide an online version of the activity as well. So far, as long as there is demand, the plan is to also be present in the physical room as scheduled.
+Monday slots will typically focus on lecture materials. The remaining slots will focus on labs, **except for the first week's Wednesday and Thursday** when we will have lectures to get basic understanding of the metarial. We will provide an online version of the activity as well. So far, as long as there is demand, the plan is to also be present in the physical room, as scheduled.
 
 The material we cover will be similar to [last year](https://lara.epfl.ch/w/cc20/top). 
 
-| Week | Date        | Topic                                       | Videos & Slides              |
-| :--  | :--         | :--                                         | :--                |
-| 1    | 22.09.2021  | Introduction class                                 | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba) |
+Note that slides can be found underneath each lecture video on switch tube linkes below.
+
+| Week | Day | Date        | Topic                | Videos & Slides              |
+| :--  | :-- | :--         | :--                  | :--                |
+| 1    | Wed | 22.09.2021  | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba) |
+|      | Thu | 23.09.2021  | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexers](https://tube.switch.ch/videos/a15b1c5f) |
