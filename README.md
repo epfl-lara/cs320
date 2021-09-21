@@ -35,4 +35,4 @@ Note that slides can be found underneath each lecture video on switch tube linke
 | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
 | 1    | Wed | 22.09.2021 | 08:15 | INM202 | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba) |
 |      | Thu | 23.09.2021 | 08:15 | INF119 | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexers](https://tube.switch.ch/videos/a15b1c5f) |
-|      |     |            |       |        | Labs 0               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs_setup.md)           | |
+|      |     |            |       |        | Labs 0               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_setup.md)           | |
