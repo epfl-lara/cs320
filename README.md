@@ -15,7 +15,7 @@ The entire grade is based on project work, which, however, has many aspects: the
 | Role        | People |
 | :---        | :--- |
 | Professors  | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak) |
-| TAs         | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/), [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
+| TAs         | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/) - head TA, [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
 | Student TAs | to be completed |
 
 ## Schedule and material
