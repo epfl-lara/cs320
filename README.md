@@ -1,5 +1,7 @@
 # EPFL CS320 - Computer language processing, 2021
 
+[Moodle](https://moodle.epfl.ch/course/view.php?id=4241), [Coursebook](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
+
 **Implement a programming language!** All project based.
 
 This repository is the website for EPFL Course CS320, Computer languge processing. 
@@ -26,6 +28,8 @@ Monday slots will typically focus on lecture materials. The remaining slots will
 The material we cover will be similar to [last year](https://lara.epfl.ch/w/cc20/top). 
 
 Note that slides can be found underneath each lecture video on switch tube linkes below.
+
+
 
 | Week | Day | Date       | Time  | Room   | Topic                | Videos & Slides              |                              |
 | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
