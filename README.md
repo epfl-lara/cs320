@@ -28,6 +28,7 @@ The material we cover will be similar to [last year](https://lara.epfl.ch/w/cc20
 Note that slides can be found underneath each lecture video on switch tube linkes below.
 
 | Week | Day | Date        | Topic                | Videos & Slides              |
-| :--  | :-- | :--         | :--                  | :--                |
-| 1    | Wed | 22.09.2021  | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba) |
-|      | Thu | 23.09.2021  | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexers](https://tube.switch.ch/videos/a15b1c5f) |
+| :--  | :-- | :--         | :--                  | :--                          |
+| 1    | Wed | 22.09.2021  | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba)                                                  |
+|      | Thu | 23.09.2021  | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexers](https://tube.switch.ch/videos/a15b1c5f)                  |
+|      |     |             | Labs 0               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs_setup.md)           | |
