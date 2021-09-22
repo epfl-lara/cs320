@@ -14,7 +14,7 @@ If you have questions about how a feature of Amy works, you can always look at t
 
 The main task of the first lab is to write an interpreter for Amy. 
 
-(If you haven't been assigned your repository yet, you can download a packaged version of the interpreter lab's skeleton [[http://lara.epfl.ch/~gschmid/clp20/735df0961cf5ca22d217ad5c495d969d/clp-lab01.zip|here]]. If you already have your repository assigned, you can simply check out the ''lab01'' branch. Note that future labs will only be distributed through the repository, so be sure to familiarize yourself with the setup.)
+(If you haven't been assigned your repository yet, you can download a packaged version of the interpreter lab's skeleton [here](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs01_material/labs01.zip). If you already have your repository assigned, you can simply check out the ''lab01'' branch. Note that future labs will only be distributed through the repository, so be sure to familiarize yourself with the setup.)
 
 
 ## Interpreters 
