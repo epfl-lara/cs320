@@ -7,7 +7,7 @@ This page contains instructions on how to set up your computer to work on assign
 
 All work in this year's edition of CS-320 will be done in groups of two students.
 If you are looking for teammates, please consider using the course's [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) forums.
-One of you should then submit the SCIPER numbers and names of all teammates through [this form](https://docs.google.com/forms/d/18-NX9JvzAVcyUwLruJ-rbkqGD-1qD8EYS_uqAFkC6NQ/edit). Note that you need access the form with epfl email account. You
+One of you should then submit the SCIPER numbers and names of all teammates through [this form](https://docs.google.com/forms/d/18-NX9JvzAVcyUwLruJ-rbkqGD-1qD8EYS_uqAFkC6NQ/edit). Note that you need access the form with epfl email account.
 By the end of the first week you *must* have registered in a group, so you can start working on the lab 1.
 
 
