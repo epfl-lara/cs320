@@ -46,7 +46,7 @@ and indeed in the implementation we find a class
 
 `case class ModuleDef(name: Identifier, defs: List[ClassOrFunDef], optExpr: Option[Expr]) extends Definition`
 
-You can find the source code of the AST [[http://lara.epfl.ch/~gschmid/clp20/SymbolicTreeModule.scala|here]].
+You can find the source code of the AST [here](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs01_material/SymbolicTreeModule.scala).
 Note: This is not exactly the code we will use in later assignments, but it's good enough to serve as a reference while implementing this first assignment.
 
 
@@ -65,7 +65,7 @@ A few final notes:
   * To find constructors and functions in the program, you have to search in the ''SymbolTable'' passed along with the program. To do this, use the three helper methods provided in the interpreter:
     * ''isConstrutor'' will return whether the ''Identifier'' argument is a type constructor in the program
     * ''findFunctionOwner'' will return the module which contains the given ''Identifier'', which has to be a function in the program. E.g. if you give it the ''printInt'' function of the ''Std'' module, you will get the string ''"Std"''.
-    * ''findFunction'' will return the function definition given a pair of Strings representing the module containing the function, and the function name. The return value is of type ''FunDef'' (see [[http://lara.epfl.ch/~gschmid/clp20/SymbolicTreeModule.scala|the AST definitions]]).
+    * ''findFunction'' will return the function definition given a pair of Strings representing the module containing the function, and the function name. The return value is of type ''FunDef'' (see [the AST definitions](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs01_material/SymbolicTreeModule.scala)).
   * When comparing Strings by reference, compare the two ''StringValue''s directly and not the underlying Strings. The reason is that the JVM may return true when comparing Strings by equality when it is not expected (it has to do with JVM constant pools).
   * Some functions contained in the ''Std'' module are built-in in the language, i.e. they are hard-coded in the interpreter because they cannot be implemented in Amy otherwise. An example of a built-in function is ''printString''. When you implement the interpreter for function calls, you should first check if the function is built-in, and if so, use the implementation provided in the ''builtIns'' map in the interpreter.
   * When a program fails (e.g. due to a call to ''error'' or a match fail), you should call the dedicated method in the Context: ''ctx.reporter.fatal''.
@@ -78,7 +78,7 @@ If you have followed [Labs Setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/
   * ''src/amyc/Main.scala'' contains the ''main'' method which runs the interpreter on the input files
   * The ''library'' directory contains library definitions you can call from your programs.
   * The ''examples'' directory contains some example programs on which you can try your implementation. Remember that most of them also use library files from ''/library''.
-  * ''lib/amy-frontend-1.7.jar'' contains the //frontend// of the compiler as a library, allowing you directly work with type-checked ASTs of input programs.
+  * ''lib/amy-frontend-1.7.jar'' contains the frontend of the compiler as a library, allowing you directly work with type-checked ASTs of input programs.
 
 You will have to complete the interpreter by implementing the missing methods (marked with the placeholder ''???'').
 
