@@ -27,8 +27,7 @@ Monday slots will typically focus on lecture materials. The remaining slots will
 
 The material we cover will be similar to [last year](https://lara.epfl.ch/w/cc20/top). 
 
-Note that slides can be found underneath each lecture video on switch tube linkes below.
-
+Note that slides can be found **underneath each lecture video** on switch tube linkes below.
 
 
 | Week | Day | Date       | Time  | Room   | Topic                | Videos & Slides              |                              |
