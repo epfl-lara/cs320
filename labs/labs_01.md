@@ -78,7 +78,7 @@ If you have followed [Labs Setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/
   * ''src/amyc/Main.scala'' contains the ''main'' method which runs the interpreter on the input files
   * The ''library'' directory contains library definitions you can call from your programs.
   * The ''examples'' directory contains some example programs on which you can try your implementation. Remember that most of them also use library files from ''/library''.
-  * ''lib/amy-frontend-1.7.jar'' contains the //frontend// of the compiler as a library, allowing you directly work with type-checked ASTs of input programs.
+  * ''lib/amy-frontend-1.7.jar'' contains the frontend of the compiler as a library, allowing you directly work with type-checked ASTs of input programs.
 
 You will have to complete the interpreter by implementing the missing methods (marked with the placeholder ''???'').
 
