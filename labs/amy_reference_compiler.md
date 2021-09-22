@@ -1,4 +1,4 @@
-====== The Amy Reference Compiler ======
+# The Amy Reference Compiler
 
 We provide you with a reference compiler for the Amy language that you can use to explore the expected behavior of your own compiler.
 
@@ -18,6 +18,6 @@ The easiest way to execute a program is to run it in ''-''''-interpret'' mode. I
   * Run ''nodejs <output file>.js''
 
 
-===== Bug Reports =====
+# Bug Reports
 
 We welcome bug reports! Please use the forum on Moodle for this purpose.
