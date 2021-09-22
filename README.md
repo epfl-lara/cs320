@@ -1,5 +1,7 @@
 # EPFL CS320 - Computer language processing, 2021
 
+[Moodle](https://moodle.epfl.ch/course/view.php?id=4241), [Coursebook](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
+
 **Implement a programming language!** All project based.
 
 This repository is the website for EPFL Course CS320, Computer languge processing. 
@@ -12,12 +14,12 @@ The entire grade is based on project work, which, however, has many aspects: the
 
 ## Staff
 
-| Role        | People |
-| :---        | :--- |
-| Professors  | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak), [Self-Introduction](https://tube.switch.ch/videos/82f0eb14) |
-| Head PhD TA | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/)
-| PhD TA      | [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
-| Student TAs | to be completed |
+| Role            | People |
+| :---            | :--- |
+| Professors      | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak), [Self-Introduction](https://tube.switch.ch/videos/82f0eb14) |
+| Head PhD TA     | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/)
+| PhD TA          | [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
+| MSc Student TAs | [Julie Giunta](http://people.epfl.ch/julie.giunta), Solène Husseini, [Benoît Maillard](https://people.epfl.ch/benoit.maillard), [Noé De Santo](https://people.epfl.ch/noe.desanto) | 
 
 ## Schedule and material
 
@@ -27,8 +29,10 @@ The material we cover will be similar to [last year](https://lara.epfl.ch/w/cc20
 
 Note that slides can be found underneath each lecture video on switch tube linkes below.
 
-| Week | Day | Date        | Topic                | Videos & Slides              |
-| :--  | :-- | :--         | :--                  | :--                          |
-| 1    | Wed | 22.09.2021  | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba)                                                  |
-|      | Thu | 23.09.2021  | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexers](https://tube.switch.ch/videos/a15b1c5f)                  |
-|      |     |             | Labs 0               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs_setup.md)           | |
+
+
+| Week | Day | Date       | Time  | Room   | Topic                | Videos & Slides              |                              |
+| :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
+| 1    | Wed | 22.09.2021 | 08:15 | INM202 | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba), [Live Recording](https://tube.switch.ch/videos/N0KUZHSEnt) |
+|      | Thu | 23.09.2021 | 08:15 | INF119 | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexers](https://tube.switch.ch/videos/a15b1c5f) |
+|      |     |            |       |        | Labs 0               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_setup.md)           | |
