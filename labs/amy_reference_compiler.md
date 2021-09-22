@@ -2,7 +2,7 @@
 
 We provide you with a reference compiler for the Amy language that you can use to explore the expected behavior of your own compiler.
 
-The reference compiler is [[http://lara.epfl.ch/~gschmid/clp20/amyc_2.12-1.7.jar|available here]].
+The reference compiler is [available here](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amyc-assembly-1.7.jar).
 
 You can run it as follows:
   java -cp amyc_2.12-1.7.jar amyc.Main [options] [input files]
