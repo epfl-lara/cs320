@@ -3,7 +3,7 @@ Below you will find the instructions for the first lab assignment in which you w
 
 # Part 1: Your first Amy programs
 
-Write two example Amy programs each and make sure you can compile them using the [Amy Reference Compiler](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_reference_compiler.md). Put them under ''/examples''. Please be creative when writing your programs: they should be nontrivial and not reproduce the functionality of the examples in the ''/library'' and ''/examples'' directories of the repository. Of course you are welcome to browse these directories for inspiration.
+Write two example Amy programs each and make sure you can compile them using the [Amy Reference Compiler](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_reference_compiler.md). Put them under /examples. Please be creative when writing your programs: they should be nontrivial and not reproduce the functionality of the examples in the ''/library'' and ''/examples'' directories of the repository. Of course you are welcome to browse these directories for inspiration.
 
 Remember that you will use these programs in the remaining of the semester to test your compiler, so don't make them too trivial! Try to test many features of the language.
 
@@ -19,7 +19,7 @@ The main task of the first lab is to write an interpreter for Amy.
 
 ## Interpreters 
 
-The way to execute programs you have mostly seen so far is compilation to some kind of low-level code (bytecode for a virtual machine such as Java's; native binary code in case of languages such as C). An alternative way to execute programs is interpretation. According to Wikipedia, "an interpreter is a computer program that directly executes, i.e. performs, instructions written in a programming or scripting language, without previously compiling them into a machine language program". In other words, your interpreter is supposed to directly look at the code and //interpret// its meaning. For example, when encountering a call to the 'printString' function, your interpreter should print its argument on the standard output.
+The way to execute programs you have mostly seen so far is compilation to some kind of low-level code (bytecode for a virtual machine such as Java's; native binary code in case of languages such as C). An alternative way to execute programs is interpretation. According to Wikipedia, "an interpreter is a computer program that directly executes, i.e. performs, instructions written in a programming or scripting language, without previously compiling them into a machine language program". In other words, your interpreter is supposed to directly look at the code and *interpret* its meaning. For example, when encountering a call to the 'printString' function, your interpreter should print its argument on the standard output.
 
 ## The general structure of the Interpreter 
 
@@ -40,7 +40,7 @@ So what is this AST we've mentioned? For the computer to "understand" the meanin
 
 In Scala, we represent the AST as a tree-form object. The tree has different types of nodes, each one representing a different programming structure. The types of nodes are of course represented as different classes, which all inherit from a class called Tree. Conveniently enough, the classes correspond pretty much one-to-one to the rules of the BNF grammar given in the language specification. E.g. in the language spec we read that a module looks as follows:
 
-ModuleDef ::= **program** Identifier **extends** **App** **{** ( ClassOrFunDef )* Expr? **}**
+Module ::= **object** Id Definition* Expr? **end** Id
 
 and indeed in the implementation we find a class 
 
