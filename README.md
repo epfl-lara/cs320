@@ -19,7 +19,7 @@ The entire grade is based on project work, which, however, has many aspects: the
 | Professors      | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak), [Self-Introduction](https://tube.switch.ch/videos/82f0eb14) |
 | Head PhD TA     | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/)
 | PhD TA          | [Fereshte Mozafari](https://people.epfl.ch/fereshte.mozafari) |
-| MSc Student TAs | [Julie Giunta](http://people.epfl.ch/julie.giunta), Solène Husseini, [Benoît Maillard](https://people.epfl.ch/benoit.maillard), [Noé De Santo](https://people.epfl.ch/noe.desanto) | 
+| MSc Student TAs | [Julie Giunta](http://people.epfl.ch/julie.giunta), Solène Husseini, [Benoît Maillard](https://people.epfl.ch/benoit.maillard), [Noé De Santo](https://people.epfl.ch/noe.desanto), [Alexandre Pinazza](https://people.epfl.ch/alexandre.pinazza) |
 
 ## Schedule and material
 
@@ -35,3 +35,4 @@ Note that slides can be found **underneath each lecture video** on switch tube l
 | 1    | Wed | 22.09.2021 | 08:15 | INM202 | Lecture 1            | [Intro to CLP](https://tube.switch.ch/videos/3351ec99), [Formal languages](https://tube.switch.ch/videos/6df3a6ba), [Live Recording](https://tube.switch.ch/videos/N0KUZHSEnt) |
 |      | Thu | 23.09.2021 | 08:15 | INF119 | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexer Idea](https://tube.switch.ch/videos/c903b9d5), [Live Recording 1](https://tube.switch.ch/videos/cdQxQvZcV8), [Live Recording 2](https://tube.switch.ch/videos/26pmlTMe8j) |
 |      |     |            |       |        | Labs 0               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_setup.md)           | |
+|      |     |            |       |        | Labs 1               | [Lab 1](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_01.md)           | |
