@@ -17,7 +17,7 @@ compile:
   timeout: 15m
   image: lampepfl/moocs:2021-09-20
   tags:
-    - cs210
+    - cs320
   except:
     - tags
     - master
@@ -52,7 +52,7 @@ grade:
     - exercise-7
     - exercise-8
   tags:
-    - cs210
+    - cs320
   image:
     name: lampepfl/moocs:cs210-2021-${CI_COMMIT_BRANCH}
     entrypoint: [""]
