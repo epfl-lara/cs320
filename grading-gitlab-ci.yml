@@ -15,7 +15,7 @@ stages:
 compile:
   stage: build
   timeout: 15m
-  image: laraepfl/labs:${CI_COMMIT_BRANCH}
+  image: laraepfl/labs
   tags:
     - cs320
   except:
