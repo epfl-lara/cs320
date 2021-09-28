@@ -1,0 +1,67 @@
+# This CI config file is not used in this repository but instead referenced
+# from each student project (https://gitlab.epfl.ch/help/ci/pipelines/settings#custom-ci-configuration-path)
+# and used to grade them.
+
+workflow:
+  rules:
+    # Don't run the CI on commit messages contain "[no-ci]", used to deploy
+    # assignments without overloading the CI.
+    - if: $CI_COMMIT_MESSAGE !~ /\[no-ci\]/
+
+stages:
+  - build
+  - grade
+
+compile:
+  stage: build
+  timeout: 15m
+  image: lampepfl/moocs:2021-09-20
+  tags:
+    - cs210
+  except:
+    - tags
+    - master
+    - exercise-1
+    - exercise-2
+    - exercise-3
+    - exercise-4
+    - exercise-5
+    - exercise-6
+    - exercise-7
+    - exercise-8
+  script:
+    - sbt packageSubmission
+  # Output of this job that needs to be stored to be reused in the grade job below
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - submission.jar
+
+grade:
+  stage: grade
+  timeout: 15m
+  except:
+    - tags
+    - master
+    - exercise-1
+    - exercise-2
+    - exercise-3
+    - exercise-4
+    - exercise-5
+    - exercise-6
+    - exercise-7
+    - exercise-8
+  tags:
+    - cs210
+  image:
+    name: lampepfl/moocs:cs210-2021-${CI_COMMIT_BRANCH}
+    entrypoint: [""]
+  allow_failure: true
+  before_script:
+    - mkdir -p /shared/submission/
+    - cp submission.jar /shared/submission/submission.jar
+  script:
+    - cd /grader
+    - /grader/grade
+    - cat /shared/txtFeedback.txt
+    - grep -q congratulations /shared/txtFeedback.txt
