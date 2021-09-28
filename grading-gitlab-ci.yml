@@ -15,7 +15,7 @@ stages:
 compile:
   stage: build
   timeout: 15m
-  image: lampepfl/moocs:2021-09-20
+  image: laraepfl/labs:${CI_COMMIT_BRANCH}
   tags:
     - cs320
   except:
@@ -54,7 +54,7 @@ grade:
   tags:
     - cs320
   image:
-    name: lampepfl/moocs:cs210-2021-${CI_COMMIT_BRANCH}
+    name: laraepfl/labs:${CI_COMMIT_BRANCH}
     entrypoint: [""]
   allow_failure: true
   before_script:
