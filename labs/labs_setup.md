@@ -32,4 +32,4 @@ Once you have formed a group and installed SBT, you are ready to start the labs.
   * Check out the branch of the current lab from your repository. Merge with your work from prior labs (when starting work on lab 3, 4 or 5).
   * Run ''compile'' from inside SBT to make sure your build still succeeds. If you run ''test'' at this point it should fail on some of the new tests provided by us.
   * Implement the assignment according to the specification. Throughout the semester we will be providing you with details on each specific assignment.
-  * Once you are happy with your solution, make sure that the most recent commit of the current lab's branch is the one you want to submit. We will automatically fetch it at the lab's deadline and use it to evaluate your solution.
+  * Once you are happy with your solution, make sure one of the team members packages the solution as a zip file with the name **submission-groupNumber.zip**. For instance, if your group number is 3, you would package the lab into a file submission-3.zip. Then go on moodle and send the file in the corresponding assignment.
