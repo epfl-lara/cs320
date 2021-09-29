@@ -87,9 +87,11 @@ You will have to complete the interpreter by implementing the missing methods (m
 
 When you are done, use sbt to try some of your programs from Part 1:
 
+```
   $ sbt
   > run library/Std.scala examples/Hello.scala
   Hello world!
+```
 
 There is also testing infrastructure under `/test`. To add your own tests, you have to add your testcases under `/test/resources/interpreter/passing`
 and the expected output under 
