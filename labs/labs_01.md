@@ -107,7 +107,7 @@ You are given **2 weeks** for this assignment.
 
 Deadline: **Friday October 8 at 11 pm**.
 
-Submission: one team member submits a zip file submission-groupNumber.zip to the moodle submission page: https://moodle.epfl.ch/mod/assign/view.php?id=1169243.
+Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1169243).
 
 
 ## Related documentation 
