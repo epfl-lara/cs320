@@ -42,7 +42,7 @@ Below you will find the instructions for the first lab assignment in which you w
 
 The role of a lexer is to read the input text and convert it to a list of tokens. Tokens are the smallest useful units in a source file: a name referring to a variable, a bracket, a keyword etc. The role of the lexer is to group together those useful units (e.g. return the keyword else as a unit, as opposed to individual characters e, l, s, e) and to abstract away all useless information (i.e. whitespace, comments).
 
-##Code structure
+## Code structure
 
 You can find the `lexer` in the `Lexer.scala` file. It is based on Scallion and Silex, a pair of Scala libraries which simplify the implementation of parsing pipelines. Silex allows you to transform an input character stream (such as the contents of an Amy source file) into a sequence of Tokens. We are going to take a closer look at Scallion in the next lab, where our goal will be to build Amy's parser. You can find more information on Scallion and Silex [here](https://github.com/epfl-lara/scallion), but we also included a short reference of Silex's API in `Lexer.scala`.
 
@@ -73,18 +73,18 @@ For reference, here is a possible output for the example under `examples/Hello.s
 java -jar amyc_2.12-1.X.jar --printTokens <files>
 ```
 ```
- KeywordToken(object)(1:1)
- IdentifierToken(Hello)(1:8)
- DelimiterToken({)(1:14)
- IdentifierToken(Std)(2:3)
- DelimiterToken(.)(2:6)
- IdentifierToken(printString)(2:7)
- DelimiterToken(()(2:18)
- StringLitToken(Good morning!)(2:19)
- DelimiterToken())(2:34)
- DelimiterToken(})(3:1)
- EOFToken()(4:1)
- ```
+KeywordToken(object)(1:1)
+IdentifierToken(Hello)(1:8)
+DelimiterToken({)(1:14)
+IdentifierToken(Std)(2:3)
+DelimiterToken(.)(2:6)
+IdentifierToken(printString)(2:7)
+DelimiterToken(()(2:18)
+StringLitToken(Good morning!)(2:19)
+DelimiterToken())(2:34)
+DelimiterToken(})(3:1)
+EOFToken()(4:1)
+```
 
 ## Deliverables
 You are given **2 weeks** for this assignment.
