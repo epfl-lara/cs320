@@ -89,4 +89,4 @@ EOFToken()(4:1)
 ## Deliverables
 You are given **2 weeks** for this assignment.
 
-Deadline: **TODO**.
+Deadline: **Wed, Oct. 20, 23.00pm*.
