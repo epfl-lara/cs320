@@ -38,3 +38,4 @@ Note that slides can be found **underneath each lecture video** on switch tube l
 |      | Wed | 29.09.2011  | 08:15 | INM202 | Labs 1               | [Labs setup](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_setup.md), [Amy Interpreter](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_01.md)         |
 |      | Thu | 30.09.2011  | 08:15 | INF119 | Labs 1     |  |
 | 3    | Mon | 04.10.2021 | 13:15 | CE1100 | Lecture 4            | [Introduction to Grammars](https://tube.switch.ch/videos/ef9ae6c1), [Syntax Trees](https://tube.switch.ch/videos/9314ac16), [LL(1) Parsing](https://tube.switch.ch/videos/38dd46b4) |
+|     | Wednesday | 06.10.2021 | 8:15 | INM202 | Labs 2            | [Lexer](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_02.md) |
