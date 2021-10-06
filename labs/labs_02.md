@@ -90,3 +90,5 @@ EOFToken()(4:1)
 You are given **2 weeks** for this assignment.
 
 Deadline: **Wed, Oct. 20, 23.00pm**.
+
+Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1170952).
