@@ -39,4 +39,5 @@ Note that slides can be found **underneath each lecture video** on switch tube l
 |      | Thu | 30.09.2011  | 08:15 | INF119 | Labs 1     |  |
 | 3    | Mon | 04.10.2021 | 13:15 | CE1100 | Lecture 4            | [Introduction to Grammars](https://tube.switch.ch/videos/ef9ae6c1), [Syntax Trees](https://tube.switch.ch/videos/9314ac16), [LL(1) Parsing](https://tube.switch.ch/videos/38dd46b4) |
 |     | Wednesday | 06.10.2021 | 8:15 | INM202 | Labs 2           | [Lexer](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_02.md) |
+|     | Thursday | 07.10.2021 | 8:15 | INF119 | Labs 2           | [Lexer](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_02.md) |
 | 4    | Mon | 11.10.2021 | 13:15 | CE1100 | Lecture 5            | [CYK Algorithm for Parsing General Context-Free Grammars](https://tube.switch.ch/videos/672add06), [Chomsky Normal Form Transformation](https://tube.switch.ch/videos/2d3503f4) |
