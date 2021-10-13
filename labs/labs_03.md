@@ -57,7 +57,7 @@ different precedence and associativity.
 
 ### An LL(1) grammar for Amy
 
-As usual, the [Amy specification](amy specification) will guide you when
+As usual, the [Amy specification](amy specification.pdf) will guide you when
 it comes to deciding what exactly should be accepted by your parser.
 Carefully read Section 2 (*Syntax*).
 
