@@ -168,7 +168,8 @@ The structure of your project `src` directory should be as follows:
           └── UniqueCounter.scala
 
 ## Deliverables
+You are given **? weeks** for this assignment.
 
-You have *TBD* weeks to complete this assignment.
+Deadline: *TBD*.
 
-**Deadline: Wednesday *TBD* October, 23:00**
+Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page]().

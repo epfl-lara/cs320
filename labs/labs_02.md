@@ -1,6 +1,7 @@
-# Lab 02: Lexer
+# Lab 02: Lexer ([Slides](slides/lab02.pdf))
 
 This assignment is the first stage of the Amy compiler.
+
 
 ## Code Skeleton
 
@@ -70,7 +71,7 @@ Comments and whitespace should not produce tokens. (The most convenient way of d
 For reference, here is a possible output for the example under `examples/Hello.scala`. You can always get reference output for the lexer from the reference compiler by typing
 
 ```
-java -jar amyc_2.12-1.X.jar --printTokens <files>
+java -jar amyc-assembly-1.7.jar --printTokens <files>
 ```
 ```
 KeywordToken(object)(1:1)

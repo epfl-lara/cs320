@@ -10,7 +10,7 @@ Remember that you will use these programs in the remaining of the semester to te
 If you have questions about how a feature of Amy works, you can always look at the [Amy Specification](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_specification.md). It's a good idea to keep a local copy of this document handy -- it will be your reference for whenever you are asked to implement an aspect of the Amy language throughout this semester.
 
 
-# Part 2: An Interpreter for Amy 
+# Part 2: An Interpreter for Amy ([Slides](slides/lab01.pdf))
 
 The main task of the first lab is to write an interpreter for Amy. 
 
