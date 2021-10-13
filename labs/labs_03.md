@@ -150,7 +150,7 @@ The structure of your project `src` directory should be as follows:
      │    └── TreeModule.scala
      │
      ├── lib
-     │    ├── scallion_3.0.6.jar   (new)
+     │    ├── scallion_3.0.6.jar      (new)
      │    └── silex_3.0.6.jar
      │
      ├── parsing
@@ -169,6 +169,6 @@ The structure of your project `src` directory should be as follows:
 
 ## Deliverables
 
-You have TBD weeks to complete this assignment.
+You have *TBD* weeks to complete this assignment.
 
-**Deadline: Wednesday TBD October, 23:00**
+**Deadline: Wednesday *TBD* October, 23:00**
