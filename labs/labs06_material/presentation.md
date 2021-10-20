@@ -48,7 +48,7 @@ Winston](https://en.wikipedia.org/wiki/Patrick_Winston) as you believe
 apply to your presentation. It is an amazing and entertaining talk,
 despite (or because) it is meta-circular: he does as he says. Note:
 breaking physical objects or referring to supernatural beings in your
-video is not required. Use your own judgement and strike a balance in
+video is not required. Use your own judgment and strike a balance in
 being comfortable with what and how you are saying things and trying out
 these pieces of advice.
 
