@@ -167,6 +167,14 @@ The structure of your project `src` directory should be as follows:
           ├── Reporter.scala
           └── UniqueCounter.scala
 
+## Reference compiler
+
+Recall you can use the [reference compiler](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_reference_compiler.md) for any doubts you have on the intended behaviour. For this lab you can use the command:
+
+```
+java -jar amyc-assembly-1.7.jar --printTrees <files>
+```
+
 ## Deliverables
 You are given **2 weeks** for this assignment.
 
