@@ -65,7 +65,7 @@ how to present your project can be found here.](labs06_material/presentation.md)
 
 ## Project Implementation and Report
 
-**Deadline: Jan 7th 2021 23h00**
+**Deadline: TBD**
 
 Your implementation and a report are due on this date, and both will be
 delivered using Git. You will develop your project on top of your
