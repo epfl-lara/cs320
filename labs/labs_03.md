@@ -36,7 +36,7 @@ AST.
 
 To familiarize yourself with the parsing functionality of Scallion,
 please make sure you read the [Introduction to (Scallion) Parser
-Combinators](lab03_material/scallion.md). In it, you will learn how to describe grammars
+Combinators](labs03_material/scallion.md). In it, you will learn how to describe grammars
 in Scallion\'s parser combinator DSL and how to ensure that your grammar
 lies in LL(1) (which Scallion requires to function correctly).
 
@@ -96,7 +96,7 @@ function `f(idTokens: Seq[Token]): Seq[Variable]` that transforms the
 identifier tokens into (Amy-AST) variables of those names.
 
 For more information on how to use Scallion\'s `Syntax#map` method
-please refer to the [Scallion introduction](lab03_material/scallion.md).
+please refer to the [Scallion introduction](labs03_material/scallion.md).
 
 ## Notes
 
@@ -169,7 +169,7 @@ The structure of your project `src` directory should be as follows:
 
 ## Reference compiler
 
-Recall you can use the [reference compiler](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/amy_reference_compiler.md) for any doubts you have on the intended behaviour. For this lab you can use the command:
+Recall you can use the [reference compiler](amy_reference_compiler.md) for any doubts you have on the intended behaviour. For this lab you can use the command:
 
 ```
 java -jar amyc-assembly-1.7.jar --printTrees <files>
