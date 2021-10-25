@@ -181,3 +181,11 @@ You are given **2 weeks** for this assignment.
 Deadline: **Friday November 5 at 11 pm**.
 
 Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1174431).
+
+Your submission only needs to contain your `src` directory. 
+You can use the following command (from the root of your repository) to generate the archive:
+```
+zip -r submission-<groupNumber>.zip src/
+```
+
+You can then verify the content of the archive using `unzip -l submission-<groupNumber>.zip`

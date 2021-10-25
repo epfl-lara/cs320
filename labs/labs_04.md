@@ -147,3 +147,11 @@ You are given **3 weeks** for this assignment.
 Deadline: **TBD**.
 
 Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page]().
+
+Your submission only needs to contain your `src` directory. 
+You can use the following command (from the root of your repository) to generate the archive:
+```
+zip -r submission-<groupNumber>.zip src/
+```
+
+You can then verify the content of the archive using `unzip -l submission-<groupNumber>.zip`
