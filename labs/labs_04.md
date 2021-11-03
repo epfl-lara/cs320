@@ -142,7 +142,7 @@ structure of your project `src` directory should be as follows:
 
 ## Deliverables
 
-You are given **3 weeks** for this assignment.
+You are given **1 week** for this assignment.
 
 Deadline: **TBD**.
 
