@@ -1,4 +1,4 @@
-# Lab 04: Type Checker
+# Lab 04: Type Checker ([Slides](slides/lab03.pdf))
 
 Parsing concludes the syntactical analysis of Amy programs. Having
 successfully constructed an abstract syntax tree for an input program,
