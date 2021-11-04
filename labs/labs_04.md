@@ -144,7 +144,7 @@ structure of your project `src` directory should be as follows:
 
 You are given **1 week** for this assignment.
 
-Deadline: **TBD**.
+Deadline: **Wednesday November 17 at 11 pm**.
 
 Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page]().
 
