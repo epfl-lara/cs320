@@ -1,4 +1,4 @@
-# Lab 03: Parser
+# Lab 03: Parser ([Slides](slides/lab03.pdf))
 
 ## Introduction
 
