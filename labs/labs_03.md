@@ -178,7 +178,7 @@ java -jar amyc-assembly-1.7.jar --printTrees <files>
 ## Deliverables
 You are given **2 weeks** for this assignment.
 
-Deadline: **Friday November 5 at 11 pm**.
+Deadline: **Friday November 10 at 11 pm**.
 
 Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1174431).
 
