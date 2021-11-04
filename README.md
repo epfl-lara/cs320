@@ -10,7 +10,17 @@ Please check here regularly for course updates.
 
 ## Grading
 
-The entire grade is based on project work, which, however, has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam.
+The entire grade is based on project work, which, however, has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam. Here is the weight of the milestones:
+
+
+    12.5% Lab 1
+    12.5% Lab 2
+    12.5% Lab 3
+    12.5% Lab 4
+    12.5% Lab 5
+    37.5% Lab 6 (Compiler extension, customized)
+
+
 
 ## Staff
 
