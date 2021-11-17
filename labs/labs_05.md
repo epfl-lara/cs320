@@ -47,6 +47,8 @@ To run the program, simply type `nodejs wasmout/p.js`
 
 ## WebAssembly and Amy
 
+The slides for this year's presentation are in the files called lab05-slides.
+
 Look at [this
 presentation](http://lara.epfl.ch/~gschmid/clp20/codegen.pdf) for the
 main concepts of how to translate Amy programs to WebAssembly.

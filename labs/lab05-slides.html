@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>slides</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="demo">Demo</h2>
+<pre><code>(func $Factorial_f (param i32 i32) (result i32) (local i32)
+  ;;&gt; fn f(i: Int(32), j: Int(32)): Int(32) = {
+  ;;|   val res: Int(32) =
+  ;;|     (i + j);
+  ;;|   res
+  ;;| }
+  ;;&gt; i
+  local.get 0
+  ;;&gt; j
+  local.get 1
+  ;;&gt; (i + j)
+  i32.add
+  ;;&gt; val res: Int(32)
+  local.set 2
+  ;;&gt; res
+  local.get 2
+)
+
+(func $Factorial_fact (param i32) (result i32) 
+  ;;&gt; fn fact(i: Int(32)): Int(32) = {
+  ;;|   (if((i &lt; 2)) {
+  ;;|     1
+  ;;|   } else {
+  ;;|     (i * fact((i - 1)))
+  ;;|   })
+  ;;| }
+  ;;&gt; i
+  local.get 0
+  ;;&gt; 2
+  i32.const 2
+  ;;&gt; (i &lt; 2)
+  i32.lt_s
+  ;;&gt; (if((i &lt; 2)) {
+  ;;|   1
+  ;;| } else {
+  ;;|   (i * fact((i - 1)))
+  ;;| })
+  if (result i32)
+    ;;&gt; 1
+    i32.const 1
+  else
+    ;;&gt; i
+    local.get 0
+    ;;&gt; fact((i - 1))
+    ;;&gt; i
+    local.get 0
+    ;;&gt; 1
+    i32.const 1
+    ;;&gt; (i - 1)
+    i32.sub
+    call $Factorial_fact
+    ;;&gt; (i * fact((i - 1)))
+    i32.mul
+  end
+)</code></pre>
+<h2 id="wasm-basics">WASM basics</h2>
+<h3 id="stack-machine">Stack machine</h3>
+<ul>
+<li>WASM is a stack based machine.</li>
+<li>WASM has types. We will use exclusively i32.</li>
+<li>Instructions can push or pop values from the stack.
+<ul>
+<li>i32.const x : push x to the stack.</li>
+<li>i32.add : pop 2 values, add them and push the result.</li>
+<li>drop : pop a value and ignore it.</li>
+</ul></li>
+<li>Locals can store values inside a function. Useful for val definitions among others.
+<ul>
+<li>local.get x : get xth local</li>
+<li>local.set x : set xth local</li>
+</ul></li>
+<li>Globals store program wide values.
+<ul>
+<li>global.get x : get xth global</li>
+<li>global.set x : set xth global</li>
+</ul></li>
+<li>Control flow.
+<ul>
+<li>if : pop value from stack, if 0 goto else otherwise continue.</li>
+<li>call : pop arguments from the stack, jump to function.</li>
+</ul></li>
+</ul>
+<h2 id="function-calls">Function calls</h2>
+<p>How to call a function: - Push the required number of arguments on the stack. - Call the function. The call instruction will pop the arguments and place them in the locals. - The result will be placed on top of the stack.</p>
+<pre><code>(func $f (param i32 i32) (result i32) 
+    local.get 0
+    local.get 1
+    i32.add
+)
+
+(
+    i32.const 3 ;; arg 0
+    i32.const 4 ;; arg 1
+    ;; A
+    call $f
+    ;; B
+)
+
+A:
+|       |
+|   4   | &lt;-- arg 1 
+|   3   | &lt;-- arg 0
+|-------|
+
+B:
+|       |
+|       |
+|   7   | &lt;-- result
+|-------|
+</code></pre>
+<h2 id="store">Store</h2>
+<pre><code>Store 3 at address 48
+
+|        |
+|        |
+|        |
+|--------| &lt;-- bottom of the stack
+
+
+`i32.const 48`
+
+|        |
+|        |
+|   48   | &lt;-- address
+|--------| &lt;-- bottom of the stack
+
+
+`i32.const 3`
+
+|        |
+|    3   | &lt;-- value
+|   48   | &lt;-- address
+|--------| &lt;-- bottom of the stack
+
+
+`i32.store` pops 2 values from the stack
+
+|        |
+|        |
+|        |
+|--------| &lt;-- bottom of the stack
+
+Heap
+
+| address |  0 |  1 |  2 | .. | 47 | 48 | 49 | .. |
+|---------|----|----|----|----|----|----|----|----|
+|  value  |  0 |  0 |  0 | .. |  0 |  3 |  0 | .. |
+                                      ^
+                                value written</code></pre>
+<h2 id="values">Values</h2>
+<p>Very similar to java.</p>
+<ul>
+<li>Ints are represented simply with an i32.</li>
+<li>Bools are represented with an i32, false = 0, true = 1.</li>
+<li>Unit is represented with an i32 with value 0.</li>
+</ul>
+<h3 id="strings">Strings</h3>
+<pre><code>| address | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 |
+|---------|----|----|----|----|----|----|----|----|
+|  value  | 104| 101| 108| 108| 111| 33 |  0 |  0 |
+|  ascii  |  h |  e |  l |  l |  o |  ! | \0 |    |
+
+|        |
+|        |
+|   24   | &lt;-- pointer to string
+|--------| &lt;-- bottom of the stack
+</code></pre>
+<h3 id="adts">ADTs</h3>
+<ul>
+<li>store the value on the heap to reduced the size to the size of a pointer.</li>
+<li>store which constructor the value holds.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">getList</span><span class="op">():</span> <span class="ex">List</span> <span class="op">=</span> <span class="op">{</span> <span class="op">...</span> <span class="op">}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ls<span class="op">:</span> <span class="ex">List</span> <span class="op">=</span> <span class="fu">getList</span><span class="op">();</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">// What is the size of list here?</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Is it a Nil or a Cons?</span></span></code></pre></div>
+<pre><code>Cons(42, Nil())
+
+| address |  value  |
+|---------|---------|
+|    0    |    1    | \ 
+|    1    |         | | constructor id.
+|    2    |         | | Cons
+|    3    |         | /
+|    4    |   42    | \
+|    5    |         | | first member: int
+|    6    |         | |  42
+|    7    |         | /
+|    8    |  1234   | \
+|    9    |         | | seconder member: pointer to Nil
+|   10    |         | | 1234
+|   11    |         | /
+
+Field offset = 4 + 4 * field number
+==&gt; Utils.scala:adtField
+</code></pre>
+<h2 id="allocation">Allocation</h2>
+<p>Utils.scala:memoryBoundary is the index of a global variable that holds a pointer to the next free bytes.</p>
+<h3 id="example-in-pseudocode">Example in pseudocode:</h3>
+<p>Start of the program:</p>
+<pre><code>global.set(memoryBoundary, 0)</code></pre>
+<p>We want to allocate “hello!” = 7 bytes (don’t forget the null terminator).</p>
+<p>Store current memory pointer as pointer to our new string:</p>
+<pre><code>hello_string = global.get(memoryBoundary)</code></pre>
+<p>Increment the memory boundary by 7 (size of string).</p>
+<pre><code>global.set(memoryBoundary, global.get(memoryBoundary) + 7)</code></pre>
+<h3 id="with-webassembly-instructions">With webassembly instructions:</h3>
+<pre><code>;; With memoryBoundary = 0.
+;; Load the current boundary for string
+global.get 0
+;; Load it again for the arithmetic
+global.get 0
+;; length of string
+i32.const 7
+;; base + length = new boundary
+i32.add
+;; store new boundary
+global.set 0
+;; now the string pointer is on the stack, we just
+;; need to copy the character&#39;s bytes into it.
+...</code></pre>
+<h2 id="pattern-matching">Pattern matching</h2>
+<p>A pattern matching expression:</p>
+<pre><code>e match {
+    case p1 =&gt; e1
+    ...
+    case pn =&gt; en
+}</code></pre>
+<p>can be considered to be equivalent to the following pseudocode:</p>
+<pre><code>val v = e;
+if      (matchAndBind(v, p1)) e1
+else if (matchAndBind(v, p2)) e2
+else if ...
+else if (matchAndBind(v, pn)) en
+else error(&quot;Match error!&quot;)</code></pre>
+<p>matchAndBind is equivalent to this:</p>
+<pre><code>WildcardPattern:
+&quot;case _ =&gt; ...&quot;
+matchAndBind(v, _) = true
+
+IdPattern:
+&quot;case id =&gt; ...&quot;
+matchAndBind(v, id) = { id = v; true }
+
+LiteralPattern:
+&quot;case 3 =&gt; ...&quot;
+matchAndBind(v, lit) = { v == lit }
+
+CaseClassPattern:
+&quot;case Cons(x, _) =&gt; ...&quot;
+matchAndBind(C_1(v_1, ..., v_n), C_2(p_1, ..., p_m)) = {
+    C_1 == C_2 &amp;&amp;
+    matchAndBind(v_1, p_1) &amp;&amp;
+    ...
+    matchAndBind(v_m, p_m) 
+}</code></pre>
+</body>
+</html>
