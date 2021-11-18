@@ -165,11 +165,11 @@ structure of your project `src` directory should be as follows:
 
 ## Deliverables
 
-You are given **4 weeks** for this assignment.
+You are given **2 weeks** for this assignment.
 
-Deadline: **TBD**.
+Deadline: **Wednesday December 2 at 11 pm.**.
 
-Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page]().
+Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1181848).
 
 Your submission only needs to contain your `src` directory. 
 You can use the following command (from the root of your repository) to generate the archive:
