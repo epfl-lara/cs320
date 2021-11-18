@@ -14,10 +14,10 @@ first of them (choosing the topic) is already coming up on Sunday!
 
 ## Selecting a Project Topic
 
-**Deadline: TBD**
+**Deadline: Friday November 26th**
 
 In the following document, we list several project ideas, but you should
-also feel free to submit your own by email. All groups will rank the
+also feel free to submit your own. All groups will rank the
 projects in order of preference, and we will then do our best to assign
 the preferred projects to as many groups as possible. Because not all
 projects are equally difficult, we annotated each of them with the
@@ -32,8 +32,7 @@ demonstrate the new functionality.
 
 [Project ideas](labs06_material/extensions.pdf)
 
-To announce your preferences, [please fill out this form by Sunday at
-the latest](). You\'ll have to
+To announce your preferences, [please fill out this form before the deadline](https://docs.google.com/forms/d/1EqRwNb61ndyTW31bmn_VellCHHTMmaaOPYSiPGbgaKw/edit). You\'ll have to
 provide **the names of the top exactly 5** projects you would like to
 work on, in order of descending preference. We will do our best to
 assign you the project you are most interested in.
