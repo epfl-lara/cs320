@@ -25,7 +25,7 @@ That is, we explicitly replace strings by fresh identifiers which will
 prevent us from mixing up definitions of the same name, or referring to
 things that have not been defined. Amy\'s name analyzer is provided to
 you as part of this lab\'s skeleton, but you should read the [dedicated
-name analyzer page](NameAnalysis.md) to understand how it works.
+name analyzer page](labs04_material/NameAnalysis.md) to understand how it works.
 
 ## Introduction to Type Checking
 

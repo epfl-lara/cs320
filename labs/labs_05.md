@@ -1,4 +1,4 @@
-# Lab 05: Code Generation
+# Lab 05: Code Generation(Slides: [Markdown](slides/lab05.md)/[HTML](slides/lab05.html))
 
 ## Introduction
 
