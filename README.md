@@ -69,3 +69,4 @@ Note that slides can be found **underneath each lecture video** on switch tube l
 |      |     |            |       |        | Video to Watch  | [Presentation on WebAssembly by Manos Koukoutos, Google](https://www.youtube.com/watch?v=LIbOGZq5N04) |
 |     | Wednesday | 17.11.2021 | 8:15 | INM202 | Labs 4/5           | [Type checker](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_04.md), [CodeGen](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_05.md) | |
 |     | Thursday | 18.11.2021 | 8:15 | INF119 | Labs 5           | [CodeGen](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_05.md) |
+| 10    | Mon | 22.11.2021 | 13:15 | CE1100 | Lecture 11      | [Dynamic Memory Management and Dynamic Dispatch](https://tube.switch.ch/videos/x9TFgbtuH3), [Program Optimizations and Abstract Interpretation Idea](https://tube.switch.ch/videos/uuKCQ8i4YL) |
