@@ -167,7 +167,7 @@ structure of your project `src` directory should be as follows:
 
 You are given **2 weeks** for this assignment.
 
-Deadline: **Wednesday December 2 at 11 pm.**.
+Deadline: **Thursday December 2 at 11 pm.**.
 
 Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1181848).
 
