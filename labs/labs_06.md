@@ -39,26 +39,19 @@ assign you the project you are most interested in.
 
 ## Project Orientation
 
-**Deadline: TBD**
+**Deadline: Thursday December 9th**
 
-We will try to inform you about the project assignment as soon as
-possible. To give you a chance to validate your understanding of the
-project and what\'s expected of you, we will offer dedicated slots
-during the project sessions next week. Before you join, you should think
-about the following questions
+We will try to inform you about the project assignment as soon as possible. We ask you to be **proactive** and validate with the assistants your understanding of the project goals and the expectations of the end product. Think about the following questions and feel free to ask the assistants about them:
 
 -   What are the features you will add to the compiler/language?
--   What would be some (short) programs highlighting the use of these
-    features?
--   What changes might be required in each compiler phase and/or what
-    new phases would you add? (Very roughly)
+-   What would be some (short) programs highlighting the use of these features?
+-   What changes might be required in each compiler phase and/or what new phases would you add? (Very roughly)
 
-**TODO: define slots**
 
 ## Project Presentation
 
 You will present your idea during the lab sessions on the last regular
-week of the semester (Dec 16th/22nd/23rd). We\'ll announce the concrete
+week of the semester (Dec 16th/22nd/23rd). We'll announce the concrete
 schedule of presentations at a later point. [Instructions on what and
 how to present your project can be found here.](labs06_material/presentation.md)
 
