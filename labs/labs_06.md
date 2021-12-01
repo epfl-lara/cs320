@@ -41,7 +41,7 @@ assign you the project you are most interested in.
 
 **Deadline: Thursday December 9th**
 
-We will try to inform you about the project assignment as soon as possible. We ask you to be **proactive** and validate with the assistants your understanding of the project goals and the expectations of the end product. Think about the following questions and feel free to ask the assistants about them:
+We will try to inform you about the project assignment as soon as possible. We ask you to be **proactive** and validate with the assistants your understanding of the project goals and the expectations of the end product. Think about the following questions and feel free to ask the assistants about them during the exercise sessions:
 
 -   What are the features you will add to the compiler/language?
 -   What would be some (short) programs highlighting the use of these features?
