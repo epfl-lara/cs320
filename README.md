@@ -70,4 +70,22 @@ Note that slides can be found **underneath each lecture video** on switch tube l
 |     | Wednesday | 17.11.2021 | 8:15 | INM202 | Labs 4/5           | [Type checker](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_04.md), [CodeGen](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_05.md) | |
 |     | Thursday | 18.11.2021 | 8:15 | INF119 | Labs 5           | [CodeGen](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/labs_05.md) |
 | 10    | Mon | 22.11.2021 | 13:15 | CE1100 | Lecture 11      | [Dynamic Memory Management and Dynamic Dispatch](https://tube.switch.ch/videos/x9TFgbtuH3), [Program Optimizations and Abstract Interpretation Idea](https://tube.switch.ch/videos/uuKCQ8i4YL) |
+|     | Wednesday | 23.11.2021 | 8:15 | INM202 | Labs           | Labs | |
+|     | Thursday | 24.11.2021 | 8:15 | INF119 | Labs            | Labs |
 | 11    | Mon | 29.11.2021 |  | internet | Lecture 12      | [Using partial-evaluation to efficiently implement a language in GraalVM](https://tube.switch.ch/videos/ybPU5yh3Z8) ([alternative link](https://lara.epfl.ch/~kuncak/partial-evaluation-graalvm.mp4)), virtual guest lecture by [Aleksandar Prokopec](http://aleksandar-prokopec.com/) |
+|     | Wednesday | 01.12.2021 | 8:15 | INM202 | Labs           | Labs | |
+|     | Thursday | 02.12.2021 | 8:15 | INF119 | Labs           | Labs |
+| 12    | Mon | 06.12.2021 | 13:15 | CE1100 | Lecture 13      | Correctness of compilers |
+|     | Wednesday | 08.12.2021 | 8:15 | INM202 | Labs           | Labs | |
+|     | Thursday | 09.12.2021 | 8:15 | INF119 | Labs           | Labs |
+
+## Future
+
+| Week | Day | Date       | Time  | Room   | Topic                | Videos & Slides              |                              |
+| :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
+| 13  | Mon | 13.12.2021 |  13:15  | CE1100 | labs      |  |
+|     | Wednesday | 15.12.2021 | 8:15 | INM202 | Project Presentations |  | |
+|     | Thursday | 16.12.2021 | 8:15 | INF119 | Project Presentations |  |
+| 14  | Mon | 20.12.2021 |  13:15  | CE1100 | Project Presentations    |  |
+|     | Wednesday | 22.12.2021 | 8:15 | INM202 | Project Presentations |  | |
+|     | Thursday | 23.12.2021 | 8:15 | INF119 | Project Presentations  |  |
