@@ -71,6 +71,7 @@ Your zip file should contain:
     that demonstrate your compiler extension in action.
 -   A subdirectory `report/` which includes a PDF summarizing your
     extension.
+-   A subdirectory `slides/` which includes the PDF of the project presentation.
 
 
 **If you did not manage to complete your planned features, or they are
