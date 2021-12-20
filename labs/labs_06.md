@@ -65,12 +65,9 @@ Submission: one team member submits a zip file submission-groupNumber.zip to the
 
 Your zip file should contain:
 
--   Your implementation, which must, to be graded at all, compile and be
-    able to run non-trivial examples.
--   A subdirectory `extension-examples/` which includes some examples
-    that demonstrate your compiler extension in action.
--   A subdirectory `report/` which includes a PDF summarizing your
-    extension.
+-   Your implementation, which must, to be graded at all, compile and be able to run non-trivial examples.
+-   A subdirectory `extension-examples/` which includes some examples that demonstrate your compiler extension in action.
+-   A subdirectory `report/` which includes a PDF summarizing your extension. The report should also describe briefly how we should run and test your examples. 
 -   A subdirectory `slides/` which includes the PDF of the project presentation.
 
 
