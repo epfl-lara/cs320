@@ -57,15 +57,13 @@ how to present your project can be found here.](labs06_material/presentation.md)
 
 ## Project Implementation and Report
 
-**Deadline: Friday January 7th**
+You will develop your project on top of your implementation of Amy. Please push all development on a new branch `lab06`, ideally building on top of the codegen lab (branch `lab05`). We will refer to this branch in case of problems with your submission.
 
-Your implementation and a report are due on this date, and both will be
-delivered using Git. You will develop your project on top of your
-implementation of Amy. Please push all development on a new branch
-`lab06`, ideally building on top of the codegen lab (branch `lab05`). 
-**TODO: define submission method**
+Deadline: **Friday January 7th at 11 pm**.
 
-Your repository should contain:
+Submission: one team member submits a zip file submission-groupNumber.zip to the [moodle submission page](https://moodle.epfl.ch/mod/assign/view.php?id=1189120).
+
+Your zip file should contain:
 
 -   Your implementation, which must, to be graded at all, compile and be
     able to run non-trivial examples.
@@ -73,6 +71,7 @@ Your repository should contain:
     that demonstrate your compiler extension in action.
 -   A subdirectory `report/` which includes a PDF summarizing your
     extension.
+
 
 **If you did not manage to complete your planned features, or they are
 partially implemented, make this clear in your report!**
