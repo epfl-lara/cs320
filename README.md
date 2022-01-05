@@ -75,14 +75,9 @@ Note that slides can be found **underneath each lecture video** on switch tube l
 | 11    | Mon | 29.11.2021 |  | internet | Lecture 12      | [Using partial-evaluation to efficiently implement a language in GraalVM](https://tube.switch.ch/videos/ybPU5yh3Z8) ([alternative link](https://lara.epfl.ch/~kuncak/partial-evaluation-graalvm.mp4)), virtual guest lecture by [Aleksandar Prokopec](http://aleksandar-prokopec.com/) |
 |     | Wednesday | 01.12.2021 | 8:15 | INM202 | Labs           | Labs | |
 |     | Thursday | 02.12.2021 | 8:15 | INF119 | Labs           | Labs |
-| 12    | Mon | 06.12.2021 | 13:15 | CE1100 | Lecture 13      | Correctness of compilers |
+| 12    | Mon | 06.12.2021 | 13:15 | CE1100 | Lecture 13      | [Correctness of Compilers  1](https://tube.switch.ch/videos/eRtGr9ykdF), [Correctness of Compilers 2](https://tube.switch.ch/videos/lstg2xigxu) |
 |     | Wednesday | 08.12.2021 | 8:15 | INM202 | Labs           | Labs | |
 |     | Thursday | 09.12.2021 | 8:15 | INF119 | Labs           | Labs |
-
-## Future
-
-| Week | Day | Date       | Time  | Room   | Topic                | Videos & Slides              |                              |
-| :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
 | 13  | Mon | 13.12.2021 |  13:15  | CE1100 | labs      |  |
 |     | Wednesday | 15.12.2021 | 8:15 | INM202 | Project Presentations |  | |
 |     | Thursday | 16.12.2021 | 8:15 | INF119 | Project Presentations |  |
