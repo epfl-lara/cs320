@@ -1,5 +1,13 @@
 # EPFL CS320 - Computer language processing, 2022
 
+[Course Description and Schedule](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
+
+Lectures: 
+  * Mondays 13:15-15:00 in [INM 200](https://drive.google.com/file/d/1JuHdXpaxju9xCqdrCI3GCufdUovb0UrO/view)
+Labs or Exercises and First Lecture:
+  * Wednesday 8:15-10:00 in [INM 202](https://drive.google.com/file/d/1-4bCuIp3R3L6dfMGBLNd8juvK0Wmwh8p/view)
+  * Thursday 8:15-10:00 in [INM 202](https://drive.google.com/file/d/1-4bCuIp3R3L6dfMGBLNd8juvK0Wmwh8p/view)
+
 ## Grading
 
 The grade is based on a midterm (30%) as well as project work (70%) that has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam. Here is the weight of the milestones in the overall course grade:
