@@ -21,6 +21,8 @@ The grade is based on a midterm (30%) as well as project work (70%) that has man
   * 10% Lab 5
   * 20% Lab 6 (Compiler extension, customized)
 
+For the final Lab 6, each group will need to present the project in a slot in one of the last two weeks of the semester. The final report on the project will need to handed in after the end of the semester, by 2023-01-09 but the students are encouraged to complete it during the semester.
+
 ## Staff
 
 | Role            | People |
