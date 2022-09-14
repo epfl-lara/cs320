@@ -13,7 +13,7 @@ Labs or Exercises and First Lecture:
 
 The grade is based on a midterm (30%) as well as project work (70%) that has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam. Here is the weight of the milestones in the overall course grade:
 
-  * 30% Midterm 
+  * 30% Midterm on Monday 2022-11-14, 13:00-15:00
   * 10% Lab 1
   * 10% Lab 2
   * 10% Lab 3
