@@ -29,7 +29,7 @@ For the final Lab 6, each group will need to present the project in a slot in on
 | :---            | :--- |
 | Professors      | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak), [Self-Introduction](https://tube.switch.ch/videos/82f0eb14) |
 | PhD (Head) TA   | [Fatih Yazici](https://people.epfl.ch/fatih.yazici?lang=en) |
-| Initial Autograding Setup | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/) |
+| Initial Autograding Setup | [Rodrigo Raya](https://people.epfl.ch/rodrigo.raya/) and [Matthieu Bovel](https://people.epfl.ch/matthieu.bovel) |
 | MSc TA | [Valentin Aebi](https://people.epfl.ch/valentin.aebi) |
 | MSc TA | [Romain Birling](https://people.epfl.ch/Romain.Birling) |
 | MSc TA | [Solène Husseini](https://people.epfl.ch/tanguy.husseini) |
