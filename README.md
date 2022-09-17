@@ -39,3 +39,8 @@ For the final Lab 6, each group will need to present the project in a slot in on
 | MSc TA | [Erwan Serandour](https://people.epfl.ch/erwan.serandour) |
 | MSc TA | [Abel Vexina Wilkinson](https://people.epfl.ch/abel.vexinawilkinson) |
 
+## Books
+
+  * [Basics of Compiler Design](http://hjemmesider.diku.dk/~torbenm/Basics/)
+  * [Modern compiler implementation in ML](http://library.epfl.ch/en/beast?isbn=9781107266391)
+  * [Compilers, principle, techniques and tools](http://library.epfl.ch/en/beast?isbn=9781292024349)
