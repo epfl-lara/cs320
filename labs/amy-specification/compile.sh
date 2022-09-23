@@ -1,2 +1,2 @@
-pdflatex main
-pdflatex main
+pdflatex amy-specification
+pdflatex amy-specification

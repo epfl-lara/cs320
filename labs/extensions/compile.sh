@@ -1,2 +1,2 @@
-pdflatex main
-pdflatex main
+pdflatex extensions
+pdflatex extensions
