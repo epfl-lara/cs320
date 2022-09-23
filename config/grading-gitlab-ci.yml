@@ -1,0 +1,44 @@
+# This CI config file is not used in this repository but instead referenced
+# from each student project (https://gitlab.epfl.ch/help/ci/pipelines/settings#custom-ci-configuration-path)
+# and used to grade them.
+
+workflow:
+  rules:
+    # Don't run the CI on commit messages contain "[no-ci]", used to deploy
+    # assignments without overloading the CI.
+    - if: $CI_COMMIT_MESSAGE !~ /\[no-ci\]/
+
+stages:
+  - build
+  - grade
+
+compile:
+  stage: build
+  timeout: 10m
+  image: ${DOCKER_REPO}/compile
+  tags:
+    - cs210
+  except:
+    - tags
+    - main
+  script:
+    - sbt packageSubmission
+  # Output of this job that needs to be stored to be reused in the grade job below
+  artifacts:
+    expire_in: 24h
+    paths:
+      - submission.jar
+
+grade:
+  stage: grade
+  timeout: 10m
+  except:
+    - tags
+    - main
+  tags:
+    - cs210
+  variables:
+    JAR_PATH: "${CI_PROJECT_DIR}/submission.jar"
+  image: ${DOCKER_REPO}/grader-${CI_COMMIT_BRANCH}
+  allow_failure: true
+  script: "😎"
