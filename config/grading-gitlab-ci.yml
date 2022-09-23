@@ -17,7 +17,7 @@ compile:
   timeout: 10m
   image: ${DOCKER_REPO}/compile
   tags:
-    - cs210
+    - cs320
   except:
     - tags
     - main
@@ -36,7 +36,7 @@ grade:
     - tags
     - main
   tags:
-    - cs210
+    - cs320
   variables:
     JAR_PATH: "${CI_PROJECT_DIR}/submission.jar"
   image: ${DOCKER_REPO}/grader-${CI_COMMIT_BRANCH}
