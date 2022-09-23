@@ -1,0 +1,37 @@
+\section{Alternative frontends/backends}
+This section contains projects that do not modify the language features of \langname,
+but change the implementation of a part of the \langname compiler frontend or backend.
+
+
+\subsection{Code formatter (1)}
+Build a code formatter for the Amy language.
+A straightforward way to accomplish this would be to add a special mode
+(e.g.\ \lstinline{--format}) that the user can start the compiler in.
+It would then only run the existing pipeline up to, say, parsing and subsequently go
+through a special pretty-printing phase that outputs the program according to code style
+rules configurable by the user.
+%
+A more sophisticated version could instead work on the Token-level, allowing your
+formatter to be aware of whitespace, e.g., respecting new-lines that a user inserted.
+%
+In any case, you will have to maintain comments (which are not part of the AST).
+
+You can look at \lstinline{scalafmt} for some inspiration.
+
+\subsection{Language Server (2)}
+Implement a language server for Amy. VSCode and similar IDEs use the \href{https://en.wikipedia.org/wiki/Language_Server_Protocol}{language server protocol} to communicate with compilers and thereby provides deep integration with a variety of programming languages. Among other things, this enables features like showing type-checking errors within the editor, jumping to definitions and looking up all usages of a given definition. Your goal is to provide such functionality for Amy by implementing an additional mode in your compiler, in which it acts as a client for the language server protocol. Your implementation should be demonstrable with VSCode and include the aforementioned features. You can using an existing library, such as \href{https://github.com/eclipse/lsp4j}{LSP4J}, to simplify your task.
+
+\subsection{Formalization of Amy (1)}
+Develop an operational semantics for Amy and use your definitions along with Amy's typing rules to prove type safety. Note that this might require you to do some additional reading on type systems.
+
+\subsection{JVM backend (2)}
+Implement an alternative backend for \langname which outputs JVM bytecode.
+You can use \href{https://github.com/psuter/cafebabe}{this library}.
+You first have to think how to represent \langname values in a class-based environment,
+and then generate the respective bytecode from \langname ASTs.
+
+\subsection{C backend (3)}
+Implement an alternative backend for \langname which outputs C code.
+You have to think how to represent \langname values in C,
+and then generate respective C code from \langname ASTs.
+

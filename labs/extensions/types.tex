@@ -1,0 +1,197 @@
+\section{Type systems}
+
+\subsection{Polymorphic types (2)}
+Allow polymorphic types for functions and classes.
+
+\begin{lstlisting}
+abstract class List[A]
+case class Nil[A]() extends List[A]
+case class Cons[A](h: A, t: List[A]) extends List[A]
+
+def length[A](l: List[A]): Int = {
+  l match {
+    case Nil() => 0
+    case Cons(_, t) => 1 + length(t)
+  }
+}
+
+case class Cons2[A, B](h1: A, h2: B, t: List[A]) extends List[A]
+  // Wrong, type parameters don't match
+\end{lstlisting}
+
+You can assume the sequence of type parameters of an extending class 
+is identical with the parent in the \lstinline{extends} clause
+(see example).
+
+\subsection{Case class subtyping (2)}
+Add subtyping support to \langname.
+Case classes are now types of their own:
+\begin{lstlisting}
+val y: Some = Some(0) // Correct, Some is a type
+val x: Option = None() // Correct, because None <: Option
+val z: Some = None() // Wrong
+
+y match {
+  case Some(i) => () // Correct
+  case None() => () // Wrong
+}
+\end{lstlisting}
+
+Since case classes are types, you can declare a variable, parameter,
+ADT field or function return type to be of a case class type,
+like any other type.
+
+Case class types are subtypes of their parent (abstract class) type.
+This means you can assign case class values to variables
+declared with the parent type.
+Since we have subtyping, you can now optionally support the \lstinline{Nothing}
+type in source code, which is a subtype of every type
+and the type of \lstinline{error} expressions.
+
+For this project you will probably rewrite the type checking phase in its entirety.
+Rather than dealing with explicit constraints, the resulting phase could perform
+more classical type-checking based on the minimal type satisfying all the local
+subtyping constraints (the so-called \emph{least-upper bound}).
+
+
+\subsection{Arrays and range types}
+
+In both of the following two projects you would add fixed-size arrays of integers as
+a primitive language feature along with a type system that allows users to specify
+the range of integers.
+The information about an integer's range can then be used to make array accesses safe
+by ensuring that indices are in-bounds.
+The difference between the two projects lies in \emph{when} integer bounds are checked,
+i.e., at compile-time (\emph{statically}) or at runtime (\emph{dynamically}).
+
+In either case you will add two kinds of types:
+First, a family of primitive types \lstinline{array[$n$]} that represent integer arrays of
+size $n$.
+Furthermore, \emph{range types} that represent subsets of \lstinline{Int} taking the
+following form:
+\lstinline{[$i$ .. $j$]} where $i$ and $j$ are integer constants.
+The intended semantics is for \lstinline{[$i$ .. $j$]} to represent a signed 32-bit integer
+$n$ such that $i \le n \le j$.
+
+\subsubsection{Dynamically-checked range types (2)}
+
+Your type system should allow users to specify \emph{concrete} ranges, e.g.,
+\lstinline{[0 .. 7]} to denote integers $0 \le n \le 7$. Values of \lstinline{Int} and
+any range types will be compatible during type-checking, but your system will have to be
+able to detect when an integer might not fall within a given range at runtime.
+During code generation your task will then be to emit \emph{runtime checks} to ensure
+that, e.g., an \lstinline{Int} in fact falls within the range \lstinline{[0 .. 7]}.
+
+\begin{lstlisting}
+// initialize an array of size 8:
+val arr: array[8] = [10, 20, 30, 40, 50, 60, 70, 80];
+arr[0];              // okay, should not emit any runtime check
+arr[arr.length-1];   // okay, same as above
+// also okay, but should emit a runtime bounds check:
+arr[Std.readInt()];
+\end{lstlisting}
+
+In effect, your system will ensure that array accesses are always in-bounds, i.e., do not
+over- or under-run an array's first, respectively last, element.
+Note that the resulting system should only emit the minimal number of runtime checks to
+ensure such safety. For instance, consider the following program:
+
+\begin{lstlisting}
+def printBoth(arr1: array[8], arr2: array[8], i: [0 .. 7]): Unit = {
+  Std.printInt(arr1[i], arr2[i])
+}
+
+val someInt: Int = 4;
+printBoth([1,2,3,4,5,6,7,8], [8,7,6,5,4,3,2,1], someInt)
+\end{lstlisting}
+
+Here it is not necessary to perform any checks in the body of \lstinline{printBoth}, since
+whatever values are passed as arguments for parameter \lstinline{i} should have previously
+been checked to lie between 0 and 7.
+In this concrete case, a runtime check should occur when \lstinline{someInt} is passed to
+\lstinline{printBoth}.
+
+
+\subsubsection{Statically-checked range types (2+, challenging)}
+
+Your type system should be strict and detect potential out-of-bounds array accesses
+early. In particular, when your type checker cannot prove that an integer lies in the
+required range it should produce a type error (and stop compilation as usual).
+
+\begin{lstlisting}
+val arr: array[8] = [10, 20, 30, 40, 50, 60, 70, 80];
+arr[0];             // okay
+arr[arr.length-1];  // okay
+arr[arr.length];    // not okay, type error "Idx 8 is out-of-bounds"
+val i: Int = Std.readInt();
+arr[i];             // not okay, type error "Int may be out-of-bounds"
+if (i >= 0 && i < 8) {
+  arr[i]            // okay, branch is only taken when i is in bounds
+}
+\end{lstlisting}
+
+To allow as many programs as possible to be accepted your type-checker will have to
+employ precise typing rules for arithmetic expressions and if-expressions.
+What you will implement are simple forms of \emph{path sensitivity} and
+\emph{abstract intepretation}.
+
+
+\paragraph{Constant-bounds version (2)}
+
+Implement statically-checked range types for arrays of fixed and statically-known sizes.
+Range types will only involve constant bounds and in effect your type-checker will only
+have to accept programs that operate on arrays whose sizes are known to you as concrete
+integer constants.
+
+The typing rules that you come up with should be sufficiently strong to prove safety of
+simple array manipulations such as the following:
+
+\begin{lstlisting}
+def printArray(arr: array[4], i: [0 .. 4]): Unit = {
+  if (i < arr.length) {
+    Std.printInt(arr[i]);
+    printArray(arr, i+1)
+  }
+}
+
+printArray([1,2,3,4], 0)
+\end{lstlisting}
+
+
+\paragraph{Dependently-typed version (3)}
+
+Rather than relying on the user to provide the exact sizes of arrays, also allow arrays
+to be of a fixed, but not statically-known size. To enable your type system to accept
+more programs, you should also extend the notion of range types to allow bounds
+\emph{relative to} a given array's size.
+
+The resulting types will extend the above ones in at least two ways:
+In addition to \lstinline{array[$n$]} there is a special form \lstinline{array[*]}
+which represents an array of arbitrary (but fixed) size.
+For a range type \lstinline{[$i$ .. $j$]} $i$ and $j$ may not only be integer constants,
+but may also be expressions of the form \lstinline{arr.length + $k$} where
+\lstinline{arr} is an Array-typed variable in scope and $k$ is an integer constant.
+
+Your system should then be able to abstract over concrete array sizes by referring to
+some Array-typed binding's length like in the following example:
+
+\begin{lstlisting}
+def printArray(arr: array[*], i: [0 .. arr.length]): Unit = {
+  if (i < arr.length) {
+    Std.printInt(arr[i]);
+    printArray(arr, i+1)
+  }
+}
+
+printArray([1,2,3,4], 0)
+printArray([1,2,3,4,5,6,7,8], 0)
+\end{lstlisting}
+
+Note that the resulting language will be \emph{dependently-typed}, meaning that
+types can depend on terms. In the above example, for instance, the type of parameter
+\lstinline{i} of function \lstinline{printArray} depends on parameter \lstinline{arr}.
+
+
+% TODO: (2) Simple ownership system / affine types + in-place updates for ADTs?
+
+% TODO: (1) Region-based ADT allocation + static tracking of provenance

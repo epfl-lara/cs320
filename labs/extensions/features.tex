@@ -1,0 +1,362 @@
+\section{Language features}
+Projects in this section extend \langname by adding a new language feature.
+To implement one of these projects, you will probably need to modify
+every stage of the compiler, from lexer to code generation.
+If the project is too hard, you might be allowed to skip the code generation
+part and only implement the runtime of your project in the interpreter.
+
+
+\subsection{Imperative features (2+)}
+With the exception of input/output, \langname is a purely functional language:
+none of its expressions allow side effects.
+Your task for this project is to add imperative language features to Amy.
+These should include:
+
+\begin{itemize}
+\item Mutable local variables.
+
+\begin{lstlisting}
+var i: Int;
+var j: Int = 0;
+i = j;
+j = i + 1;
+Std.printInt(i);
+Std.printInt(j) // prints 0, 1
+\end{lstlisting}
+
+Make sure your name analysis disallows plain \lstinline{val}s to be mutated.
+
+\item While loops.
+
+\begin{lstlisting}
+def fact(n: Int): Int = {
+  var res: Int = 1;
+  var j: Int = n;
+  while(1 < j) {
+    res = res * j;
+    j = j - 1
+  };
+  res
+}
+\end{lstlisting}
+
+\item \emph{Bonus:} Arrays.
+    You should support at least array initialization,
+    indexing and extracting array length.
+    If you add this feature,
+    you can add an additional member to the group.
+\end{itemize}
+
+\subsection{Implicit parameters (1)}
+Much like Scala, this feature allows functions to take implicit parameters.
+
+\begin{lstlisting}
+def foo(i: Int)(implicit b: Boolean): Int = {
+  if (i <= 0 && !b) { i }
+  else { foo(i - 1) + i } // good, implicit parameter in scope
+}
+foo(1)(true); // good, argument explicitly provided
+foo(1); // bad, no implicit in scope
+implicit val b: Boolean = true;
+foo(1); // good, implicit in scope
+        // equivalent to foo(1)(b)
+implicit val b2: Boolean = false;
+foo(1) // Bad, two boolean implicits in scope.
+\end{lstlisting}
+
+
+When a function that takes an implicit parameter is called
+and the implicit parameter is not explicitly defined,
+the compiler will look at the scope of the call for an implicit
+variable/parameter definition of the same type.
+If exactly one such definition is found, the compiler
+will complete the call with the defined variable/parameter.
+If more than one or no such definitions are found,
+the compiler will fail the program with
+``implicit parameter conflict'' or ``no implicit found''
+errors respectively.
+
+\subsection{Implicit conversions (1)}
+Much like Scala, this feature allows specified functions to act as implicit conversions.
+
+\begin{lstlisting}
+implicit def i2b(i: Int): Boolean = { !(i == 0) }
+2 || false // Good, returns true
+def foo(b: Boolean): List = { ... }
+foo(42) // Also good
+1 + true // Bad, no implicit in scope.
+def b2s(b: Boolean): String = { ... }
+1 ++ "Hello" // Bad, we cannot apply two conversions
+\end{lstlisting}
+
+An implicit conversion is a function with the qualifier \lstinline{implicit}.
+It must have a single parameter.
+At any point in the program, when an expression \lstinline{e} of type \lstinline{T1} is found
+but one of type \lstinline{T2} is expected,
+the compiler searches the current module for an implicit conversion
+of type \lstinline{(T1) => T2}.
+If exactly one such conversion \lstinline{f} is found,
+the compiler will substitute the \lstinline{e} by \lstinline{f(e)}
+(and the program typechecks).
+If multiple such conversions are found,
+the compiler fails with an ambiguous implicit error.
+If none is found, an ordinary type error is emitted.
+
+Only a single conversion is allowed to apply to an expression.
+For example, in the above example, we cannot implicitly apply
+\lstinline{i2b} and then \lstinline{b2s} to get a \lstinline{String}.
+
+
+\subsection{Tuples (1)}
+Add support for tuples in \langname. You should support
+tuple types, literals, and patterns:
+
+\begin{lstlisting}
+def maybeNeg(v: (Int, Boolean)): (Int, Boolean) = { // Type
+  v match {
+    case (i, false) => // pattern
+      (i, false)	   // literal
+    case (i, true) =>
+      (-i, false)
+  }
+}
+\end{lstlisting}
+
+There are two ways you could approach this problem:
+\begin{itemize}
+    \item Treat tuples as built-in language features. In this case,
+        you need to support tuples of arbitrary size.
+    \item Desugar tuples into case classes. A phase after
+        parsing and before name analysis will transform all tuples
+        to specified library classes, e.g. \lstinline{Tuple2, Tuple3} etc.
+        In this case, you cannot support tuples of arbitrary size,
+        but you still need to support all sizes up to, say, 10.
+        With this approach, you don't have to modify any compiler phases
+        from the name analysis onwards,
+        except maybe to print error messages that make sense to the user.
+\end{itemize}
+
+\subsection{Improved string support (1+)}
+Improve string support for \langname.
+As a starting point, you can add functionality like substring, length, and replace,
+which will require you to write auxiliary WebAssembly or JavaScript code.
+To avoid adding additional trees,
+you can represent these functions as built-in methods in \lstinline{Std}.
+
+If you want a more elaborate project for a larger group,
+you can add \lstinline{Char} as a built-in type,
+which opens the door for additional functionality with Strings.
+You can also implement
+\href{https://docs.scala-lang.org/overviews/core/string-interpolation.html}{string interpolation}.
+In general, look at Java/Scala strings for inspiration.
+
+\subsection{Higher-order functions (2+, challenging)}
+\label{closures}
+Add support for higher-order functions to \langname.
+You need to support function types and anonymous functions.
+
+\begin{lstlisting}
+def compose(f: Int => Int, g: Int => Int): Int => Int = {
+  (x: Int) => f(g(x))
+}
+compose((x: Int) => x + 1, (y: Int) => y * 2)(5) // returns 11
+
+def map(f: Int => Int, l: List): List = {
+  l match {
+    case Nil() => Nil()
+    case Cons(h, t) => Cons(f(h), map(f, t))
+  }
+}
+map( (x: Int) => x + 1, Cons(1, Cons(2, Cons(3, Nil()))) )
+  // Returns List(2, 3, 4)
+
+def foo(): Int => Int = {
+  val i: Int = 1;
+  val res: Int => Int = (x: Int) => x + i
+    // Problem! How do we access i from within res?
+  res
+}
+foo()(42) // Returns 43
+
+\end{lstlisting}
+
+You have to think how to represent higher order functions during runtime.
+
+In a bytecode setting,
+a first approach is to represent a higher-order function as a pointer to
+a named function, which is then called indirectly.
+You have to read about tables and indirect calls in WebAssembly.
+
+This works fine for \lstinline{compose} or \lstinline{map} above,
+but not for \lstinline{foo}.
+The problem is that higher order functions can refer to variables in their scope,
+like \lstinline{res} above refers to \lstinline{i}.
+The set of those variables are called the \emph{environment} of the function.
+If its environment is empty, the function will be called \emph{closed}.
+Above, we have no way to refer to \lstinline{i} from within \lstinline{res}
+at runtime:
+\lstinline{i} is in the frame of \lstinline{foo} which is not accessible in \lstinline{res}.
+In fact, by the time we need \lstinline{i},
+\lstinline{foo} may have returned and its frame disappeared!
+
+The way to solve this problem is a technique called \emph{closure conversion}.
+The idea is the following:
+At runtime, a function are represented as a \emph{closure},
+i.e. a function pointer along with the environment it captures from its scope.
+When we create a closure at runtime, we create a pair of values in memory,
+one of which points to the code (which will be a function)
+and the other to the environment,
+which will be a list of the captured variables.
+When we call the function,
+we really call the function pointer in the closure.
+We need to make sure to extract and somehow pass to the function pointer
+its environment from the other pointer.
+You can find a detailed explanation of closure conversion
+\href{https://cs420.epfl.ch/s/acc17_05_closure-conversion.pdf}{here}.
+
+In the interpreter, things are simpler in both cases:
+you can define a new value type \lstinline{FunctionValue}
+which contains all necessary information.
+In fact, you should probably start here as an exercise.
+
+For your project, we recommend that you assume
+all functions in the source code are closed,
+but if you are motivated to implement closure conversion,
+we will allow an additional group member.
+
+\subsection{Custom operators (2)}
+Allow the user to define operators.
+
+\begin{lstlisting}
+operator def :::(l1: List, l2: List): List = {
+  l1 match {
+    case Nil() => l2
+    case Cons(h, t) => Cons(h, t ::: l2)
+  }
+}
+
+Cons(1, Cons(2, Nil())) ::: Cons(3, Nil()) // returns List(1, 2, 3)
+\end{lstlisting}
+
+You can choose specific priorities for the operators based e.g. on their first character,
+or you can allow the user to define it;
+e.g. \lstinline{operator 55 def :::(...)} could signify
+that \lstinline{:::} has a precedence between \lstinline{+} and \lstinline{*}
+(with \lstinline{||} having 10, up to \lstinline{*} having 60).
+
+You can also choose to have built-in binary operators of \langname
+subsumed by this project. Of course, their implementation
+will be left to be hard-coded by the compiler backend:
+
+\begin{lstlisting}
+operator 50 def +(i1: Int, i2: Int): Int = { error("+") }
+\end{lstlisting}
+
+In any case, your parser will be in no position to know
+what operators are available in your program before actually parsing it.
+Therefore, when you have more than one operators in a row,
+your parser will just have to parse the tree as a flat sequence
+of operand, operator, operand, \ldots,
+and then fix the mess afterwards.
+Of course other solutions are welcome.
+
+\subsection{Improved Parameters (2)}
+
+Add support for named and default parameters for functions and classes.
+If a value for a parameter with a default value is not given,
+the compiler completes the default value.
+One can choose to explicitly name parameters when calling a function/constructor,
+which also allows reordering:
+
+\begin{lstlisting}
+def foo(i: Int, j: Int = 42): Int = { i + j }
+foo(1) // OK, j has default value
+foo(i = 5, j = 7) // OK
+foo(j = 5, i = 7) // OK, can reorder named parameters
+foo(i = 7) // OK
+foo(j = 7) // Wrong, i has no default value
+foo() // Wrong, i has no default value
+
+foo(i: Int = 5, j: Int): Int = { i + j }
+  // Wrong, default parameters have to be at the end
+
+// Similarly for case classes
+case class Foo(i: Int, j: Int = 42) extends Bar
+\end{lstlisting}
+
+Notice that names for case class parameters are currently not preserved in the AST,
+which you will have to change.
+
+% \subsection{Regular expressions (1+)}
+% Add support for regular expressions to \langname. You can use syntax similar to Java/Scala.
+% The size of the group depends on the number of features you want to implement.
+
+\subsection{List comprehensions (2)}
+
+Extend Amy with list comprehensions, which allow programmers to succinctly express
+transformations of \lstinline{List}s.
+
+\begin{lstlisting}
+val xs: L.List = L.Cons(1, L.Cons(2, L.Cons(3, L.Nil())));
+val ys: L.List = [ 2*x for x in xs if x % 2 != 0 ];
+Std.printString(L.toString(ys))  // [2, 6]
+\end{lstlisting}
+
+Your list-comprehension syntax should support enumerating elements from one or
+multiple lists, filtering them with and mapping them to arbitrary expressions.
+
+It is up to you to decide whether to treat these comprehensions as primitives in your compiler.
+If you do so, you will have a dedicated AST node for comprehensions in the entire compiler
+pipeline and generate specific code or interpret them accordingly in the end.
+Alternatively, you can \emph{desugar} list comprehensions earlier in the pipeline, e.g.\ 
+right after (or during) parsing.  You could, for instance, generate auxiliary functions that
+compute the result of the list comprehension and are called in place of the comprehensions.
+
+\subsection{Inlining (1+)}
+
+Implement inlining on the AST level, that is, allow users to force the compiler to inline certain
+functions and perform optimizations on the resulting AST.
+
+\begin{lstlisting}
+inline def abs(n: Int): Int = { if (n < 0) -n else n }
+
+abs(123);   // inlined and constant-folded to `123'
+abs(-456);  // inlined and constant-folded to `456'
+// inlined, not cf-ed; careful with side-effects!
+abs(Std.readInt())
+\end{lstlisting}
+
+Inlining is effective when we can expect optimizations to make code significantly more
+efficient given additional information on function arguments. At a minimum, you would add an
+\lstinline{inline} qualifier for function definitions and perform \emph{constant folding} on 
+inlined function bodies.
+
+Inlining is particularly useful when applied to auxiliary functions that only exist for
+clarity. While inlining can lead to \emph{code explosion} when applied too liberally, note that
+inlining a non-recursive function that is only called in a single location will strictly reduce
+code size and potentially lead to more efficient code.
+This makes it very attractive to \emph{automatically} apply inlining to such functions:
+
+\begin{lstlisting}
+def foo(n: Int): Int = {
+  def plus1(n: Int): Int = { n + 1 }
+  inline def times2(n: Int): Int = { 2 * n }
+  plus1(times2(times2(n)))  // inlined and cf-ed to `4 * n + 1'
+}
+
+def bar(): Int = {
+  def fib(n: Int): Int = {
+    if (n <= 2) { 1 }
+    else { fib(n-2) + fib(n-1) }
+  }
+  fib(10)  // should *not* be automatically inlined
+}
+\end{lstlisting}
+
+To incentivize the user to break functions down into the composition of many auxiliary functions
+we can introduce \emph{local function definitions}. That is, the user may define a function within
+a function. For this project it is sufficient to enforce local functions that only have access
+to their own parameters and locals, but not the surrounding function's parameters or locals.
+
+This project is for two people, if you choose to also implement local function definitions,
+and one otherwise.

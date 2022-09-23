@@ -1,0 +1,177 @@
+\section{Execution}
+This section suggests projects that change how \langname code is executed.
+
+\subsection{Memory deallocation (3)}
+Allow explicit memory deallocation by the user.
+\begin{lstlisting}
+val x: List = Cons(1, Nil());
+length(x); // OK
+free(x);
+length(x) // Wrong, might return garbage
+\end{lstlisting}
+
+When an object in linear memory is freed, the space it used to occupy
+is considered free and can be allocated again.
+Any further reference to the freed object is undefined behavior.
+
+You need to change how memory allocation works in code generation
+to maintain a list of free blocks,
+which will now not be a continuous part at the end of the memory.
+The list should not be external,
+but rather implemented in the memory itself:
+each free block needs to contain a pointer to the next one.
+Each block will also need to record its size.
+This means that free blocks have to be of size at least 2 words.
+When you allocate an object, you need to look through the list
+of blocks for one that fits and if none does,
+the program should fail.
+Make sure you always modify the free list in the simplest way possible,
+i.e. the blocks in the list don't have to be in the same order as in memory.
+
+\subsection{Lazy evaluation (1-2)}
+Change the evaluation strategy of Amy to lazy evaluation.
+Only input and output are evaluated strictly.
+
+\begin{lstlisting}
+val x: Int = (Std.printInt(42); 0); // Nothing happens
+val y: Int = x + 1 // Still nothing...
+Std.printInt(y); // 42 and 1 are printed
+
+val l: List = Cons(1, Cons(2, Cons(error("lazy"), Nil())));
+  // No error is thrown
+
+l match {
+  case Nil() => () // At this point, we evaluate l just enough
+                   // to know it is a Cons
+  case Cons(h, t) => Std.printInt(h) // Prints 1
+  case Cons(h1, Cons(h2, Cons(h3, _))) =>
+    // Still no error...
+    Std.printInt(h3)
+    // This forces evaluation of the third list element
+    // and an error is thrown!
+}
+
+// We can do neat things like define infinite lists, i.e. streams
+def countFrom(start: Int): List = Cons(start, countFrom(start +  1))
+Std.printString(L.listToString(
+  take(countFrom(0), 5)
+) // Will terminate and return `List(1, 2, 3, 4, 5)'
+\end{lstlisting}
+
+Each value is not evaluated until it is required.
+Things that are not evaluated have to live in the runtime state as \emph{thunks},
+or suspensions to be evaluated later.
+A thunk is essentially a closure (see Section~\ref{closures}) with memoization:
+it is either an already calculated value,
+or an expression to be evaluated and an evaluation environment.
+In turn, an evaluation environment is a mapping from identifiers to other thunks.
+
+You have to make sure that pattern matching only evaluates expressions as much as needed.
+Maybe \href{https://en.wikibooks.org/wiki/Haskell/Laziness#Thunks_and_Weak_head_normal_form}{this}
+will help you understand the concept.
+
+For simplicity, you can implement lazy evaluation directly in the interpreter, i.e., as an extension of the first lab (1 person).
+If you implement lazy evaluation for the WebAssembly-backend, you can work on this project as a team of two. (Note that this variant might be significantly harder.)
+
+
+\subsection{Final code optimizations (1+)}
+Optimize the WebAssembly binary produced by your \langname compiler.
+
+The simplest thing you can do is eliminate some obvious redundancies such as
+\begin{minipage}{0.49\textwidth}
+\begin{lstlisting}
+i32.const 0
+if (result i32)
+  e1
+else
+  e2
+end
+// equivalent to e2
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{lstlisting}
+if (result i32)
+  i32.const 1
+else
+  i32.const 0
+end
+// completely redundant
+\end{lstlisting}
+
+\end{minipage}
+
+Preferably, you can implement a control flow analysis and some abstract
+interpretations to implement more advanced optimizations,
+also involving local parameters. This would involve a larger group.
+
+You can have a look at \href{https://cs420.epfl.ch/archive/18/s/acc18_07_optimizations.pdf}{these slides}
+for some ideas on optimization.
+
+
+\subsection{Tail call optimization (1)}
+Implement tail call optimization for \langname.
+Tail-recursive functions should not create any additional stack frames,
+i.e. use the \lstinline{call} instruction.
+
+A way to implement tail recursive functions is to do a source-to-source transformation
+which transforms tail recursive functions to loops. You will need to define new ASTs.
+
+When it comes to tail calls that are not tail recursion,
+things are tougher. If you feel like also handling those cases,
+look \href{https://cs420.epfl.ch/archive/18/s/acc18_10_tail-calls.pdf}{here} for ideas.
+
+\subsection{Foreign-function interface (FFI) to JavaScript (2)}
+Design a cross-language interaction layer between \langname and JavaScript.
+At a minimum you should support calling JavaScript functions with primitive parameter- and
+result-types from Amy.  You can also consider supporting calls from JavaScript into Amy.
+You will have to decide how WebAssembly representations of Amy objects should map to
+JavaScript objects.
+To ensure that programs can be meaningfully type-checked, you should add syntax for
+\lstinline{external} functions, e.g.
+
+\begin{lstlisting}
+object FS {
+  external def open(path: String): Int
+  external def read(fd: Int): String
+  // ...
+}
+
+object Example {
+  val f: Int = FS.open("/home/foo/hello.txt")  // open file
+  Std.printString(FS.read(f))  // print contents of hello.txt
+}
+\end{lstlisting}
+
+Conversely, Amy functions exposed to JavaScript could be annotated with an \lstinline{export}
+keyword.
+
+Ideally you will also demonstrate your FFI's capabilities by wrapping some NodeJS or browser
+APIs and exposing them to Amy.
+For instance, you might expose the file system API of NodeJS, thus allowing Amy programs to
+read from and write to files.
+Another idea is to adapt the HTML wrapper file that we provide with the compiler and use the
+FFI to write an interactive browser application in Amy.
+
+A more sophisticated version of this project (for three people) would also support foreign
+functions involving case classes such as \lstinline{List}.
+
+
+\subsection{REPL: Read-Eval-Print Loop (3)}
+Implement a REPL for \langname.
+It should support defining classes, functions and local variables, and evaluating expressions.
+You don't have to support redefinitions. You can take a look at the Scala REPL for inspiration.
+
+\subsection{Virtual machine (3)}
+Develop your own VM to run WebAssembly code!
+To simplify things, you will implement the VM in Scala.
+Your VM should take as input
+a wasm \lstinline{Module} from amyc's \lstinline{CodeGen} Pipeline
+(so you don't need to implement a parser from wasm text or binary)
+and execute the code contained within.
+Despite using Scala, you still need to follow the VM execution model as much as possible:
+translate labels to addresses,
+use an array for the memory, a stack for execution etc.
+You can choose the VM parameters, such as memory size, any way you choose,
+and hard-code built-in functions that are not already implemented in WebAssembly.
+
