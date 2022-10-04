@@ -89,4 +89,4 @@ EOFToken()(4:1)
 
 ## Deliverables
 
-Deadline: **Friday October 14 at 11pm**.
+Deadline: **Friday October 21 at 11pm**.
