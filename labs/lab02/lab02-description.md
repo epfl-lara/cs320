@@ -90,3 +90,6 @@ EOFToken()(4:1)
 ## Deliverables
 
 Deadline: **Friday October 21 at 11pm**.
+
+Submission: push the solved lab 2 to the branch `clplab2` that was created on your Gitlab repo. Do not push the changes to `clplab1`! It may interfere with your submission for lab 1.
+You may want to copy the files you changed directly to the new branch, since the two branches don't share a history in git.
