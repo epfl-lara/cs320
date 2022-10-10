@@ -53,10 +53,13 @@ For the final Lab 6, each group will need to present the project in a slot in on
 |      | Thu | 22.09.2022 | 08:15 | INM202 | Lecture 2            | [Operations on Languages](https://tube.switch.ch/videos/1846c6f2), [Regular Expressions and Lexer Idea](https://tube.switch.ch/videos/c903b9d5) |
 | 2    | Mon | 26.09.2022 | 13:15 | INM200 | Lecture 3            | [First Symbols. Constructing a Lexer](https://tube.switch.ch/videos/fc864ce0), [From Regular Expressions to Automata](https://tube.switch.ch/videos/a15b1c5f) |
 |      | Wed | 28.09.2022 | 08:15 | INM202 | Labs 1 | [Interpreter Lab](labs/lab01/)  |
-|      | Thu | 29.09.2022 | 08:15 | INM202 | Exercises 1 | [Exercises on regular expressions and automata](exercises/ex1/ex1.md) |
+|      | Thu | 29.09.2022 | 08:15 | INM202 | Exercises 1 | [Exercises on regular expressions and automata](exercises/ex1/) |
 | 3    | Mon | 03.10.2022 | 13:15 | INM200 | Lecture 4            | [Introduction to Grammars](https://tube.switch.ch/videos/ef9ae6c1), [Syntax Trees](https://tube.switch.ch/videos/9314ac16) |
 |      | Wed | 05.10.2022 | 08:15 | INM202 | Labs  | [Interpreter Lab](labs/lab01/), [Lexer Lab](labs/lab02/)  |
-|      | Thu | 06.10.2022 | 08:15 | INM202 | Exercises  | Exercises on lexical analyzers and basics of grammars |
-| 4    | Mon | 10.10.2022 | 13:15 | INM200 | Lecture 5            | [LL(1) Parsing](https://tube.switch.ch/videos/38dd46b4) and [CYK Algorithm for Parsing General Context-Free Grammars](https://tube.switch.ch/videos/672add06) |
+|      | Thu | 06.10.2022 | 08:15 | INM202 | Exercises  | [Exercises on lexical analyzers and basics of grammars](exercises/ex2/) |
+| 4    | Mon | 10.10.2022 | 13:15 | INM200 | Lecture 5            | [LL(1) Parsing](https://tube.switch.ch/videos/38dd46b4) |
+|      | Wed | 12.10.2022 | 08:15 | INM202 | Labs  |
+|      | Thu | 13.10.2022 | 08:15 | INM202 | Exercises  |  |
+| 4    | Mon | 10.10.2022 | 13:15 | INM200 | Lecture 6            | [CYK Algorithm for Parsing General Context-Free Grammars](https://tube.switch.ch/videos/672add06) and [Chomsky Normal Form Transformation](https://tube.switch.ch/videos/2d3503f4) |
 
 **Midterm:** Monday 2022-11-14, 13:00-15:00 split between [INM 200](https://plan.epfl.ch/?room==INM%20200) and [SG0211](https://plan.epfl.ch/?room==SG%200211)
