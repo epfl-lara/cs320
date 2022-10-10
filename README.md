@@ -41,8 +41,9 @@ For the final Lab 6, each group will need to present the project in a slot in on
 
 ## Books
 
+My goal is for lectures to be self-contained. The following books contain overlapping material with some recommendations for most relevant parts:
   * [Basics of Compiler Design](http://hjemmesider.diku.dk/~torbenm/Basics/). Read pages 9-88 (omit Section 2.8) for lexical analysis and parsing
-  * [Modern compiler implementation in ML](http://library.epfl.ch/en/beast?isbn=9781107266391)
+  * [Modern compiler implementation in ML](http://library.epfl.ch/en/beast?isbn=9781107266391). Read Sections 2.1-2.4 for Lexical analysis, Sections 3.1-3.2 for parsing, and 5.3-5.4 as well as 16.1-16.3 for type checking
   * [Compilers, principle, techniques and tools](http://library.epfl.ch/en/beast?isbn=9781292024349)
 
 ## Schedule and Material
