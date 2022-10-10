@@ -41,7 +41,7 @@ For the final Lab 6, each group will need to present the project in a slot in on
 
 ## Books
 
-  * [Basics of Compiler Design](http://hjemmesider.diku.dk/~torbenm/Basics/)
+  * [Basics of Compiler Design](http://hjemmesider.diku.dk/~torbenm/Basics/). Read pages 9-88 (omit Section 2.8) for lexical analysis and parsing
   * [Modern compiler implementation in ML](http://library.epfl.ch/en/beast?isbn=9781107266391)
   * [Compilers, principle, techniques and tools](http://library.epfl.ch/en/beast?isbn=9781292024349)
 
