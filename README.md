@@ -59,7 +59,7 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Wed | 05.10.2022 | 08:15 | INM202 | Labs  | [Interpreter Lab](labs/lab01/), [Lexer Lab](labs/lab02/)  |
 |      | Thu | 06.10.2022 | 08:15 | INM202 | Exercises  | [Exercises on lexical analyzers and basics of grammars](exercises/ex2/) |
 | 4    | Mon | 10.10.2022 | 13:15 | INM200 | Lecture 5            | [LL(1) Parsing](https://tube.switch.ch/videos/38dd46b4) |
-|      | Wed | 12.10.2022 | 08:15 | INM202 | [Lexer Lab](labs/lab02/), Parser Lab. See also [Scallion Presentation](https://tube.switch.ch/videos/f18a2692) |
+|      | Wed | 12.10.2022 | 08:15 | INM202 | [Lexer Lab](labs/lab02/), [Parser Lab Presentation](https://tube.switch.ch/videos/TUALwnHh6u). See also [Scallion Presentation](https://tube.switch.ch/videos/f18a2692) |
 |      | Thu | 13.10.2022 | 08:15 | INM202 | Exercises  |  |
 | 5    | Mon | 17.10.2022 | 13:15 | INM200 | Lecture 6            | [CYK Algorithm for Parsing General Context-Free Grammars](https://tube.switch.ch/videos/672add06) and [Chomsky Normal Form Transformation](https://tube.switch.ch/videos/2d3503f4) |
 | 6    | Mon | 24.10.2022 | 13:15 | INM200 | Lecture 7            | [Name Analysis](https://tube.switch.ch/videos/a842b90d), [Inductive Relations](https://tube.switch.ch/videos/5d67c147), [Operational Semantics](https://tube.switch.ch/videos/465af7b1) |
