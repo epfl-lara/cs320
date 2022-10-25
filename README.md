@@ -62,9 +62,12 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Wed | 12.10.2022 | 08:15 | INM202 | [Lexer Lab](labs/lab02/), [Parser Lab](labs/lab03/), [Parser Lab Presentation](https://tube.switch.ch/videos/TUALwnHh6u). See also [Scallion Presentation](https://tube.switch.ch/videos/f18a2692) |
 |      | Thu | 13.10.2022 | 08:15 | INM202 | Exercises  | [Exercises on LL(1) Parsing](exercises/ex3/) |
 | 5    | Mon | 17.10.2022 | 13:15 | INM200 | Lecture 6            | [CYK Algorithm for Parsing General Context-Free Grammars](https://tube.switch.ch/videos/672add06) and [Chomsky Normal Form Transformation](https://tube.switch.ch/videos/2d3503f4) |
+|      | Wed | 19.10.2022 | 08:15 | INM202 | Labs | [Parser Lab](labs/lab03/) |
 |      | Thu | 20.10.2022 | 08:15 | INM202 | Exercises  | [Exercises on CYK Parsing](exercises/ex4/) |
 | 6    | Mon | 24.10.2022 | 13:15 | INM200 | Lecture 7            | [Name Analysis](https://tube.switch.ch/videos/a842b90d), [Inductive Relations](https://tube.switch.ch/videos/5d67c147), [Operational Semantics](https://tube.switch.ch/videos/465af7b1) |
+|      | Wed | 26.10.2022 | 08:15 | INM202 | Labs | [Parser Lab](labs/lab03/) |
 | 7    | Mon | 31.10.2022 | 13:15 | INM200 | Lecture 8            | [Type Rules, Progress, Preservation](https://tube.switch.ch/videos/bdb5c902), [Type Inference](https://tube.switch.ch/videos/14facfc5) |
+|      | Wed | 02.11.2022 | 08:15 | INM202 | Labs | Type Checking Lab |
 | 8    | Mon | 07.11.2022 | 13:15 | INM200 | Lecture 9            | Finish [Type Inference](https://tube.switch.ch/videos/14facfc5) and start code generation |
 | 9    | Mon | 14.11.2022 | **13:00** | [INM 200](https://plan.epfl.ch/?room==INM%20200) + [SG0211](https://plan.epfl.ch/?room==SG%200211) | **MIDTERM** | Materials of lectures 1-9 |
 |      | Wed | 12.10.2022 | 08:15 | INM202 | Labs  |
