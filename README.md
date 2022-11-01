@@ -68,7 +68,7 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Wed | 26.10.2022 | 08:15 | INM202 | Labs | [Parser Lab](labs/lab03/) |
 |      | Thu | 27.10.2022 | 08:15 | INM202 | Exercises  | [Exercises on Operational Semantics](exercises/ex5/) |
 | 7    | Mon | 31.10.2022 | 13:15 | INM200 | Lecture 8            | [Type Rules, Progress, Preservation](https://tube.switch.ch/videos/bdb5c902), [Type Inference](https://tube.switch.ch/videos/14facfc5) |
-|      | Wed | 02.11.2022 | 08:15 | INM202 | Labs | [Parser Lab](labs/lab03/), [Type Checking Lab](labs/lab04/) |
+|      | Wed | 02.11.2022 | 08:15 | INM202 | Labs | [Parser Lab](labs/lab03/), [Type Checking Lab](labs/lab04/) and its [Introduction Video](https://tube.switch.ch/videos/jd7nfWURbC) |
 |      | Wed | 03.11.2022 | 08:15 | INM202 | Exercises | Exercises |
 | 8    | Mon | 07.11.2022 | 13:15 | INM200 | Lecture 9            | Finish [Type Inference](https://tube.switch.ch/videos/14facfc5). [Compilation to Web Assembly](https://tube.switch.ch/videos/fd21d42e) |
 | 9    | Mon | 14.11.2022 | **13:00** | [INM 200](https://plan.epfl.ch/?room==INM%20200) + [SG0211](https://plan.epfl.ch/?room==SG%200211) | **MIDTERM** | Materials of lectures 1-9 |
