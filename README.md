@@ -72,7 +72,7 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Thu | 03.11.2022 | 08:15 | INM202 | Exercises | [Exercises on Types](exercises/ex6/) |
 | 8    | Mon | 07.11.2022 | 13:15 | INM200 | Lecture 9            | Finish [Type Inference](https://tube.switch.ch/videos/14facfc5). [Compilation to Web Assembly](https://tube.switch.ch/videos/fd21d42e) |
 |      | Wed | 09.11.2022 | 08:15 | INM202 | Labs | [Type Checking Lab](labs/lab04/) |
-|      | Thu | 10.11.2022 | 08:15 | INM202 | Exercises |  |
+|      | Thu | 10.11.2022 | 08:15 | INM202 | Exercises | [Midterm preparation](exercises/ex7/) |
 | 9    | Mon | 14.11.2022 | **13:00** | [INM 200](https://plan.epfl.ch/?room==INM%20200) + [SG0211](https://plan.epfl.ch/?room==SG%200211) | **MIDTERM** | Materials of lectures 1-9. [Seating Plan](https://moodle.epfl.ch/mod/resource/view.php?id=1227039) |
 |      | Wed | 16.11.2022 | 08:15 | INM202 | Labs  |
 |      | Thu | 17.11.2022 | 08:15 | INM202 | Midterm Solution Presentation |  |
