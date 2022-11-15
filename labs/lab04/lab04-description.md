@@ -141,7 +141,7 @@ structure of your project `src` directory should be as follows:
           └── UniqueCounter.scala
 
 ## Deliverables
-Deadline: **Wednesday November 16 at 11pm**.
+Deadline: **Thursday November 17 at 11pm**.
 
 Submission: push the solved lab 4 to the branch `clplab4` that was created on your Gitlab repo. Do not push the changes to other branches! It may interfere with your previous submissions.
 You may want to copy the files you changed directly to the new branch, since the two branches don't share a history in git.
