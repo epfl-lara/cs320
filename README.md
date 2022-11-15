@@ -74,5 +74,8 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Wed | 09.11.2022 | 08:15 | INM202 | Labs | [Type Checking Lab](labs/lab04/) |
 |      | Thu | 10.11.2022 | 08:15 | INM202 | Exercises | [Midterm preparation](exercises/ex7/) |
 | 9    | Mon | 14.11.2022 | **13:00** | [INM 200](https://plan.epfl.ch/?room==INM%20200) + [SG0211](https://plan.epfl.ch/?room==SG%200211) | **MIDTERM** | Materials of lectures 1-9. [Seating Plan](https://moodle.epfl.ch/mod/resource/view.php?id=1227039) |
-|      | Wed | 16.11.2022 | 08:15 | INM202 | Labs  |
-|      | Thu | 17.11.2022 | 08:15 | INM202 | Midterm Solution Presentation |  |
+|      | Wed | 16.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
+|      | Thu | 17.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
+| 10   | Mon | 21.11.2022 | 13:15 | INM200 | Lecture | More code generation |
+|      | Wed | 23.11.2022 | 08:15 | INM202 | Labs | Presentation of code generation lab |
+|      | Thu | 24.11.2022 | 08:15 | INM202 | Midterm Solution Presentation |  |
