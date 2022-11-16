@@ -52,15 +52,7 @@ To run the program, simply type `nodejs wasmout/p.js`
 
 ## WebAssembly and Amy
 
-### TODO Fix broken links
-The slides for this year's presentation are in the files called lab05-slides. See [here](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/slides/lab05.md) and [here](https://gitlab.epfl.ch/lara/cs320/-/blob/main/labs/slides/lab05.html).
-
-Look at [this
-presentation](http://lara.epfl.ch/~gschmid/clp20/codegen.pdf) for the
-main concepts of how to translate Amy programs to WebAssembly.
-
-You can find the annotated compiler output to the concat example
-[here](http://lara.epfl.ch/~gschmid/clp20/concat.wat).
+Links to the material will be provided here after the presentation of the lab.
 
 ## The assignment code
 
