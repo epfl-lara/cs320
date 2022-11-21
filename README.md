@@ -76,6 +76,6 @@ My goal is for lectures to be self-contained. The following books contain overla
 | 9    | Mon | 14.11.2022 | **13:00** | [INM 200](https://plan.epfl.ch/?room==INM%20200) + [SG0211](https://plan.epfl.ch/?room==SG%200211) | **MIDTERM** | Materials of lectures 1-9. [Seating Plan](https://moodle.epfl.ch/mod/resource/view.php?id=1227039) |
 |      | Wed | 16.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
 |      | Thu | 17.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
-| 10   | Mon | 21.11.2022 | 13:15 | INM200 | Lecture | [Compiling Expressions](https://tube.switch.ch/videos/e0f59928), [Simple Code Generation for If](https://tube.switch.ch/videos/2036cd8b) |
+| 10   | Mon | 21.11.2022 | 13:15 | INM200 | Lecture | [Compiling Expressions](https://tube.switch.ch/videos/e0f59928), [Simple Code Generation for If](https://tube.switch.ch/videos/2036cd8b), [Translating Control with Destination Parameters](https://tube.switch.ch/videos/9c9f8bc9) |
 |      | Wed | 23.11.2022 | 08:15 | INM202 | Labs | Presentation of code generation lab |
 |      | Thu | 24.11.2022 | 08:15 | INM202 | Midterm Solution Presentation |  |
