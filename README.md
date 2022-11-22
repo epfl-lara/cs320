@@ -77,5 +77,5 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Wed | 16.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
 |      | Thu | 17.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
 | 10   | Mon | 21.11.2022 | 13:15 | INM200 | Lecture | [Compiling Expressions](https://tube.switch.ch/videos/e0f59928), [Simple Code Generation for If](https://tube.switch.ch/videos/2036cd8b), [Translating Control with Destination Parameters](https://tube.switch.ch/videos/9c9f8bc9) |
-|      | Wed | 23.11.2022 | 08:15 | INM202 | Labs | Presentation of code generation lab |
+|      | Wed | 23.11.2022 | 08:15 | INM202 | Labs | Presentation of [code generation lab](labs/lab05/) |
 |      | Thu | 24.11.2022 | 08:15 | INM202 | Midterm Solution Presentation |  |
