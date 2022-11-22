@@ -1,4 +1,4 @@
-# Lab 05: Code Generation(Slides: [Markdown](slides/lab05.md)/[HTML](slides/lab05.html))
+# Lab 05: Code Generation ([Slides](material/lab05-extra.md))
 
 ## Introduction
 
@@ -162,7 +162,7 @@ structure of your project `src` directory should be as follows:
           └── Module.scala
 
 ## Deliverables
+Deadline: **Friday December 9 at 11pm**.
 
-You are given **TBD weeks** for this assignment.
-
-Deadline: **TBD**.
+Submission: push the solved lab 5 to the branch `clplab5` that was created on your Gitlab repo. Do not push the changes to other branches! It may interfere with your previous submissions.
+You may want to copy the files you changed directly to the new branch, since the two branches don't share a history in git.
