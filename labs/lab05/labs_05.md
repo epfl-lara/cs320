@@ -54,6 +54,9 @@ To run the program, simply type `nodejs wasmout/p.js`
 
 Links to the material will be provided here after the presentation of the lab.
 
+Presentation by Georg Schmid from a few years ago: <https://tube.switch.ch/videos/00568845>, slides <https://lara.epfl.ch/~gschmid/clp20/codegen.pdf>
+The lab has changed a tiny bit, for instance `set_global`, `get_global`, `set_local` and `get_local` are outdated and replaced with `global.set`, `global.get`, `local.set` and `local.get`, but otherwise it is a very good resource.
+
 ## The assignment code
 
 ### Overview
