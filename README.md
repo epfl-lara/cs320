@@ -76,7 +76,8 @@ My goal is for lectures to be self-contained. The following books contain overla
 | 9    | Mon | 14.11.2022 | **13:00** | [INM 200](https://plan.epfl.ch/?room==INM%20200) + [SG0211](https://plan.epfl.ch/?room==SG%200211) | **MIDTERM** | Materials of lectures 1-9. [Seating Plan](https://moodle.epfl.ch/mod/resource/view.php?id=1227039) |
 |      | Wed | 16.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
 |      | Thu | 17.11.2022 | 08:15 | INM202 | Labs | Finish type checker lab |
-| 10   | Mon | 21.11.2022 | 13:15 | INM200 | Lecture | [Compiling Expressions](https://tube.switch.ch/videos/e0f59928), [Simple Code Generation for If](https://tube.switch.ch/videos/2036cd8b), [Translating Control with Destination Parameters](https://tube.switch.ch/videos/9c9f8bc9) |
+| 10   | Mon | 21.11.2022 | 13:15 | INM200 | Lecture 10 | [Compiling Expressions](https://tube.switch.ch/videos/e0f59928), [Simple Code Generation for If](https://tube.switch.ch/videos/2036cd8b), [Translating Control with Destination Parameters](https://tube.switch.ch/videos/9c9f8bc9) |
 |      | Wed | 23.11.2022 | 08:15 | INM202 | Labs | Presentation of [code generation lab](labs/lab05/) |
 |      | Thu | 24.11.2022 | 08:15 | INM202 | Labs + Q&A | Staff answers questions on labs and on [Exam Solutions](past-exams/2022/Solutions-Exam-2022.pdf) for [this year's exam](past-exams/2022/Exam-2022.pdf) |  |
 |      | **Fri** | 25.11.2022 | 16:00-17:30 | [BC 333](https://plan.epfl.ch//?room=BC333) | View your exam | Staff will be available to answer questions on what you did and how the exam was graded |  |
+| 10   | Mon | 28.11.2022 | 13:15 | INM200 | Lecture 11 | Guest lecture: [Static analysis for Amy](lectures/sonar.md) by Arseniy Zaostrovnykh and Quentin Jaquier from [Sonar](https://www.sonarsource.com/) |
