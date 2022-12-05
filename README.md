@@ -83,3 +83,4 @@ My goal is for lectures to be self-contained. The following books contain overla
 | 10   | Mon | 28.11.2022 | 13:15 | INM200 | Lecture 11 | Guest lecture: [Static analysis for Amy](lectures/sonar.md) by Arseniy Zaostrovnykh and Quentin Jaquier from [Sonar](https://www.sonarsource.com/): [Part 1](https://tube.switch.ch/videos/q4JRgz2O0K), [Part 2](https://tube.switch.ch/videos/6o1na9oIfG) |
 |      | Wed | 30.11.2022 | 08:15 | INM202 | Labs | [Code Generation Lab](labs/lab05/), [Project Topic Selection](labs/lab06/) |
 |      | Thu | 01.12.2022 | 08:15 | INM202 | Labs | [Code Generation Lab](labs/lab05/), [Project Topic Selection](labs/lab06/) |
+| 10   | Mon | 05.12.2022 | 13:15 | INM200 | Lecture 11 | [Compiler Correctness 1](https://tube.switch.ch/videos/eRtGr9ykdF), [Compiler Correctness 2](https://tube.switch.ch/videos/lstg2xigxu) |
