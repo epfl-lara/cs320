@@ -41,3 +41,41 @@ breaking physical objects or referring to supernatural beings in your
 video is not required. Use your own judgment and strike a balance in
 being comfortable with what and how you are saying things and trying out
 these pieces of advice.
+
+### Additional Guidelines
+These are guidelines for your project presentation. They must not be followed necessarely but if you have no idea how to start, feel free to use them.
+
+Presentation Structure:
+
+0) Extension Title, Group Number, Names of the group Members
+1) Summary: What will we see? (Quickly)
+2) An Overview of the extensions with some examples to illustrate
+    - What new exciting features does the extension make now possible? 
+    - How are these used? 1 example which uses all the new features
+3) The main part of the presentation: 
+    - Focusing on Project Features
+        - For each Feature explain how the different compiler phases were affected 
+        - Example: Feature A allows us to do THIS, with SUCH characteristics, and it affects the following phases LIKE THIS
+    - Focusing on Compiler Phases
+        - For each Compiler Phase explain how each feature affected it (Interpreter?, Lexer, Parser, Name Analyzer, Type Checker, Code Generator)
+        - Example: Phase A is affected in THIS way, because of the following features, leading to SUCH characteristics
+    - Use examples to help you show the changes
+4) Conclusion
+    - Conclude the presentation content, very quickly 
+    - Present some upgrades or expansions to this project, be critic of your own work
+5) Remember to say "Thank You" and transition to the questions section (For example: "Do you have any questions?")
+
+Talking:
+- Remember to drink water before the presentation, your mouth will get dry otherwise 
+- Remember to articulate
+- Remember to finish your sentences
+- Remember to divide the presentation evenly between the group members
+- Prepare and rehearse your speech
+
+Slides:
+- Do not put too much text
+- Use examples to take your presentation down to earth
+
+Other Tips:
+- Do not be scared to have your speech in a piece of {paper | another document | comments on the slides} to be able to {read | refresh} your memory if you need to
+- If you realize you do not have the time to say everything you want, focus on the most important things, and mention the least important parts
