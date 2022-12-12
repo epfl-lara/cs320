@@ -80,7 +80,8 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Wed | 23.11.2022 | 08:15 | INM202 | Labs | Presentation of [code generation lab](labs/lab05/) |
 |      | Thu | 24.11.2022 | 08:15 | INM202 | Labs + Q&A | Staff answers questions on labs and on [Exam Solutions](past-exams/2022/Solutions-Exam-2022.pdf) for [this year's exam](past-exams/2022/Exam-2022.pdf) |  |
 |      | **Fri** | 25.11.2022 | 16:00-17:30 | [BC 333](https://plan.epfl.ch//?room=BC333) | View your exam | Staff will be available to answer questions on what you did and how the exam was graded |  |
-| 10   | Mon | 28.11.2022 | 13:15 | INM200 | Lecture 11 | Guest lecture: [Static analysis for Amy](lectures/sonar.md) by Arseniy Zaostrovnykh and Quentin Jaquier from [Sonar](https://www.sonarsource.com/): [Part 1](https://tube.switch.ch/videos/q4JRgz2O0K), [Part 2](https://tube.switch.ch/videos/6o1na9oIfG) |
+| 11   | Mon | 28.11.2022 | 13:15 | INM200 | Lecture 11 | Guest lecture: [Static analysis for Amy](lectures/sonar.md) by Arseniy Zaostrovnykh and Quentin Jaquier from [Sonar](https://www.sonarsource.com/): [Part 1](https://tube.switch.ch/videos/q4JRgz2O0K), [Part 2](https://tube.switch.ch/videos/6o1na9oIfG) |
 |      | Wed | 30.11.2022 | 08:15 | INM202 | Labs | [Code Generation Lab](labs/lab05/), [Project Topic Selection](labs/lab06/) |
 |      | Thu | 01.12.2022 | 08:15 | INM202 | Labs | [Code Generation Lab](labs/lab05/), [Project Topic Selection](labs/lab06/) |
-| 10   | Mon | 05.12.2022 | 13:15 | INM200 | Lecture 11 | [Compiler Correctness 1](https://tube.switch.ch/videos/eRtGr9ykdF), [Compiler Correctness 2](https://tube.switch.ch/videos/lstg2xigxu) |
+| 12   | Mon | 05.12.2022 | 13:15 | INM200 | Lecture 11 | [Compiler Correctness 1](https://tube.switch.ch/videos/eRtGr9ykdF), [Compiler Correctness 2](https://tube.switch.ch/videos/lstg2xigxu) |
+| 13   | Mon | 05.12.2022 | 13:15 | INM200 | Lecture 12 | [Memory Management; Dynamic Dispatch](https://tube.switch.ch/videos/x9TFgbtuH3), [Program Analysis](https://tube.switch.ch/videos/uuKCQ8i4YL) |
