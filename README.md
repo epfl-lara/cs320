@@ -85,3 +85,5 @@ My goal is for lectures to be self-contained. The following books contain overla
 |      | Thu | 01.12.2022 | 08:15 | INM202 | Labs | [Code Generation Lab](labs/lab05/), [Project Topic Selection](labs/lab06/) |
 | 12   | Mon | 05.12.2022 | 13:15 | INM200 | Lecture 11 | [Compiler Correctness 1](https://tube.switch.ch/videos/eRtGr9ykdF), [Compiler Correctness 2](https://tube.switch.ch/videos/lstg2xigxu) |
 | 13   | Mon | 05.12.2022 | 13:15 | INM200 | Lecture 12 | [Memory Management; Dynamic Dispatch](https://tube.switch.ch/videos/x9TFgbtuH3), [Program Analysis](https://tube.switch.ch/videos/uuKCQ8i4YL), [Register Machines](https://tube.switch.ch/videos/9b7a6107), [Register Allocation](https://tube.switch.ch/videos/16632f0e) |
+
+You are welcome to submit your final Lab 6 (report and code for the compiler extension) by the end of the semester but you can revise it without any penalty until we start grading it, on 9 January 2023.
