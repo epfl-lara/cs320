@@ -1,2 +1,0 @@
-pdflatex extensions
-pdflatex extensions
