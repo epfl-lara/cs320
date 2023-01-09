@@ -57,7 +57,7 @@ schedule of presentations at a later point. [Instructions on what and how to pre
 
 You will develop your project on top of your implementation of Amy. Please push all development on a new branch `clplab6`, ideally building on top of the codegen lab. We will refer to this branch in case of problems with your submission.
 
-Deadline: **TBD**.
+**Deadline: Monday January 9th, 23:59**
 
 Submission: content of the clplab6 branch.
 
