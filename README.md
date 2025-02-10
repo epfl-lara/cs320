@@ -5,17 +5,17 @@
 
 ## Grading
 
-The grade is based on a midterm (30%) as well as project work (70%) that has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam. Here is the weight of the milestones in the overall course grade:
+The grade is based on a midterm (30%) as well as project work (70%) that has many aspects: the implementation in [Scala](https://www.scala-lang.org/), a written report, oral presentation, and answers to questions, in presentation and throughout the semester. There will be no written exam at the end of the semester or the exam period (only the midterm). Here are the weights of the milestones in the overall course grade:
 
   * 30% (see [the archive of past exams](past-exams/))
   * 10% Lab 1
   * 10% Lab 2
-  * 10% Lab 3
+  * 10% Lab 3 (First team work statement to be sent afterwards)
   * 10% Lab 4
   * 10% Lab 5
-  * 20% Lab 6 (Compiler extension, customized)
+  * 20% Lab 6 (Compiler extension, customized, the final team work statement)
 
-For the final Lab 6, each group will need to present the project in a slot in one of the last two weeks of the semester. The final report on the project will need to handed in after the end of the semester but the students are encouraged to complete it during the semester.
+For the final Lab 6, each group will need to present the project in a slot in one of the last two weeks of the semester and answer questions. The presentation part of of each person will be graded individually and includes answers to questions (a person not presenting will be given a 0 points for the presentation part of the Compiler extension lab). The final report on the project will need to handed in after the end of the semester but the students are encouraged to complete it during the semester. To monitor whether everyone is doing their share of work, we ask each student to submit via email their teamwork statement, twice during the semester: once after Lab 3 is due, and once at the end of the semester. Please read [Teamwork Statements](teamwork.md) on the format and the relevance of these emails.
 
 ## Staff
 
