@@ -36,3 +36,6 @@ Our goal is for lectures to be self-contained. The following books contain overl
 
 | Week | Day | Date       | Time  | Room   | Topic                | Videos & Slides              |                              |
 | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
+| 1    | Wed | 19.02.2025 | 13:15 | BC 01  | Lecture 1            | [Intro to CLP](https://mediaspace.epfl.ch/media/01-01%2C+Intro+to+Computer+Language+Processing/0_okro5h0v), [Formal languages](https://mediaspace.epfl.ch/media/01-02%2C+Formal+Languages/0_segfj94w) |
+|      | Fri | 21.02.2025 | 13:15 | ELA 2  | Lecture 2 |
+|      | Fri | 21.02.2025 | 15:15 | ELA 2  | Lecture 3 |
