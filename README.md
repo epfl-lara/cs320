@@ -27,11 +27,15 @@ To monitor whether everyone is doing their share of work, we ask each student to
 
 ## Staff
 
-| Role            | People |
-| :---            | :--- |
-| Professors      | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak) |
-| PhD TA   | [Samuel Chassot](https://people.epfl.ch/samuel.chassot) |
-| PhD TA   | [Sankalp Gambhir](https://people.epfl.ch/sankalp.gambhir) |
+|           |                                                                 |
+|:----------|:----------------------------------------------------------------|
+| Professor | [Viktor Kunčak](https://people.epfl.ch/viktor.kuncak)           |
+| PhD TA    | [Samuel Chassot](https://people.epfl.ch/samuel.chassot)         |
+| PhD TA    | [Sankalp Gambhir](https://people.epfl.ch/sankalp.gambhir)       |
+| MSc TA    | [Sidonie Bouthors](https://people.epfl.ch/sidonie.bouthors)     |
+| MSc TA    | [Sébastien Kobler](https://people.epfl.ch/sebastien.kobler)     |
+| MSc TA    | [Marcin Wojnarowski](https://people.epfl.ch/marcin.wojnarowski) |
+| MSc TA    | [Jacopo Moretti](https://people.epfl.ch/jacopo.moretti/)        |
 
 ## Books
 
