@@ -1,8 +1,6 @@
 # EPFL CS320 - Computer language processing, Spring 2025
 
-[Moodle](https://moodle.epfl.ch/course/view.php?id=4241)
-
-[Course Description and Schedule](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
+[Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Description and Schedule](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
 
 ## IMPORTANT
 
