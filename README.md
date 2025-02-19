@@ -1,8 +1,8 @@
 # EPFL CS320 - Computer language processing, Spring 2025
 
-[Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Description and Schedule](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
+Links: [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Description](https://edu.epfl.ch/coursebook/en/computer-language-processing-CS-320)
 
-## IMPORTANT
+Important information:
 
   * Midterm exam is planned for Friday 4 April within the time block 13:00-17:00
   * Please register for project groups on Moodle as soon as this is possible
