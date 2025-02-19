@@ -13,6 +13,8 @@ The work has many aspects: the implementation in [Scala](https://www.scala-lang.
   * 10% Lab 5
   * 20% Lab 6 (Compiler extension, customized, the final team work statement)
 
+After you receive your points for the submitted lab, you are allowed to discuss the lab with other group members and with teaching staff, so that you can correct it and continue to use your code in subsequent labs.
+
 Please note that, after the lab deadline, we reserve the right to ask you to explain any code that you submitted for the lab. You need to understand all the code submitted, regardless whether you or another group member wrote it. We will let you know in advance when you need to be present in the labs or exercises for such oral explanations on your laptop. Taking this into account, you are welcome to write and submit comments explaining what your code does.
 
 To monitor whether everyone is doing their share of work and help ensure that group members work together, we ask each student to submit via email their teamwork statement, twice during the semester: once right after Lab 3 is due, and once at the end of the semester. Please read carefully the [Teamwork Statements](teamwork.md) email instructions.
