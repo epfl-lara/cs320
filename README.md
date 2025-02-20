@@ -5,7 +5,7 @@ Links: [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Desc
 Important information:
 
   * Midterm exam is planned for Friday 4 April within the time block 13:00-17:00
-  * Please register for project groups on Moodle as soon as this is possible
+  * Please register for project groups on Moodle as soon as this is possible ([Registration link](https://moodle.epfl.ch/mod/choicegroup/view.php?id=1282182))
 
 ## Grading
 
