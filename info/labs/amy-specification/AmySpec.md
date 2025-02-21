@@ -29,7 +29,7 @@ def fact(i: Int(32)): Int(32) = {
 end Factorial
 ```
 
-Every program in Amy is contained in a module, also called `object`. A function is introduced with the keyword `fn`, and all its parameters and result type must be explicitly typed. Amy supports conditional (or if-) expressions with obligatory brackets. Notice that conditionals are not statements, but return a value, in this case an `Int(32)`.
+Every program in Amy is contained in a module, also called `object`. A function is introduced with the keyword `def`, and all its parameters and result type must be explicitly typed. Amy supports conditional (or if-) expressions with obligatory brackets. Notice that conditionals are not statements, but return a value, in this case an `Int(32)`.
 
 In fact, there is no distinction between expressions and statements in Amy. Even expressions that are called only for their side-effects return a value of type `Unit`.
 
@@ -133,7 +133,7 @@ Before parsing an Amy program, the Amy lexer generates a sequence of terminal sy
 The syntax in Figure 1 is an *overapproximation* of the real syntax of Amy. This means that it allows some programs that should not be allowed in Amy. To get the real syntax of Amy, there are some additional restrictions presented (among other things) in the following notes:
 
 - The reserved words of Amy are the following:  
-  `abstract`, `Boolean`, `case`, `class`, `fn`, `else`, `error`, `extends`, `false`, `if`, `Int`, `match`, `object`, `end`, `String`, `true`, `Unit`, `val`, `_` (the wildcard pattern).  
+  `abstract`, `Boolean`, `case`, `class`, `def`, `else`, `error`, `extends`, `false`, `if`, `Int`, `match`, `object`, `end`, `String`, `true`, `Unit`, `val`, `_` (the wildcard pattern).  
 
   Identifiers are not allowed to coincide with a reserved word.
 
