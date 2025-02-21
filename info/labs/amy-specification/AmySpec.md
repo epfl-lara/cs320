@@ -10,6 +10,8 @@ Welcome to the Amy project! This semester you will learn how to compile a simple
 
 This document is the specification of Amy. Its purpose is to help you clearly and unambiguously understand what an Amy program means, and to be the Amy language reference, along with the reference compiler. It does not deal with how you will actually implement the compiler; this will be described to you as assignments are released.
 
+**Note**: The language might change along the way, so check this specification before starting each lab, to make sure you have the latest version in mind.
+
 ### 1.1 Features of Amy
 
 Let us demonstrate the basic features of Amy through some examples:
@@ -19,7 +21,7 @@ Let us demonstrate the basic features of Amy through some examples:
 ```scala
 object Factorial
 
-fn fact(i: Int(32)): Int(32) = {
+def fact(i: Int(32)): Int(32) = {
   if (i < 2) { 1 }
   else { i * fact(i-1) }
 }
@@ -76,7 +78,7 @@ end L
 #### 1.1.5 Constructing ADT values
 
 ```scala
-fn range(from: Int(32), to: Int(32)): List = {
+def range(from: Int(32), to: Int(32)): List = {
   if (to < from) { Nil() }
   else {
     Cons(from, range(from + 1, to))
@@ -89,7 +91,7 @@ We can create a `List` by calling one of its two constructors like a function, a
 #### 1.1.6 Pattern matching
 
 ```scala
-fn length(l: List): Int(32) = {
+def length(l: List): Int(32) = {
   l match {
     case Nil() => 0
     case Cons(h, t) => 1 + length(t)
@@ -108,7 +110,7 @@ The `error` keyword takes a string as argument, prints `Error:` and its argument
 Notice that in the second case, we don’t really care what the tail of the list is. Therefore, we use a wildcard pattern (`_`), which matches any value without binding it to a name.
 
 ```scala
-fn head(l: List): Int(32) = {
+def head(l: List): Int(32) = {
   l match {
     case Cons(h, _) => h
     case Nil() => error("head(Nil)")
@@ -190,7 +192,7 @@ Definition ::= AbstractClassDef | CaseClassDef | FunDef
 AbstractClassDef ::= abstract class Id
 CaseClassDef ::= case class Id ( Params ) extends Id
 
-FunDef ::= fn Id ( Params ) : Type = { Expr }
+FunDef ::= def Id ( Params ) : Type = { Expr }
 Params ::= ϵ | ParamDef [ , ParamDef ]∗
 
 ParamDef ::= Id : Type
@@ -515,7 +517,7 @@ Case Class Pattern
 Function Definition
 Γ, v1 : T1, ... , vn : Tn ⊢ e : T
 ---------------------------------------------
-Γ ⊢ fn f(v1 : T1, ... , vn : Tn): T = { e }
+Γ ⊢ def f(v1 : T1, ... , vn : Tn): T = { e }
 
 Program
 ∀f ∈ p. Γ0(p) ⊢ f
@@ -537,20 +539,18 @@ The signature of the `Std` module is the following:
 object Std
 
 // Output
-fn printString(s: String): Unit = ...
-fn printInt(i: Int(32)): Unit = ...
-fn printBoolean(b: Boolean): Unit = ...
+def printString(s: String): Unit = ...
+def printInt(i: Int(32)): Unit = ...
+def printBoolean(b: Boolean): Unit = ...
 
 // Input
-fn readString(): String = ...
-fn readInt(): Int(32) = ...
+def readString(): String = ...
+def readInt(): Int(32) = ...
 
 // Conversions
-fn intToString(i: Int(32)): String = ...
-fn digitToString(i: Int(32)): String = ...
-fn booleanToString(b: Boolean): String = ...
+def intToString(i: Int(32)): String = ...
+def digitToString(i: Int(32)): String = ...
+def booleanToString(b: Boolean): String = ...
 
 end Std
 ```
-
----
