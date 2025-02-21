@@ -1,0 +1,8 @@
+object BasicError
+
+	def throwError(msg: String): Unit = {
+		error(msg)
+	}
+
+	throwError("basic error test")
+end BasicError
