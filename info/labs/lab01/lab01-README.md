@@ -1,6 +1,6 @@
 # Amy Lab 01: Interpreter
 
-Below you will find the instructions for the first lab assignment in which you will get to know and implement an interpreter for the Amy language. 
+Below you will find the instructions for the first lab assignment in which you will get to know and implement an interpreter for the Amy language.
 
 ## Logistics
 
@@ -11,8 +11,6 @@ We advice you to create a git repository to track your work and collaborate.
 The labs are graded through Moodle assignments, similarly to Software Construction (CS-214) that you might have taken. You will have to submit your `.scala` files on Moodle and you will receive automatically a grade and feedback. You submit as many times as you want, only the last submission will be taken into account. The tests are the same as the ones you will receive for each lab, we do not use any hidden tests.
 
 For this first lab, you can download the initial project scaffold from this folder.
-
-Future labs will be distributed in a similar way and will files to add to this initial scaffold.
 
 ## Part 1: Your first Amy programs
 
