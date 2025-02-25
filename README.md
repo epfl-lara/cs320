@@ -4,7 +4,7 @@ Links: [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Desc
 
 Important information:
 
-  * Midterm exam is planned for Friday 4 April within the time block 13:00-17:00
+  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120)
   * Please register for project groups on Moodle as soon as this is possible ([Registration link](https://moodle.epfl.ch/mod/choicegroup/view.php?id=1282182))
 
 ## Grading
@@ -37,4 +37,3 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | MSc TA    | [Sébastien Kobler](https://people.epfl.ch/sebastien.kobler)     |
 | MSc TA    | [Marcin Wojnarowski](https://people.epfl.ch/marcin.wojnarowski) |
 | MSc TA    | [Jacopo Moretti](https://people.epfl.ch/jacopo.moretti/)        |
-
