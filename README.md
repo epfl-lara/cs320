@@ -4,7 +4,8 @@ Links: [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Desc
 
 Important information:
 
-  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120)
+  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120). One reminder sheet (2 sided) will be allowed. 
+
   * Please register for project groups on Moodle as soon as this is possible ([Registration link](https://moodle.epfl.ch/mod/choicegroup/view.php?id=1282182))
 
 ## Grading
