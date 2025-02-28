@@ -25,7 +25,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |                              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
 | 2    | 1.... | Wed | 26.02.2025 | 13:15 | BC 01  | Lecture 3 | [First Symbols. Constructing a Lexer](https://mediaspace.epfl.ch/media/03-01%2C+First+Symbols.+Constructing+a+Lexer/0_a943fw0n) [(PDF)](info/lectures/lec03a.pdf), [From Regular Expressions to Automata](https://mediaspace.epfl.ch/media/03-02%2C+From+Regular+Expressions+to+Automata/0_icjqhfj0) [(PDF)](info/lectures/lec03b.pdf) |
-|      | 1..... | Fri | 28.02.2025 | 13:15 | ELA 2  | Exercise 1 | Languages, Automata and Lexers |
+|      | 1..... | Fri | 28.02.2025 | 13:15 | ELA 2  | Exercise 1 | [Languages, Automata and Lexers](info/exercises/ex-01.pdf) |
 |      | 12.... | Fri | 28.02.2025 | 15:15 | ELA 2  | Lab 2 | Lexer lab release |
 | 3    | 12.... | Wed | 05.03.2025 | 13:15 | BC 01  | Lecture 4 | Grammars and Trees |
 |      | 12.... | Fri | 07.03.2025 | 13:15 | ELA 2  | Exercises 2 | Grammars (not LL(1)) |
