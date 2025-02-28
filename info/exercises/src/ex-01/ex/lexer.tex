@@ -125,8 +125,8 @@ lexer drops any \texttt{skip} tokens.
 
   \begin{solution}
     \begin{enumerate}
-      \item \texttt{[keyword("let"), id("x"), equal, number("5"), keyword("in"), id("x"), op("+"), number("3")]}
-      \item \texttt{[id("let"), number("5"), id("x2")]}
+      \item \texttt{[keyword("let"), id("x"), equal("="), number("5"), keyword("in"), id("x"), op("+"), number("3")]}
+      \item \texttt{[keyword("let"), number("5"), id("x2")]}
       \item \texttt{[id("xin")]}
       \item \texttt{[comp("=="), op(">")]}
       \item \texttt{[comp("<="), comp("=="), op(">"), comp("<="), equal("=")]}
