@@ -75,7 +75,7 @@ The `Lexer` has the following components:
 * The public method is `run`. It just calls `lexer.spawn`(`source`) for every input file and concatenates the results.
 * `lexer` is the Silex-based definition of tokenization rules. Each rule corresponds to a regular expression matching a prefix of the remaining program input. Silex will compose all of these rules into one finite state machine and apply the maximum-munch or longest match rule you've seen in class.
 * Whenever a rule is found to match a (maximal) prefix of the remaining input, Scallion will call the transformation function provided using the `|>` operator in the rule. This function is given the matched input characters (`cs`) along with positional information (`range`) and should then produce an instance of `Token`. You can find its definition in `Tokens.scala`, which includes a list of all the different kinds of tokens that your Amy compiler should process. For instance, KeywordToken(`if`) represents an occurrence of the reserved word `if` in a program.
-For more details on how to write new rules, read the short introduction to Silex's API at the top of `Lexer.scala` or consider the examples on the Scallion website. You can also refer to [Silex's Scaladoc page](https://epfl-lara.github.io/silex/).
+For more details on how to write new rules, read the short introduction to Silex's API at the top of `Lexer.scala` or consider the examples on the Scallion website.
 
 Your task is to complete the rules in `Lexer.scala` and implement the filtering of irrelevant tokens.
 
