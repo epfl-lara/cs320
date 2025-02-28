@@ -144,10 +144,9 @@ lexer drops any \texttt{skip} tokens.
     There are many possible solutions. The key is to notice which tokens have
     overlapping prefixes.
 
-    An example is \texttt{letx1in}, which would be lexed as
-    \texttt{[keyword("let"), id("x1"), keyword("in")]} if we check acceptance in
-    order of priority, but as \texttt{[id("letx1in")]} if we run them in
-    parallel.
+    An example is \texttt{letx1}, which would be lexed as
+    \texttt{[keyword("let"), id("x1")]} if we check acceptance in order of
+    priority, but as \texttt{[id("letx1")]} if we run them in parallel.
   \end{solution}
 \end{exercise}
   
