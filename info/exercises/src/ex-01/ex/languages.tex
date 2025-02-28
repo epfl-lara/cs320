@@ -16,10 +16,10 @@
   \begin{enumerate}
     \renewcommand{\theenumi}{\Alph{enumi}}
     \item \(\{w \mid \forall i. 0 \le i \le |w| \land w_{(i)} = b \implies (i > 0 \land w_{(i - 1)} = a)\}\) % 1
-    \item \(\{w \mid \forall i. 0 \le i < |w| \implies w_{(i)} = b \implies w_{(i + 1)} = a\}\) % wrong
+    \item \(\{w \mid \forall i. 0 \le i < |w| - 1 \implies w_{(i)} = b \implies w_{(i + 1)} = a\}\) % wrong
     \item \(\{w \mid \exists i. 0 < i < |w| \land w_{(i)} = b \land w_{(i - 1)} = a\}\) % wrong
     \item \(\{w \mid (|w| = 0 \mod 2 \lor |w| = 0 \mod 3) \land \forall i. 0 \leq i < |w| \implies w_{(i)} = a\}\) % 2
-    \item \(\{w \mid \forall i. 0 \le i < |w| \land w_{(i)} = a \implies w_{(i + 1)} = b\}\) % wrong
+    \item \(\{w \mid \forall i. 0 \le i < |w| - 1 \land w_{(i)} = a \implies w_{(i + 1)} = b\}\) % wrong
     \item \(\{w \mid \exists i. 0 < i < |w| - 1 \land 
     (\forall y. 0 \leq y \leq i \implies w_{(y)} = a) \land  (\forall y. i < y < |w| \implies w_{(y)} = b) \}\) % 3
   \end{enumerate}
@@ -39,7 +39,7 @@
         & A & B & C & D & E & F \\
         1 & - & a & a & a & aa & a \\
         2 & ab\(^\star\) & ba\(^\star\)& ab\(^\star\)& - & ab\(^\star\)& aa \\
-        3 & & & & & & - \\
+        3 & abb & abb & aba\(^\star\) & aaabb & aab & - \\
       \end{tabular}
     \end{center}
 
