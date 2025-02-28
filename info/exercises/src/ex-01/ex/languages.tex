@@ -3,34 +3,45 @@
 
 \begin{exercise}{}
 
-  For each of the following expressions on sets of words, match them to a
-  property \(P\) that characterizes them, i.e., the language is exactly the set
-  of words \(\{ w \ \mid P(w) \}\).
-
-  Languages:
+  Consider the following languages defined by regular expressions:
+  
   \begin{enumerate}
     \item \(\{a,ab\}^*\)
     \item \(\{aa\}^* \cup \{aaa\}^*\)
     \item \(a^+b^+\)
   \end{enumerate}
 
-  Predicates in set notation:
+  and the following languages defined in set-builder notation:
+
   \begin{enumerate}
     \renewcommand{\theenumi}{\Alph{enumi}}
     \item \(\{w \mid \forall i. 0 \le i \le |w| \land w_{(i)} = b \implies (i > 0 \land w_{(i - 1)} = a)\}\) % 1
-    \item \(\{w \mid \forall i. w_{(i)} = b \implies w_{(i - 1)} = a\}\) % wrong
+    \item \(\{w \mid \forall i. 0 \le i < |w| \implies w_{(i)} = b \implies w_{(i + 1)} = a\}\) % wrong
     \item \(\{w \mid \exists i. 0 < i < |w| \land w_{(i)} = b \land w_{(i - 1)} = a\}\) % wrong
     \item \(\{w \mid (|w| = 0 \mod 2 \lor |w| = 0 \mod 3) \land \forall i. 0 \leq i < |w| \implies w_{(i)} = a\}\) % 2
-    \item \(\{w \mid \forall i. 0 \le i \le |w| \land w_{(i)} = a \implies w_{(i + 1)} = b\}\) % wrong
+    \item \(\{w \mid \forall i. 0 \le i < |w| \land w_{(i)} = a \implies w_{(i + 1)} = b\}\) % wrong
     \item \(\{w \mid \exists i. 0 < i < |w| - 1 \land 
     (\forall y. 0 \leq y \leq i \implies w_{(y)} = a) \land  (\forall y. i < y < |w| \implies w_{(y)} = b) \}\) % 3
   \end{enumerate}
 
-
+  For each pair (e.g. 1-A), check whether the two languages are equal, providing
+  a proof if they are, and a counterexample word that is in one but not the
+  other if unequal.
 
   \begin{solution}
-    
-    \(1 \mapsto A, 2 \mapsto D, 3 \mapsto F\).
+
+    Equal language pairs: \(1 \mapsto A, 2 \mapsto D, 3 \mapsto F\).
+
+    Counterexamples (\(\cdot^\star\) means the word is in the alphabet-labelled
+    language, and the number-labelled language otherwise):
+    \begin{center}
+      \begin{tabular}{c c c c c c c}
+        & A & B & C & D & E & F \\
+        1 & - & a & a & a & aa & a \\
+        2 & ab\(^\star\) & ba\(^\star\)& ab\(^\star\)& - & ab\(^\star\)& aa \\
+        3 & & & & & & - \\
+      \end{tabular}
+    \end{center}
 
     We prove the first case as an example.
 
