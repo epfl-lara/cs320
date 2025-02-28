@@ -1,0 +1,774 @@
+
+
+\begin{exercise}{}
+
+  For each the following languages, construct an NFA \(\mathcal{A}\) that
+  recognizes them, i.e. \(L(\mathcal{A})\) = \(L_i\):
+  \begin{enumerate}
+    \item \(L_1\): binary strings divisible by 3
+    \item \(L_2\): binary strings divisible by 4
+    \item \(L_3\): \(\{(w_1 \oplus w_2) \mid w_1 \in L_1 \land w_2 \in L_2 \land |w_1| = |w_2|\}\)
+  \end{enumerate}
+  where \(\oplus\) is the bitwise-xor operation on binary strings.
+  
+  \begin{solution}
+    \begin{enumerate}
+      \item The language of binary strings divisible by 3. We need two
+      observations to construct this automaton:
+      \begin{enumerate}
+        \item If the automaton has consumed a binary string \(s\) with decimal
+        value, say, \(val(s) = n\), then we can determine the decimal value of
+        the string after reading one more character as either \(val(s0) = 2n\)
+        or \(val(s1) = 2n + 1\).
+        \item The set of strings is finite, but it is sufficient to know only
+        the value of the string \emph{modulo 3} to determine if it is divisible.
+      \end{enumerate}
+
+      We construct the automaton \(\mathcal{A}_1 = (Q, \Sigma, \delta, q_{init}, F)\)
+      where:
+      \begin{itemize}
+        \item \(Q = \{q_{init}, q_0, q_1, q_2\}\), representing the initial
+        state (empty word has no value), and the states corresponding to the
+        values \(0, 1, 2\) modulo 3.
+        \item \(\Sigma = \{0, 1\}\), as required.
+        \item \(\delta = \{(q_i, 0, q_j) \mid 2i \mod 3 = j\} \cup \{(q_i, 1,
+        q_j) \mid (2i + 1) mod 3 = j\} \cup \{(q_{init}, 0, q_0), (q_{init}, 1,
+        q_1)\}\), i.e., there is a transition from \(q_i\) to \(q_j\) if, as the
+        currently known value modulo 3 is \(i\), on reading \(0\) the next value
+        is \(j = 2i \mod 3\). We use the fact that \(2n \mod 3 = 2 (n \mod 3)
+        \mod 3\). The case for reading \(1\) is similar. The translations from
+        the initial state are to the states corresponding to the values \(0, 1\)
+        modulo 3.
+
+        For example, if we have read ``1101'', with decimal value \(13\), we
+        must be in state \(q_1\), as \(13 \mod 3 = 1\). On reading a \(0\), we
+        have the string ``11010'' with decimal value \(26\), and \(26 \mod 3 =
+        2\), so we transition to \(q_2\).
+
+        The full automaton is below.
+        \item \(F = \{q_0\}\) as we accept that words that are divisible by 3,
+        and are hence equal to 0 modulo 3.
+      \end{itemize}
+
+      The automaton is:
+      \begin{center}
+        \begin{tikzpicture}[node distance = 2cm, on grid]
+          \node[state, initial] (qi) {\(q_{init}\)};
+          \node[state, accepting, right of = qi] (q0) {\(q_0\)};
+          \node[state, above right of = q0] (q1) {\(q_1\)};
+          \node[state, below right of = q1] (q2) {\(q_2\)};
+  
+          \draw[->] 
+                    (qi) edge node[above] {\(0\)} (q0)
+                    (qi) edge node[above] {\(1\)} (q1)
+                    %
+                    (q0) edge[loop below] node[below] {\(0\)} (q0)
+                    (q0) edge node[above] {\(1\)} (q1)
+                    %
+                    (q1) edge[bend right] node[below] {\(0\)} (q2)
+                    (q1) edge[bend left] node[below] {\(1\)} (q0)
+                    %
+                    (q2) edge node[above] {\(0\)} (q1)
+                    (q2) edge[loop below] node[below] {\(1\)} (q2)
+          ;
+        \end{tikzpicture}
+      \end{center}
+
+      \item The language of binary strings divisible by 4. The construction is
+      similar to the one above, now with 5 states.
+      \begin{center}
+        \begin{tikzpicture}[node distance = 2cm, on grid]
+          \node[state, initial] (qi) {\(q_{init}\)};
+          \node[state, accepting, right of = qi] (q0) {\(q_0\)};
+          \node[state, above of = q0] (q1) {\(q_1\)};
+          \node[state, right of = q1] (q2) {\(q_2\)};
+          \node[state, right of = q0] (q3) {\(q_3\)};
+  
+          \draw[->] 
+                    (qi) edge node[above] {\(0\)} (q0)
+                    (qi) edge node[above] {\(1\)} (q1)
+                    %
+                    (q0) edge[loop below] node[below] {\(0\)} (q0)
+                    (q0) edge node[left] {\(1\)} (q1)
+                    %
+                    (q1) edge node[above] {\(0\)} (q2)
+                    (q1) edge[bend right] node[above] {\(1\)} (q3)
+                    %
+                    (q2) edge node[above] {\(0\)} (q0)
+                    (q2) edge[bend left] node[above] {\(1\)} (q1)
+                    %
+                    (q3) edge node[right] {\(0\)} (q2)
+                    (q3) edge[loop below] node[below] {\(1\)} (q3)
+          ;
+        \end{tikzpicture}
+      \end{center}
+
+      \item To compute the bitwise-xor of two strings, we must compute a product
+      automaton. To accept a word \(w\), there must exist \(w_1, w_2\) such that
+      \(w_1 \in L_1\), and \(w_2 \in L_2\).
+
+      We do not explicitly construct the automaton, but present an argument.
+      First, consider the truth table for xor:
+
+      \begin{center}
+        \begin{tabular}{c c | c}
+          \(b_1\) & \(b_2\) & \(b_1 \oplus b_2\) \\
+          \hline
+          0 & 0 & 0 \\
+          0 & 1 & 1 \\
+          1 & 0 & 1 \\
+          1 & 1 & 0 \\
+        \end{tabular}
+      \end{center}
+
+      Notably, given a xor result, we cannot exactly determine the input bits.
+      In essence, we construct an automaton that, given a string, tries to
+      simulate the two input automata in parallel non-deterministically on all
+      possible pairs of input strings. If any of them are accepted, that means
+      we found a pair of strings that, one, are accepted by the two original
+      automata, and two, have the input string as their bitwise-xor.
+      
+      Formally, the automaton \(\mathcal{A}_3 = (Q, \Sigma, \delta, q_{init},
+      F)\) has:
+
+      \begin{itemize}
+        \item \(Q = Q_1 \times Q_2\), where \(Q_1\) and \(Q_2\) are the state
+        sets of \(\mathcal{A}_1\) and \(\mathcal{A}_2\).
+        \item \(\Sigma = \{0, 1\}\) as before.
+        \item \(q_{init} = (q_{1, init}, q_{2, init})\) where \(q_{1, init}\)
+        and \(q_{2, init}\) are the initial states of \(\mathcal{A}_1\) and
+        \(\mathcal{A}_2\).
+        \item \(F = F_1 \times F_2\) similarly.
+        \item \(\delta\) is constructed as follows: for a pair of states \((q_1,
+        q_2)\), on reading a \(0\), we look at the truth table of xor; two input
+        pairs \((0, 0)\) and \((1, 1)\) could have produced this result bit.
+        Hence, we add transitions for both automata simultaneously, \((((q_1,
+        q_2), 0, (q_1', q_2')))\) corresponding to possible inputs \((0, 0)\) if
+        \(\delta_1(q_1, 0, q_1')\) and \(\delta_2(q_2, 0, q_2')\), and similarly
+        \(((q_1, q_2), 0, (q_1', q_2'))\) corresponding to possible inputs \((1,
+        1)\) if \(\delta_1(q_1, 1, q_1'')\) and \(\delta_2(q_2, 1, q_2'')\). 
+        
+        The case for reading a \(1\) is similar, with possible input pairs \((0,
+        1)\) and \((1, 0)\).
+      \end{itemize}
+
+    \end{enumerate}
+  \end{solution}
+
+\end{exercise}
+
+% \begin{exercise}{}
+%   \todo{Suggestion: From Kozen H2.3, recognizing with errors; regular language modulo n Hamming distance is regular}
+% \end{exercise}
+
+\begin{exercise}{}
+  Give a verbal and a set-notational description of the language accepted by
+  each of the following automata. You can assume that the alphabet is \(\Sigma =
+  \{a, b\}\).
+
+  \begin{enumerate}
+    \item \(\mathcal{A}_1\)
+    \begin{center}
+      \begin{tikzpicture}[node distance = 2cm, on grid]
+        \node[state, initial] (q0) {\(q_0\)};
+        \node[state, accepting, right of = q0] (q1) {\(q_1\)};
+        \node[state, right of = q1] (q2) {\(q_2\)};
+
+        \draw[->] (q0) edge node[above] {\(a\)} (q1)
+                  (q1) edge node[above] {\(a\)} (q2)
+                  (q2) edge[loop above] node[above] {\(a, b\)} (q2)
+                  (q0) edge[loop above] node[above] {\(b\)} (q0)
+                  (q1) edge[loop above] node[above] {\(b\)} (q1)
+        ;
+      \end{tikzpicture}
+    \end{center}
+    \item \(\mathcal{A}_2\)
+    \begin{center}
+      \begin{tikzpicture}[node distance = 2cm, on grid]
+        \node[state, accepting, initial] (q0) {\(q_0\)};
+        \node[state, accepting, right of = q0] (q1) {\(q_1\)};
+        \node[state, right of = q1] (q2) {\(q_2\)};
+
+        \draw[->] (q0) edge node[below] {\(a\)} (q1)
+                  (q1) edge[bend right] node[above] {\(b\)} (q0)
+                  (q2) edge[loop above] node[above] {\(a, b\)} (q2)
+                  (q0) edge[loop above] node[above] {\(b\)} (q0)
+                  (q1) edge node[above] {\(a\)} (q2)
+        ;
+      \end{tikzpicture}
+    \end{center}
+  \end{enumerate}
+
+
+  \begin{solution}
+    \begin{enumerate}
+      \item 
+        As regular expression: \(b^*ab^*\), this is the language of words that
+        contain exactly one \(a\). In set-notation:
+        \begin{equation*}
+          \{w \mid \exists! i.\; 0 \leq i \leq |w| \land w_{(i)} = a\}
+        \end{equation*}
+  
+      \item 
+        As generalized regular expression (with complement): \((\Sigma^* aa
+        \Sigma^*)^c\). Without complement: \((b^*(ab^*)^*)^*\). This is the language
+        of words that contain no consecutive pair of \(a\)'s. In set-notation:
+        \begin{equation*}
+          \{w \mid \forall i.\; 0 \leq i < |w| \land w_{(i)} = a \implies (i + 1 \geq |w| \lor w_{(i + 1)} \neq a)\}
+        \end{equation*}
+    \end{enumerate}
+  \end{solution}
+
+\end{exercise}
+
+% \begin{exercise}{}
+%   Construct a DFA for the following languages:
+
+%   \begin{enumerate}
+%       \item the set of strings over \(\Sigma = \{0, 1\}\) such that the number
+%       of 0's is a multiple of 2, and the number of 1's is a multiple of 3. 
+%       \note{\cite[HW 1.1.c]{kozen2007automata}}
+%       \item the set of strings over \(\Sigma = \{0, 1\}\) that, as binary
+%       numerals, have decimal value 42. \note{\cite[Ex 2.1.a]{mogensen2010basics}}
+%   \end{enumerate}
+
+%   For the cases above:
+
+%   \begin{enumerate}
+%       \item is the complement of each language regular as well?
+%       \item is their union regular?
+%       \item is their intersection regular?
+%       \item is their difference regular?
+%   \end{enumerate}
+
+  
+%   \begin{solution}
+%       The DFA constructions:
+
+%       \paragraph*{The set of strings over \(\Sigma = \{0, 1\}\) such that the
+%       number of 0's is a multiple of 2, and the number of 1's is a
+%       multiple of 3.} The DFA states count the number of 0's and 1's modulo
+%       2 and 3 respectively. The transitions correspond to incrementing
+%       modulo 2 and 3. A state \(q_{n, m}\) represents the set of words
+%       such that the number of 0's \(= n \mod 2\) and the number of 1's \(=
+%       m \mod 3\). 
+          
+%       The state \(q_{0, 0}\) is the desired initial \emph{and}
+%       final state (why?).
+
+%       The transitions are:
+%       \begin{align*}
+%           q_{0, 0} \xrightarrow{0} q_{1, 0} & &  q_{0, 0} \xrightarrow{1} q_{0, 1} \\
+%           q_{0, 1} \xrightarrow{0} q_{1, 1} & &  q_{0, 1} \xrightarrow{1} q_{0, 2} \\
+%           q_{0, 2} \xrightarrow{0} q_{1, 2} & &  q_{0, 2} \xrightarrow{1} q_{0, 0} \\
+%           q_{1, 0} \xrightarrow{0} q_{0, 0} & &  q_{1, 0} \xrightarrow{1} q_{1, 1} \\
+%           q_{1, 1} \xrightarrow{0} q_{0, 1} & &  q_{1, 1} \xrightarrow{1} q_{1, 2} \\
+%           q_{1, 2} \xrightarrow{0} q_{0, 2} & &  q_{1, 2} \xrightarrow{1} q_{1, 0}
+%       \end{align*}
+
+%       In this manner, DFA states represent a \emph{finite partitioning} of the
+%       set of words \(\Sigma^*\), and the transitions define how these
+%       partitions correspond to each other. 
+      
+%       \textbf{Extra}: This is made more apparent in the algorithms for DFA
+%       minimization and equivalence checking and makes DFAs as interesting as
+%       they are theoretically. See
+%       \href{https://en.wikipedia.org/wiki/Myhill%E2%80%93Nerode_theorem}{Myhill-Nerode Theorem} 
+%       or 
+%       \href{https://en.wikipedia.org/wiki/Brzozowski_derivative}{Brzozowski derivatives} 
+%       on Wikipedia. 
+      
+%       \paragraph*{The set of binary strings whose value is less than 42}. 
+
+%       First, let's attempt to describe this set as a regular expression. The
+%       binary representation of 42 is \(101010_2\). We write the expression in
+%       a natural way, decomposing case by case looking at the bits:
+
+%       \begin{tikzpicture}[node distance = 3cm, on grid]
+%           \node (leading) {\(0^*\)};
+%           \node[below left = 1cm of leading] (leadinglabel) {Leading zeroes};
+
+%           \node[above right of = leading] (b50) {\(0 \,\Sigma^5\)};
+%           \node[below = 0.5cm of b50] (b50label) {\(< 32\)};
+
+%           \node[below right of = leading] (b51) {\(1\)};
+%           \node[below = 0.5cm of b51] (b51label) {\(\geq 32\)};
+
+%           \node[above right of = b51] (b40) {\(1 \,\Sigma^4\)};
+%           \node[below = 0.5cm of b40] (b40label) {\(\geq 48\)};
+
+%           \node[below right of = b51] (b41) {\(0\)};
+%           \node[below = 0.5cm of b41] (b41label) {\(< 48\)};
+
+%           \node[right of  = b41] (dots) {\(\ldots\)};
+
+%           \path[->]   (leading) edge node[above left] {read 5th bit as 0} ( b50) 
+%                       (leading) edge (b51) 
+%                       (b51) edge (b40) 
+%                       (b51) edge node[above right] {read 4th bit as 0, continue} (b41) 
+%                       (b41) edge (dots)
+%           ; 
+%       \end{tikzpicture}
+
+%       And finally collapse this diagram into an expression:
+%       %
+%       \begin{gather*}
+%           L_{\leq 42} = 0^*(0\,\Sigma^5 \mid 1(0(0\,\Sigma^3 \mid 1(0(0\,\Sigma^1 \mid 10)))))
+%       \end{gather*}
+
+%       The `quick terminating' branches read \(010101\) (one's complement of
+%       \(42_{10}\)) and the `continuing' branches read \(101010\), i.e.
+%       \(42_{10}\). This is just a binary search for the number 42!
+
+%       The DFA for this regular expression (not provided) looks nearly
+%       identical to the diagram above. \(L_{< 42}\) requires only a minor
+%       change at the end.
+
+%       This can be done more generally, given any binary string, constructing a
+%       DFA recognizing all binary strings numerically smaller than it.  
+      
+%       \vspace{1em}
+
+%       For the regularity on applying operations:
+      
+%       \begin{enumerate}
+%           \item the complements are regular. In the DFA, change all final
+%           states to non-final, and all previously non-final states to final.
+%           This is an NFA accepting the complement of the original language.
+%           \item the union is regular. Take the new NFA \((Q_1 \cup Q_2,
+%           \Sigma, \delta_1 \cup \delta_2, S_1 \cup S_2, F_1 \cup F_2)\) where
+%           \(A_1 = (Q_1, \Sigma, \delta_1, S_1, F_1)\) and \(A_2 = (Q_2,
+%           \Sigma, \delta_2, S_2, F_2)\) are the individual DFAs for the
+%           languages above. This is the `trivial' union of the automata, and
+%           accepts exactly the words that are in one or both of the languages.
+%           \item the intersection is regular. The construction is a bit more
+%           involved. Intuitively, in the way that the union NFA allows
+%           accepting runs from either automaton, the intersection NFA must
+%           simulate the runs of both automata together. Given two automata
+%           \(A_1 = (Q_1, \Sigma, \delta_1, S_1, F_1)\) and \(A_2 = (Q_2,
+%           \Sigma, \delta_2, S_2, F_2)\) representing the two languages, define
+%           the intersection NFA \(A_\cap = (Q_1 \times Q_2, \Sigma \times
+%           \Sigma, \delta, S_1 \times S_2, F_1 \times F_2)\), where \(\delta\)
+%           is defined as
+%           \begin{gather*}
+%               \delta \subseteq (Q_1 \times Q_2) \times (\Sigma \times \Sigma) \times (Q_1 \times Q_2) \\
+%               \delta((q_1, q_2), (a_1, a_2), (q_1', q_2')) \iff \delta_1(q_1, a_1, q_1') \land \delta_2(q_2, a_2, q_2')~.
+%           \end{gather*}
+%           Thus, \(A_\cap\) operates simultaneously on a state from \(A_1\),
+%           and a state from \(A_2\). There is a transition from \((q_1, q_2)\)
+%           to \((q_1', q_2')\) when reading the letters \((a_1, a_2)\)
+%           simultaneously if the transitions on \emph{both} sides are defined.
+
+%           Discuss and convince yourself that the language of \(A_\cap\) is
+%           precisely the intersection of the languages of \(A_1\) and \(A_2\).
+          
+%           \item the difference is regular. It follows from the complement and
+%           intersection regularities as \(L_1 \setminus L_2 = L_1 \cap \bar
+%           L_2\).
+%       \end{enumerate}
+
+%       This has some interesting consequences! Consider the predicate \(x \geq
+%       42 \land x > 14\). We can construct DFAs representing the individual
+%       conditions, and to represent the logical-and, take their intersection.
+%       This gives us a way to solve some arithmetic constraints using automata!
+      
+%       \textbf{Extra}: Automata (of different kinds) have been extensively
+%       studied as ways to solve many classes of constraints. Regarding
+%       arithmetic, there is the seminal result by B\"uchi, Weak Second-order
+%       Arithmetic and Finite Automata \cite{buchi1960weak}.
+%   \end{solution}
+% \end{exercise}
+
+% \begin{exercise}{}
+%   \todo{Optionally, ask them to construct the NFA? But it's too simple}
+
+%   Consider the following NFA, \(A\):
+%   %
+%   \begin{center}
+%       \begin{tikzpicture}[node distance = 2cm, on grid]
+%           \node[state, initial] (q0) {\(q_0\)};
+%           \node[state, right of = q0] (q1) {\(q_1\)};
+%           \node[state, right of = q1] (q2) {\(q_2\)};
+%           \node[state, accepting, right of = q2] (q3) {\(q_3\)};
+
+%           \draw[->, loop] (q0) edge node[above] {\(a, b\)} (q0);
+
+%           \path[->] (q0) edge node[above] {\(a\)} (q1)
+%                     (q1) edge node[above] {\(a\)} (q2)
+%                     (q2) edge node[above] {\(a\)} (q3)
+%           ;
+
+%       \end{tikzpicture}
+%   \end{center}
+  
+%   Describe the language \(L(A)\). Is \(A\) a DFA (barring missing
+%   transitions)? If not, determinize it using the subset construction seen in
+%   class 
+%   %
+%   \footnote{This is called subset / product / powerset construction by
+%   different authors. Wikipedia for quick reference:
+%   \url{https://en.wikipedia.org/wiki/Powerset_construction}}.
+
+  
+%   \begin{solution}
+%       \(L(A)\) is the set of strings over \(\{a, b\}\) ending in three a's. As
+%       a regular expression, \(L(A) = (a \mid b)^*aaa\).
+
+%       It is not deterministic due to the two outgoing transitions from \(q_0\)
+%       labelled \(a\).
+
+%       For the subset construction, we define the power set automaton \(A' =
+%       (2^Q, \Sigma, \delta', S', F')\), where \(Q = \{q_0, q_1, q_2, q_3\}\).
+
+%       The set of initial states \(S'\) only contains the singleton
+%       \(\{q_0\}\), as we start in solely the initial state \(q_0\). So, \(S' =
+%       \{\{q_0\}\}\).
+
+%       The set of final states \(F'\) is any set that contains a final state,
+%       here only \(q_3\). Thus, \(F' = \{\{s \in 2^Q \mid q_3 \in s\}\}\). This
+%       corresponds to `angelic' executions, i.e., a word is accepted if there
+%       is \emph{a} run of it that leads to a final state.
+
+%       We draw the set of states \(2^Q\). The states are represented compactly
+%       due to space constraints: \(s_{23}\) represents the set \(\{q_2,
+%       q_3\}\), for example. The empty set is marked by \(s_\emptyset\).
+%       %
+%       \begin{center}
+%           \begin{tikzpicture}[node distance = 2cm, on grid]
+
+%               \node[state]                    (q0000) {\(s_\emptyset\)};
+%               \node[state, right of = q0000]  (q0001) {\(s_0\)};
+%               \node[state, right of = q0001]  (q0011) {\(s_{01}\)};
+%               \node[state, right of = q0011]  (q0010) {\(s_1\)};
+
+%               \node[state, below of = q0000]  (q0100) {\(s_2\)};
+%               \node[state, right of = q0100]  (q0101) {\(s_{02}\)};
+%               \node[state, right of = q0101]  (q0111) {\(s_{012}\)};
+%               \node[state, right of = q0111]  (q0110) {\(s_{01}\)};
+
+%               \node[state, accepting, below of = q0100]  (q1100) {\(s_{23}\)};
+%               \node[state, accepting, right of = q1100]  (q1101) {\(s_{023}\)};
+%               \node[state, accepting, right of = q1101]  (q1111) {\(s_{0123}\)};
+%               \node[state, accepting, right of = q1111]  (q1110) {\(s_{123}\)};
+
+%               \node[state, accepting, below of = q1100]  (q1000) {\(s_3\)};
+%               \node[state, accepting, right of = q1000]  (q1001) {\(s_{03}\)};
+%               \node[state, accepting, right of = q1001]  (q1011) {\(s_{013}\)};
+%               \node[state, accepting, right of = q1011]  (q1010) {\(s_{13}\)};
+
+%               \node[above = 1.5cm of q0001] (start) {start};
+%               \draw[->] (start) -- (q0001);
+
+%           \end{tikzpicture}
+%       \end{center}
+
+%       % not relevant anymore
+%       % The states are drawn as a
+%       % \href{https://en.wikipedia.org/wiki/Karnaugh_map}{Karnaugh Map} on 4
+%       % bits for consistency. Each adjacent cell differs by only `one bit'.
+%       %
+
+%       Finally, we add the transitions corresponding to the outgoing
+%       transitions \(t_0 - t_5\). We define the new transition relation as
+%       %
+%       \begin{gather*}
+%           \forall\; s, s' \in 2^Q.\; \delta'(s, a, s') \iff s' = \cup \{p \mid \exists\; q \in s.\; \delta(q, a, p)\}
+%       \end{gather*}
+%       Example: what is the transition from the set \(\{q_0, q_2\}\) on \(a\)?
+%       From \(q_0\) we can transition to \(q_0\) (by \(t_0\)) or to \(q_1\) (by
+%       \(t_2\)), and from \(q_2\), we can only transition to \(q_3\) (by
+%       \(t_4\)). Thus, we have the transition \(\{q_0, q_2\} \xrightarrow{a}
+%       \{q_0, q_1\} \cup \{q_3\}\), or in the notation as above, \(s_{02}
+%       \xrightarrow{a} s_{013}\). We do this for every state and every letter
+%       (\(16 \times 2\)). 
+
+%       The resulting automaton is too complicated to draw fully while
+%       maintaining any readability! Below, we draw all the relevant
+%       transitions. Any missing transitions go to the dead state
+%       \(s_\emptyset\) (marked by the input `several').
+%       %
+%       % \begin{center}
+%       %     \begin{tikzpicture}[node distance = 2cm, on grid]
+
+%       %         \node[state]                    (q0000) {\(s_\emptyset\)};
+%       %         \node[state, right of = q0000]  (q0001) {\(s_0\)};
+%       %         \node[state, right of = q0001]  (q0011) {\(s_{01}\)};
+%       %         \node[state, right of = q0011]  (q0010) {\(s_1\)};
+
+%       %         \node[state, below of = q0000]  (q0100) {\(s_2\)};
+%       %         \node[state, right of = q0100]  (q0101) {\(s_{02}\)};
+%       %         \node[state, right of = q0101]  (q0111) {\(s_{012}\)};
+%       %         \node[state, right of = q0111]  (q0110) {\(s_{12}\)};
+
+%       %         \node[state, accepting, below of = q0100]  (q1100) {\(s_{23}\)};
+%       %         \node[state, accepting, right of = q1100]  (q1101) {\(s_{023}\)};
+%       %         \node[state, accepting, right of = q1101]  (q1111) {\(s_{0123}\)};
+%       %         \node[state, accepting, right of = q1111]  (q1110) {\(s_{123}\)};
+
+%       %         \node[state, accepting, below of = q1100]  (q1000) {\(s_3\)};
+%       %         \node[state, accepting, right of = q1000]  (q1001) {\(s_{03}\)};
+%       %         \node[state, accepting, right of = q1001]  (q1011) {\(s_{013}\)};
+%       %         \node[state, accepting, right of = q1011]  (q1010) {\(s_{13}\)};
+
+%       %         \node[above = 1.5cm of q0001] (start) {start};
+%       %         \draw[->] (start) -- (q0001);
+              
+%       %         \path[->, color = red] 
+%       %         (q0001.45) edge[out=0, in=90, loop] node[above] {\calpha} (q0001.45)
+%       %         (q0011.45) edge[out=0, in=90, loop] node[above] {\calpha} (q0011.45)
+%       %         (q0101.45) edge[out=0, in=90, loop] node[above] {\calpha} (q0101.45)
+%       %         (q0111.45) edge[out=0, in=90, loop] node[above] {\calpha} (q0111.45)
+%       %         (q1111.45) edge[out=0, in=90, loop] node[above] {\calpha} (q1111.45)
+%       %         (q1101.45) edge[out=0, in=90, loop] node[above] {\calpha} (q1101.45)
+%       %         (q1001.45) edge[out=0, in=90, loop] node[above] {\calpha} (q1001.45)
+%       %         (q1011.45) edge[out=0, in=90, loop] node[above] {\calpha} (q1011.45)
+%       %         ;
+
+              
+%       %         \path[->, color = blue] 
+%       %         (q0001.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q0001.225)
+%       %         (q0011.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q0011.225)
+%       %         (q0101.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q0101.225)
+%       %         (q0111.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q0111.225)
+%       %         (q1111.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q1111.225)
+%       %         (q1101.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q1101.225)
+%       %         (q1001.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q1001.225)
+%       %         (q1011.225) edge[out=180, in=270, loop] node[below left] {\cbeta} (q1011.225)
+%       %         ;
+
+              
+%       %         \path[->, color = OliveGreen] 
+%       %         (q0001) edge[] node[below] {\cgamma} (q0011)
+%       %         (q0011.315) edge[in=-90, out=0, loop] node[below] {\cgamma} (q0011.315)
+%       %         (q0101) edge[] node[below] {\cgamma} (q0111)
+%       %         (q0111.315) edge[in=-90, out=0, loop] node[below] {\cgamma} (q0111.315)
+%       %         (q1111.315) edge[in=-90, out=0, loop] node[below] {\cgamma} (q1111.315)
+%       %         (q1101) edge[] node[below] {\cgamma} (q1111)
+%       %         (q1001) edge[] node[below] {\cgamma} (q1011)
+%       %         (q1011.315) edge[in=-90, out=0, loop] node[below] {\cgamma} (q1011.315)
+%       %         ;
+
+%       %         \path[->, color = purple]
+%       %         (q0010) edge[] node[right] {\ceta} (q0110)
+%       %         (q0011) edge[] node[right] {\ceta} (q0111)
+%       %         (q0110.135) edge[out=90, in=180, loop] node[above] {\ceta} (q0110.135)
+%       %         (q0111.135) edge[out=90, in=180, loop] node[above] {\ceta} (q0111.135)
+%       %         (q1010) edge[] node[right] {\ceta} (q1110)
+%       %         (q1011) edge[] node[right] {\ceta} (q1111)
+%       %         (q1110.135) edge[out=90, in=180, loop] node[above] {\ceta} (q1110.135)
+%       %         (q1111.135) edge[out=90, in=180, loop] node[above] {\ceta} (q1111.135)
+%       %         ;
+
+%       %         \path[->, color = orange]
+%       %         (q0100) edge[] node[left] {\cpi} (q1100)
+%       %         (q0101) edge[] node[left] {\cpi} (q1101)
+%       %         (q0110) edge[] node[left] {\cpi} (q1110)
+%       %         (q0111) edge[] node[left] {\cpi} (q1111)
+%       %         (q1100.0) edge[in=0, out=90, loop] node[above right] {\cpi} (q1100.0)
+%       %         (q1101.0) edge[in=0, out=90, loop] node[above right] {\cpi} (q1101.0)
+%       %         (q1110.0) edge[in=0, out=90, loop] node[above right] {\cpi} (q1110.0)
+%       %         (q1111.0) edge[in=0, out=90, loop] node[above right] {\cpi} (q1111.0)
+%       %         ;
+
+%       %     \end{tikzpicture}
+%       % \end{center}
+      
+%       % \begin{center}
+%       %     \begin{tikzpicture}[node distance = 2cm, on grid]
+
+%       %         \node[state]                    (q0000) {\(s_\emptyset\)};
+%       %         \node[state, right of = q0000]  (q0001) {\(s_0\)};
+%       %         \node[state, right of = q0001]  (q0011) {\(s_{01}\)};
+%       %         \node[state, right of = q0011]  (q0010) {\(s_1\)};
+
+%       %         \node[state, below of = q0000]  (q0100) {\(s_2\)};
+%       %         \node[state, right of = q0100]  (q0101) {\(s_{02}\)};
+%       %         \node[state, right of = q0101]  (q0111) {\(s_{012}\)};
+%       %         \node[state, right of = q0111]  (q0110) {\(s_{12}\)};
+
+%       %         \node[state, accepting, below of = q0100]  (q1100) {\(s_{23}\)};
+%       %         \node[state, accepting, right of = q1100]  (q1101) {\(s_{023}\)};
+%       %         \node[state, accepting, right of = q1101]  (q1111) {\(s_{0123}\)};
+%       %         \node[state, accepting, right of = q1111]  (q1110) {\(s_{123}\)};
+
+%       %         \node[state, accepting, below of = q1100]  (q1000) {\(s_3\)};
+%       %         \node[state, accepting, right of = q1000]  (q1001) {\(s_{03}\)};
+%       %         \node[state, accepting, right of = q1001]  (q1011) {\(s_{013}\)};
+%       %         \node[state, accepting, right of = q1011]  (q1010) {\(s_{13}\)};
+
+%       %         \node[above = 1.5cm of q0001] (start) {start};
+%       %         \draw[->] (start) -- (q0001);
+
+%       %         % (q0000)
+%       %         % (q0001)
+%       %         % (q0010)
+%       %         % (q0011)
+%       %         % (q0100)
+%       %         % (q0101)
+%       %         % (q0110)
+%       %         % (q0111)
+%       %         % (q1000)
+%       %         % (q1001)
+%       %         % (q1010)
+%       %         % (q1011)
+%       %         % (q1100)
+%       %         % (q1101)
+%       %         % (q1110)
+%       %         % (q1111)
+              
+%       %         \path[->] 
+%       %         (q0000) edge[loop] node[above] {\(a\)} (q0000)
+%       %         (q0001) edge[] node[above] {\(a\)} (q0011)
+%       %         (q0010) edge[] node[above] {\(a\)} (q0100)
+%       %         (q0011) edge[] node[above] {\(a\)} (q0111)
+%       %         (q0100) edge[] node[above] {\(a\)} (q1000)
+%       %         (q0101) edge[] node[above] {\(a\)} (q1011)
+%       %         (q0110) edge[] node[above] {\(a\)} (q1100)
+%       %         (q0111) edge[] node[above] {\(a\)} (q1111)
+%       %         (q1000) edge[] node[above] {\(a\)} (q0000)
+%       %         (q1001) edge[] node[above] {\(a\)} (q0011)
+%       %         (q1010) edge[] node[above] {\(a\)} (q0100)
+%       %         (q1011) edge[] node[above] {\(a\)} (q0111)
+%       %         (q1100) edge[] node[above] {\(a\)} (q1000)
+%       %         (q1101) edge[] node[above] {\(a\)} (q1011)
+%       %         (q1110) edge[] node[above] {\(a\)} (q1100)
+%       %         (q1111) edge[loop] node[above] {\(a\)} (q1111)
+%       %         ;
+
+%       %         \path[->] 
+%       %         (q0000) edge[loop] node[right] {\(b\)} (q0000)
+%       %         (q0001) edge[] node[right] {\(b\)} (q0001)
+%       %         (q0010) edge[] node[right] {\(b\)} (q0000)
+%       %         (q0011) edge[] node[right] {\(b\)} (q0001)
+%       %         (q0100) edge[] node[right] {\(b\)} (q0000)
+%       %         (q0101) edge[] node[right] {\(b\)} (q0001)
+%       %         (q0110) edge[] node[right] {\(b\)} (q0000)
+%       %         (q0111) edge[] node[right] {\(b\)} (q0001)
+%       %         (q1000) edge[] node[right] {\(b\)} (q0000)
+%       %         (q1001) edge[] node[right] {\(b\)} (q0001)
+%       %         (q1010) edge[] node[right] {\(b\)} (q0000)
+%       %         (q1011) edge[] node[right] {\(b\)} (q0001)
+%       %         (q1100) edge[] node[right] {\(b\)} (q0000)
+%       %         (q1101) edge[] node[right] {\(b\)} (q0001)
+%       %         (q1110) edge[] node[right] {\(b\)} (q0000)
+%       %         (q1111) edge[loop] node[right] {\(b\)} (q0001)
+%       %         ;
+
+
+
+%       %     \end{tikzpicture}
+%       % \end{center}
+      
+%       \begin{center}
+%           \begin{tikzpicture}[node distance = 2cm, on grid]
+
+%               \node[state]                    (q0000) {\(s_\emptyset\)};
+%               \node[state, right of = q0000]  (q0001) {\(s_0\)};
+%               \node[state, right of = q0001]  (q0011) {\(s_{01}\)};
+%               \node[state, right of = q0011]  (q0010) {\(s_1\)};
+
+%               \node[state, below of = q0000]  (q0100) {\(s_2\)};
+%               \node[state, right of = q0100]  (q0101) {\(s_{02}\)};
+%               \node[state, right of = q0101]  (q0111) {\(s_{012}\)};
+%               \node[state, right of = q0111]  (q0110) {\(s_{12}\)};
+
+%               \node[state, accepting, below of = q0100]  (q1100) {\(s_{23}\)};
+%               \node[state, accepting, right of = q1100]  (q1101) {\(s_{023}\)};
+%               \node[state, accepting, right of = q1101]  (q1111) {\(s_{0123}\)};
+%               \node[state, accepting, right of = q1111]  (q1110) {\(s_{123}\)};
+
+%               \node[state, accepting, below of = q1100]  (q1000) {\(s_3\)};
+%               \node[state, accepting, right of = q1000]  (q1001) {\(s_{03}\)};
+%               \node[state, accepting, right of = q1001]  (q1011) {\(s_{013}\)};
+%               \node[state, accepting, right of = q1011]  (q1010) {\(s_{13}\)};
+
+%               \node[above = 1.5cm of q0001] (start) {start};
+%               \draw[->] (start) -- (q0001);
+
+%               \node[left = 1.5cm of q0000] (several) {several};
+%               \draw[->] (several) -- (q0000);
+
+%               % (q0000)
+%               % (q0001)
+%               % (q0010)
+%               % (q0011)
+%               % (q0100)
+%               % (q0101)
+%               % (q0110)
+%               % (q0111)
+%               % (q1000)
+%               % (q1001)
+%               % (q1010)
+%               % (q1011)
+%               % (q1100)
+%               % (q1101)
+%               % (q1110)
+%               % (q1111)
+              
+%               \path[->] 
+%               (q0000.north) edge[out=45, in=135, loop] node[above] {\(a, b\)} (q0000.north)
+%               (q0001) edge[] node[above] {\(a\)} (q0011)
+%               (q0010) edge[] node[above] {\(a\)} (q0100)
+%               (q0011) edge[] node[right] {\(a\)} (q0111)
+%               (q0100) edge[bend right] node[left] {\(a\)} (q1000)
+%               (q0101) edge[] node[above] {\(a\)} (q1011)
+%               (q0110) edge[] node[above] {\(a\)} (q1100)
+%               (q0111) edge[] node[right] {\(a\)} (q1111)
+%               (q1001) edge[] node[above] {\(a\)} (q0011)
+%               (q1010) edge[] node[above] {\(a\)} (q0100)
+%               (q1011) edge[bend right] node[right] {\(a\)} (q0111)
+%               (q1100) edge[] node[right] {\(a\)} (q1000)
+%               (q1101) edge[] node[above] {\(a\)} (q1011)
+%               (q1110) edge[bend left] node[below] {\(a\)} (q1100)
+%               (q1111.315) edge[out=270, in=0, loop] node[right] {\(a\)} (q1111.315)
+%               ;
+
+%               \path[->] 
+%               (q0001.45) edge[out=0, in=90, loop] node[right] {\(b\)} (q0001.45)
+%               (q0011.north) edge[bend right] node[above] {\(b\)} (q0001.north)
+%               (q0101) edge[] node[right] {\(b\)} (q0001)
+%               (q0111) edge[] node[right] {\(b\)} (q0001)
+%               (q1001) edge[bend left] node[left] {\(b\)} (q0001)
+%               (q1011) edge[] node[right] {\(b\)} (q0001)
+%               (q1101) edge[bend left = 45] node[above left] {\(b\)} (q0001)
+%               (q1111) edge[] node[right] {\(b\)} (q0001)
+%               ;
+%           \end{tikzpicture}
+%       \end{center}
+
+%       After removing the remaining dead states and transitions for visibility,
+%       we can see the DFA:
+
+%       \begin{center}
+%           \begin{tikzpicture}[node distance = 2cm, on grid]
+%               \node[state, initial] (q0) {\(s_0\)};
+%               \node[state, right of = q0] (q1) {\(s_{01}\)};
+%               \node[state, right of = q1] (q2) {\(s_{012}\)};
+%               \node[state, accepting, right of = q2] (q3) {\(s_{0123}\)};
+  
+%               \draw[->, in=180, out=90, loop] (q0.135) edge node[above] {\(b\)} (q0.135);
+%               \draw[->, in=45, out=-45, loop] (q3.0) edge node[right] {\(a\)} (q3.0);
+  
+%               \path[->] (q0) edge node[above] {\(a\)} (q1)
+%                         (q1) edge node[above] {\(a\)} (q2)
+%                         (q2) edge node[above] {\(a\)} (q3)
+%               ;
+%               \path[->] (q1) edge[bend left] node[below left] {\(b\)} (q0)
+%                         (q2) edge[bend right] node[above] {\(b\)} (q0)
+%                         (q3) edge[bend left] node[below] {\(b\)} (q0)
+%               ;
+  
+%           \end{tikzpicture}
+%       \end{center}
+
+%       This is an `eager' version of our original NFA. It accepts the same
+%       language. However, since it cannot be `non-deterministic' by
+%       definition, every time it comes across an \(a\), it must `guess' that it
+%       is the first of three ending \(a\)'s, and backtrack if it is not the
+%       case.
+      
+%       % Although equally powerful, the DFA more accurately captures how a
+%       % human-written parser would operate in practice on this language.
+
+%   \end{solution}
+% \end{exercise}
