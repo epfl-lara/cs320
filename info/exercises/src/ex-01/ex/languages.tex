@@ -1,0 +1,140 @@
+
+\section{Languages and Automata}
+
+\begin{exercise}{}
+
+  For each of the following expressions on sets of words, match them to a
+  property \(P\) that characterizes them, i.e., the language is exactly the set
+  of words \(\{ w \ \mid P(w) \}\).
+
+  Languages:
+  \begin{enumerate}
+    \item \(\{a,ab\}^*\)
+    \item \(\{aa\}^* \cup \{aaa\}^*\)
+    \item \(a^+b^+\)
+  \end{enumerate}
+
+  Predicates in set notation:
+  \begin{enumerate}
+    \renewcommand{\theenumi}{\Alph{enumi}}
+    \item \(\{w \mid \forall i. 0 \le i \le |w| \land w_{(i)} = b \implies (i > 0 \land w_{(i - 1)} = a)\}\) % 1
+    \item \(\{w \mid \forall i. w_{(i)} = b \implies w_{(i - 1)} = a\}\) % wrong
+    \item \(\{w \mid \exists i. 0 < i < |w| \land w_{(i)} = b \land w_{(i - 1)} = a\}\) % wrong
+    \item \(\{w \mid (|w| = 0 \mod 2 \lor |w| = 0 \mod 3) \land \forall i. 0 \leq i < |w| \implies w_{(i)} = a\}\) % 2
+    \item \(\{w \mid \forall i. 0 \le i \le |w| \land w_{(i)} = a \implies w_{(i + 1)} = b\}\) % wrong
+    \item \(\{w \mid \exists i. 0 < i < |w| - 1 \land 
+    (\forall y. 0 \leq y \leq i \implies w_{(y)} = a) \land  (\forall y. i < y < |w| \implies w_{(y)} = b) \}\) % 3
+  \end{enumerate}
+
+
+
+  \begin{solution}
+    
+    \(1 \mapsto A, 2 \mapsto D, 3 \mapsto F\).
+
+    We prove the first case as an example.
+
+    \begin{equation*}
+      \{a,ab\}^* = \{w \mid \forall i. 0 \le i \le |w| \land w_{(i)} = b \implies (i > 0 \land w_{(i - 1)} = a)\}
+    \end{equation*}
+
+    We must prove both directions, i.e. that \(\{a,ab\}^* \subseteq \{w \mid
+    P(w)\}\) and that \(\{w \mid P(w)\} \subseteq \{a,ab\}^*\).
+
+    \noindent
+    \textbf{Forward}: \(\{a,ab\}^* \subseteq \{w \mid P(w)\}\):
+
+    We must show that for all \(w \in \{a,ab\}^*\), \(P(w)\) holds. For any \(i
+    \in \naturals\), given that \(0 \le i \le |w| \land w_{(i)} = b\), we need
+    to show that \(i > 0 \land w_{(i - 1)} = a\).
+    
+    From the definition of \(*\) on sets of words, we know that there must exist
+    \(n < |w|\) words \(w_1, \ldots, w_n \in \{a, ab\}\) such that \(w = w_1
+    \ldots w_n\). The index \(i\) must be in the range of one of these words,
+    i.e. there exist \(1 \leq m \leq n\) and \(0 \leq j < |w_m|\) such that
+    \(w_{(i)} = w_{m(j)}\). 
+
+    We know that \(w_{(i)} = b\) and \(w_{m} \in \{a, ab\}\) by assumption. The
+    case \(w_m = a\) is a contradiction, since it cannot contain \(b\). Thus,
+    \(w_m = ab\). We know that \(w_{(i)} = w_{m(j)} = b\), so \(j = 1\). Thus,
+    \(w_{(i - 1)} = w_{m(j - 1)} = w_{m(0)} = a\), as required. Since \(i - 1
+    \geq 0\), being an index into \(w\), \(i > 0\) holds as well. Hence,
+    \(P(w)\) holds.
+
+    \noindent
+    \textbf{Backward}: \(\{w \mid P(w)\} \subseteq \{a,ab\}^*\):
+
+    We must show that for all \(w\) such that \(P(w)\) holds, \(w \in
+    \{a,ab\}^*\). We know by definition of \(*\) again, that \(w \in \{a,
+    ab\}*\) if and only if there exist \(n < |w|\) words \(w_1, \ldots, w_n \in
+    \{a, ab\}\) such that \(w = w_1 \ldots w_n\). We attempt to show that if
+    \(P(w)\) holds, then \(w\) admits such a decomposition.
+
+    We proceed by induction on the length of \(w\).
+
+    \noindent
+    \textit{Induction Case \(|w| = 0\)}: The empty word has a decomposition \(w =
+    \epsilon\) (with \(n = 0\) in the decomposition). QED.
+
+    \noindent
+    \textit{Induction Case \(|w| = 1\)}: The word \(w\) is either \(a\) or \(b\). We know
+    that \(P(w)\) holds, so \(w = a\) (why?). The decomposition is \(w = a\),
+    with \(n = 1\) and \(w_1 = a\). QED.
+
+    \noindent
+    \textit{Induction Case \(|w| > 1\)}: 
+
+    Induction hypothesis: for all words \(v\) such that \(|v| < |w|\) and
+    \(P(v)\) holds, \(v\) admits a decomposition into words in \(\{a, ab\}\),
+    and thus \(v \in \{a, ab\}^*\).
+
+    We need to show that if \(P(w)\) holds, then \(w\) admits such a
+    decomposition as well. Split the proof based on the first two characters of
+    \(w\). There are four possibilities. We give the name \(v\) to the rest of
+    \(w\).
+
+    \begin{enumerate}
+      \item \(w = aav\): \(P(w)\) holds, so \(\forall i. 0 \le i \le |w| \land
+      w_{(i)} = b \implies (i > 0 \land w_{(i - 1)} = a)\). In particular, we
+      can restrict to \(i > 1\) as
+
+      \begin{equation*}
+        \forall i. 2 \le i \le |w| \land w_{(i)} = b \implies (i > 0 \land w_{(i - 1)} = a)
+      \end{equation*}
+
+      but \(w_{(i)}\) for \(i \geq 2\) is simply \(v_{(i - 2)}\). Rewriting:
+
+      \begin{equation*}
+        \forall i. 2 \le i \le |w| \land v_{(i - 2)} = b \implies (i > 0 \land v_{(i - 3)} = a)
+      \end{equation*}
+
+      Finally, since the statement holds for all \(i\), we can replace \(i\) by
+      \(i + 2\) without loss of generality, using \(|v| = |w| - 2\):
+
+      \begin{equation*}
+        \forall i. 0 \le i \le |v| \land v_{(i)} = b \implies (i > 0 \land v_{(i - 1)} = a)
+      \end{equation*}
+
+      This is precisely the statement \(P(v)\), so by the induction hypothesis,
+      \(v\) has a decomposition into words in \(\{a, ab\}\), \(v = v_1\ldots
+      v_m\) for some \(m < |v|\) and \(v_i \in \{a, ab\}\).
+
+      We can now construct a decomposition for \(w\), \(w = w_1\ldots w_{m+2}\)
+      such that \(w_1 = a\), \(w_2 = a\), and \(w_{i + 2} = v_i\) for \(1 \le i
+      \le m\). Since \(m < |v|\) and \(|v| = |w| - 2\), \(m + 2 < |w|\). QED.
+
+      \item \(w = aab\): by the same argument as the previous case, \(v\) has a decomposition
+      into words in \(\{a, ab\}\), \(v = v_1\ldots v_m\) for some \(m < |v|\)
+      and \(v_i \in \{a, ab\}\). 
+      
+      We can similarly construct a decomposition for \(w\), \(w = w_1\ldots
+      w_{m+1}\) such that \(w_1 = ab\) and \(w_{i + 1} = v_i\) for \(1 \le i \le
+      m\). Since \(m < |v|\) and \(|v| = |w| - 2\), in particular \(m + 1 <
+      |w|\). QED.
+
+      \item \(w = bav\) or \(w = bbv\): \(P(w)\) cannot hold (set \(i = 0\)), so
+      the statement is vacuously true. 
+    \end{enumerate}
+  \end{solution}
+  
+\end{exercise}

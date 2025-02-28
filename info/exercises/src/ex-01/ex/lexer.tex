@@ -1,0 +1,154 @@
+
+% flavour text for lexer constructions
+
+\section{Lexing}
+
+%   In the lectures, we have seen how to manually construct a lexer for small
+% regular expressions. We often use tools that generate lexers from regular
+% expressions. You will see one such tool, Silex, while building the Amy lexer.
+
+% % about automata for lexing
+% Lexing frameworks process the description of tokens for a given language, and
+% may use a variety of techniques to construct the final lexer. The result is a
+% program that accepts a string and returns a list of tokens. One way to do this
+% automatically is by constructing and composing automata.
+
+Consider a simple arithmetic language that allows you to compute one arithmetic
+expression, construct conditionals, and let-bind expressions. An example program
+is:
+
+\begin{lstlisting}
+  let x = 3 in
+  let y = ite (x > 0) (x * x) 0 in
+    (2 * x) + y
+\end{lstlisting}
+
+The lexer for this language must recognize the following tokens:
+
+\begin{align*} 
+ \texttt{keyword}: &\quad \texttt{let} \mid \texttt{in} \mid \texttt{ite}\\
+ \texttt{op}: &\quad \texttt{+} \mid \texttt{-} \mid \texttt{*} \mid \texttt{/} \\
+ \texttt{comp}: &\quad \texttt{>} \mid \texttt{<} \mid \texttt{==} \mid \texttt{<=} \mid \texttt{>=} \\
+ \texttt{equal}: &\quad \texttt{=} \\
+ \texttt{lparen}: &\quad \texttt{(} \\
+ \texttt{rparen}: &\quad \texttt{)} \\
+ \texttt{id}: &\quad letter \cdot (letter \mid digit)^* \\
+ \texttt{number}: &\quad digit^+ \\
+ \texttt{skip}: &\quad \texttt{whitespace} 
+\end{align*}
+
+For simplicity, \(letter\) is a shorthand for the set of all English lowercase
+letters \(\{a - z\}\) and \(digit\) is a shorthand for the set of all decimal
+digits \(\{0 - 9\}\). 
+
+% \todo{if we allow an \texttt{ite} keyword with operators, we can ask them how
+% chained operators would be parsed, eg: \texttt{<===>=<===}. Is this interesting?}
+
+\begin{exercise}{}
+  For each of the tokens above, construct an NFA that recognizes strings matching
+  its regular expression.
+
+  \begin{solution}
+    The construction is similar in each case, following translation of regular
+    expressions to automata. For example:
+
+    \begin{itemize}
+      \item \texttt{keyword}: \texttt{let} $\mid$ \texttt{in} $\mid$ \texttt{ite}
+      \begin{center}
+        \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+          \node[state,initial] (q_0)   {$q_0$}; 
+          %
+          \node[state] (ql_1) [above right=of q_0] {$q_l$}; 
+          \node[state] (ql_2) [right=of ql_1] {$q_e$};
+          \node[state,accepting] (ql_3) [right=of ql_2] {$q_{let}$};
+          %
+          \node[state] (qin_1) [right=of q_0] {$q_{i1}$}; 
+          \node[state] (qin_2) [right=of qin_1] {$q_{in}$};
+          %
+          \node[state] (qite_1) [below right=of q_0] {$q_{i2}$}; 
+          \node[state] (qite_2) [right=of qite_1] {$q_t$};
+          \node[state,accepting] (qite_3) [right=of qite_2] {$q_{ite}$};
+          %
+          \path[->] 
+          (q_0) edge node {\texttt{l}} (ql_1)
+          (ql_1) edge node {\texttt{e}} (ql_2)
+          (ql_2) edge node {\texttt{t}} (ql_3)
+          %
+          (q_0) edge node {\texttt{i}} (qin_1)
+          (qin_1) edge node {\texttt{n}} (qin_2)
+          %
+          (q_0) edge node {\texttt{i}} (qite_1)
+          (qite_1) edge node {\texttt{t}} (qite_2)
+          (qite_2) edge node {\texttt{e}} (qite_3)
+          ;
+        \end{tikzpicture}
+      \end{center}
+
+      \item \texttt{id}: \texttt{letter} $\cdot$ (\texttt{letter} $\mid$ \texttt{digit})$^*$
+      \begin{center}
+        \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto] 
+          \node[state,initial] (q_0)   {$q_0$}; 
+          %
+          \node[state] (q1) [accepting, right=of q_0] {$q_1$}; 
+          %
+          \path[->] 
+          (q_0) edge node {\texttt{letter}} (q1)
+          (q1) edge[loop above] node {\texttt{letter}} (q1)
+          (q1) edge[loop below] node {\texttt{digit}} (q1)
+          ;
+        \end{tikzpicture}
+      \end{center}
+    \end{itemize}
+
+    The other cases are similar.
+  \end{solution}
+\end{exercise}
+
+A lexer is constructed by combining the NFAs for each of the tokens in parallel,
+assuming maximum munch. The resulting token is the first NFA in the token order
+that accepts a prefix of the string. Thus, tokens listed first have higher
+priority. We then continue lexing the remaining string. You may assume that the
+lexer drops any \texttt{skip} tokens.
+
+\begin{exercise}{}
+
+  For each of the following strings, write down the sequence of tokens that
+  would be produced by the constructed lexer, if it succeeds. 
+
+  \begin{enumerate}
+    \item \texttt{let x = 5 in x + 3}
+    \item \texttt{let5x2}
+    \item \texttt{xin}
+    \item \texttt{==>}
+    \item \texttt{<===><==}
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item \texttt{[keyword("let"), id("x"), equal, number("5"), keyword("in"), id("x"), op("+"), number("3")]}
+      \item \texttt{[id("let"), number("5"), id("x2")]}
+      \item \texttt{[id("xin")]}
+      \item \texttt{[comp("=="), op(">")]}
+      \item \texttt{[comp("<="), comp("=="), op(">"), comp("<="), equal("=")]}
+    \end{enumerate}
+  \end{solution}
+  
+\end{exercise}
+
+
+\begin{exercise}{}
+  Construct a string that would be lexed differently if we ran the NFAs in parallel
+  and instead of using token priority, simply picked the longest match.
+
+  \begin{solution}
+    There are many possible solutions. The key is to notice which tokens have
+    overlapping prefixes.
+
+    An example is \texttt{letx1in}, which would be lexed as
+    \texttt{[keyword("let"), id("x1"), keyword("in")]} if we check acceptance in
+    order of priority, but as \texttt{[id("letx1in")]} if we run them in
+    parallel.
+  \end{solution}
+\end{exercise}
+  
+  

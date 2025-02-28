@@ -1,0 +1,114 @@
+% macro.tex
+% common to all exercises
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath, amssymb}
+\usepackage{xspace}
+\usepackage[colorlinks]{hyperref}
+\usepackage{tabularx}
+
+% for drawing
+\usepackage{tikz}
+\usetikzlibrary{automata, arrows, shapes, positioning}
+
+\usepackage{forest}
+
+\usepackage{bussproofs, bussproofs-extra}
+
+% for code
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{scalaStyle}{
+  frame=tb,
+  language=scala,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle=\small\ttfamily,
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  frame=none,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+}
+
+\lstset{style=scalaStyle}
+
+% lstinline in math mode
+% https://tex.stackexchange.com/a/127018
+
+\usepackage{letltxmacro}
+\newcommand*{\SavedLstInline}{}
+\LetLtxMacro\SavedLstInline\lstinline
+\DeclareRobustCommand*{\lstinline}{%
+  \ifmmode
+    \let\SavedBGroup\bgroup
+    \def\bgroup{%
+      \let\bgroup\SavedBGroup
+      \hbox\bgroup
+    }%
+  \fi
+  \SavedLstInline
+}
+
+% for exercises
+
+\newcounter{exercisenum}
+\newcommand{\theexercise}{\arabic{exercisenum}}
+
+\usepackage{marginnote}
+\newenvironment{exercise}[1]{\refstepcounter{exercisenum}\paragraph*{Exercise \theexercise}{\reversemarginpar\marginnote{#1}}}{}
+
+\usepackage{verbatim}
+
+\usepackage{ifthen}
+\newboolean{showanswers}
+\setboolean{showanswers}{false}
+\newcommand{\printanswers}{\setboolean{showanswers}{true}}
+\newcommand\suppress[1]{} 
+
+\newcommand\ite[3]{\ifthenelse{\boolean{#1}}%
+{#2\suppress{#3}}%
+{\suppress{#2}#3}}
+
+
+\newenvironment{solution}{%
+    \ite{showanswers}{\paragraph*{Solution}}{\expandafter\comment}
+}{%
+    \ite{showanswers}{\hfill\(\square\)}{\expandafter\endcomment}
+}
+
+\newcommand{\note}[1]{\hfill #1}
+
+\sloppy
+
+%% actual macros
+
+% meta
+\newcommand{\todo}[1]{\textcolor{red}{[Todo: #1]}}
+
+\newcommand{\fbowtie}{\mathrel \blacktriangleright \joinrel \mathrel \blacktriangleleft}
+
+\newcommand{\easy}{\ensuremath{\bigstar}\xspace}
+\newcommand{\hard}{\small\ensuremath{\fbowtie}\xspace}
+
+% real
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\booleans}{\mathbb{B}}
+
+% church booleans
+\newcommand{\tru}{\lstinline|true|\xspace}
+\newcommand{\fls}{\lstinline|false|\xspace}
+
+% proof systems
+\newcommand{\natded}{\mathcal{N}} % natural deduction
+
