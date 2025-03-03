@@ -125,8 +125,8 @@ lexer drops any \texttt{skip} tokens.
 
   \begin{solution}
     \begin{enumerate}
-      \item \texttt{[keyword("let"), id("x"), equal, number("5"), keyword("in"), id("x"), op("+"), number("3")]}
-      \item \texttt{[id("let"), number("5"), id("x2")]}
+      \item \texttt{[keyword("let"), id("x"), equal("="), number("5"), keyword("in"), id("x"), op("+"), number("3")]}
+      \item \texttt{[keyword("let"), number("5"), id("x2")]}
       \item \texttt{[id("xin")]}
       \item \texttt{[comp("=="), op(">")]}
       \item \texttt{[comp("<="), comp("=="), op(">"), comp("<="), equal("=")]}
@@ -144,10 +144,9 @@ lexer drops any \texttt{skip} tokens.
     There are many possible solutions. The key is to notice which tokens have
     overlapping prefixes.
 
-    An example is \texttt{letx1in}, which would be lexed as
-    \texttt{[keyword("let"), id("x1"), keyword("in")]} if we check acceptance in
-    order of priority, but as \texttt{[id("letx1in")]} if we run them in
-    parallel.
+    An example is \texttt{letx1}, which would be lexed as
+    \texttt{[keyword("let"), id("x1")]} if we check acceptance in order of
+    priority, but as \texttt{[id("letx1")]} if we run them in parallel.
   \end{solution}
 \end{exercise}
   

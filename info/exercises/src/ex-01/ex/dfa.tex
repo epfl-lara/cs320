@@ -211,8 +211,9 @@
   
       \item 
         As generalized regular expression (with complement): \((\Sigma^* aa
-        \Sigma^*)^c\). Without complement: \((b^*(ab^*)^*)^*\). This is the language
-        of words that contain no consecutive pair of \(a\)'s. In set-notation:
+        \Sigma^*)^c\). Without complement: \(b^*(ab^+)^*(a \mid \epsilon)\).
+        This is the language of words that contain no consecutive pair of
+        \(a\)'s. In set-notation:
         \begin{equation*}
           \{w \mid \forall i.\; 0 \leq i < |w| \land w_{(i)} = a \implies (i + 1 \geq |w| \lor w_{(i + 1)} \neq a)\}
         \end{equation*}
