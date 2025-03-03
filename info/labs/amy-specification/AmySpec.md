@@ -126,7 +126,7 @@ Amy, with mild syntactic variations, is designed to be as close to a simple subs
 
 ## 2. Syntax
 
-The syntax of Amy is given formally by the context-free grammar of Figure 1. Everything spelled in *italic* is a nonterminal symbol of the grammar, whereas the terminal symbols are spelled in monospace font. `*` is the Kleene star, `s+` stands for one or more repetitions of `s`, and `?` stands for optional presence of a symbol (zero or one repetitions). The square brackets `[]` are not symbols of the grammar; they merely group symbols together.
+The syntax of Amy is given formally by the context-free grammar of Figure 1. Everything spelled in *italic* is a nonterminal symbol of the grammar, whereas the terminal symbols are spelled in monospace font. `*` is the Kleene star, `s+` stands for one or more repetitions of `s`, and `?` stands for optional presence of a symbol (zero or one repetitions). The square brackets `[]` are not symbols of the grammar; they merely group symbols together. Please note that the square brackets `[]` are still tokenized as they are reserved for future use.
 
 Before parsing an Amy program, the Amy lexer generates a sequence of terminal symbols (tokens) from the source files. Some non-terminal symbols mentioned, but not specified, in Figure 1 are also represented as a single token by the lexer. They are lexed according to the rules in Figure 2. In Figure 2, we denote the range between characters α and β (included) with `[α-β]`.
 
