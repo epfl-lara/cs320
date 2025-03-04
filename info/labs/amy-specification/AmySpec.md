@@ -230,7 +230,7 @@ Figure 2: Lexical rules for Amy
 IntLiteral ::= Digit+
 
 Id ::= Alpha AlphaNum∗ (and not a reserved word)
-AlphaNum ::= Alpha | Digit |
+AlphaNum ::= Alpha | Digit | _
 Alpha ::= [a-z] | [A-Z]
 Digit ::= [0-9]
 
