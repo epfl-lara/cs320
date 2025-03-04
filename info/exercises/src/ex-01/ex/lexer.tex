@@ -63,7 +63,7 @@ digits \(\{0 - 9\}\).
           \node[state,accepting] (ql_3) [right=of ql_2] {$q_{let}$};
           %
           \node[state] (qin_1) [right=of q_0] {$q_{i1}$}; 
-          \node[state] (qin_2) [right=of qin_1] {$q_{in}$};
+          \node[state,accepting] (qin_2) [right=of qin_1] {$q_{in}$};
           %
           \node[state] (qite_1) [below right=of q_0] {$q_{i2}$}; 
           \node[state] (qite_2) [right=of qite_1] {$q_t$};
@@ -128,8 +128,8 @@ lexer drops any \texttt{skip} tokens.
       \item \texttt{[keyword("let"), id("x"), equal("="), number("5"), keyword("in"), id("x"), op("+"), number("3")]}
       \item \texttt{[keyword("let"), number("5"), id("x2")]}
       \item \texttt{[id("xin")]}
-      \item \texttt{[comp("=="), op(">")]}
-      \item \texttt{[comp("<="), comp("=="), op(">"), comp("<="), equal("=")]}
+      \item \texttt{[comp("=="), comp(">")]}
+      \item \texttt{[comp("<="), comp("=="), comp(">"), comp("<="), equal("=")]}
     \end{enumerate}
   \end{solution}
   
