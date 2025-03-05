@@ -4,7 +4,7 @@ Links: [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Desc
 
 Important information:
 
-  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120). One reminder sheet (2 sided) will be allowed. 
+  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120). One reminder sheet (2 sided) will be allowed.
 
   * Please register for project groups on Moodle as soon as this is possible ([Registration link](https://moodle.epfl.ch/mod/choicegroup/view.php?id=1282182))
 
@@ -30,7 +30,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | 3    | 12.... | Wed | 05.03.2025 | 13:15 | BC 01  | Lecture 4 | [Introduction to Grammars](https://mediaspace.epfl.ch/media/04-01%2C+Introduction+to+Grammars/0_krhjbo09) [(PDF)](info/lectures/lec04-grammars-intro.pdf), [Syntax Trees](https://mediaspace.epfl.ch/media/04-02%2C+Syntax+Trees/0_9h4g5k1c) [(PDF)](info/lectures/lec04-trees.pdf)
 |      | 12.... | Fri | 07.03.2025 | 13:15 | ELA 2  | Exercises 2 | Grammar Concepts |
 |      | 123... | Fri | 07.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab release |
-| 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | LL(1) Parsing |
+| 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | [LL(1) Parsing](https://mediaspace.epfl.ch/media/04-03%2C+LL%281%29+Parsing/0_se2zd8kt) |
 |      | .23... | Fri | 14.03.2025 | 13:15 | ELA 2  | Lecture 6  | Name Analysis. Operational Semantics |
 |      | .23... | Fri | 14.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab |
 | 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | LL(1) Grammars |
