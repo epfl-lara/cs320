@@ -27,13 +27,13 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |                              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
-| 3    | 12.... | Wed | 05.03.2025 | 13:15 | BC 01  | Lecture 4 | Grammars and Trees |
-|      | 12.... | Fri | 07.03.2025 | 13:15 | ELA 2  | Exercises 2 | Grammars (not LL(1)) |
+| 3    | 12.... | Wed | 05.03.2025 | 13:15 | BC 01  | Lecture 4 | [Introduction to Grammars](https://mediaspace.epfl.ch/media/04-01%2C+Introduction+to+Grammars/0_krhjbo09) [(PDF)](info/lectures/lec04-grammars-intro.pdf), [Syntax Trees](https://mediaspace.epfl.ch/media/04-02%2C+Syntax+Trees/0_9h4g5k1c) [(PDF)](info/lectures/lec04-trees.pdf)
+|      | 12.... | Fri | 07.03.2025 | 13:15 | ELA 2  | Exercises 2 | Grammar Concepts |
 |      | 123... | Fri | 07.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab release |
 | 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | LL(1) Parsing |
 |      | .23... | Fri | 14.03.2025 | 13:15 | ELA 2  | Lecture 6  | Name Analysis. Operational Semantics |
 |      | .23... | Fri | 14.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab |
-| 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | Grammars |
+| 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | LL(1) Grammars |
 |      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | Type Checking |
 |      | ..34.. | Fri | 21.03.2025 | 15:15 | ELA 2  | Lab 4 | Typer lab release |
 | 6    | ..34.. | Wed | 26.03.2025 | 13:15 | BC 01  | Exercises 4 | Parsing. Type checking |
