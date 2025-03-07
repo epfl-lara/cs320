@@ -1,0 +1,42 @@
+
+\begin{exercise}{}
+
+  Recall the pumping lemma for regular languages:
+
+  For any language \(L \subseteq \Sigma^*\), if \(L\) is regular, there exists a
+  strictly positive constant \(p \in \naturals\) such that every word \(w \in
+  L\) with \(|w| \geq p\) can be written as \(w = xyz\) such that:
+
+  \begin{itemize}
+    \item \(x, y, z \in \Sigma^*\)
+    \item \(|y| > 0\)
+    \item \(|xy| \leq p\), and
+    \item \(\forall i \in \naturals.\; xy^iz \in L\)
+  \end{itemize}
+
+  Consider the language \(L = \{w \in \{a\}^* \mid |w| \text{ is prime}\}\).
+  Show that \(L\) is not regular by using the pumping lemma.
+  
+  \begin{solution}
+      \(L = \{w \in \{a\}^* \mid |w| \text{ is prime}\}\) is not a regular
+      language.
+
+      To the contrary, assume it is regular, and so there exists a constant
+      \(p\) such that the pumping conditions hold for this language. 
+      
+      Consider the word \(w = a^{n} \in L\), for some prime \(n \geq p\). By the
+      pumping lemma, we can write \(w = xyz\) such that \(|y| > 0\), \(|xy| \leq
+      p\), and \(xy^iz \in L\) for all \(i \geq 0\).
+      
+      Assume that \(|xz| = m\) and \(|y| = k\) for some natural numbers \(m\)
+      and \(k\). Thus, \(|xy^iz| = m + ik\) for all \(i\). Since by the pumping
+      lemma \(xy^iz \in L\) for every \(i\), it follows that for every \(i\),
+      the length \(m + ik\) is prime. However, if \(m \not = 0\), then \(m\)
+      divides \(m + mk\), and if \(m = 0\), then \(m + 2k\) is not prime. In
+      either case, we have a contradiction.
+
+      Thus, this language is not regular.
+
+  \end{solution}
+
+\end{exercise}
