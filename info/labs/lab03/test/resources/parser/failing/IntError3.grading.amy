@@ -1,0 +1,3 @@
+object IntError 
+  def foo(): Int(true) = { 42 }
+end IntError
