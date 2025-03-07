@@ -1,0 +1,343 @@
+
+\begin{exercise}{}
+
+  For each of the following languages, give a context-free grammar that
+  generates it:
+
+  \begin{enumerate}
+    \item \(L_1 = \{a^nb^m \mid n, m \in \naturals \land n \geq 0 \land m \geq n\}\)
+    \item \(L_2 = \{a^nb^mc^{n+m} \mid n, m \in \naturals\}\)
+    \item \(L_3 = \{w \in \{a, b\}^* \mid \exists m \in \naturals.\; |w| = 2m +
+    1 \land w_{(m+1)} = a \}\) (\(w\) is of odd length, has \(a\) in the middle)
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item \(L_1 = \{a^nb^m \mid n, m \in \naturals \land n \geq 0 \land m \geq n\}\)
+      \begin{align*}
+        S &::= aSb \mid B\\
+        B &::= bB \mid \epsilon
+      \end{align*}
+      \item \(L_2 = \{a^nb^mc^{n+m} \mid n, m \in \naturals\}\)
+      \begin{align*}
+        S &::= aSc \mid B\\
+        B &::= bBc \mid \epsilon
+      \end{align*}
+
+      A small tweak to \(L_1\)'s grammar allows us to keep track of addition
+      precisely here. Could we do something similar for \(\{a^nb^nc^n \mid n \in
+      \naturals\}\)? (open-ended discussion)
+
+      \item \(L_3 = \{w \in \{a, b\}^* \mid \exists m \in \naturals.\; |w| = 2m +
+      1 \land w_{(m+1)} = a \}\)
+      \begin{align*}
+        S &::= aSb \mid bSa \mid aSa \mid bSb \mid a
+      \end{align*}
+
+      Note that after each recursive step, the length of the inner string has
+      the same parity (i.e. odd).
+    \end{enumerate}    
+  \end{solution}
+  
+\end{exercise}
+
+\begin{exercise}{}
+
+  Consider the following context-free grammar \(G\):
+
+  \begin{align*}
+    A &::= -A \\
+    A &::= A - \textit{id} \\
+    A &::= \textit{id} \\
+  \end{align*}
+
+  \begin{enumerate}
+    \item Show that \(G\) is ambiguous, i.e., there is a string that has two
+    different possible parse trees with respect to \(G\).
+    \item Make two different unambiguous grammars recognizing the same words,
+    \(G_p\), where prefix-minus binds more tightly, and \(G_i\), where
+    infix-minus binds more tightly.
+    \item Show the parse trees for the string you produced in (1) with respect
+    to \(G_p\) and \(G_i\).
+    \item Produce a regular expression that recognizes the same language as
+    \(G\).
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item An example string is \(- \textit{id} - \textit{id}\). It can be
+      parsed as either \(-(\textit{id} - \textit{id})\) or \((- \textit{id}) -
+      \textit{id}\). The corresponding parse trees are:
+
+      \begin{center}
+        \begin{forest}
+          [\(A\)
+            [\(A\)
+              [\(-\)]
+              [\(\textit{id}\)]
+            ]
+            [\(-\)]
+            [\(\textit{id}\)]
+          ]
+        \end{forest}
+        \hspace{10ex}
+        \begin{forest}
+          [\(A\)
+            [\(-\)]
+            [\(A\)
+              [\(A\)
+                [\(\textit{id}\)]
+              ]
+              [\(-\)]
+              [\(\textit{id}\)]
+            ]
+          ]
+        \end{forest}
+      \end{center}
+
+      Left: prefix binds tighter, right: infix binds tighter.
+
+      \item \(G_p\):
+      \begin{align*}
+          A &::= B \mid A - \textit{id} \\
+          B &::= -B \mid \textit{id}
+      \end{align*}
+
+      \(G_i\):
+      \begin{align*}
+          A &::= C \mid -A \\
+          C &::= \textit{id} \mid C - \textit{id}
+      \end{align*}
+
+      \item Parse trees for \(- \textit{id} - \textit{id}\) with respect to \(G_p\) (left)
+      and \(G_i\) (right):
+
+      \begin{center}
+        \begin{forest}
+          [\(A\)
+            [\(A\)
+              [\(B\)
+                [\(-\)]
+                [\(B\)
+                  [\(\textit{id}\)]
+                ]
+              ]
+            ]
+            [\(-\)]
+            [\(\textit{id}\)]
+          ]
+        \end{forest}
+        \hspace{10ex}
+        \begin{forest}
+          [\(A\)
+            [\(-\)]
+            [\(A\)
+              [\(C\)
+                [\(\textit{id}\)]
+              ]
+              [\(-\)]
+              [\(\textit{id}\)]
+            ]
+          ]
+        \end{forest}
+      \end{center}
+
+      \item \(L(G) = L(-^*\textit{id} (-\textit{id})^*)\). Note: \(()\) are part
+      of the regular expression syntax, not parentheses in the string.
+
+    \end{enumerate}
+  \end{solution}
+
+\end{exercise}
+
+
+\begin{exercise}{}
+
+  Consider the two following grammars \(G_1\) and \(G_2\):
+
+  \begin{align*}
+    G_1: & \\
+    S &::= S(S)S \mid \epsilon \\
+    G_2: & \\
+    R &::= RR \mid (R) \mid \epsilon
+  \end{align*}
+
+  \noindent
+  Prove that:
+  \begin{enumerate}
+    \item \(L(G_1) \subseteq L(G_2)\), by showing that for every parse tree in
+    \(G_1\), there exists a parse tree yielding the same word in \(G_2\).
+    \item (Bonus) \(L(G_2) \subseteq L(G_1)\), by showing that there exist
+    equivalent parse trees or derivations.
+  \end{enumerate}
+
+  \begin{solution}
+
+    \begin{enumerate}
+      \item \(L(G_1) \subseteq L(G_2)\).
+      
+      We give a recursive transformation of parse trees in \(G_1\) producing
+      parse trees in \(G_2\). 
+
+      \begin{enumerate}
+        \item \textbf{Base case:} The smallest parse tree is the \(\epsilon\)
+        production, which can be transformed as (left to right):
+        \begin{center}
+          \begin{forest}
+            [\(S\)
+              [\(\epsilon\)]
+            ]
+          \end{forest}
+          \hspace{8ex}
+          \begin{forest}
+            [\(R\)
+              [\(\epsilon\)]
+            ]
+          \end{forest}
+        \end{center}
+        \item \textbf{Recursive case:} Rule \(S ::= S(S)S\). The parse tree transformation is:
+        \begin{center}
+          \begin{forest}
+            [\(S\)
+              [\(S_1\)]
+              [\((_2\)]
+              [\(S_3\)]
+              [\()_4\)]
+              [\(S_5\)]
+            ]
+          \end{forest}
+          \hspace{10ex}
+          \begin{forest}
+            [\(R\)
+              [\(R_1\)]
+              [\(R\)
+                [\(R\)
+                  [\((_2\)]
+                  [\(R_3\)]
+                  [\()_4\)]
+                ]
+                [\(R_5\)]
+              ]
+            ]
+          \end{forest}
+        \end{center} 
+
+        The nodes are numbered to check that the order of children (left to
+        right) does not change. This ensures that the word yielded by the tree
+        is the same. The transformation is applied recursively to the children
+        \(S_1, S_3, S_5\) to obtain \(R_1, R_3, R_5\).
+
+        Verify that the tree on the right is indeed a parse tree in \(G_2\).
+      \end{enumerate}
+
+      \item \(L(G_2) \subseteq L(G_1)\). 
+      
+      Straightforward induction on parse trees does not work easily. The rule
+      \(R ::= RR\) in \(G_2\) is not directly expressible in \(G_1\) by a simple
+      transformation of parse trees. However, we can note that, in fact, adding
+      this rule to \(G_1\) does not change the language!
+
+      Consider the grammar \(G_1'\) defined by \(S ::= SS \mid S(S)S \mid
+      \epsilon\). We must show that for every two words \(v\) and \(w\) in
+      \(L(G_1)\), \(vw\) is in \(L(G_1)\), and so adding the rule \(S ::= SS\)
+      does not change the language.
+
+      We induct on the length \(|v| + |w|\). 
+      
+      \begin{enumerate}
+        \item \textbf{Base case:} \(|v| + |w| = 0\). \(v = w = vw = \epsilon \in
+        L(G_1)\). QED.
+        \item \textbf{Inductive case:} \(|v| + |w| = n + 1\). The induction
+        hypothesis is that for every \(v', w'\) with \(|v'| + |w'| = n\), \(v'w'
+        \in L(G_1)\).
+
+        From the grammar, we know that either \(v = \epsilon\) or \(v = x(y)z\)
+        for \(x, y, z \in L(G_1)\). If \(v = \epsilon\), then \(w = vw \in
+        L(G_1)\). In the second case, \(vw = x(y)zw\). However, \(zw \in
+        L(G_1)\) by the inductive hypothesis, as \(|z| + |w| < n \).
+
+        Thus, \(vw = x(y)z'\) for \(z' \in L(G_1)\). Finally, since \(x, y, z'
+        \in L(G_1)\), it follows from the grammar rules that \(vw = x(y)z' \in
+        L(G_1)\). 
+      \end{enumerate}
+      
+      Thus, \(L(G_1) = L(G_1')\). It can now be shown just as in the first part,
+      that \(L(G_2) \subseteq L(G_1')\).
+    \end{enumerate}
+    
+  \end{solution}
+  
+\end{exercise}
+
+\begin{exercise}{}
+  
+  Consider a context-free grammar \(G = (A, N, S, R)\). Define the reversed
+  grammar \(rev(G) = (A, N, S, rev(R))\), where \(rev(R)\) is the set of rules
+  is produced from \(R\) by reversing the right-hand side of each rule, i.e.,
+  for each rule \(n ::= p_1 \ldots p_n\) in \(R\), there is a rule \(n ::=
+  p_n \ldots p_1\) in \(rev(R)\), and vice versa. The terminals,
+  non-terminals, and start symbol of the language remain the same.
+
+  For example, \(S ::= abS \mid \epsilon\) becomes \(S ::= Sba \mid \epsilon\).
+
+  Is it the case that for every context-free grammar \(G\) defining a language
+  \(L\), the language defined by \(rev(G)\) is the same as the language of
+  reversed strings of \(L\), \(rev(L) = \{rev(w) \mid w \in L\}\)? Give a proof
+  or a counterexample.
+
+  \begin{solution}
+
+    Consider any word \(w\) in the original language. Looking at the definition
+    of a language \(L(G)\) defined by a grammar \(G\):
+    \begin{equation*}
+      w \in L(G) \iff \exists T.\; w = yield(T) \land isParseTree(G, T) 
+    \end{equation*}
+
+    There must exist a parse tree \(T\) for \(w\) with respect to \(G\). We must
+    show that there exists a parse tree for \(rev(w)\) with respect to the
+    reversed grammar \(G_r = rev(G)\) as well.
+
+    We propose that this is precisely the tree \(T_r = mirror(T)\). Thus, we
+    need to show that \(rev(w) = yield(T_r)\) and that \(isParseTree(G_r,
+    T_r)\).
+
+    \begin{enumerate}
+      \item \(rev(w) = yield(T_r)\): \(yield(\cdot)\) of a tree is the word
+      obtained by reading its leaves from left to right. Thus, the yield of the
+      mirror of a tree \(yield(mirror(\cdot))\) is the word obtained by reading
+      the leaves of the original tree from right to left. Thus, \(yield(T_r) =
+      yield(mirror(T)) = rev(yield(T)) = rev(w)\).
+
+      \item \(isParseTree(G_r, T_r)\): We need to show that \(T_r\) is a parse
+      tree with respect to \(G_r\). Consider the definition of a parse tree:
+      \begin{enumerate}
+        \item The root of \(T_r\) is the start symbol of \(G_r\): the root of
+        \(T_r = mirror(T)\) is the same as that of \(T\). Since \(T\)'s root
+        node must be the start symbol of \(G\), it is also the root symbol of
+        \(T_r\). \(G\) and \(G_r\) share the same start symbol in our
+        transformation.
+        \item The leaves are labelled by the elements of \(A\): the mirror
+        transformation does not alter the set or the label of leaves, only their
+        order. This property transfers from \(T\) to \(T_r\) as well.
+        \item Each non-leaf node is labelled by a non-terminal symbol: the
+        mirror transformation does not alter the label of non-leaf nodes either,
+        so this property transfers from \(T\) to \(T_r\) as well.
+        \item If a non-leaf node has children that are labelled \(p_1, \ldots,
+        p_n\) left-to-right, then there is a rule \((n ::= p_1 \ldots p_n)\) in
+        the grammar: consider any non-leaf node in \(T_r\), labelled \(n\), with
+        children labelled left-to-right \(p_1, \ldots, p_n\). By the definition
+        of \(mirror\), the original tree \(T\) must have the same node labelled
+        \(n\), with the reversed list of children left-to-right, \(p_n, \ldots,
+        p_1\). Since \(T\) is a parse tree for \(G\), \(n ::= p_n \ldots p_1\)
+        is a valid rule in \(G\), and by the reverse transformation, \(n ::= p_1
+        \ldots p_n\) must be a rule in \(G_r\). Thus, the property is satisfied.
+      \end{enumerate}
+    \end{enumerate}
+
+    Thus, both properties are satisfied. Therefore, the language defined by the
+    reversed grammar is the reversed language of the original grammar.
+
+  \end{solution}
+
+\end{exercise}
+

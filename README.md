@@ -4,7 +4,7 @@ Links: [Moodle](https://moodle.epfl.ch/course/view.php?id=4241) and [Course Desc
 
 Important information:
 
-  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120). One reminder sheet (2 sided) will be allowed. 
+  * Midterm exam will take place Friday 4 April within the time block 13:00-17:00 in two rooms: [ELA 2](https://plan.epfl.ch/?room==ELA%202) and [CM 1 120](https://plan.epfl.ch/?room==CM%201%20120). One reminder sheet (2 sided) will be allowed.
 
   * Please register for project groups on Moodle as soon as this is possible ([Registration link](https://moodle.epfl.ch/mod/choicegroup/view.php?id=1282182))
 
@@ -19,21 +19,21 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | 1    |      | Wed | 19.02.2025 | 13:15 | BC 01  | Lecture 1            | [Intro to CLP](https://mediaspace.epfl.ch/media/01-01%2C+Intro+to+Computer+Language+Processing/0_okro5h0v) [(PDF)](info/lectures/lec01a.pdf), [Formal languages](https://mediaspace.epfl.ch/media/01-02%2C+Formal+Languages/0_segfj94w) [(PDF)](info/lectures/lec01b.pdf) |
 |      |      | Fri | 21.02.2025 | 13:15 | ELA 2  | Lecture 2 | [Operations on Formal Languages](https://mediaspace.epfl.ch/media/02-01%2C+Operations+on+Formal+Languages/0_otyeghg6), [Regular Expressions and Idea of a Lexer](https://mediaspace.epfl.ch/media/02-02%2C+Regular+Expressions+and+Lexer+Idea/0_th59v9kx) [(PDF)](info/lectures/lec02.pdf) |
 |      | 1.... | Fri | 21.02.2025 | 15:15 | ELA 2  | Lab 1 | [Interpreter lab released (due in 2 weeks)](./info/labs/lab01/) |
+| 2    | 1.... | Wed | 26.02.2025 | 13:15 | BC 01  | Lecture 3 | [First Symbols. Constructing a Lexer](https://mediaspace.epfl.ch/media/03-01%2C+First+Symbols.+Constructing+a+Lexer/0_a943fw0n) [(PDF)](info/lectures/lec03a.pdf), [From Regular Expressions to Automata](https://mediaspace.epfl.ch/media/03-02%2C+From+Regular+Expressions+to+Automata/0_icjqhfj0) [(PDF)](info/lectures/lec03b.pdf) |
+|      | 1..... | Fri | 28.02.2025 | 13:15 | ELA 2  | Exercise 1 | [Languages, Automata and Lexers](info/exercises/ex-01.pdf) |
+|      | 12.... | Fri | 28.02.2025 | 15:15 | ELA 2  | Lab 2 | Lexer lab release |
 
 ## Schedule and Materials - Current
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |                              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
-| 2    | 1.... | Wed | 26.02.2025 | 13:15 | BC 01  | Lecture 3 | [First Symbols. Constructing a Lexer](https://mediaspace.epfl.ch/media/03-01%2C+First+Symbols.+Constructing+a+Lexer/0_a943fw0n) [(PDF)](info/lectures/lec03a.pdf), [From Regular Expressions to Automata](https://mediaspace.epfl.ch/media/03-02%2C+From+Regular+Expressions+to+Automata/0_icjqhfj0) [(PDF)](info/lectures/lec03b.pdf) |
-|      | 1..... | Fri | 28.02.2025 | 13:15 | ELA 2  | Exercise 1 | [Languages, Automata and Lexers](info/exercises/ex-01.pdf) |
-|      | 12.... | Fri | 28.02.2025 | 15:15 | ELA 2  | Lab 2 | Lexer lab release |
-| 3    | 12.... | Wed | 05.03.2025 | 13:15 | BC 01  | Lecture 4 | Grammars and Trees |
-|      | 12.... | Fri | 07.03.2025 | 13:15 | ELA 2  | Exercises 2 | Grammars (not LL(1)) |
+| 3    | 12.... | Wed | 05.03.2025 | 13:15 | BC 01  | Lecture 4 | [Introduction to Grammars](https://mediaspace.epfl.ch/media/04-01%2C+Introduction+to+Grammars/0_krhjbo09) [(PDF)](info/lectures/lec04-grammars-intro.pdf), [Syntax Trees](https://mediaspace.epfl.ch/media/04-02%2C+Syntax+Trees/0_9h4g5k1c) [(PDF)](info/lectures/lec04-trees.pdf)
+|      | 12.... | Fri | 07.03.2025 | 13:15 | ELA 2  | Exercises 2 | Grammar Concepts |
 |      | 123... | Fri | 07.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab release |
-| 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | LL(1) Parsing |
+| 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | [LL(1) Parsing](https://mediaspace.epfl.ch/media/04-03%2C+LL%281%29+Parsing/0_se2zd8kt) |
 |      | .23... | Fri | 14.03.2025 | 13:15 | ELA 2  | Lecture 6  | Name Analysis. Operational Semantics |
 |      | .23... | Fri | 14.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab |
-| 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | Grammars |
+| 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | LL(1) Grammars |
 |      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | Type Checking |
 |      | ..34.. | Fri | 21.03.2025 | 15:15 | ELA 2  | Lab 4 | Typer lab release |
 | 6    | ..34.. | Wed | 26.03.2025 | 13:15 | BC 01  | Exercises 4 | Parsing. Type checking |
