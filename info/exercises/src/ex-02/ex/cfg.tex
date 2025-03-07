@@ -5,7 +5,7 @@
   generates it:
 
   \begin{enumerate}
-    \item \(L_1 = \{a^nb^m \mid n, m \in \naturals \land n > 0 \land m > n\}\)
+    \item \(L_1 = \{a^nb^m \mid n, m \in \naturals \land n \geq 0 \land m \geq n\}\)
     \item \(L_2 = \{a^nb^mc^{n+m} \mid n, m \in \naturals\}\)
     \item \(L_3 = \{w \in \{a, b\}^* \mid \exists m \in \naturals.\; |w| = 2m +
     1 \land w_{(m+1)} = a \}\) (\(w\) is of odd length, has \(a\) in the middle)
@@ -13,7 +13,7 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item \(L_1 = \{a^nb^m \mid n, m \in \naturals \land n > 0 \land m > n\}\)
+      \item \(L_1 = \{a^nb^m \mid n, m \in \naturals \land n \geq 0 \land m \geq n\}\)
       \begin{align*}
         S &::= aSb \mid B\\
         B &::= bB \mid \epsilon
