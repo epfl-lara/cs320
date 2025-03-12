@@ -30,7 +30,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |                              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                          | :--                          |
-| 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | [LL(1) Parsing](https://mediaspace.epfl.ch/media/04-03%2C+LL%281%29+Parsing/0_se2zd8kt). [Scallion Tutorial](https://mediaspace.epfl.ch/media/04-10%2C+Scallion+tutorial/0_lypn7l0x) |
+| 4    | .23... | Wed | 12.03.2025 | 13:15 | BC 01  | Lecture 5 | [LL(1) Parsing](https://mediaspace.epfl.ch/media/04-03%2C+LL%281%29+Parsing/0_se2zd8kt) [(PDF)](info/lectures/lec05-ll1.pdf). [Scallion Tutorial](https://mediaspace.epfl.ch/media/04-10%2C+Scallion+tutorial/0_lypn7l0x) |
 |      | .23... | Fri | 14.03.2025 | 13:15 | ELA 2  | Lecture 6  | Name Analysis. Operational Semantics |
 |      | .23... | Fri | 14.03.2025 | 15:15 | ELA 2  | Lab 3 | Parser lab |
 | 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | LL(1) Grammars |
