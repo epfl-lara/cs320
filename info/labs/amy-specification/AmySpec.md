@@ -218,7 +218,7 @@ BinOp ::= + | - | * | / | % | < | <=
 UnaryOp ::= - | !
 
 MatchCase ::= case Pattern => Expr
-Pattern ::= [ Id . ]? Id ( Patterns ) | Id | Literal |
+Pattern ::= [ Id . ]? Id ( Patterns ) | Id | Literal | _
 Patterns ::= ϵ | Pattern [ , Pattern ]∗
 
 Args ::= ϵ | Expr [ , Expr ]∗
