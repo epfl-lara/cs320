@@ -86,7 +86,7 @@
     left-recursive). We can remove the left recursion by introducing a new
     non-terminal, \(A'\), such that:
     \begin{align*}
-      A &::= A' \mid \beta A' \\
+      A &::= \beta A' \\
       A' &::= \alpha A' \mid \epsilon
     \end{align*}
     i.e., for the left-recursive rule \(A\alpha\), we instead attempt to parse
