@@ -76,24 +76,8 @@
     generally called \emph{left recursion elimination}.
 
     Transformed grammar steps (explanation below):
-
-    Left recursion elimination (not LL(1) yet! \(\first(S') = \{(, [\;\}\)):
     \begin{align*}
-      S &::= S' \mid ()S' \mid [\;]S' \\
-      S' &::= (S)S' \mid [S]S'
-    \end{align*}
-
-    Inline \(S'\) once in \(S ::= S'\):
-    \begin{align*}
-      S &::= (S)S' \mid [S]S' \mid ()S' \mid [\;]S' \\
-      S' &::= (S)S' \mid [S]S' \mid \epsilon
-    \end{align*}
-
-    Finally, left factorize \(S\) to get an LL(1) grammar:
-    \begin{align*}
-      S &::= (T_1 \mid [T_2 \\
-      T_1 &::= S)S' \mid ~)S' \\
-      T_2 &::= S]S' \mid ~]S' \\
+      S &::= ()S' \mid [\;]S' \\
       S' &::= (S)S' \mid [S]S' \mid \epsilon
     \end{align*}
 
