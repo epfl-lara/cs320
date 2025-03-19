@@ -24,21 +24,21 @@
   LL(1) grammar.
 
   \begin{equation*}
-    E ::= \mathbf{num} + E \mid \mathbf{num} - E 
+    E ::= \mathbf{num} + E \mid \mathbf{num} - E \mid \mathbf{num}
   \end{equation*}
 
   \begin{solution}
     The language is clearly not LL(1), as on seeing a token \(\mathbf{num}\), we
-    cannot decide whether to continue parsing it as \(\mathbf{num} + E\) or
-    \(\mathbf{num} - E\). 
+    cannot decide whether to continue parsing it as \(\mathbf{num} + E\),
+    \(\mathbf{num} - E\), or the end. 
 
-    The notable problem is the common prefix between the two rules. We can
-    separate this out by introducing a new non-terminal \(T\). This is a
-    transformation known as \emph{left factorization}.
+    The notable problem is the common prefix between the rules. We can separate
+    this out by introducing a new non-terminal \(T\). This is a transformation
+    known as \emph{left factorization}.
 
     \begin{align*}
       E &::= \mathbf{num} ~T \\
-      T &::= + E \mid - E
+      T &::= + E \mid - E \mid \epsilon
     \end{align*}
 
     % without changing the terms or the overall "structure" of the grammar, we

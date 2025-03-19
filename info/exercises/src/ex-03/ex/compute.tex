@@ -66,16 +66,16 @@
 
   \begin{align*}
     S &::= Exp~\mathbf{EOF} \\
-    Exp &::= Exp_2~ Exp_* \\
-    Exp_* &::= +~ Exp_2~ Exp_* \\
-    Exp_* &::= -~ Exp_2~ Exp_* \\
-    Exp_* &::= \\
-    Exp_2 &::= Exp_3~ Exp_{2*} \\
-    Exp_{2*} &::= *~ Exp_3~ Exp_{2*} \\
-    Exp_{2*} &::= /~ Exp_3~ Exp_{2*} \\
-    Exp_{2*} &::= \\
-    Exp_3 &::= \mathbf{num} \\
-    Exp_3 &::= (Exp) \\
+    Exp &::= Term~ Add \\
+    Add &::= +~ Term~ Add \\
+    Add &::= -~ Term~ Add \\
+    Add &::= \\
+    Term &::= Factor~ Mul \\
+    Mul &::= *~ Factor~ Mul \\
+    Mul &::= /~ Factor~ Mul \\
+    Mul &::= \\
+    Factor &::= \mathbf{num} \\
+    Factor &::= (Exp) \\
   \end{align*}
 
   \begin{enumerate}
@@ -104,31 +104,34 @@
           \item \(\nullable\): 
           %
             \begin{align*}
+              \nullable(S) &= false \\
               \nullable(Exp) &= false \\
-              \nullable(Exp_*) &= true \\
-              \nullable(Exp_2) &= false \\
-              \nullable(Exp_{2*}) &= true \\
-              \nullable(Exp_3) &= false
+              \nullable(Add) &= true \\
+              \nullable(Term) &= false \\
+              \nullable(Mul) &= true \\
+              \nullable(Factor) &= false
             \end{align*}
 
           \item \(\first\): we have constraints:
             %
             \begin{align*}
-              \first(Exp) &= \first(Exp_2) \\
-              \first(Exp_*) &= \{+\} \cup \{-\} \cup \emptyset \\
-              \first(Exp_2) &= \first(Exp_3) \\
-              \first(Exp_{2*}) &= \{*\} \cup \{/\} \cup \emptyset \\
-              \first(Exp_3) &= \{\mathbf{num}\} \cup \{(\}
+              \first(S) &= \first(Exp) \\
+              \first(Exp) &= \first(Term) \\
+              \first(Add) &= \{+\} \cup \{-\} \cup \emptyset \\
+              \first(Term) &= \first(Factor) \\
+              \first(Mul) &= \{*\} \cup \{/\} \cup \emptyset \\
+              \first(Factor) &= \{\mathbf{num}\} \cup \{(\}
             \end{align*}
             %
             which can be solved to get:
             %
             \begin{align*}
+              \first(S) &= \{\mathbf{num}, (\} \\
               \first(Exp) &= \{\mathbf{num}, (\} \\
-              \first(Exp_*) &= \{+, -\} \\
-              \first(Exp_2) &= \{\mathbf{num}, (\} \\
-              \first(Exp_{2*}) &= \{*, /\} \\
-              \first(Exp_3) &= \{\mathbf{num}, (\}
+              \first(Add) &= \{+, -\} \\
+              \first(Term) &= \{\mathbf{num}, (\} \\
+              \first(Mul) &= \{*, /\} \\
+              \first(Factor) &= \{\mathbf{num}, (\}
             \end{align*}
           \item \(\follow\): we have constraints (for each rule, except
           empty/terminal rules):
@@ -137,25 +140,25 @@
             \begin{align*}
               \{\mathbf{EOF}\} &\subseteq \follow(Exp) \\
               &\\
-              \first(Exp_*) &\subseteq \follow(Exp_2) \\
-              \follow(Exp) &\subseteq \follow(Exp_2) \\
-              \follow(Exp) &\subseteq \follow(Exp_*) \\
+              \first(Add) &\subseteq \follow(Term) \\
+              \follow(Exp) &\subseteq \follow(Term) \\
+              \follow(Exp) &\subseteq \follow(Add) \\
               &\\
-              \first(Exp_*) &\subseteq \follow(Exp_2) \\
-              \follow(Exp_*) &\subseteq \follow(Exp_2) \\
+              \first(Add) &\subseteq \follow(Term) \\
+              \follow(Add) &\subseteq \follow(Term) \\
               &\\
-              \first(Exp_*) &\subseteq \follow(Exp_2) \\
-              \follow(Exp_*) &\subseteq \follow(Exp_2) \\
+              \first(Add) &\subseteq \follow(Term) \\
+              \follow(Add) &\subseteq \follow(Term) \\
               &\\
-              \first(Exp_{2*}) &\subseteq \follow(Exp_3) \\
-              \follow(Exp_2) &\subseteq \follow(Exp_3) \\
-              \follow(Exp_2) &\subseteq \follow(Exp_{2*}) \\
+              \first(Mul) &\subseteq \follow(Factor) \\
+              \follow(Term) &\subseteq \follow(Factor) \\
+              \follow(Term) &\subseteq \follow(Mul) \\
               &\\
-              \first(Exp_{2*}) &\subseteq \follow(Exp_3) \\
-              \follow(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              \first(Mul) &\subseteq \follow(Factor) \\
+              \follow(Mul) &\subseteq \follow(Factor) \\
               &\\
-              \first(Exp_{2*}) &\subseteq \follow(Exp_3) \\
-              \follow(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              \first(Mul) &\subseteq \follow(Factor) \\
+              \follow(Mul) &\subseteq \follow(Factor) \\
               &\\
               \{)\} &\subseteq \follow(Exp) \\
             \end{align*}
@@ -165,10 +168,10 @@
           \begin{align*}
             \follow(S) &= \{\} \\
             \follow(Exp) &= \{), \mathbf{EOF}\} \\
-            \follow(Exp_*) &= \{), \mathbf{EOF}\} \\
-            \follow(Exp_2) &= \{+, -, ), \mathbf{EOF}\} \\
-            \follow(Exp_{2*}) &= \{+, -, ), \mathbf{EOF}\} \\
-            \follow(Exp_3) &= \{+, -, *, /, ), \mathbf{EOF}\}
+            \follow(Add) &= \{), \mathbf{EOF}\} \\
+            \follow(Term) &= \{+, -, ), \mathbf{EOF}\} \\
+            \follow(Mul) &= \{+, -, ), \mathbf{EOF}\} \\
+            \follow(Factor) &= \{+, -, *, /, ), \mathbf{EOF}\}
           \end{align*}
 
         \end{enumerate}
@@ -181,45 +184,45 @@
             \hline
             \(S\) & 1 & & & & & 1 & &\\
             \(Exp\) & 1 & & & & & 1 & &\\
-            \(Exp_*\) & & 1 & 2 & & & & 3 & 3 \\
-            \(Exp_2\) & 1 & & & & & 1 & & \\
-            \(Exp_{2*}\) & & 3 & 3 & 1 & 2 & & 3 & 3 \\
-            \(Exp_3\) & 1 & & & & & 2 & & \\
+            \(Add\) & & 1 & 2 & & & & 3 & 3 \\
+            \(Term\) & 1 & & & & & 1 & & \\
+            \(Mul\) & & 3 & 3 & 1 & 2 & & 3 & 3 \\
+            \(Factor\) & 1 & & & & & 2 & & \\
           \end{tabular}
         \end{center}
       \item Parsing the strings:
       \begin{enumerate}
         \item \((3 + 4) * 5 ~\mathbf{EOF}\) \checkmark
         \item \(2 + + ~\mathbf{EOF}\) --- fails on the second \(+\). The
-        corresponding error cell in the parsing table is \((Exp_2, +)\).
+        corresponding error cell in the parsing table is \((Term, +)\).
         \item \(2 ~\mathbf{EOF}\) \checkmark
         \item \(2 * 3 + 4 ~\mathbf{EOF}\) \checkmark
-        \item \(2 + 3 * 4 ~\mathbf{EOF}\) fails on the \(*\). Error at \((Exp_*, *)\).
+        \item \(2 + 3 * 4 ~\mathbf{EOF}\) fails on the \(*\). Error at \((Add, *)\).
       \end{enumerate}
 
       Example step-by-step LL(1) parsing state for \(2 * 3 + 4\):
       \begin{center}
-        \begin{tabular}{c c}
-          Lookahead token & Stack \\
+        \begin{tabular}{c c c}
+          Lookahead & Stack & Next Rule \\
           \hline
-          \(2\) & \(S\) \\
-          \(2\) & \(Exp ~ \mathbf{EOF}\) \\
-          \(2\) & \(Exp_2 ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(2\) & \(Exp_3 ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(2\) & \(\mathbf{num} ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(*\) & \(Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(*\) & \(* ~Exp_3 ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(3\) & \(Exp_3 ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(3\) & \(\mathbf{num} ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(+\) & \(Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
-          \(+\) & \(Exp_* ~ \mathbf{EOF}\) \\
-          \(+\) & \(+ ~Exp_2 ~Exp_* ~ \mathbf{EOF}\) \\
-          \(4\) & \(Exp_2 ~Exp_* ~ \mathbf{EOF}\) \\
-          \(4\) & \(Exp_3 ~Exp_{2*} ~Exp_* ~ \mathbf{EOF}\) \\
-          \(4\) & \(\mathbf{num} ~Exp_{2*} ~Exp_* ~ \mathbf{EOF}\) \\
-          \(\mathbf{EOF}\) & \(Exp_{2*} ~Exp_* ~ \mathbf{EOF}\) \\
-          \(\mathbf{EOF}\) & \(Exp_* ~ \mathbf{EOF}\) \\
-          \(\mathbf{EOF}\) & \(\mathbf{EOF}\) \\
+          \(2\) & \(S\) & \(S ::= Exp ~\mathbf{EOF}\)\\
+          \(2\) & \(Exp ~ \mathbf{EOF}\) & \(Exp ::= Term~Add\)\\
+          \(2\) & \(Term ~ Add ~ \mathbf{EOF}\) & \(Term ::= Factor~Mul\)\\
+          \(2\) & \(Factor ~ Mul ~ Add ~ \mathbf{EOF}\) & \(Factor ::= \mathbf{num}\)\\
+          \(2\) & \(\mathbf{num} ~ Mul ~ Add ~ \mathbf{EOF}\) & \(match(\mathbf{num})\)\\
+          \(*\) & \(Mul ~ Add ~ \mathbf{EOF}\) & \(Mul ::= *~Factor~Mul\)\\
+          \(*\) & \(* ~Factor ~ Mul ~ Add ~ \mathbf{EOF}\) & \(match(*)\)\\
+          \(3\) & \(Factor ~ Mul ~ Add ~ \mathbf{EOF}\) & \(Factor ::= \mathbf{num}\)\\
+          \(3\) & \(\mathbf{num} ~ Mul ~ Add ~ \mathbf{EOF}\) & \(match(\mathbf{num})\)\\
+          \(+\) & \(Mul ~ Add ~ \mathbf{EOF}\) & \(Mul ::=\)\\
+          \(+\) & \(Add ~ \mathbf{EOF}\) & \(Add ::= +~Term~Add\)\\
+          \(+\) & \(+ ~Term ~Add ~ \mathbf{EOF}\) & \(match(+)\)\\
+          \(4\) & \(Term ~Add ~ \mathbf{EOF}\) & \(Term ::= Factor~Term*\)\\
+          \(4\) & \(Factor ~Mul ~Add ~ \mathbf{EOF}\) & \(Factor ::= \mathbf{num}\)\\
+          \(4\) & \(\mathbf{num} ~Mul ~Add ~ \mathbf{EOF}\) & \(match(\mathbf{num})\)\\
+          \(\mathbf{EOF}\) & \(Mul ~Add ~ \mathbf{EOF}\) & \(Mul ::= \)\\
+          \(\mathbf{EOF}\) & \(Add ~ \mathbf{EOF}\) & \(Add ::= \)\\
+          \(\mathbf{EOF}\) & \(\mathbf{EOF}\) & \(match(\mathbf{EOF})\)\\
         \end{tabular}
       \end{center}
     \end{enumerate}
