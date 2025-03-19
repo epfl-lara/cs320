@@ -15,8 +15,8 @@
 
 package calculator
 
-import silex._
-import scallion._
+import scallion.*
+import silex.*
 
 sealed trait Token
 case class NumberToken(value: Int) extends Token
@@ -148,8 +148,8 @@ object CalcParser extends Parsers {
   //
   // lazy val expr: Syntax[Expr] = recursive {
   //   operators(factor)(
-  //     times | div is LeftAssociative,
-  //     plus | minus is LeftAssociative
+  //     (times | div).is(LeftAssociative),
+  //     (plus | minus).is(LeftAssociative)
   //   ) {
   //     case (l, op, r) => BinaryExpr(op, l, r)
   //   }
