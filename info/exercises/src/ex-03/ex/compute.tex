@@ -1,0 +1,229 @@
+
+% Compiler Design 3.9
+\begin{exercise}{}
+  Compute \(\nullable\), \(\first\), and \(\follow\) for the non-terminals \(A\)
+  and \(B\) in the following grammar:
+  %
+  \begin{align*}
+    A &::= BAa \\
+    A &::=  \\
+    B &::= bBc \\
+    B &::= AA
+  \end{align*}
+
+  Remember to extend the language with an extra start production for the
+  computation of \(\follow\).
+
+  \begin{solution}
+    \begin{enumerate}
+      \item \(\nullable\): we get the constraints
+      \begin{gather*}
+        \nullable(A) = \nullable(BAa) \lor \nullable(\epsilon) \\
+        \nullable(B) = \nullable(bBc) \lor \nullable(AA)
+      \end{gather*}
+
+      We can solve these to get \(\nullable(A) = \nullable(B) = true\).
+
+      \item \(\first\): we get the constraints (given that both \(A\) and \(B\)
+      are nullable):
+      \begin{align*}
+        \first(A) &= \first(BAa) \cup \first(\epsilon) \\
+                  &= \first(B) \cup \first(A) \cup \emptyset \\
+                  &= \first(B) \cup \first(A) \\
+        \first(B) &= \first(bBc) \cup \first(AA) \\
+                  &= \{b\} \cup \first(A) \cup \first(A) \cup \emptyset \\
+                  &= \{b\} \cup \first(A)
+      \end{align*}
+
+      Starting from \(\first(A) = \first(B) = \emptyset\), we iteratively
+      compute the fixpoint to get \(\first(A) = \first(B) = \{a, b\}\).
+
+      \item \(\follow\): we add a production \(A' ::= A~\mathbf{EOF}\), and get
+      the constraints (in order of productions):
+      \begin{gather*}
+        \{\mathbf{EOF}\} \subseteq \follow(A) \\
+        \\
+        \first(A) \subseteq \follow(B) \\
+        \{a\} \subseteq \follow(A) \\
+        \\
+        \{c\} \subseteq \follow(B) \\
+        \\
+        \first(A) \subseteq \follow(A) \\
+        \follow(B) \subseteq \follow(A)
+      \end{gather*}
+
+      Substituting the computed \(\first\) sets, and computing a fixpoint, we
+      get \(\follow(A) = \{a, b, c,\mathbf{EOF}\}\) and \(\follow(B) = \{a, b,
+      c\}\).
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
+
+% Compiler design 3.11
+\begin{exercise}{}
+  
+  Given the following grammar for arithmetic expressions:
+
+  \begin{align*}
+    S &::= Exp~\mathbf{EOF} \\
+    Exp &::= Exp_2~ Exp_* \\
+    Exp_* &::= +~ Exp_2~ Exp_* \\
+    Exp_* &::= -~ Exp_2~ Exp_* \\
+    Exp_* &::= \\
+    Exp_2 &::= Exp_3~ Exp_{2*} \\
+    Exp_{2*} &::= *~ Exp_3~ Exp_{2*} \\
+    Exp_{2*} &::= /~ Exp_3~ Exp_{2*} \\
+    Exp_{2*} &::= \\
+    Exp_3 &::= \mathbf{num} \\
+    Exp_3 &::= (Exp) \\
+  \end{align*}
+
+  \begin{enumerate}
+    \item Compute \(\nullable\), \(\first\), \(\follow\) for each of the
+    non-terminals in the grammar.
+    \item Check if the grammar is LL(1). If not, modify the grammar to make it
+    so.
+    \item Build the LL(1) parsing table for the grammar.
+    \item Using your parsing table, parse or attempt to parse (till error) the
+    following strings, assuming that \(\mathbf{num}\) matches any natural
+    number:
+    \begin{enumerate}
+      \item \((3 + 4) * 5 ~\mathbf{EOF}\)
+      \item \(2 + + ~\mathbf{EOF}\)
+      \item \(2 ~\mathbf{EOF}\)
+      \item \(2 * 3 + 4 ~\mathbf{EOF}\)
+      \item \(2 + 3 * 4 ~\mathbf{EOF}\)
+    \end{enumerate}
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item We can compute the \(\nullable\), \(\first\), and \(\follow\) sets as:
+
+        \begin{enumerate}
+          \item \(\nullable\): 
+          %
+            \begin{align*}
+              \nullable(Exp) &= false \\
+              \nullable(Exp_*) &= true \\
+              \nullable(Exp_2) &= false \\
+              \nullable(Exp_{2*}) &= true \\
+              \nullable(Exp_3) &= false
+            \end{align*}
+
+          \item \(\first\): we have constraints:
+            %
+            \begin{align*}
+              \first(Exp) &= \first(Exp_2) \\
+              \first(Exp_*) &= \{+\} \cup \{-\} \cup \emptyset \\
+              \first(Exp_2) &= \first(Exp_3) \\
+              \first(Exp_{2*}) &= \{*\} \cup \{/\} \cup \emptyset \\
+              \first(Exp_3) &= \{\mathbf{num}\} \cup \{(\}
+            \end{align*}
+            %
+            which can be solved to get:
+            %
+            \begin{align*}
+              \first(Exp) &= \{\mathbf{num}, (\} \\
+              \first(Exp_*) &= \{+, -\} \\
+              \first(Exp_2) &= \{\mathbf{num}, (\} \\
+              \first(Exp_{2*}) &= \{*, /\} \\
+              \first(Exp_3) &= \{\mathbf{num}, (\}
+            \end{align*}
+          \item \(\follow\): we have constraints (for each rule, except
+          empty/terminal rules):
+          \begin{multicols}{2}
+            \allowdisplaybreaks
+            \begin{align*}
+              \{\mathbf{EOF}\} &\subseteq \follow(Exp) \\
+              &\\
+              \first(Exp_*) &\subseteq \follow(Exp_2) \\
+              \follow(Exp) &\subseteq \follow(Exp_2) \\
+              \follow(Exp) &\subseteq \follow(Exp_*) \\
+              &\\
+              \first(Exp_*) &\subseteq \follow(Exp_2) \\
+              \follow(Exp_*) &\subseteq \follow(Exp_2) \\
+              &\\
+              \first(Exp_*) &\subseteq \follow(Exp_2) \\
+              \follow(Exp_*) &\subseteq \follow(Exp_2) \\
+              &\\
+              \first(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              \follow(Exp_2) &\subseteq \follow(Exp_3) \\
+              \follow(Exp_2) &\subseteq \follow(Exp_{2*}) \\
+              &\\
+              \first(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              \follow(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              &\\
+              \first(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              \follow(Exp_{2*}) &\subseteq \follow(Exp_3) \\
+              &\\
+              \{)\} &\subseteq \follow(Exp) \\
+            \end{align*}
+          \end{multicols}
+
+          The fixpoint can again be computed to get:
+          \begin{align*}
+            \follow(S) &= \{\} \\
+            \follow(Exp) &= \{), \mathbf{EOF}\} \\
+            \follow(Exp_*) &= \{), \mathbf{EOF}\} \\
+            \follow(Exp_2) &= \{+, -, ), \mathbf{EOF}\} \\
+            \follow(Exp_{2*}) &= \{+, -, ), \mathbf{EOF}\} \\
+            \follow(Exp_3) &= \{+, -, *, /, ), \mathbf{EOF}\}
+          \end{align*}
+
+        \end{enumerate}
+      \item The grammar is LL(1), there are no conflicts. Demonstrated by the
+      parsing table below.
+      \item LL(1) parsing table:
+        \begin{center}
+          \begin{tabular}{c|c|c|c|c|c|c|c|c}
+            & \(\mathbf{num}\) & \(+\) & \(-\) & \(*\) & \(/\) & \((\) & \()\) & \(\mathbf{EOF}\) \\
+            \hline
+            \(S\) & 1 & & & & & 1 & &\\
+            \(Exp\) & 1 & & & & & 1 & &\\
+            \(Exp_*\) & & 1 & 2 & & & & 3 & 3 \\
+            \(Exp_2\) & 1 & & & & & 1 & & \\
+            \(Exp_{2*}\) & & 3 & 3 & 1 & 2 & & 3 & 3 \\
+            \(Exp_3\) & 1 & & & & & 2 & & \\
+          \end{tabular}
+        \end{center}
+      \item Parsing the strings:
+      \begin{enumerate}
+        \item \((3 + 4) * 5 ~\mathbf{EOF}\) \checkmark
+        \item \(2 + + ~\mathbf{EOF}\) --- fails on the second \(+\). The
+        corresponding error cell in the parsing table is \((Exp_2, +)\).
+        \item \(2 ~\mathbf{EOF}\) \checkmark
+        \item \(2 * 3 + 4 ~\mathbf{EOF}\) \checkmark
+        \item \(2 + 3 * 4 ~\mathbf{EOF}\) fails on the \(*\). Error at \((Exp_*, *)\).
+      \end{enumerate}
+
+      Example step-by-step LL(1) parsing state for \(2 * 3 + 4\):
+      \begin{center}
+        \begin{tabular}{c c}
+          Lookahead token & Stack \\
+          \hline
+          \(2\) & \(S\) \\
+          \(2\) & \(Exp ~ \mathbf{EOF}\) \\
+          \(2\) & \(Exp_2 ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(2\) & \(Exp_3 ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(2\) & \(\mathbf{num} ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(*\) & \(Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(*\) & \(* ~Exp_3 ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(3\) & \(Exp_3 ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(3\) & \(\mathbf{num} ~ Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(+\) & \(Exp_{2*} ~ Exp_* ~ \mathbf{EOF}\) \\
+          \(+\) & \(Exp_* ~ \mathbf{EOF}\) \\
+          \(+\) & \(+ ~Exp_2 ~Exp_* ~ \mathbf{EOF}\) \\
+          \(4\) & \(Exp_2 ~Exp_* ~ \mathbf{EOF}\) \\
+          \(4\) & \(Exp_3 ~Exp_{2*} ~Exp_* ~ \mathbf{EOF}\) \\
+          \(4\) & \(\mathbf{num} ~Exp_{2*} ~Exp_* ~ \mathbf{EOF}\) \\
+          \(\mathbf{EOF}\) & \(Exp_{2*} ~Exp_* ~ \mathbf{EOF}\) \\
+          \(\mathbf{EOF}\) & \(Exp_* ~ \mathbf{EOF}\) \\
+          \(\mathbf{EOF}\) & \(\mathbf{EOF}\) \\
+        \end{tabular}
+      \end{center}
+    \end{enumerate}
+  \end{solution}
+
+\end{exercise}
+

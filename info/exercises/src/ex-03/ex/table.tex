@@ -1,0 +1,166 @@
+
+% this language is not LL 1 actually, I think
+
+% \begin{exercise}{}
+%   Consider the following grammar of \(\mathbf{if}-\mathbf{then}-\mathbf{else}\) expressions with assignments:
+%   %
+%   \begin{align*}
+%     stmt &::= \mathbf{if} ~id = id~ \mathbf{then} ~stmt ~optStmt \\
+%          &::= \{ stmt^* \} \\
+%          &::= id = id; \\
+%     optStmt &::= \epsilon \mid \mathbf{else} ~stmt \\
+%   \end{align*}
+  
+%   \begin{enumerate}
+%     \item Show that the grammar is ambiguous.
+%     \item Is the grammar LL(1)?
+%   \end{enumerate}
+
+% \end{exercise}
+
+
+\begin{exercise}{}
+  Argue that the following grammar is \emph{not} LL(1). Produce an equivalent
+  LL(1) grammar.
+
+  \begin{equation*}
+    E ::= \mathbf{num} + E \mid \mathbf{num} - E 
+  \end{equation*}
+
+  \begin{solution}
+    The language is clearly not LL(1), as on seeing a token \(\mathbf{num}\), we
+    cannot decide whether to continue parsing it as \(\mathbf{num} + E\) or
+    \(\mathbf{num} - E\). 
+
+    The notable problem is the common prefix between the two rules. We can
+    separate this out by introducing a new non-terminal \(T\). This is a
+    transformation known as \emph{left factorization}.
+
+    \begin{align*}
+      E &::= \mathbf{num} ~T \\
+      T &::= + E \mid - E
+    \end{align*}
+
+    % without changing the terms or the overall "structure" of the grammar, we
+    % have logically partitioned it to fit within our parsing schema.
+
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{}
+  Consider the following grammar:
+
+  \begin{equation*}
+    S ::= S(S) \mid S[S] \mid () \mid [\;]
+  \end{equation*}
+    
+  Check whether the same transformation as the previous case can be applied to
+  produce an LL(1) grammar. If not, argue why, and suggest a different
+  transformation.
+
+  \begin{solution}
+    Applying left factorization to the grammar, we get:
+    \begin{align*}
+      S &::= S ~T \mid S ~T \mid () \mid [\;] \\
+      T &::= (S) \mid [S]
+    \end{align*}
+
+    This is not LL(1), as on reading a token ``\((\)'', we cannot decide whether
+    this is the final parentheses (base case) in the expression, or whether
+    there is a \(T\) following it.
+
+    The problem is that this version of the grammar is left-recursive. A
+    recursive-descent parser for this grammar would loop forever on the first
+    rule. This is caused by the fact that our parsers are top-down, left to
+    right. We can fix this by \emph{moving} the recursion to the right. This is
+    generally called \emph{left recursion elimination}.
+
+    Transformed grammar steps (explanation below):
+
+    Left recursion elimination (not LL(1) yet! \(\first(S') = \{(, [\;\}\)):
+    \begin{align*}
+      S &::= S' \mid ()S' \mid [\;]S' \\
+      S' &::= (S)S' \mid [S]S'
+    \end{align*}
+
+    Inline \(S'\) once in \(S ::= S'\):
+    \begin{align*}
+      S &::= (S)S' \mid [S]S' \mid ()S' \mid [\;]S' \\
+      S' &::= (S)S' \mid [S]S' \mid \epsilon
+    \end{align*}
+
+    Finally, left factorize \(S\) to get an LL(1) grammar:
+    \begin{align*}
+      S &::= (T_1 \mid [T_2 \\
+      T_1 &::= S)S' \mid ~)S' \\
+      T_2 &::= S]S' \mid ~]S' \\
+      S' &::= (S)S' \mid [S]S' \mid \epsilon
+    \end{align*}
+
+    To eliminate left-recursion in general, consider a non-terminal \(A ::=
+    A\alpha \mid \beta\), where \(\beta\) does not start with \(A\) (not
+    left-recursive). We can remove the left recursion by introducing a new
+    non-terminal, \(A'\), such that:
+    \begin{align*}
+      A &::= A' \mid \beta A' \\
+      A' &::= \alpha A' \mid \epsilon
+    \end{align*}
+    i.e., for the left-recursive rule \(A\alpha\), we instead attempt to parse
+    an \(\alpha\) followed by the rest. In exchange, the base case \(\beta\) now
+    expects an \(A'\) to follow it.
+    %
+    Note that \(\beta\) can be empty as well.
+    
+    Intuitively, we are shifting the direction in which we look for instances of
+    \(A\). Consider a partial derivation starting from \(\beta \alpha \alpha
+    \alpha\). The original version of the grammar would complete the parsing as:
+    \begin{center}
+      \begin{forest}
+        [\(A\)
+          [\(A\)
+            [\(A\)
+              [\(A\)
+                [\(\beta\)]
+              ]
+              [\(\alpha\)]
+            ]
+            [\(\alpha\)]
+          ]
+          [\(\alpha\)]
+        ]     
+      \end{forest}
+    \end{center}
+    but with the new grammar, we parse it as:
+    \begin{center}
+      \begin{forest}
+        [\(A\)
+          [\(\beta\)]
+          [\(A'\)
+            [\(\alpha\)]
+            [\(A'\)
+              [\(\alpha\)]
+              [\(A'\)
+                [\(\alpha\)]
+                [\(A'\)
+                  [\(\epsilon\)]
+                ]
+              ]
+            ]
+          ]
+        ]
+      \end{forest}
+    \end{center}
+
+    There are two main pitfalls to remember with left-recursion elimination:
+    \begin{enumerate}
+      \item it may need to be applied several times till the grammar is
+      unchanged, as the first transformation may introduce new (indirect)
+      recursive rules (check \(A ::= AA\alpha \mid \epsilon\)).
+      \item it may require \emph{inlining} some non-terminals, when the left
+      recursion is \emph{indirect}. For example, consider \(A ::= B\alpha, B ::=
+      A\beta\), where there is no immediate reduction to do, but inlining \(B\),
+      we get \(A ::= A\beta\alpha\), where the elimination can be applied.
+    \end{enumerate}
+  \end{solution}
+
+\end{exercise}
