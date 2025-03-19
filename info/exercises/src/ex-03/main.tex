@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+
+\input{../macro}
+
+\ifdefined\ANSWERS
+  \if\ANSWERS1
+    \printanswers
+  \fi
+\fi
+
+\DeclareMathOperator{\prefixes}{prefixes}
+\DeclareMathOperator{\first}{first}
+\DeclareMathOperator{\nullable}{nullable}
+\DeclareMathOperator{\follow}{follow}
+
+\title{CS 320 \\ Computer Language Processing\\Exercises: Week 4}
+\author{}
+\date{March 19, 2025}
+
+\begin{document}
+\maketitle
+
+% prefixes of regular expressions
+\input{ex/prefix}
+
+% compute nullable follow first for CFGs
+\input{ex/compute}
+
+% build ll1 parsing table, parse or attempt to parse some strings
+\input{ex/table}
+
+\end{document}

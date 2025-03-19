@@ -1,0 +1,67 @@
+
+\begin{exercise}{}
+
+  If \(L\) is a regular language, then the set of prefixes of words in \(L\) is
+  also a regular language. Given this fact, from a regular expression for \(L\),
+  we should be able to obtain a regular expression for the set of all prefixes
+  of words in \(L\) as well.
+  
+  We want to do this with a function \(\prefixes\) that is recursive over the
+  structure of the regular expression for \(L\), i.e. of the form:
+  %
+  \begin{align*}
+    \prefixes(\epsilon) &= \epsilon \\
+    \prefixes(a) &= a \mid \epsilon \\
+    \prefixes(r \mid s) &= \prefixes(r) \mid \prefixes(s) \\
+    \prefixes(r \cdot s) &= \ldots \\
+    \prefixes(r^*) &= \ldots \\
+    \prefixes(r^+) &= \ldots
+  \end{align*}
+
+  \begin{enumerate}
+    \item Complete the definition of \(\prefixes\) above by filling in the
+    missing cases.
+    \item Use this definition to find:
+    \begin{enumerate}
+      \item \(\prefixes(ab^*c)\)
+      \item \(\prefixes((a \mid bc)^*)\)
+    \end{enumerate}
+  \end{enumerate}
+
+  \begin{solution}
+    The computation for \(\prefixes(\cdot)\) is similar to the computation of
+    \(\first(\cdot)\) for grammars.
+
+    \begin{enumerate}
+      \item The missing cases:
+      \begin{enumerate}
+        \item \(\prefixes(r \cdot s) = \prefixes(r) \mid r \cdot \prefixes(s)\).
+        Either we have read \(r\) partially, or we have read all of \(r\), and a
+        part of \(s\).
+        \item \(\prefixes(r^*) = r*\cdot\prefixes(r)\). We can
+        consider \(r^* = \epsilon \mid r \mid rr \mid \ldots\), and apply the
+        rules for union and concatenation. Intuitively, if the word has \(n \ge
+        0\) instances of \(r\), we can read \(m < n\) instances of \(r\), and
+        then a prefix of the next instance of \(r\).
+        \item \(\prefixes(r^+) = r^* \cdot \prefixes(r)\). Same as
+        previous. Why does the empty case still appear?
+      \end{enumerate}
+      \item The prefix computations are:
+      \begin{enumerate}
+        \item \(\prefixes(ab^*c) = \epsilon \mid a \mid ab^*(b \mid c \mid \epsilon)\). Computation:
+        \begin{align*}
+          \prefixes(ab^*c) &= \prefixes(a) \mid a\cdot\prefixes(b^*c) & [\text{concatenation}]\\
+                           &= (a \mid \epsilon) \mid a\cdot\prefixes(b^*c) &[a]\\
+                           &= (a \mid \epsilon) \mid a\cdot(\prefixes(b^*) \mid b^*\prefixes(c)) &[\text{concatenation}]\\
+                           &= (a \mid \epsilon) \mid a\cdot(\prefixes(b^*) \mid b^*(c \mid \epsilon)) &[c]\\
+                           &= (a \mid \epsilon) \mid a\cdot(b^*\prefixes(b) \mid b^*(c \mid \epsilon)) &[\text{star}]\\
+                           &= (a \mid \epsilon) \mid a\cdot(b^*(b \mid \epsilon) \mid b^*(c \mid \epsilon)) &[b]\\
+                           &= (a \mid \epsilon) \mid a\cdot(b^*(b \mid c \mid \epsilon)) &[\text{rewrite}]\\
+                           &= \epsilon \mid a \mid a\cdot(b^*(b \mid c \mid \epsilon)) & [\text{rewrite}]\\
+        \end{align*}
+        \item \(\prefixes((a \mid bc)^*) = (a \mid bc)^*(\epsilon \mid a \mid b \mid bc)\).
+      \end{enumerate}
+    \end{enumerate}
+  \end{solution}
+  
+\end{exercise}
