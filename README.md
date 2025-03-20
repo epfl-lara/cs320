@@ -36,19 +36,19 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
 |      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | Type Checking |
 |      | ..34.. | Fri | 21.03.2025 | 15:15 | ELA 2  | Lab 4 | Typer lab release |
-|
+|      |        |     |            |       |        |                           | 
 | 6    | ..34.. | Wed | 26.03.2025 | 13:15 | BC 01  | Exercises 4 | Parsing. Type checking |
 |      | ..34.. | Fri | 28.03.2025 | 13:15 | ELA 2  | Lecture 8 | Type Inference. Code generation |
 |      | ..34.. | Fri | 28.03.2025 | 15:15 | ELA 2  | Exercises 5 | Type checking |
-|
+|      |        |     |            |       |        |                           | 
 | 7    | ...4.. | Wed | 02.04.2025 | 13:15 | BC 01  | Exercise |  |
 |      | ...4.. | Fri | 04.04.2025 | 13:15 | ELA+CM | **EXAM** |  |
 |      | ...4.. | Fri | 04.04.2025 | 15:15 | ELA+CM | **EXAM** |  |
-|
+|      |        |     |            |       |        |                           | 
 | 8    | ...45. | Wed | 09.04.2025 | 13:15 | BC 01  | Lab 5 | Codegen lab release |
 |      | ...45. | Fri | 11.04.2025 | 13:15 | ELA 2  | Lecture 9 | Code generation |
 |      | ...45. | Fri | 11.04.2025 | 15:15 | ELA 2  | Lab 5 | Codegen lab |
-|
+|      |        |     |            |       |        |                           | 
 | 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | Codegen lab. Pick projects |
 |      |        | Fri | 18.04.2025 | 13:15 | ELA 2  | **HOLIDAY** |  |
 |      |        | Fri | 18.04.2025 | 15:15 | ELA 2  | **HOLIDAY** |  |
@@ -56,23 +56,23 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | -    |        | Wed | 23.04.2025 |       |        | **BREAK** |  |
 |      |        | Fri | 25.04.2025 |       |        | **BREAK** |  |
 |      |        | Fri | 25.04.2025 |       |        | **BREAK** |  |
-|
-| 10   | ....56 | Wed | 30.04.2025 | 13:15 | BC 01  | Labs | **Lab Check-Offs** |
-|      | ....56 | Fri | 02.05.2025 | 13:15 | ELA 2  | Labs | **Lab Check-Offs** |
+|      |        |     |            |       |        |                           | 
+| 10   | ....56 | Wed | 30.04.2025 | 13:15 | BC 01  | Labs | **Oral Lab Checks** |
+|      | ....56 | Fri | 02.05.2025 | 13:15 | ELA 2  | Labs | **Oral Lab Checks** |
 |      | ....56 | Fri | 02.05.2025 | 15:15 | ELA 2  | Lecture 10 | Parsing general grammars |
-|
+|      |        |     |            |       |        |                           | 
 | 11   | .....6 | Wed | 07.05.2025 | 13:15 | BC 01  | Lecture 11 | Compiler correctness |
 |      | .....6 | Fri | 09.05.2025 | 13:15 | ELA 2  | Labs |  |
 |      | .....6 | Fri | 09.05.2025 | 15:15 | ELA 2  | Labs |  |
-|
+|      |        |     |            |       |        |                           | 
 | 12   | .....6 | Wed | 14.05.2025 | 13:15 | BC 01  | Labs |  |
 |      | .....6 | Fri | 16.05.2025 | 13:15 | ELA 2  | Labs |  |
 |      | .....6 | Fri | 16.05.2025 | 15:15 | ELA 2  | Labs |  |
-|
+|      |        |     |            |       |        |                           | 
 | 13   | .....6 | Wed | 21.05.2025 | 13:15 | BC 01  |    | Project presentations |
 |      | .....6 | Fri | 23.05.2025 | 13:15 | ELA 2  |    | Project presentations |
 |      | .....6 | Fri | 23.05.2025 | 15:15 | ELA 2  |    | Project presentations |
-|
+|      |        |     |            |       |        |                           | 
 | 14   | .....6 | Wed | 28.05.2025 | 13:15 | BC 01  |    | Project presentations |
 |      | .....6 | Fri | 30.05.2025 | 13:15 | ELA 2  |    | Project presentations |
 |      | .....6 | Fri | 30.05.2025 | 15:15 | ELA 2  |    | Project presentations |
