@@ -52,7 +52,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | Codegen lab. Pick projects |
 |      |        | Fri | 18.04.2025 | 13:15 | ELA 2  | **HOLIDAY** |  |
 |      |        | Fri | 18.04.2025 | 15:15 | ELA 2  | **HOLIDAY** |  |
-|
+|      |        |     |            |       |        |                           | 
 | -    |        | Wed | 23.04.2025 |       |        | **BREAK** |  |
 |      |        | Fri | 25.04.2025 |       |        | **BREAK** |  |
 |      |        | Fri | 25.04.2025 |       |        | **BREAK** |  |
