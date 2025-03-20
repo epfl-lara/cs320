@@ -34,7 +34,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
-|      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | Type Checking |
+|      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | [Type Checking](https://mediaspace.epfl.ch/media/07-03%2C+Type+Rules%2C+Progress%2C+Preservation/0_znlmwvlt) [(PDF)](info/lectures/lec07-soundness.pdf), [Type Inference](https://mediaspace.epfl.ch/media/08-01%2C+Type+Inference/0_txnn92oh) [(PDF)](info/lectures/lec07-inference.pdf)  |
 |      | ..34.. | Fri | 21.03.2025 | 15:15 | ELA 2  | Lab 4 | Typer lab release |
 |      |        |     |            |       |        |                           | 
 | 6    | ..34.. | Wed | 26.03.2025 | 13:15 | BC 01  | Exercises 4 | Parsing. Type checking |
