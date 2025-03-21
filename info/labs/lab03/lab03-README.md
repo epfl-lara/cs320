@@ -135,6 +135,16 @@ parser interprets precedence and associativity. You can use it to test
 your parser, and it will also be used during our testing to compare the
 output of your parser with the reference parser.
 
+### Running your code
+
+To debug your parser, you will like to run your code to see the produced trees, or see the counter examples produced by scallion if your grammar is not LL(1). To do so, you can run the following command:
+
+    ```bash
+    sbt "run --printTrees <path-to-file>"
+    ```
+
+This will run the compiler pipeline up to the parser and print the nominal trees produced by your parser. This output is the same as the one in the test resources for the test cases.
+
 ## Skeleton
 
 As usual, you can find the skeleton in the git repository. This lab
