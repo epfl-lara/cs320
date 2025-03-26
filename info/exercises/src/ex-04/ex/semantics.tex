@@ -1,0 +1,332 @@
+
+
+\begin{exercise}{}
+
+  Consider the following expression language over naturals, and a \emph{halving}
+  operator:
+  %
+  \begin{align*}
+    expr ::= \half(expr) \mid expr + expr \mid \num
+  \end{align*}
+  where \(\num\) is any natural number constant \(\ge 0\).
+
+  We will design the operational semantics of this language. The semantics
+  should define rules that apply to as many expressions as possible, while being
+  subjected to the following safety conditions:
+  \begin{itemize}
+    \item the semantics should \emph{not} permit halving unless the argument is even
+    \item they should evaluate operands from left-to-right
+  \end{itemize}
+
+  Of the given rules below, choose a \emph{minimal} set that satisfies the
+  conditions above. A set is \emph{not} minimal if removing any rule does not
+  change the set of expressions that can be evaluated by the semantics, i.e. the
+  domain of \(\leadsto, \{x \mid \exists y.\; x \leadsto y\}\), remains
+  unchanged. The removed rule is said to be \emph{redundant}.
+
+  
+  % \begin{multicols}{2}
+    \allowdisplaybreaks
+    \addtolength{\jot}{2ex}
+    \begin{gather*}
+      \AxiomC{\(e \leadsto e'\)}
+      \UnaryInfC{\(\half(e) \leadsto e'\)}
+      \DisplayProof \tag{A} \\
+      %
+      \AxiomC{\(n\) is a value}
+      \AxiomC{\(n = 2k\)}
+      \BinaryInfC{\(\half(n) \leadsto k\)}
+      \DisplayProof \tag{B} \\
+      %
+      \AxiomC{\(n\) is a value}
+      \UnaryInfC{\(\half(n) \leadsto \lfloor \frac{n}{2} \rfloor\)}
+      \DisplayProof \tag{C} \\
+      %
+      \AxiomC{\(\half(e) \leadsto \half(e')\)}
+      \UnaryInfC{\(\half(e) \leadsto e'\)}
+      \DisplayProof \tag{D} \\
+      %
+      \AxiomC{\(e \leadsto e'\)}
+      \UnaryInfC{\(\half(e) \leadsto \half(e')\)}
+      \DisplayProof \tag{E} \\
+      %
+      \AxiomC{\(e' \leadsto \half(e)\)}
+      \UnaryInfC{\(half(e) \leadsto e'\)}
+      \DisplayProof \tag{F} \\
+      %
+      \AxiomC{\(n_1\) is a value}
+      \AxiomC{\(n_2\) is a value}
+      \AxiomC{\(n_1 + n_2 = k\)}
+      \AxiomC{\(n_1\) is odd}
+      \QuaternaryInfC{\(n_1 + n_2 \leadsto k\)}
+      \DisplayProof \tag{G} \\
+      %
+      \AxiomC{\(e \leadsto e'\)}
+      \AxiomC{\(n\) is a value}
+      \BinaryInfC{\(n + e \leadsto n + e'\)}
+      \DisplayProof \tag{H} \\
+      %
+      \AxiomC{\(e_2 \leadsto e_2'\)}
+      \UnaryInfC{\(e_1 + e_2 \leadsto e_1 + e_2'\)}
+      \DisplayProof \tag{I} \\
+      %
+      \AxiomC{\(n_1\) is a value}
+      \AxiomC{\(n_2\) is a value}
+      \AxiomC{\(n_1 + n_2 = k\)}
+      \AxiomC{\(n_1, n_2\) are even}
+      \QuaternaryInfC{\(n_1 + n_2 \leadsto k\)}
+      \DisplayProof \tag{J} \\
+      %
+      \AxiomC{\(n_1\) is a value}
+      \AxiomC{\(n_2\) is a value}
+      \AxiomC{\(n_1 + n_2 = k\)}
+      \TrinaryInfC{\(n_1 + n_2 \leadsto k\)}
+      \DisplayProof \tag{K} \\
+      %
+      \AxiomC{\(e_1 \leadsto e_1'\)}
+      \UnaryInfC{\(e_1 + e_2 \leadsto e_1' + e_2\)}
+      \DisplayProof \tag{L} 
+    \end{gather*}
+  % \end{multicols}
+
+  \begin{solution}
+    A possible such minimal set of rules is \(\{B, E, H, K, L\}\). % TODO:
+
+    On what happens when the other rules are added to this set:
+    \begin{itemize}
+      \item A: incorrect; allows deducing \(\half(\half(10)) \leadsto 5\) with
+      rule B.
+      \item C: incorrect; allows deducing \(\half(3) \leadsto 1\).
+      \item D: incorrect; allows deducing \(\half(\half(10)) \leadsto 5\) with
+      rules B and E.
+      \item F: redundant; reverses a reduction.
+      \item G: redundant; special case of rule K.
+      \item I: incorrect; does not reduce the expression left-to-right.
+      \item J: redundant; special case of rule K.
+    \end{itemize}
+  \end{solution}
+
+\end{exercise}
+
+\begin{exercise}{}
+
+  Consider a simple programming language with integer arithmetic, boolean
+  expressions, and user-defined functions:
+
+  \begin{align*}
+    expr ::= &~ true \mid false \mid \num \\
+             &~ expr == expr \mid expr + expr \\
+             &~ expr ~\&\& ~expr \mid if ~(expr) ~expr ~else ~expr \\
+             &~ f(expr, \ldots, expr) \mid x
+  \end{align*}
+  %
+  where \(f\) represents a (user-defined) function, \(x\) represents a
+  variable, and \(\num\) represents an integer.
+
+  \begin{enumerate}
+    \item Inductively define a substitution operation for the terms in this
+      language, which replaces every free occurrence of a variable \(x\) with a
+      given expression \(e\).
+
+      The rule for substitution in an addition is provided as an example. Here,
+      \(t[x := e]\) represents the term \(t\), with every free occurrence of \(x\)
+      simultaneously replaced by \(e\).
+
+      \begin{equation*}
+        \AxiomC{\(t_1[x := e] \to t_1'\)}
+        \AxiomC{\(t_2[x := e] \to t_2'\)}
+        \BinaryInfC{\(t_1 + t_2[x := e] \to t_1' + t_2'\)}
+        \DisplayProof
+      \end{equation*}
+
+    \item Write the rules for the operational semantics for this language,
+    assuming \emph{call-by-name} semantics for function calls. In call-by-name
+    semantics, function arguments are not evaluated before the call. Instead,
+    the parameters are merely substituted into the function body.
+
+    \item Under the following environment (with function names, parameters, and
+    bodies):
+      \begin{gather*}
+        (sum, [x], if ~ (x == 0) ~ then ~ 0 ~ else ~ x + sum(x + (-1))) \\
+        (rec, [~], rec()) \\
+        (default, [b, x], if ~ b ~ then ~ x ~ else ~ 0)
+      \end{gather*}
+
+      evaluate each of the following expressions, showing the derivations:
+      \begin{enumerate}
+        \item \(sum(2)\)
+        \item \(if ~(1 == 2) ~ then ~ 3 ~ else ~ 4\)
+        \item \(sum(sum(0))\)
+        \item \(rec()\)
+        \item \(default(false, rec())\)
+      \end{enumerate}
+
+      How would the evaluations in each case change if we used \emph{call-by-value}
+      semantics instead?
+  \end{enumerate}
+
+  \begin{solution}
+    \allowdisplaybreaks
+
+    \begin{enumerate}
+      \item Substitution rules:
+      \begin{gather*}
+        \AxiomC{}
+        \UnaryInfC{\(true[x := e] \to true\)}
+        \DisplayProof \\
+        %
+        \AxiomC{}
+        \UnaryInfC{\(false[x := e] \to false\)}
+        \DisplayProof \\
+        %
+        \AxiomC{}
+        \UnaryInfC{\(\num[x := e] \to \num\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(t_1[x := e] \to t_1'\)}
+        \AxiomC{\(t_2[x := e] \to t_2'\)}
+        \BinaryInfC{\(t_1 == t_2[x := e] \to t_1' == t_2'\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(t_1[x := e] \to t_1'\)}
+        \AxiomC{\(t_2[x := e] \to t_2'\)}
+        \BinaryInfC{\(t_1 + t_2[x := e] \to t_1' + t_2'\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(t_1[x := e] \to t_1'\)}
+        \AxiomC{\(t_2[x := e] \to t_2'\)}
+        \BinaryInfC{\(t_1 ~\&\& ~t_2[x := e] \to t_1' ~\&\& ~t_2'\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(t_1[x := e] \to t_1'\)}
+        \AxiomC{\(t_2[x := e] \to t_2'\)}
+        \AxiomC{\(t_3[x := e] \to t_3'\)}
+        \TrinaryInfC{\(if ~(t_1) ~t_2 ~else ~t_3[x := e] \to if ~(t_1') ~t_2' ~else ~t_3'\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(t_1[x := e] \to t_1'\)}
+        \AxiomC{\(\ldots\)}
+        \AxiomC{\(t_n[x := e] \to t_3'\)}
+        \TrinaryInfC{\(f(t_1, \ldots, t_n)[x := e] \to f(t_1', \ldots, t_n')\)}
+        \DisplayProof \\
+        %
+        \AxiomC{}
+        \UnaryInfC{\(x[x := e] \to e\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(x \neq y\)}
+        \UnaryInfC{\(y[x := e] \to y\)}
+        \DisplayProof
+      \end{gather*}
+
+      \item Operational semantics:
+      \begin{itemize}
+        \item Equality:
+          \begin{gather*}
+            \AxiomC{\(n_1, n_2\) are integer values}
+            \AxiomC{\(n_1 = n_2\)}
+            \BinaryInfC{\(n_1 == n_2 \leadsto true\)}
+            \DisplayProof \\
+            %
+            \AxiomC{\(n_1, n_2\) are integer values}
+            \AxiomC{\(n_1 \neq n_2\)}
+            \BinaryInfC{\(n_1 == n_2 \leadsto false\)}
+            \DisplayProof
+          \end{gather*}
+        \item Addition:
+          \begin{gather*}
+            \AxiomC{\(t_1 \leadsto t_1'\)}
+            \UnaryInfC{\(t_1 + t_2 \leadsto t_1' + t_2\)}
+            \DisplayProof \\
+            %
+            \AxiomC{\(n\) is an integer value}
+            \AxiomC{\(t_2 \leadsto t_2'\)}
+            \BinaryInfC{\(n + t_2 \leadsto n + t_2'\)}
+            \DisplayProof \\
+            %
+            \AxiomC{\(n_1, n_2\) are integer values}
+            \AxiomC{\(n_1 + n_2 = k\)}
+            \BinaryInfC{\(n_1 + n_2 \leadsto k\)}
+            \DisplayProof
+          \end{gather*}
+        \item Conjunction:
+          \begin{gather*}
+            \AxiomC{\(t_1 \leadsto t_1'\)}
+            \UnaryInfC{\(t_1 ~\&\& ~t_2 \leadsto t_1' ~\&\& ~t_2\)}
+            \DisplayProof \\
+            %
+            \AxiomC{}
+            \UnaryInfC{\(true ~\&\&~ t \leadsto t\)}
+            \DisplayProof \\
+            %
+            \AxiomC{}
+            \UnaryInfC{\(false ~\&\&~ t \leadsto false\)}
+            \DisplayProof
+          \end{gather*}
+        \item Conditionals:
+          \begin{gather*}
+            \AxiomC{\(t_1 \leadsto t_1'\)}
+            \UnaryInfC{\(if ~(t_1) ~t_2 ~else ~t_3 \leadsto if ~(t_1') ~t_2 ~else ~t_3\)}
+            \DisplayProof \\
+            %
+            \AxiomC{}
+            \UnaryInfC{\(if ~(true) ~t_2 ~else ~t_3 \leadsto t_2\)}
+            \DisplayProof \\
+            %
+            \AxiomC{}
+            \UnaryInfC{\(if ~(false) ~t_2 ~else ~t_3 \leadsto t_3\)}
+            \DisplayProof
+          \end{gather*}
+        \item Function call:
+          \begin{gather*}
+            \alwaysNoLine
+            \AxiomC{\(b_0\) is the body of \(f\)}
+            \UnaryInfC{\((x_1, \ldots, x_n)\) are parameters of \(f\)}
+            \UnaryInfC{\(b_0[x_1 := t_1] \to b_1 \quad \ldots \quad b_{n-1}[x_n := t_n] \to b_n\)}
+            \alwaysSingleLine
+            \UnaryInfC{\(f(t_1, \ldots, t_n) \leadsto b_n\)}
+            \DisplayProof
+          \end{gather*}
+      \end{itemize}
+
+      \item Evaluations:
+      \begin{enumerate}
+        \item \(sum(2) \leadsto 3\):
+          \begin{align*}
+            &sum(2)\\
+            &\leadsto if ~(2 == 0) ~ then ~ 0 ~ else ~ 2 + sum(2 + (-1))\\
+            &\leadsto if ~(false) ~ then ~ 0 ~ else ~ 2 + sum(2 + (-1))\\
+            &\leadsto 2 + sum(2 + (-1))\\
+            &\leadsto 2 + if ~((2 + (-1)) == 0) ~ then ~ 0 ~ else ~ 1 + sum(2 + (-1))\\
+            &\leadsto 2 + if ~(1 == 0) ~ then ~ 0 ~ else ~ 1 + sum(2 + (-1))\\
+            &\leadsto 2 + if ~(false) ~ then ~ 0 ~ else ~ 1 + sum(2 + (-1) + (-1))\\
+            &\leadsto 2 + (1 + sum(2 + (-1) + (-1)))\\
+            & \ldots \\
+            &\leadsto 2 + (1 + 0) \\
+            &\leadsto 2 + 1 \\
+            &\leadsto 3
+          \end{align*}
+        \item \(sum(sum(0)) \leadsto 0\):
+        \begin{align*}
+          &sum(sum(0))\\
+          &\leadsto if ~(sum(0) == 0) ~ then ~ 0 ~ else ~ 0 + sum(sum(0) + (-1))\\
+          &\leadsto \ldots \textit{(expand \(sum(0)\) in the conditional)} \\
+          &\leadsto if ~(0 == 0) ~ then ~ 0 ~ else ~ 0 + sum(sum(0) + (-1))\\
+          &\leadsto if ~(true) ~ then ~ 0 ~ else ~ 0 + sum(sum(0) + (-1))\\
+          &\leadsto 0
+        \end{align*}
+        \item \(if ~(1 == 2) ~ then ~ 3 ~ else ~ 4 \leadsto 4\).
+        \item \(rec() \leadsto rec()\) (infinite loop).
+        \item \(default(false, rec()) \leadsto 0\).
+      \end{enumerate}
+
+      Under call-by-value-semantics, the structure of the evaluations would be
+      different. In \(sum(sum(0))\), we would evaluate the inner \(sum(0)\) to
+      \(0\) before evaluating the outer \(sum(\cdot)\). In \(default(false,
+      rec())\), we would need to evaluate \(rec()\), which would lead to an
+      infinite loop.
+    \end{enumerate}
+        
+  \end{solution}
+  
+\end{exercise}

@@ -1,0 +1,226 @@
+
+% perform actual type derivation of some terms
+
+\begin{exercise}{}
+
+  Consider the following type system for a language with integers, conditionals, pairs, and
+  functions:
+
+  \allowdisplaybreaks
+  \addtolength{\jot}{0.5em}
+  \begin{gather*}
+    \AxiomC{\(n\) is an integer literal}
+    \UnaryInfC{\(\Gamma \vdash n : \lstinline|Int|\)}
+    \DisplayProof \quad
+    % variable
+    \AxiomC{\(x : \tau \in \Gamma\)}
+    \UnaryInfC{\(\Gamma \vdash x : \tau\)}
+    \DisplayProof \\
+    %
+    % addition
+    \AxiomC{\(\Gamma \vdash e_1 : \lstinline|Int|\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \lstinline|Int|\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 + e_2 : \lstinline|Int|\)}
+    \DisplayProof \\
+    %
+    % multiplication
+    \AxiomC{\(\Gamma \vdash e_1 : \lstinline|Int|\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \lstinline|Int|\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 \times e_2 : \lstinline|Int|\)}
+    \DisplayProof \\
+    %
+    % booleans
+    \AxiomC{\(b\) is a boolean literal}
+    \UnaryInfC{\(\Gamma \vdash b : \lstinline|Bool|\)}
+    \DisplayProof \quad
+    \AxiomC{\(\Gamma \vdash e : \lstinline|Bool|\)}
+    \UnaryInfC{\(\Gamma \vdash \lstinline|not e| : \lstinline|Bool|\)}
+    \DisplayProof \\
+    % boolean ops
+    \AxiomC{\(\Gamma \vdash e_1 : \lstinline|Bool|\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \lstinline|Bool|\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 \land e_2 : \lstinline|Bool|\)}
+    \DisplayProof
+    \quad
+    \AxiomC{\(\Gamma \vdash e_1 : \lstinline|Bool|\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \lstinline|Bool|\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 \lor e_2 : \lstinline|Bool|\)}
+    \DisplayProof \\
+    %
+    % conditionals
+    \AxiomC{\(\Gamma \vdash e_1 : \lstinline|Bool|\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \tau\)}
+    \AxiomC{\(\Gamma \vdash e_3 : \tau\)}
+    \TrinaryInfC{\(\Gamma \vdash if ~e_1~ then ~e_2~ else ~e_3 : \tau\)}
+    \DisplayProof \\
+    % pairs
+    \AxiomC{\(\Gamma \vdash e_1 : \tau_1\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \tau_2\)}
+    \BinaryInfC{\(\Gamma \vdash (e_1, e_2) : (\tau_1, \tau_2)\)}
+    \DisplayProof \\
+    %
+    % projections
+    \AxiomC{\(\Gamma \vdash e : (\tau_1, \tau_2)\)}
+    \UnaryInfC{\(\Gamma \vdash fst(e) : \tau_1\)}
+    \DisplayProof
+    \quad
+    \AxiomC{\(\Gamma \vdash e : (\tau_1, \tau_2)\)}
+    \UnaryInfC{\(\Gamma \vdash snd(e) : \tau_2\)}
+    \DisplayProof \\
+    %
+    % function
+    \AxiomC{\(\Gamma \oplus \{x : \tau_1\} \vdash e : \tau_2\)}
+    \UnaryInfC{\(\Gamma \vdash x \Rightarrow e : \tau_1 \to \tau_2\)}
+    \DisplayProof \quad
+    %
+    % application
+    \AxiomC{\(\Gamma \vdash e_1 : \tau_1 \to \tau_2\)}
+    \AxiomC{\(\Gamma \vdash e_2 : \tau_1\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 e_2 : \tau_2\)}
+    \DisplayProof
+    %
+  \end{gather*}
+
+  \pagebreak
+
+  \begin{enumerate}
+    \item Given the following type derivation with type variables \(\tau_1,
+    \ldots, \tau_5\), choose the correct options:
+    \begin{equation*}
+      \AxiomC{\((x, \tau_4) \in \Gamma\)}
+      \UnaryInfC{\(\Gamma \vdash x: \tau_4\)}
+      \UnaryInfC{\(\Gamma \vdash fst(x): \tau_3\)}
+      \AxiomC{\((x, \tau_4) \in \Gamma\)}
+      \UnaryInfC{\(\Gamma \vdash x: \tau_4\)}
+      \UnaryInfC{\(\Gamma \vdash snd(x): \tau_5\)}
+      \BinaryInfC{\(\Gamma \vdash fst(x)(snd(x)) : \tau_2\)}
+      \UnaryInfC{\(\Gamma' \vdash x \Rightarrow fst(x)(snd(x)): \tau_1\)}
+      \DisplayProof
+    \end{equation*}
+
+    \begin{enumerate}
+      \item There are no valid assignments to the type variables such that the
+      above derivation is valid.
+      \item In all valid derivations, \(\tau_2 = \tau_5\).
+      \item There are \emph{no} valid derivations where \(\tau_2 = \lstinline|Int|\).
+      \item In all valid derivations, \(\tau_4 = (\tau_3, \tau_5)\)
+      \item In all valid derivations, \(\tau_2 = \tau_4 \to \tau_1\)
+      \item There is a valid derivation where \(\tau_1 = \tau_2\).
+    \end{enumerate}
+    \item For each of the following pairs of terms and types, provide a valid
+    type derivation or briefly argue why the typing is incorrect:
+    \begin{enumerate}
+      \item \(x \Rightarrow x + 5\): \lstinline|Int| \(\to\) \lstinline|Int|
+      \item \(x \Rightarrow y \Rightarrow x + y\): \lstinline|Int| \(\to\)
+      \lstinline|Int| \(\to\) \lstinline|Int|
+      \item \(x \Rightarrow y \Rightarrow y(2) \times x\): \lstinline|Int| \(\to\)
+      \lstinline|Int| \(\to\) \lstinline|Int|
+      \item \(x \Rightarrow (x, x)\): \lstinline|Int| \(\to\) \lstinline|(Int, Int)|
+      \item \(x \Rightarrow y \Rightarrow if ~fst(x) ~then ~snd(x) ~else~ y\): \lstinline|(Bool, Int)| \(\to\) \lstinline|(Int, Int)| \(\to\) \lstinline|Int|
+      \item \(x \Rightarrow y \Rightarrow if ~y~ then~ (z \Rightarrow y) ~else~ x \): (\lstinline|Bool| \(\to\) \lstinline|Bool|) \(\to\) \lstinline|Bool| \(\to\) (\lstinline|Bool| \(\to\) \lstinline|Bool|)
+      \item \(x \Rightarrow y \Rightarrow if ~y~ then~ (z \Rightarrow y) ~else~ x \): (\lstinline|Int| \(\to\) \lstinline|Bool|) \(\to\) \lstinline|Bool| \(\to\) (\lstinline|Int| \(\to\) \lstinline|Bool|)
+    \end{enumerate}
+
+    \item Prove that there is \emph{no} valid type derivation for the term
+    \begin{equation*}
+      x \Rightarrow if~ fst(x) ~then~ snd(x)~ else~ x
+    \end{equation*}
+  \end{enumerate}
+
+  \begin{solution}
+
+    \begin{enumerate}
+      \item The correct statements are d and e. For the remaining:
+      \begin{itemize}
+        \item \textbf{a}: set \(\tau_2 = \lstinline|Int|\), \(\tau_5 =
+        \lstinline|Bool|\), \(\tau_3 = \tau_5 \to \tau_2\), \(\tau_4 = (\tau_3,
+        \tau_5)\), and \(\tau_1 = \tau_4 \to \tau_2\).
+        \item \textbf{b}: see (a).
+        \item \textbf{c}: see (a).
+        \item \textbf{f}: given \(\tau_1 = \tau_2\), we also know from the rule
+        for lambda abstraction that \(\tau_1 = \tau_4 \to \tau_2\), and hence
+        \(\tau_2 = \tau_4 \to \tau_2\) recursively, which is a contradiction.
+      \end{itemize}
+
+      \item For the given terms and types:
+      \begin{enumerate}
+        \item \(x \Rightarrow x + 5\): \lstinline|Int| \(\to\) \lstinline|Int|: \cmark
+        \begin{equation*}
+          \AxiomC{\(x : \lstinline|Int| \in \Gamma\)}
+          \UnaryInfC{\(\Gamma \vdash x : \lstinline|Int|\)}
+          \AxiomC{}
+          \UnaryInfC{\(\Gamma \vdash 5 : \lstinline|Int|\)}
+          \BinaryInfC{\(\Gamma \vdash x + 5 : \lstinline|Int|\)}
+          \UnaryInfC{\(\Gamma' \vdash x \Rightarrow x + 5 : \lstinline|Int| \to \lstinline|Int|\)}
+          \DisplayProof
+        \end{equation*}
+        \item \(x \Rightarrow y \Rightarrow x + y\): \lstinline|Int| \(\to\)
+        \lstinline|Int| \(\to\) \lstinline|Int|: \cmark
+        \item \(x \Rightarrow y \Rightarrow y(2) \times x\): \lstinline|Int|
+        \(\to\) \lstinline|Int| \(\to\) \lstinline|Int|: \xmark. If \(y\) has
+        type \lstinline|Int|, then \(y(2)\) cannot not well-typed, as the
+        function application rule is not applicable.
+        \item \(x \Rightarrow (x, x)\): \lstinline|Int| \(\to\) \lstinline|(Int, Int)|: \cmark
+        \item \(x \Rightarrow y \Rightarrow if ~fst(x) ~then ~snd(x) ~else~ y\):
+        \lstinline|(Bool, Int)| \(\to\) \lstinline|(Int, Int)| \(\to\)
+        \lstinline|Int|: \xmark. The type of the two branches of a conditional
+        must match, but here they are \lstinline|Int| and (\lstinline|Int|,
+        \lstinline|Int|) respectively.
+        \item \(x \Rightarrow y \Rightarrow if ~y~ then~ (z \Rightarrow y) ~else~ x \): (\lstinline|Bool| \(\to\) \lstinline|Bool|) \(\to\) \lstinline|Bool| \(\to\) (\lstinline|Bool| \(\to\) \lstinline|Bool|): \cmark
+        \begin{equation*}
+          \AxiomC{\((y, \lstinline|Bool|) \in \Gamma\)}
+          \UnaryInfC{\(\Gamma \vdash y : \lstinline|Bool|\)}
+          \AxiomC{\((x, \lstinline|Bool| \to \lstinline|Bool|) \in \Gamma\)}
+          \UnaryInfC{\(\Gamma \vdash x : \lstinline|Bool| \to \lstinline|Bool|\)}
+          \AxiomC{\((y, \lstinline|Bool|) \in \Gamma \oplus \{(z, \lstinline|Bool|)\}\)}
+          \UnaryInfC{\(\Gamma \oplus \{(z, \lstinline|Bool|)\} \vdash y : \lstinline|Bool|\)}
+          \UnaryInfC{\(\Gamma \vdash z \Rightarrow y : \lstinline|Bool| \to \lstinline|Bool|\)}
+          \TrinaryInfC{\(\Gamma \vdash if ~y~ then~ (z \Rightarrow y) ~else~ x : \lstinline|Bool| \to \lstinline|Bool|\)}
+          \UnaryInfC{\(\Gamma' \vdash y \Rightarrow if ~y~ then~ (z \Rightarrow y) ~else~ x : (\lstinline|Bool| \to \lstinline|Bool|) \to \lstinline|Bool| \to (\lstinline|Bool| \to \lstinline|Bool|)\)}
+          \UnaryInfC{\(\Gamma'' \vdash x \Rightarrow y \Rightarrow if ~y~ then~ (z \Rightarrow y) ~else~ x : (\lstinline|Bool| \to \lstinline|Bool|) \to \lstinline|Bool| \to (\lstinline|Bool| \to \lstinline|Bool|)\)}
+          \DisplayProof
+        \end{equation*}
+        Note that the choice of type of \(z\) (and of the argument of \(x\)) is
+        arbitrary. Hence, the next typing is also valid.
+        \item \(x \Rightarrow y \Rightarrow if ~y~ then~ (z \Rightarrow y) ~else~ x \): (\lstinline|Int| \(\to\) \lstinline|Bool|) \(\to\) \lstinline|Bool| \(\to\) (\lstinline|Int| \(\to\) \lstinline|Bool|): \cmark
+      \end{enumerate}
+      \item Non-existence of a valid type derivation for the term:
+      \begin{equation*}
+        t = x \Rightarrow if~ fst(x) ~then~ snd(x)~ else~ x
+      \end{equation*}
+      Assume that there is a valid type derivation for the term. We will attempt
+      to derive a contradiction. We use the fact that if there exists a type
+      derivation, every step must use one of the rules above, and that the types
+      assigned to each variable must be consistent across the derivation.
+      
+      First, \(t\) has a type derivation \emph{if and only if} \(t_1 = if ~
+      fst(x)~then~snd(x)~else~x\) has a type derivation, by using the function
+      abstraction rule. We will work with \(t_1\) directly. The function
+      abstraction rule here does not give us more information.
+
+      Any type derivation for \(t_1\) must end in the conditional rule. For this
+      rule to be applicable, we must have that the following are derivable:
+      \begin{enumerate}
+        \item \(\Gamma \vdash fst(x) : \lstinline|Bool|\)
+        \item \(\Gamma \vdash snd(x) : \tau\)
+        \item \(\Gamma \vdash x : \tau\)
+      \end{enumerate}
+      where the type variable \(\tau\) is also the type of \(t_1\).
+
+      By using the projection rule on (a) and (b), we learn that the type of
+      \(x\) must be \((\lstinline|Bool|, \tau_1)\) and \((\tau_2, \tau)\) for
+      two fresh variables \(\tau_1\) and \(\tau_2\) respectively. Matching the
+      two, as \(x\) may only have one type, we must have \(\tau_1 = \tau\),
+      \(\tau_2 = \lstinline|Bool|\), and thus the type of \(x\) is
+      \((\lstinline|Bool|, \tau)\).
+
+      However, from (c), we learn that the type of \(x\) is \(\tau\). It must be
+      the case that \(\tau = (\lstinline|Bool|, \tau)\). This is not possible
+      for any type \(\tau\), and we have a contradiction.
+
+      Hence, there is no valid type derivation for the term \(t\).
+    \end{enumerate}
+    
+  \end{solution}
+
+\end{exercise}
