@@ -1,0 +1,34 @@
+\documentclass[a4paper]{article}
+
+\input{../macro}
+
+\ifdefined\ANSWERS
+  \if\ANSWERS1
+    \printanswers
+  \fi
+\fi
+
+\DeclareMathOperator{\half}{half}
+\newcommand{\num}{\ensuremath{\mathbf{num}}}
+
+\title{CS 320 \\ Computer Language Processing\\Exercise Set 4}
+\author{}
+\date{March 26, 2025}
+
+\begin{document}
+\maketitle
+
+% inductive relations
+%% grammars as inductive relations
+\input{ex/grammar}
+
+% operational semantics
+%% old ex 5 problems 1 and 2
+\input{ex/semantics}
+
+% type systems
+%% type derivations
+%% type system exte
+\input{ex/types}
+
+\end{document}

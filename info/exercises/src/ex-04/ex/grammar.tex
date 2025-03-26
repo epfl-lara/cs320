@@ -1,0 +1,263 @@
+
+\begin{exercise}{}
+  For each of the following pairs of grammars, show that they are equivalent by
+  identifying them with inductive relations, and proving that the inductive
+  relations contain the same elements.
+
+  \begin{enumerate}
+    \item 
+    \(A_1 : S ::= S + S \mid \num \) \\ 
+    \(A_2 : R ::= \num ~R' \text{ and } R' ::= + R~ R' \mid \epsilon\)
+    \item 
+    \(B_1 : S ::= S(S)S \mid \epsilon \) \\ 
+    \(B_2 : R ::= RR \mid (R) \epsilon\)
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item \(A_2\) is the result of left-recursion elimination on \(A_1\).
+      First, expressing them as inductive relations, with rules named as on the
+      right:
+      %
+      \addtolength{\jot}{1ex}
+      \begin{gather*}
+        \AxiomC{\phantom{\(w_1 \in S\)}}
+        \RightLabel{\(S_{num}\)}
+        \UnaryInfC{\(\num \in S\)}
+        \DisplayProof 
+        \quad
+        \AxiomC{\(w_1 \in S\)}
+        \AxiomC{\(w_2 \in S\)}
+        \RightLabel{\(S_+\)}
+        \BinaryInfC{\(w_1 + w_2 \in S\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(w \in S\)}
+        \RightLabel{\(A_{1}^{start}\)}
+        \UnaryInfC{\(w \in A_1\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(w \in R'\)}
+        \RightLabel{\(R_{num}\)}
+        \UnaryInfC{\(\num~ w\in R\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(w \in R\)}
+        \AxiomC{\(w' \in R'\)}
+        \RightLabel{\(R'_{+}\)}
+        \BinaryInfC{\(+w ~ w' \in R'\)}
+        \DisplayProof 
+        \quad
+        \AxiomC{\phantom{\(w' \in R'\)}}
+        \RightLabel{\(R'_{\epsilon}\)}
+        \UnaryInfC{\(\epsilon \in R'\)}
+        \DisplayProof \\
+        %
+        \AxiomC{\(w \in R\)}
+        \RightLabel{\(A_{2}^{start}\)}
+        \UnaryInfC{\(w \in A_2\)}
+        \DisplayProof
+      \end{gather*}
+
+      We must show that for any word \(w\), \(w \in A_1\) if and only if \(w \in
+      A_2\). For this, it must be the case that there is a derivation tree for
+      \(w \in A_1\) (equivalently, \(w \in S\)) if and only if there is a
+      derivation tree for \(w \in A_2\) (equivalently, \(w \in R\)) according to
+      the inference rules above.
+      \begin{enumerate}
+        \item \(w \in S \implies w \in R\): we induct on the depth of the
+        derivation tree. 
+        \begin{itemize}
+          \item Base case: derivation tree of depth 1. The tree must be
+          \begin{gather*}
+            \AxiomC{}
+            \RightLabel{\(S_{num}\)}
+            \UnaryInfC{\(\num \in S\)}
+            \DisplayProof
+          \end{gather*}
+          We can show that there is a corresponding derivation tree for \(w \in R\):
+          \begin{gather*}
+            \AxiomC{}
+            \RightLabel{\(R'_{\epsilon}\)}
+            \UnaryInfC{\(\epsilon \in R'\)}
+            \RightLabel{\(R_{num}\)}
+            \UnaryInfC{\(\num \in R\)}
+            \DisplayProof
+          \end{gather*}
+          \item Inductive case: derivation tree of depth \(n+1\), given that for
+          every derivation of depth \( \le n\) of \(w' \in S\) for any \(w'\), there
+          is a corresponding derivation of \(w' \in R\). The last rule applied
+          in the derivation must be \(S_+\):
+          \begin{gather*}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_1 \in S\)}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_2 \in S\)}
+            \RightLabel{\(S_+\)}
+            \BinaryInfC{\(w_1 + w_2 \in S\)}
+            \DisplayProof
+          \end{gather*}
+          By the inductive hypothesis, since \(w_1 \in S\) and \(w_2 \in S\)
+          have a derivation tree of smaller depth, there are derivation trees
+          for \(w_1 \in R\) and \(w_2 \in R\). In particular, the derivation for
+          \(w_1 \in R\) must end with the rule \(R_{num}\) (only case), so there
+          must be a derivation tree for \(\num ~w_1' \in R\) with \(w_1' \in
+          R'\) and \(num~w_1' = w_1\). We have the following pieces:
+          \begin{gather*}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_1' \in R'\)}
+            \RightLabel{\(R_{num}\)}
+            \UnaryInfC{\(\num ~w_1' \in R\)}
+            \DisplayProof
+            \quad
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_2 \in R\)}
+            \DisplayProof
+          \end{gather*}
+          To show that \(w_1 + w_2 \in R\), i.e. \(\num ~w_1' + w_2 \in R\), we
+          must first show that \(w_1' + w_2 \in R'\), as required by the rule
+          \(R_{num}\). Note that words in \(R'\) are of the form \((+ \num)^*\).
+          We will prove this separately for all pairs of words at the end
+          (\(R'_{Lemma}\)). Knowing this, however, we can construct the
+          derivation tree for \(w_1 + w_2 \in R\):
+          \begin{gather*}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_1' \in R'\)}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_2 \in R\)}
+            \RightLabel{\(R'_{Lemma}\)}
+            \BinaryInfC{\(w_1' + w_2 \in R'\)}
+            \RightLabel{\(R_{num}\)}
+            \UnaryInfC{\(\num ~w_1' + w_2 \in R\)}
+            \DisplayProof
+          \end{gather*}
+          \(\num ~w_1' + w_2 = w_1 + w_2 = w\), as required.
+
+          Finally, we will show the required lemma. We will prove a stronger
+          property \(R'_{concat}\) first, that for any pair of words \(w_1, w_2
+          \in R'\), \(w_1 ~w_2 \in R'\) as well. We induct on the derivation of
+          \(w_1 \in R'\).
+          
+          Base case: derivation ends with \(R'_\epsilon\). Then \(w_1 =
+          \epsilon\), and \(w_1 ~w_2 = w_2 \in R'\) by assumption. 
+          
+          Inductive case: derivation ends with \(R'_+\). Then \(w_1 = + v v'\)
+          for some \(v \in R\) and \(v' \in R'\):
+          \begin{gather*}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(v \in R\)}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(v' \in R'\)}
+            \RightLabel{\(R'_+\)}
+            \BinaryInfC{\(+ v ~v' \in R'\)}
+            \DisplayProof
+          \end{gather*}
+
+          Since \(v' \in R'\) has a smaller derivation tree than \(w_1\), by the
+          inductive hypothesis, we can prove that \(v'~w_2 \in R'\). We get:
+          \begin{gather*}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(v \in R\)}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(v' \in R'\)}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_2 \in R'\)}
+            \RightLabel{\(R'_{concat}\)}
+            \BinaryInfC{\(v' ~w_2 \in R'\)}
+            \RightLabel{\(R'_+\)}
+            \BinaryInfC{\(+ v ~v' ~w_2 \in R'\)}
+            \DisplayProof
+          \end{gather*}
+
+          So, \(R'_{concat}\) is proven. We can show \(R'_{lemma}\), i.e. \(w_1'
+          + w_2 \in R'\) if \(w_1' \in R'\) and \(w_2 \in R\) as:
+          \begin{gather*}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_1' \in R'\)}
+            \AxiomC{\ldots}
+            \UnaryInfC{\(w_2 \in R\)}
+            \AxiomC{}
+            \RightLabel{\(R'_\epsilon\)}
+            \UnaryInfC{\(\epsilon \in R'\)}
+            \RightLabel{\(R'_+\)}
+            \BinaryInfC{\(+ w_2 \in R'\)}
+            \RightLabel{\(R'_{concat}\)}
+            \BinaryInfC{\(w_1' + w_2 \in R'\)}
+            \DisplayProof
+          \end{gather*}
+
+          Thus, the proof is complete.
+      \end{itemize}
+      \item \(w \in R \implies w \in S\): we induct on the depth of the
+      derivation tree for \(w \in R\). This direction is simpler than the other,
+      but the general method is similar.
+      
+      \begin{itemize}
+        \item Base case: derivation tree of depth 2 (minimum). The tree must be
+        \begin{gather*}
+          \AxiomC{}
+          \RightLabel{\(R'_{\epsilon}\)}
+          \UnaryInfC{\(\epsilon \in R'\)}
+          \RightLabel{\(R_{num}\)}
+          \UnaryInfC{\(\num \in R\)}
+          \DisplayProof
+        \end{gather*}
+  
+        We have the corresponding derivation tree for \(w \in S\):
+        \begin{gather*}
+          \AxiomC{}
+          \RightLabel{\(S_{num}\)}
+          \UnaryInfC{\(\num \in S\)}
+          \DisplayProof
+        \end{gather*}
+  
+        \item Inductive case: derivation tree of depth \(n+1\), given that for
+        every derivation of depth \(\le n\) of \(w' \in R\) for any \(w'\),
+        there is a corresponding derivation of \(w' \in S\). The last rules
+        applied must be \(R_{num}\) and \(R'_{+}\) (otherwise the derivation
+        would be of the base case):
+        \begin{gather*}
+          \AxiomC{\ldots}
+          \UnaryInfC{\(w_1 \in R\)}
+          \AxiomC{\ldots}
+          \UnaryInfC{\(w_2 \in R'\)}
+          \RightLabel{\(R'_{+}\)}
+          \BinaryInfC{\(+ w_1 ~w_2 \in R'\)}
+          \RightLabel{\(R_{num}\)}
+          \UnaryInfC{\(\num + w_1~ w_2 \in R\)}
+          \DisplayProof
+        \end{gather*}
+        %
+        where \(w = \num + w_1 ~w_2\). However, we are somewhat stuck here, as
+        we have no way to relate \(R'\) and \(S\). We will separately show that
+        if \(+w' \in R'\), then there is a derivation of \(w' in S\) (lemma
+        \(R'_{S}\)). This will allow us to complete the proof:
+        \begin{gather*}
+          \AxiomC{}
+          \RightLabel{\(S_{num}\)}
+          \UnaryInfC{\(\num \in S\)}
+          \AxiomC{\ldots}
+          \UnaryInfC{\(+w_1 ~w_2 \in R'\)}
+          \RightLabel{\(R'_{S}\)}
+          \UnaryInfC{\(w_1 ~w_2 \in S\)}
+          \RightLabel{\(S_{+}\)}
+          \BinaryInfC{\(\num + w_1 ~w_2 \in S\)}
+          \DisplayProof
+        \end{gather*}
+
+        The proof of the lemma \(R'_S\) is by induction again, and not shown
+        here. This completes the original proof.
+      \end{itemize}
+        
+      \end{enumerate}
+      \item Argument similar to Exercise Set 2 Problem 4 (same pair of
+      grammars). \(B_1 \subset B_2\) as relations can be seen by producing a
+      derivation tree for each possible case in \(B_1\). For the other
+      direction, \(B_2 \subseteq B_1\), it is first convenient to prove
+      that \(B_1\) is closed under concatenation, i.e., if \(w_1, w_2 \in B_1\)
+      then there is a derivation tree for \(w_1 ~ w_2 \in B_1\).
+    \end{enumerate}
+  \end{solution}
+  
+\end{exercise}
+
