@@ -29,17 +29,16 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 |      | .23... | Fri | 14.03.2025 | 13:15 | ELA 2  | Lecture 6  | [Name Analysis](https://mediaspace.epfl.ch/media/06-01%2C+Name+Analysis/0_1b9t1hz8) [(PDF)](info/lectures/lec06-name-analysis.pdf), [Type Systems as Inductive Relations](https://mediaspace.epfl.ch/media/07-01%2C+Introduction+to+Types+and+Inductive+Relations/0_3hxblocu) [(PDF)](info/lectures/lec06-inductive.pdf) . [Operational Semantics](https://mediaspace.epfl.ch/media/07-02%2C+Operational+Semantics/0_3ru05nbo) [(PDF)](info/lectures/lec06-operational.pdf) |
 |      | .23... | Fri | 14.03.2025 | 15:15 | ELA 2  | Lab 3 | [Parser lab](info/labs/lab03/) |
 | 5    | ..3... | Wed | 19.03.2025 | 13:15 | BC 01  | Exercises 3 | [LL(1) Grammars](info/exercises/ex-03.pdf) [(solutions)](info/exercises/ex-03-sol.pdf) |
+|      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | [Type Checking](https://mediaspace.epfl.ch/media/07-03%2C+Type+Rules%2C+Progress%2C+Preservation/0_znlmwvlt) [(PDF)](info/lectures/lec07-soundness.pdf), [Type Inference](https://mediaspace.epfl.ch/media/08-01%2C+Type+Inference/0_txnn92oh) [(PDF)](info/lectures/lec07-inference.pdf)  |
+|      | ..34.. | Fri | 21.03.2025 | 15:15 | ELA 2  | Lab 4 | [Typer lab](info/labs/lab04/) release |
+| 6    | ..34.. | Wed | 26.03.2025 | 13:15 | BC 01  | Exercises 4 | [Operational Semantics and Type Checking](info/exercises/ex-04.pdf) [(solutions)](info/exercises/ex-04-sol.pdf) |
+|      | ..34.. | Fri | 28.03.2025 | 13:15 | ELA 2  | Lecture 8 | Type Inference. Code generation |
+|      | ..34.. | Fri | 28.03.2025 | 15:15 | ELA 2  | Lab 4 | [Typer lab](info/labs/lab04/) |
 
 ## Schedule and Materials - Current
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
-|      | ..3... | Fri | 21.03.2025 | 13:15 | ELA 2  | Lecture 7 | [Type Checking](https://mediaspace.epfl.ch/media/07-03%2C+Type+Rules%2C+Progress%2C+Preservation/0_znlmwvlt) [(PDF)](info/lectures/lec07-soundness.pdf), [Type Inference](https://mediaspace.epfl.ch/media/08-01%2C+Type+Inference/0_txnn92oh) [(PDF)](info/lectures/lec07-inference.pdf)  |
-|      | ..34.. | Fri | 21.03.2025 | 15:15 | ELA 2  | Lab 4 | [Typer lab](info/labs/lab04/) release |
-|      |        |     |            |       |        |                           | 
-| 6    | ..34.. | Wed | 26.03.2025 | 13:15 | BC 01  | Exercises 4 | Type checking |
-|      | ..34.. | Fri | 28.03.2025 | 13:15 | ELA 2  | Lecture 8 | Type Inference. Code generation |
-|      | ..34.. | Fri | 28.03.2025 | 15:15 | ELA 2  | Lab 4 | [Typer lab](info/labs/lab04/) |
 |      |        |     |            |       |        |                           | 
 | 7    | ...4.. | Wed | 02.04.2025 | 13:15 | BC 01  | Exercise 5 | Type checking and more |
 |      | ...4.. | Fri | 04.04.2025 | 13:15 | ELA+CM | **EXAM** |  |
