@@ -38,7 +38,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
 |      |        |     |            |       |        |                           | 
-|      | ..34.. | Fri | 28.03.2025 | 13:15 | ELA 2  | Lecture 8 | Finish [Type Inference](https://mediaspace.epfl.ch/media/08-01%2C+Type+Inference/0_txnn92oh) [(PDF)](info/lectures/lec07-inference.pdf). Start [Code generation: Examples and Web Assembly](https://mediaspace.epfl.ch/media/09-01%2C+Code+GenerationA+Examples%2C+WebAssembly/0_xowt7e6w) [(PDF)](info/lectures/lec08-codegen.pdf) |
+|      | ..34.. | Fri | 28.03.2025 | 13:15 | ELA 2  | Lecture 8 | Finish [Type Inference](https://mediaspace.epfl.ch/media/08-01%2C+Type+Inference/0_txnn92oh) [(PDF)](info/lectures/lec07-inference.pdf). Start [Code generation: Examples and Web Assembly](https://mediaspace.epfl.ch/media/09-01%2C+Code+GenerationA+Examples%2C+WebAssembly/0_xowt7e6w) [(PDF)](info/lectures/lec08-codegen.pdf) [Compiling Expressions](https://mediaspace.epfl.ch/media/09-02%2C+Compiling+Expressions/0_33e91bye) [(PDF)](info/lectures/lec08-codegen-postfix.pdf) |
 |      | ..34.. | Fri | 28.03.2025 | 15:15 | ELA 2  | Lab 4 | [Typer lab](info/labs/lab04/) |
 | 7    | ...4.. | Wed | 02.04.2025 | 13:15 | BC 01  | Exercise 5 | Type checking and more |
 |      | ...4.. | Fri | 04.04.2025 | 13:15 | ELA+CM | **EXAM** |  |
