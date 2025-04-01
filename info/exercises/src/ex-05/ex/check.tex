@@ -1,0 +1,61 @@
+
+% do type checking for some simple terms
+
+\pagebreak
+\begin{exercise}{}
+  For each of the following term-type pairs \((t, \tau)\), check whether the
+  term can be ascribed with the given type, i.e., whether there exists a
+  derivation of \(\Gamma \vdash t: \tau\) for some typing context \(\Gamma\) in
+  the given system. If not, briefly argue why.
+
+  \begin{enumerate}
+    \item \(\lstinline|x|, \abool\)
+    \item \(\lstinline|x| + 1, \aint\)
+    \item \(\lstinline|(x && y)  ==  (x <=  0)|, \abool\)
+    \item \(\lstinline|f| ~\ato~ \lstinline|x| ~\ato~ \lstinline|y| ~\ato~ \lstinline|f((x, y))|\): 
+    
+    \lstinline|((List[Int], Bool) => Int) => List[Int] => Bool => Int|
+    \item \lstinline|Cons(x, x)| : \lstinline|List[List[Int]]|
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item \lstinline|x, Bool|. Derivation, assume \lstinline|x| is a boolean:
+      \begin{equation*}
+        \AxiomC{\((\lstinline|x|, \abool) \in \{(\lstinline|x|, \abool)\}\)}
+        \UnaryInfC{\(\{(\lstinline|x|, \abool)\} \vdash \lstinline|x: Bool|\)}
+        \DisplayProof
+      \end{equation*}
+      Note that this would work with any type, as there are no constraints.
+      \item \(\lstinline|x| + 1, \aint\). Derivation, assume \lstinline|x| is an
+      integer:
+      \begin{equation*}
+        \AxiomC{\((\lstinline|x|, \aint) \in \{(\lstinline|x|, \aint)\}\)}
+        \UnaryInfC{\(\{(\lstinline|x|, \aint)\} \vdash \lstinline|x: Int|\)}
+        \AxiomC{\(1 \in \naturals\)}
+        \UnaryInfC{\(\{(\lstinline|x|, \aint)\} \vdash \lstinline|1: Int|\)}
+        \BinaryInfC{\(\{(\lstinline|x|, \aint)\} \vdash \lstinline|x + 1: Int|\)}
+        \DisplayProof
+      \end{equation*}
+      Due to addition constraining the type of \lstinline|x|, other possible
+      types would not work.
+      \item \(\lstinline|(x && y)  ==  (x <=  0)|, \abool\). Not well-typed.
+      From the left-hand side, we would enforce that \lstinline|x: Bool|, but on
+      the right, we find \lstinline|x: Int|. Due to this conflict, there is no
+      valid derivation for this term.
+      \item \lstinline|f => x => y => f((x, y))|: this is the currying function.
+      Note that it will conform to \lstinline|((a, b) => c) => a => b => c| for any choice 
+      of \lstinline|a|, \lstinline|b|, and \lstinline|c|. (check)
+      \item \lstinline|Cons(x, x)| : \lstinline|List[List[Int]]|. Not
+      well-typed. The \(cons\) rule tells us that the second argument must have
+      the same type as the result, so \lstinline|x: List[List[Int]]|, but the first
+      argument enforces the type to be \lstinline|List[Int]| (again, due to result
+      type). As \(\aint \neq \alist{\aint}\), this is not well-typed.
+
+      Note that the singular assignment of \lstinline|x| to \lstinline|Nil()|
+      can make a well typed term here, but the typing must hold for \emph{all}
+      possible values of \lstinline|x|.
+    \end{enumerate}
+  \end{solution}
+  
+\end{exercise}

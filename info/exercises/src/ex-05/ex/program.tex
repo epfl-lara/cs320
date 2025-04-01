@@ -1,0 +1,73 @@
+
+\begin{exercise}{}
+
+  A \emph{program} is a top-level expression \(t\) accompanied by a set of
+  user-provided function definitions. The program is well-typed if each of the
+  function bodies conform to the type of the function, and the top-level
+  expression is well-typed in the context of the function definitions.
+
+  For each of the following function definitions, check whether the function
+  body is well-typed:
+  %
+  \begin{enumerate}
+    \item \lstinline|def f(x: Int, y: Int): Bool =  x <= y|
+    \item \lstinline|def rec(x: Int): Int =  rec(x)|
+    \item \lstinline|def fib(n: Int): Int = if n <=  1 then 1 else (fib(n - 1)  + fib(n - 2))|
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Well-typed, apply rule \(Leq\).
+      \item Well-typed. We need to check if the body conforms to the output
+      type, if we know the function and its parameters have their ascribed type.
+      So, under the context \lstinline|rec: Int => Int, x: Int|, we need to
+      prove that \lstinline|rec(x): Int|. This follows from the \(app\) rule.
+
+      So, if we allow recursion and do not check for termination, we can prove
+      unexpected things using the non-terminating programs.
+      \item Well-typed. We need to produce a derivation of the following:
+      \begin{equation*}
+        \lstinline|fib: Int => Int|, \lstinline|n: Int| \vdash \lstinline|if n <=  1 then 1 else (fib(n - 1)  + fib(n - 2)): Int|
+      \end{equation*} 
+      i.e., given that \lstinline|fib| inductively has type \lstinline|Int => Int| and
+      the parameter \lstinline|n| has type \lstinline|Int|, we need to prove that the
+      body of the function has the ascribed type \lstinline|Int|.
+       
+      The derivation can be constructed by following the structure of the term
+      on the right-hand side, the body. We set \(\Gamma = 
+      %
+      \lstinline|fib: Int => Int|, \lstinline|n: Int|\) for brevity. The \lstinline|n-2|
+      branch is skipped due to space and being the same as the \lstinline|n-1| branch.
+      \begin{equation*}
+        \hspace*{-4cm}
+        \AxiomC{\((\lstinline|n|, \aint) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|n: Int|\)}
+        \AxiomC{\(1 \in \naturals\)}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|1: Int|\)}
+        \BinaryInfC{\(\Gamma \vdash \lstinline|n <= 1: Bool|\)}
+        %
+        \AxiomC{\(1 \in \naturals\)}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|1: Int|\)}
+        %
+        \AxiomC{\((\lstinline|fib, Int => Int|) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|fib: Int => Int|\)}
+        \AxiomC{\((\lstinline|n|, \aint) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|n: Int|\)}
+        \AxiomC{\(1 \in \naturals\)}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|1: Int|\)}
+        \BinaryInfC{\(\Gamma \vdash \lstinline|(n - 1): Int|\)}
+        \BinaryInfC{\(\Gamma \vdash \lstinline|fib(n - 1): Int|\)}
+        %
+        \AxiomC{\ldots}
+        \UnaryInfC{\(\Gamma \vdash \lstinline|fib(n - 2): Int|\)}
+        %
+        \BinaryInfC{\(\Gamma \vdash \lstinline|fib(n - 1) + fib(n - 2): Int|\)}
+        %
+        \TrinaryInfC{\(\Gamma \vdash \lstinline|if n <=  1 then 1 else (fib(n - 1)  + fib(n - 2)): Int|\)}
+        \DisplayProof
+      \end{equation*}
+    \end{enumerate}
+    
+  \end{solution}
+  
+\end{exercise}

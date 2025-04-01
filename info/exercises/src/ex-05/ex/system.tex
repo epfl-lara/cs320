@@ -1,0 +1,112 @@
+
+% we want lists, pairs
+% both parametric
+% we want some functions, as well as function definitions
+% we want to be able to define and typecheck recursive functions
+
+Consider a type system for a simple functional language, consisting of integers,
+booleans, parametric pairs, and lists. The rest of the exercises will revolve
+around this system.
+
+% language components
+\newcommand{\aint}{\lstinline|int|}
+\newcommand{\abool}{\lstinline|bool|}
+\newcommand{\aif}{\lstinline|if|}
+\newcommand{\athen}{\lstinline|then|}
+\newcommand{\aelse}{\lstinline|else|}
+\newcommand{\apair}[2]{(#1, #2)}
+\newcommand{\afst}[1]{\lstinline|fst|(#1)}
+\newcommand{\asnd}[1]{\lstinline|snd|(#1)}
+\newcommand{\alist}[1]{\lstinline|List[|#1\lstinline|]|}
+\newcommand{\anil}{\lstinline|Nil()|}
+\newcommand{\acons}[2]{\lstinline|Cons(|#1, #2\lstinline|)|}
+\newcommand{\ato}{\lstinline|=>|}
+
+%%% Actual type system
+\begin{gather*}
+  % variables
+  \AxiomC{\((x, \tau) \in \Gamma\)}
+  \RightLabel{(var)}
+  \UnaryInfC{\(\Gamma \vdash x : \tau\)}
+  \DisplayProof \\
+  % integers
+  \AxiomC{\(n\) is an integer value}
+  \RightLabel{(int)}
+  \UnaryInfC{\(\Gamma \vdash \num(n) : \aint\)}
+  \DisplayProof \\
+  % + -
+  \AxiomC{\(e_1 : \aint\)}
+  \AxiomC{\(e_2 : \aint\)}
+  \RightLabel{(+)}
+  \BinaryInfC{\(\Gamma \vdash e_1 + e_2 : \aint\)}
+  \DisplayProof \qquad
+  \AxiomC{\(e_1 : \aint\)}
+  \AxiomC{\(e_2 : \aint\)}
+  \RightLabel{(-)}
+  \BinaryInfC{\(\Gamma \vdash e_1 - e_2 : \aint\)}
+  \DisplayProof \\
+  % booleans
+  \AxiomC{\(b\) is a boolean value}
+  \RightLabel{(bool)}
+  \UnaryInfC{\(\Gamma \vdash \abool(b) : \abool\)}
+  \DisplayProof \\
+  % props
+  \AxiomC{\(\Gamma \vdash e_1 : \abool\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \abool\)}
+  \RightLabel{(and)}
+  \BinaryInfC{\(\Gamma \vdash e_1 \land e_2 : \abool\)}
+  \DisplayProof \qquad
+  \AxiomC{\(\Gamma \vdash e_1 : \abool\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \abool\)}
+  \RightLabel{(or)}
+  \BinaryInfC{\(\Gamma \vdash e_1 \lor e_2 : \abool\)}
+  \DisplayProof \\
+  \AxiomC{\(\Gamma \vdash e_1 : \abool\)}
+  \RightLabel{(not)}
+  \UnaryInfC{\(\Gamma \vdash \neg e_1 : \abool\)}
+  \DisplayProof \\
+  % ite
+  \AxiomC{\(\Gamma \vdash e_1 : \abool\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \tau\)}
+  \AxiomC{\(\Gamma \vdash e_3 : \tau\)}
+  \RightLabel{(ite)}
+  \TrinaryInfC{\(\Gamma \vdash \aif \, e_1 \, \athen \, e_2 \, \aelse \, e_3 : \tau\)}
+  \DisplayProof \\
+  % pairs
+  \AxiomC{\(\Gamma \vdash e_1 : \tau_1\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \tau_2\)}
+  \RightLabel{(pair)}
+  \BinaryInfC{\(\Gamma \vdash \apair{e_1}{e_2} : \apair{\tau_1}{\tau_2}\)}
+  \DisplayProof \\
+  % fst
+  \AxiomC{\(\Gamma \vdash e : \apair{\tau_1}{\tau_2}\)}
+  \RightLabel{(fst)}
+  \UnaryInfC{\(\Gamma \vdash \afst{e} : \tau_1\)}
+  \DisplayProof \qquad
+  % snd
+  \AxiomC{\(\Gamma \vdash e : \apair{\tau_1}{\tau_2}\)}
+  \RightLabel{(snd)}
+  \UnaryInfC{\(\Gamma \vdash \asnd{e} : \tau_2\)}
+  \DisplayProof \\
+  % lists
+  \AxiomC{\phantom{\(e \in \alist{\tau}\)}}
+  \RightLabel{(nil)}
+  \UnaryInfC{\(\Gamma \vdash \anil : \alist{\tau}\)}
+  \DisplayProof \qquad
+  \AxiomC{\(\Gamma \vdash e_1 : \tau\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \alist{\tau}\)}
+  \RightLabel{(cons)}
+  \BinaryInfC{\(\Gamma \vdash \acons{e_1}{e_2} : \alist{\tau}\)}
+  \DisplayProof \\
+  % functions
+  \AxiomC{\(\Gamma, x : \tau_1 \vdash e : \tau_2\)}
+  \RightLabel{(fun)}
+  \UnaryInfC{\(\Gamma \vdash \lambda x : \tau_1 ~\ato~ e : \tau_1 ~\ato~ \tau_2\)}
+  \DisplayProof \qquad
+  % application
+  \AxiomC{\(\Gamma \vdash e_1 : \tau_1 ~\ato~ \tau_2\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \tau_1\)}
+  \RightLabel{(app)}
+  \BinaryInfC{\(\Gamma \vdash e_1 \, e_2 : \tau_2\)}
+  \DisplayProof \\
+\end{gather*}
