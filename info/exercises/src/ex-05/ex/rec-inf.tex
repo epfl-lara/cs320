@@ -1,0 +1,66 @@
+
+
+\pagebreak
+\begin{exercise}{}
+
+  Consider the following definition for a recursive function \(g\):
+
+  \begin{equation*}
+    \lstinline|def g(n, x)  = if n <=  2 then (x, x)  else (x, g(n - 1, x))|
+  \end{equation*}
+
+  \begin{enumerate}
+    \item Evaluate \(g(3, 1)\) and \(g(4, 2)\) using the definition of \(g\).
+      Suggest a type for the function \(g\) based on your observations.
+    \item Label and assign type variables to the definition parameters, body,
+      and its subterms.
+    \item Generate the constraints on the type variables, assuming the
+      definition of \(g\) is well-typed.
+    \item Attempt to solve the generated constraints via unification. Argue how
+    the result correlates to your observations from evaluating \(g\).
+  \end{enumerate}
+  
+  \begin{solution}
+    \begin{enumerate}
+      \item \lstinline|g(3, 1)| evaluates to \lstinline|(1, (1, 1))| and
+      \lstinline|g(4, 2)| evaluates to \lstinline|(2, (2, (2, 2)))|. Notably,
+      these two come from disjoint types. This suggests that the function \(g\)
+      is not well-typed.
+      \item We can label the parameters, subterms, and assign a type to the
+      function:
+      \setcounter{equation}{0}
+      \begin{gather}
+        \lstinline|g|: \tau \\
+        \lstinline|n|: \tau_n \\
+        \lstinline|x|: \tau_x \\
+        body: \tau_1 = \lstinline|if n <=  2 then (x, x)  else (x, g(n - 1, x))| \\
+        t_1: \tau_2 = \lstinline|n <=  2| \\
+        t_2: \tau_3 = \lstinline|(x, x)| \\
+        t_3: \tau_4 = \lstinline|(x, g(n - 1, x))| \\
+        t_4: \tau_5 = \lstinline|g(n - 1, x)| \\
+        t_5: \tau_6 = \lstinline|n - 1|
+      \end{gather}
+      \item We can generate the constraints by looking at the top-level of each
+      subterm equation:
+      \begin{gather*}
+        \tau = \tau_n ~\ato~ \tau_x ~\ato~ \tau_1 \tag{1, def} \\
+        \tau_1 = \tau_3 \tag{4} \\
+        \tau_1 = \tau_4 \tag{4} \\
+        \tau_2 = \abool \tag{4} \\
+        \tau_n = \aint \tag{5} \\
+        \tau_3 = (\tau_x, \tau_x) \tag{6} \\
+        \tau_4 = (\tau_x, \tau_5) \tag{6} \\
+        \tau_5 = \tau_1 \tag{7, def} \\
+        \tau_6 = \aint \tag{9}
+      \end{gather*}
+      \item The constraints can be solved (eliminating \(\tau_4, \tau_5\)) to
+      reach a set of constraints containing the recursive constraint \(\tau_1 =
+      (\tau_x, \tau_1)\). There is no type \(\tau_1\) (the output type of
+      \lstinline|g|!) satisfying this. 
+
+      This matches our previous observation where \lstinline|g| produced two
+      different sized tuples as its output. 
+    \end{enumerate}
+  \end{solution}
+  
+\end{exercise}

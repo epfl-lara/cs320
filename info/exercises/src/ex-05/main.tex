@@ -1,0 +1,35 @@
+\documentclass[a4paper]{article}
+
+\input{../macro}
+
+\ifdefined\ANSWERS
+  \if\ANSWERS1
+    \printanswers
+  \fi
+\fi
+
+\DeclareMathOperator{\half}{half}
+\newcommand{\num}{\ensuremath{\mathbf{num}}}
+
+\title{CS 320 \\ Computer Language Processing\\Exercise Set 5}
+\author{}
+\date{April 02, 2025}
+
+\begin{document}
+\maketitle
+
+% type system
+% do some type checking
+% some unification
+% some inference
+\input{ex/system}
+
+\input{ex/check}
+
+\input{ex/program}
+
+\input{ex/map}
+
+\input{ex/rec-inf}
+
+\end{document}

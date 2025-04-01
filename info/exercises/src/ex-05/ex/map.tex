@@ -1,0 +1,117 @@
+
+\begin{exercise}{}
+  Consider the following term \(t\):
+  %
+  \begin{center}
+    \(t = \) \lstinline{l =>  map(l, x =>  fst(x)(snd(x))  + snd(x))}
+    % t = \lstinline|l| ~\ato~ \lstinline|map|(\lstinline|l|, \lstinline|x| ~\ato~ \afst{\lstinline|x|}(\asnd{\lstinline|x|}) + \asnd{\lstinline|x|})
+  \end{center}
+
+  where \lstinline|map| is a function with type \(\forall \tau, \pi.\;
+  \alist{\tau} ~\ato~ (\tau ~\ato~ \pi) ~\ato~ \alist{\pi}\).
+
+  \begin{enumerate}
+    \item Label and assign type variables to each subterm of \(t\).
+    \item Generate the constraints on the type variables, assuming \(t\) is
+    well-typed, to infer the type of \(t\).
+    \item Solve the constraints via unification to deduce the type of \(t\).
+  \end{enumerate}
+  
+  \begin{solution}
+    \begin{enumerate}
+      \item We can label the subterms in the following way:
+      \begin{gather}
+        t: \tau = \lstinline|l =>  map(l, x =>  fst(x)(snd(x))  + snd(x))| \\
+        t_1: \tau_1 = \lstinline|map(l, x =>  fst(x)(snd(x))  + snd(x))| \\
+        t_2: \tau_2 = \lstinline|x =>  fst(x)(snd(x))  + snd(x)| \\
+        t_3: \tau_3 = \lstinline|fst(x)(snd(x)) + snd(x)| \\
+        t_4: \tau_4 = \lstinline|fst(x)(snd(x))| \\
+        t_5: \tau_5 = \lstinline|snd(x)| \\
+        t_6: \tau_6 = \lstinline|fst(x)| \\
+        \lstinline|l|: \tau_7 = \lstinline|l| \\
+        \lstinline|x|: \tau_8 = \lstinline|x| \\
+        \lstinline|map|: \tau_9 = \lstinline|map|
+      \end{gather}
+      We can choose to separately label \lstinline|x|, \lstinline|l|, and
+      \lstinline|map|, but it does not make any difference to the result.
+
+      \item
+      Inserting the type of \lstinline|map| (thus removing \(\tau_9\)), and
+      adding constraints by looking at the top-level of each subterm, we can get
+      the set of initial constraints, labelled by the subterm equation above
+      they come from:
+      \begin{gather*}
+        \tau = \tau_7 ~\ato~ \tau_1 \tag{1} \\
+        \tau_1 = \alist{\tau_3} \tag{2, 4} \\
+        \tau_7 = \alist{\tau_8} \tag{2, 9} \\
+        \tau_2 = \tau_8 ~\ato~ \tau_3 \tag{3} \\
+        \tau_3 = \aint \tag{4} \\
+        \tau_4 = \aint \tag{4} \\
+        \tau_5 = \aint \tag{4} \\
+        \tau_6 = \tau_5 ~\ato~ \tau_4 \tag{5} \\
+        \tau_8 = (\tau_5', \tau_5) \tag{6} \\
+        \tau_8 = (\tau_6, \tau_6') \tag{7}
+      \end{gather*}
+      for fresh type variables \(\tau_5'\) and \(\tau_6'\) arising from the rule
+      for pairs.
+
+      \item 
+      The constraints can be solved step-by-step (major steps shown):
+      \begin{enumerate}
+        \item Eliminating known types (\(\tau_3, \tau_4, \tau_5\)):
+        \begin{gather*}
+          \tau = \tau_7 ~\ato~ \tau_1  \\
+          \tau_1 = \alist{\aint} \\
+          \tau_7 = \alist{\tau_8} \\
+          \tau_2 = \tau_8 ~\ato~ \aint  \\
+          \tau_6 = \aint ~\ato~ \aint \\
+          \tau_8 = (\tau_5', \aint) \\
+          \tau_8 = (\tau_6, \tau_6')
+        \end{gather*}
+        \item Eliminating \(\tau_1, \tau_6\):
+        \begin{gather*}
+          \tau = \tau_7 ~\ato~ \alist{\aint}  \\
+          \tau_7 = \alist{\tau_8} \\
+          \tau_2 = \tau_8 ~\ato~ \aint  \\
+          \tau_8 = (\tau_5', \aint) \\
+          \tau_8 = (\aint ~\ato~ \aint, \tau_6')
+        \end{gather*}
+        \item Eliminating \(\tau_8\) using either of its equations:
+        \begin{gather*}
+          \tau = \tau_7 ~\ato~ \alist{\aint}  \\
+          \tau_7 = \alist{(\tau_5', \aint)} \\
+          \tau_2 = (\tau_5', \aint) ~\ato~ \aint  \\
+          (\tau_5', \aint) = (\aint ~\ato~ \aint, \tau_6')
+        \end{gather*}
+        \item Performing unification of the pair type:
+        \begin{gather*}
+          \tau = \tau_7 ~\ato~ \alist{\aint}  \\
+          \tau_7 = \alist{(\tau_5', \aint)} \\
+          \tau_2 = (\tau_5', \aint) ~\ato~ \aint  \\
+          \tau_5' = \aint ~\ato~ \aint \\
+          \aint  = \tau_6'
+        \end{gather*}
+        \item Eliminating \(\tau_5'\) and \(\tau_6'\):
+        \begin{gather*}
+          \tau = \tau_7 ~\ato~ \alist{\aint}  \\
+          \tau_7 = \alist{(\aint ~\ato~ \aint, \aint)} \\
+          \tau_2 = (\aint ~\ato~ \aint, \aint) ~\ato~ \aint
+        \end{gather*}
+        \item Eliminating \(\tau_2, \tau_7\):
+        \begin{gather*}
+          \tau = \alist{(\aint ~\ato~ \aint, \aint)} ~\ato~ \alist{\aint}
+        \end{gather*}
+        \item Finally, all type variables are assigned, as we eliminate \(\tau\):
+        \begin{gather*}
+          \emptyset \text{ (no constraints left)}
+        \end{gather*}
+      \end{enumerate}
+
+      The type of \(t\) as discovered by the unification process is:
+      \begin{gather*}
+        \tau = \alist{(\aint ~\ato~ \aint, \aint)} ~\ato~ \alist{\aint}
+      \end{gather*}
+    \end{enumerate}
+  \end{solution}
+
+\end{exercise}
