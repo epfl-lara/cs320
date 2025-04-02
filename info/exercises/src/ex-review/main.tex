@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+
+\input{../macro}
+
+\ifdefined\ANSWERS
+  \if\ANSWERS1
+    \printanswers
+  \fi
+\else
+  \def\ANSWERS{0}
+\fi
+
+\DeclareMathOperator{\half}{half}
+\newcommand{\num}{\ensuremath{\mathbf{num}}}
+
+\DeclareMathOperator{\first}{first}
+\DeclareMathOperator{\follow}{follow}
+\DeclareMathOperator{\nullable}{nullable}
+\newcommand{\eof}{\ensuremath{\mathbf{EOF}}}
+
+\newcommand{\ifAns}[1]{%
+  \ifthenelse{\boolean{showanswers}}
+    {\textcolor{red}{#1}}
+    {\phantom{#1}}
+}
+
+\title{CS 320 \\ Computer Language Processing\\Review Exercises}
+\author{}
+\date{April 02, 2025}
+
+\begin{document}
+\maketitle
+
+\textcolor{red}{Note: these questions are collected from previous exams, which
+are also available to you in full. Some solutions were not available in the
+previous exams, and were added later. The solutions have not been rigorously
+verified. Use them as a quick reference, but do not assume they are always the
+correct expected answer.}
+
+\input{ex/regex}
+\input{ex/cfg}
+\input{ex/ll1}
+\input{ex/types}
+
+\end{document}

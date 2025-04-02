@@ -1,0 +1,24 @@
+
+\begin{exercise}{2016}
+  Let \(\Sigma = \{a, b\}\) for distinct \(a, b\). Let \(L_1, L_2, L\) range
+  over subsets of \(\Sigma^*\) (languages). Remember that for languages,
+  concatenation is given by:
+  %%
+  \begin{gather*}
+    L_1L_1 = \{u_1u_2 \mid u_1 \in L_1 \land u_2 \in L_2\}
+  \end{gather*}
+  %%
+  We that a language \(L\) left-cancels if and only if for every \(L_1, L_2\):
+  %%
+  \begin{gather*}
+    LL_1 = LL_2 \implies L_1 = L_2
+  \end{gather*}
+
+  \begin{enumerate}
+    \item Does \(L = \empty\) left-cancel? \ifAns{No}
+    \item Does \(L = \epsilon\) left-cancel? \ifAns{Yes}
+    \item Give a regular expression describing an infinite language \(L\) that left-cancels. \ifAns{\(a^*b\)}
+    \item Give a context-free grammar for another language \(L\) that
+    left-cancels, but is not regular. \ifAns{\(S ::= aRb; R ::= aRb \mid \epsilon\)}
+  \end{enumerate}
+\end{exercise}

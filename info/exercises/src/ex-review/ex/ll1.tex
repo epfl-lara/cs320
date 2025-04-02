@@ -1,0 +1,81 @@
+
+\begin{exercise}{2016}
+  Consider the grammar:
+  \begin{align*}
+    decl &::= varDecl \mid funDecl \\
+    varDecl &::= type ~\lstinline|ID|; \\
+    funDecl &::= type ~\lstinline|ID|~ ( optIDs ); \\
+    optIDs &::= \epsilon \mid IDs \\
+    IDs &::= \lstinline|ID| \mid IDs ~\lstinline|ID| \\
+    type &::= \lstinline|int| \mid type \lstinline|*| \\
+  \end{align*}
+
+  \begin{enumerate}
+    \item Compute \(\nullable\) and \(\first\) for each non-terminal of the grammar above.
+    \begin{solution}
+      Only \(optIDs\) is nullable. The first sets are:
+      %
+      \begin{gather*}
+        \first(decl) = \{\lstinline|int|\} \\
+        \first(varDecl) = \{\lstinline|int|\} \\
+        \first(funDecl) = \{\lstinline|int|\} \\
+        \first(optIDs) = \{\lstinline|ID|\} \\
+        \first(IDs) = \{\lstinline|ID|\} \\
+        \first(type) = \{\lstinline|int|\}
+      \end{gather*}
+    \end{solution}
+    \item Explain why the grammar is not LL(1).
+    \begin{solution}
+      \(IDs\) has two rules with the same \(\first\) set.
+    \end{solution}
+    \item Give an LL(1) grammar describing the same sequences of tokens as the
+    previous grammar.
+    \begin{solution}
+      We can remove the left recursion from the \(IDs\) rule:
+      \begin{gather*}
+        IDs = \lstinline|ID| ~IDs' \\
+        IDs' = \epsilon \mid \lstinline|ID| ~IDs'
+      \end{gather*}
+
+      Note that \(IDs\) can be followed only by a closing parenthesis.
+    \end{solution}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{2022}
+  Consider the following grammar with non-terminals \(S\) and \(A\) and
+  terminals \(\eof, (, ), [, \text{ and }]\):
+
+  \begin{align*}
+    S &::= A ~\eof \\
+    A &::= (A) ~A \mid A~[A] \mid \epsilon
+  \end{align*}
+
+  \begin{enumerate}
+    \item Choose all true statements about the grammar above:
+    \begin{enumerate}
+      \item \(``[]()([)]"\) is accepted by the grammar.
+      \item The grammar is LL(1).
+      \item The grammar is ambiguous. \ifAns{\checkmark}
+      \item \(\nullable(A) = true\). \ifAns{\checkmark}
+      \item \(\nullable(S) = true\).
+    \end{enumerate}
+    \item Choose the correct option:
+    \begin{enumerate}
+      \item \(\first(S) = \{\eof\}\)
+      \item \(\first(S) = \{(, [\}\)
+      \item \(\first(S) = \{(, ), \eof\}\)
+      \item \(\first(S) = \{(, [, \eof\}\) \ifAns{\checkmark}
+      \item \(\first(S) = \{(,), [,], \eof\}\)
+    \end{enumerate}
+    \item Choose the correct option:
+    \begin{enumerate}
+      \item \(\follow(A) = \{), ]\}\)
+      \item \(\follow(A) = \{), ], \eof\}\)
+      \item \(\follow(A) = \{(, [, ), ]\}\)
+      \item \(\follow(A) = \{(, [, ], \eof\}\)
+      \item \(\follow(A) = \{(, [, ), ], \eof\}\)
+    \end{enumerate}
+    \ifAns{None of the above are correct; \(\follow(A) = \{), [, ], \eof\}\)}
+  \end{enumerate}
+\end{exercise}
