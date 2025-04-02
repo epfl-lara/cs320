@@ -32,7 +32,7 @@ around this system.
   % integers
   \AxiomC{\(n\) is an integer value}
   \RightLabel{(int)}
-  \UnaryInfC{\(\Gamma \vdash \num(n) : \aint\)}
+  \UnaryInfC{\(\Gamma \vdash n : \aint\)}
   \DisplayProof \\
   % + -
   \AxiomC{\(e_1 : \aint\)}
@@ -64,6 +64,19 @@ around this system.
   \AxiomC{\(\Gamma \vdash e_1 : \abool\)}
   \RightLabel{(not)}
   \UnaryInfC{\(\Gamma \vdash \neg e_1 : \abool\)}
+  \DisplayProof \\
+  % predicates
+  %% eq
+  \AxiomC{\(\Gamma \vdash e_1 : \tau\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \tau\)}
+  \RightLabel{(eq)}
+  \BinaryInfC{\(\Gamma \vdash e_1 \lstinline|=| e_2 : \abool\)}
+  \DisplayProof \qquad
+  %% lte
+  \AxiomC{\(\Gamma \vdash e_1 : \aint\)}
+  \AxiomC{\(\Gamma \vdash e_2 : \aint\)}
+  \RightLabel{(lte)}
+  \BinaryInfC{\(\Gamma \vdash e_1 \lstinline|<=| e_2 : \abool\)}
   \DisplayProof \\
   % ite
   \AxiomC{\(\Gamma \vdash e_1 : \abool\)}
