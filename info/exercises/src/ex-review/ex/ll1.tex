@@ -26,15 +26,28 @@
     \end{solution}
     \item Explain why the grammar is not LL(1).
     \begin{solution}
-      \(IDs\) has two rules with the same \(\first\) set.
+      \(decl\), \(IDs\), and \(type\) each have two rules with the same
+      \(\first\) set. 
     \end{solution}
     \item Give an LL(1) grammar describing the same sequences of tokens as the
     previous grammar.
     \begin{solution}
+      We can remove the common prefix from \(decl\):
+      \begin{gather*}
+        decl = type~\lstinline|ID|~decl' \\
+        decl' = \lstinline|;| \mid \lstinline|(| ~optIDs~\lstinline|);|
+      \end{gather*}
+
       We can remove the left recursion from the \(IDs\) rule:
       \begin{gather*}
         IDs = \lstinline|ID| ~IDs' \\
         IDs' = \epsilon \mid \lstinline|ID| ~IDs'
+      \end{gather*}
+
+      We can also remove the left recursion from the \(type\) rule:
+      \begin{gather*}
+        type = \lstinline|int| ~type' \\
+        type' = \epsilon \mid \lstinline|*| ~type'
       \end{gather*}
 
       Note that \(IDs\) can be followed only by a closing parenthesis.
