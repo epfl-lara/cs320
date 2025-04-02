@@ -224,6 +224,15 @@
       \begin{itemize}
         \item Equality:
           \begin{gather*}
+            % 
+            \AxiomC{\(t_1 \leadsto t_1'\)}
+            \UnaryInfC{\(t_1 == t_2 \leadsto t_1' == t_2\)}
+            \DisplayProof \\
+            %
+            \AxiomC{\(n_1\) is an integer value}
+            \AxiomC{\(t_2 \leadsto t_2'\)}
+            \BinaryInfC{\(n_1 == t_2 \leadsto n_1 == t_2'\)}
+            \DisplayProof \\
             \AxiomC{\(n_1, n_2\) are integer values}
             \AxiomC{\(n_1 = n_2\)}
             \BinaryInfC{\(n_1 == n_2 \leadsto true\)}
@@ -232,7 +241,7 @@
             \AxiomC{\(n_1, n_2\) are integer values}
             \AxiomC{\(n_1 \neq n_2\)}
             \BinaryInfC{\(n_1 == n_2 \leadsto false\)}
-            \DisplayProof
+            \DisplayProof \\
           \end{gather*}
         \item Addition:
           \begin{gather*}
@@ -298,10 +307,10 @@
             &\leadsto if ~(2 == 0) ~ then ~ 0 ~ else ~ 2 + sum(2 + (-1))\\
             &\leadsto if ~(false) ~ then ~ 0 ~ else ~ 2 + sum(2 + (-1))\\
             &\leadsto 2 + sum(2 + (-1))\\
-            &\leadsto 2 + if ~((2 + (-1)) == 0) ~ then ~ 0 ~ else ~ 1 + sum(2 + (-1))\\
-            &\leadsto 2 + if ~(1 == 0) ~ then ~ 0 ~ else ~ 1 + sum(2 + (-1))\\
-            &\leadsto 2 + if ~(false) ~ then ~ 0 ~ else ~ 1 + sum(2 + (-1) + (-1))\\
-            &\leadsto 2 + (1 + sum(2 + (-1) + (-1)))\\
+            &\leadsto 2 + if ~((2 + (-1)) == 0) ~ then ~ 0 ~ else ~ 2 + (-1) + sum(2 + (-1) + (-1))\\
+            &\leadsto 2 + if ~(1 == 0) ~ then ~ 0 ~ else ~ 2 + (-1) + sum(2 + (-1) + (-1))\\
+            &\leadsto 2 + if ~(false) ~ then ~ 0 ~ else ~ 2 + (-1) + sum(2 + (-1) + (-1))\\
+            &\leadsto 2 + (2 + (-1) + sum(2 + (-1) + (-1)))\\
             & \ldots \\
             &\leadsto 2 + (1 + 0) \\
             &\leadsto 2 + 1 \\
