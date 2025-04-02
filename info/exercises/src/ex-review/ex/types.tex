@@ -1,0 +1,167 @@
+
+\begin{exercise}{2022}
+  Complete (on the next page) the type derivation for the body of the function
+  \lstinline|f|.
+
+  \begin{lstlisting}
+    def f(x: Int, u: Int, v: Int): Int = {
+      if (x < u) {
+        u
+      }
+      else if (v < x) {
+        v
+      }
+      else {
+        x
+      }
+    }
+  \end{lstlisting}
+
+  You may use the following type rules:
+  %%
+  \addtolength{\jot}{2em}
+  \begin{gather*}
+    \AxiomC{\((x, T) \in \Gamma\)}
+    \UnaryInfC{\(\Gamma \vdash x : T\)}
+    \DisplayProof 
+    \qquad
+    % +
+    \AxiomC{\(\Gamma \vdash e_1 : Int\)}
+    \AxiomC{\(\Gamma \vdash e_2 : Int\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 + e_2 : Int\)}
+    \DisplayProof
+    \quad
+    % *
+    \AxiomC{\(\Gamma \vdash e_1 : Int\)}
+    \AxiomC{\(\Gamma \vdash e_2 : Int\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 * e_2 : Int\)}
+    \DisplayProof
+    \\
+    % &&
+    \AxiomC{\(\Gamma \vdash e_1 : Bool\)}
+    \AxiomC{\(\Gamma \vdash e_2 : Bool\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 \&\& e_2 : Bool\)}
+    \DisplayProof
+    \qquad
+    % ||
+    \AxiomC{\(\Gamma \vdash e_1 : Bool\)}
+    \AxiomC{\(\Gamma \vdash e_2 : Bool\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 || e_2 : Bool\)}
+    \DisplayProof
+    \\
+    % lt
+    \AxiomC{\(\Gamma \vdash e_1 : Int\)}
+    \AxiomC{\(\Gamma \vdash e_2 : Int\)}
+    \BinaryInfC{\(\Gamma \vdash e_1 < e_2 : Bool\)}
+    \DisplayProof
+    \qquad
+    % if
+    \AxiomC{\(\Gamma \vdash e_1 : Bool\)}
+    \AxiomC{\(\Gamma \vdash e_2 : T\)}
+    \AxiomC{\(\Gamma \vdash e_3 : T\)}
+    \TrinaryInfC{\(\Gamma \vdash if~e_1~then~e_2~else~e_3 : T\)}
+    \DisplayProof
+  \end{gather*}
+
+  \pagebreak
+  \begin{center}
+    \scalebox{1.2}{\rotatebox{90}{
+      %
+        \AxiomC{\((x, Int) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash x : Int\)}
+        \AxiomC{\((u, Int) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash u : Int\)}
+      \BinaryInfC{\(\Gamma \vdash x < u : Bool\)}
+      %
+        \AxiomC{\((u, Int) \in \Gamma\)}
+      \UnaryInfC{\(\Gamma \vdash u : Int\)}
+      %
+          \AxiomC{\((\ifAns{v}, \ifAns{Int}) \in \Gamma\)}
+          \UnaryInfC{\(\Gamma \vdash \ifAns{v} : \ifAns{Int}\)}
+          \AxiomC{\((\ifAns{x}, \ifAns{Int}) \in \Gamma\)}
+          \UnaryInfC{\(\Gamma \vdash \ifAns{x} : \ifAns{Int}\)}
+        \BinaryInfC{\(\Gamma \vdash \ifAns{v < x} : \ifAns{Bool}\)}
+        %
+          \AxiomC{\((\ifAns{v}, \ifAns{Int}) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash \ifAns{v} : \ifAns{Int}\)}
+        %
+          \AxiomC{\((\ifAns{x}, \ifAns{Int}) \in \Gamma\)}
+        \UnaryInfC{\(\Gamma \vdash \ifAns{x} : \ifAns{Int}\)}
+        %
+      \TrinaryInfC{\(\Gamma \vdash \ifAns{if ~ (v < x) ~ v ~ else ~ x}~ : \ifAns{Int}\)}
+      %
+      \TrinaryInfC{\(\Gamma \vdash if~ (x < u) ~ then~ u ~else ~ if ~ (v < x) ~ v ~ else ~ x ~: Int\)}
+      \DisplayProof
+    }}
+  \end{center}
+\end{exercise}
+
+\begin{exercise}{2022, contd}
+  For which of the following expressions does type unification succeed? For the
+  \(+\) operator, assume the type rules as in the previous question.
+  %
+  \begin{enumerate}
+    \item \(x \Rightarrow y \Rightarrow y(z \Rightarrow 6) + y(7)\)
+    \item \(g \Rightarrow f \Rightarrow x \Rightarrow g(f(x))\)
+    \item \(x \Rightarrow y \Rightarrow ((z \Rightarrow y), y)\)
+    \item \(g \Rightarrow f \Rightarrow x \Rightarrow g(f(x)) + f(g(x)) + x\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{2022, contd}
+  Consider a programming language with pairs and the usual typing rules, as in
+  the lecture. Apply the unification algorithm on the following function:
+  %
+  \begin{lstlisting}
+    def swap(t) = {
+      (t._2, t._1)
+    }
+  \end{lstlisting}
+  %%
+  assuming the following type variables assigned to tree nodes:
+  %
+  \begin{equation*}
+    ((t: \tau)._2: \tau_1, (t: \tau)._1: \tau_2): \tau_3
+  \end{equation*}
+  %%
+  Write each step of the unification algorithm, mentioning what rules of the
+  algorithm you are applying. We provide you with the initial step:
+  %
+  \begin{gather*}
+    \tau = (\tau_{10}, \tau_1) \\
+    \tau = (\tau_{2}, \tau_{20}) \\
+    \tau_3 = (\tau_{1}, \tau_{2})
+  \end{gather*}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Substituting \(\tau = (\tau_{10}, \tau_1)\):
+      \begin{gather*}
+        (\tau_{10}, \tau_1) = (\tau_{2}, \tau_{20}) \\
+        \tau_3 = (\tau_{1}, \tau_{2})
+      \end{gather*}
+      \item Unifying the pair expression:
+      \begin{gather*}
+        \tau_{10} = \tau_{2} \\
+        \tau_1 = \tau_{20} \\
+        \tau_3 = (\tau_{1}, \tau_{2})
+      \end{gather*}
+      \item Substituting \(\tau_1\) and \(\tau_2\) per equations:
+      \begin{gather*}
+        \tau_3 = (\tau_{1}, \tau_{2}) 
+      \end{gather*}
+    \end{enumerate}
+
+    We can get the values of \(\tau\) and \(\tau_3\) in terms of \(\tau_1\) and
+    \(\tau_2\) by looking at intermediate steps we took during unification.
+  \end{solution}
+
+  Write down an expression for the argument and return types of \lstinline|swap|
+  in terms of the type variables \(\tau_1\) and \(\tau_2\).
+
+  \begin{solution}
+    Argument type: \(\tau = (\tau_2, \tau_1)\) \\
+
+    Return type: \(\tau_3 = (\tau_1, \tau_2)\)
+  \end{solution}
+\end{exercise}
