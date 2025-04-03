@@ -10,7 +10,7 @@
   body is well-typed:
   %
   \begin{enumerate}
-    \item \lstinline|def f(x: Int, y: Int): Bool =  x <= y|
+    \item \lstinline|def f(x: Int)(y: Int): Bool =  x <= y|
     \item \lstinline|def rec(x: Int): Int =  rec(x)|
     \item \lstinline|def fib(n: Int): Int = if n <=  1 then 1 else (fib(n - 1)  + fib(n - 2))|
   \end{enumerate}

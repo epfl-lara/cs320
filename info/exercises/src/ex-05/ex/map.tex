@@ -3,7 +3,7 @@
   Consider the following term \(t\):
   %
   \begin{center}
-    \(t = \) \lstinline{l =>  map(l, x =>  fst(x)(snd(x))  + snd(x))}
+    \(t = \) \lstinline{l =>  map(l)(x =>  fst(x)(snd(x))  + snd(x))}
     % t = \lstinline|l| ~\ato~ \lstinline|map|(\lstinline|l|, \lstinline|x| ~\ato~ \afst{\lstinline|x|}(\asnd{\lstinline|x|}) + \asnd{\lstinline|x|})
   \end{center}
 
@@ -21,8 +21,8 @@
     \begin{enumerate}
       \item We can label the subterms in the following way:
       \begin{gather}
-        t: \tau = \lstinline|l =>  map(l, x =>  fst(x)(snd(x))  + snd(x))| \\
-        t_1: \tau_1 = \lstinline|map(l, x =>  fst(x)(snd(x))  + snd(x))| \\
+        t: \tau = \lstinline|l =>  map(l)(x =>  fst(x)(snd(x))  + snd(x))| \\
+        t_1: \tau_1 = \lstinline|map(l)(x =>  fst(x)(snd(x))  + snd(x))| \\
         t_2: \tau_2 = \lstinline|x =>  fst(x)(snd(x))  + snd(x)| \\
         t_3: \tau_3 = \lstinline|fst(x)(snd(x)) + snd(x)| \\
         t_4: \tau_4 = \lstinline|fst(x)(snd(x))| \\
