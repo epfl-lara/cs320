@@ -1,0 +1,11 @@
+object FunDefs
+  def foo(): Int(32) = {
+    ()
+  }
+  def foo(i: Int(32)): Int(32) = {
+    42
+  }
+  def foo(i: I, j: Boolean, s: String, u: Unit, x: X): Type = {
+    42
+  }
+end FunDefs

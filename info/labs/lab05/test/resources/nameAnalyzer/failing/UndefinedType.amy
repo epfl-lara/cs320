@@ -1,0 +1,3 @@
+object UndefinedType
+  def foo(): SomeType = { 42 }
+end UndefinedType

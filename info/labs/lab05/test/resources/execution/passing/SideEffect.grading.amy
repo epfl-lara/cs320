@@ -1,0 +1,57 @@
+object SideEffect
+
+  def firstI(): Int(32) = {
+    Std.printInt(1);
+    1
+  }
+
+  def secondI(): Int(32) = {
+    Std.printInt(2);
+    2
+  }
+
+  def stringLeft(): String = {
+    Std.printString("SLeft");
+    "a"
+  }
+
+  def stringRight(): String = {
+    Std.printString("SRight");
+    "a"
+  }
+
+  def caseLeft(): L.List = {
+    Std.printString("CLeft");
+    L.Nil()
+  }
+
+  def caseRight(): L.List = {
+    Std.printString("CRight");
+    L.Nil()
+  }
+
+  // Make sure that operands to binary operations are interpreted only once
+  // and in the right order
+  firstI() + secondI();
+  firstI() - secondI();
+  firstI() * secondI();
+  firstI() / secondI();
+  firstI() % secondI();
+
+  firstI() < secondI();
+  firstI() <= secondI();
+
+  // Make sure that the rhs of comparisons to Unit (which always succeed)
+  // are interpreted.
+  Std.printString("Left") == Std.printString("Right");
+
+  // Make sure that string comparisons evaluate their arguments once
+  // and in the correct order
+  stringLeft() == stringRight();
+
+  // Make sure that case class comparisons evaluate their arguments once
+  // and in the correct order
+  caseLeft() == caseRight();
+  ()
+
+end SideEffect
