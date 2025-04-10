@@ -4,20 +4,20 @@
 
 Welcome to the last common assignment for the Amy compiler. At this point, we are finally done with the frontend: we have translated source programs to ASTs and have checked that certain correctness conditions hold for our program. We are ready to generate code for our program. In our case the target language will be *WebAssembly*.
 
-WebAssembly is "a new portable, size- and load-time-efficient format suitable for compilation to the web" (<http://webassembly.org>). WebAssembly was initially designed to be called from JavaScript in browsers and lends itself to highly-performant execution. Nowadays, WebAssembly is getting some traction in many different contexts, including server-side applications and embedded systems.  
+WebAssembly is "a new portable, size- and load-time-efficient format suitable for compilation to the web" (<http://webassembly.org>). WebAssembly was initially designed to be called from JavaScript in browsers and lends itself to highly-performant execution. Nowadays, WebAssembly is getting some traction in many different contexts, including server-side applications and embedded systems.
 
 For simplicity, we will not use a browser, but execute the resulting WebAssembly bytecode directly using `wasmtime` which is WebAssembly virtual machine implementation. When you run your complete compiler (or the reference compiler) with no options on program `p`, it will generate two different files under the `wasmout` directory:
 
-- `p.wat` is the wasm output of the compiler in a human readbable text format. You can use this representation to debug your generated code.
+- `p.wat` is the wasm output of the compiler in a human readable text format. You can use this representation to debug your generated code.
 - `p.wasm` is the binary output of the compiler. This is what `wasmtime` will read. To translate to the binary format, we use the `wat2wasm` tool provided by the WebAssembly developers. Note that this tool performs a purely mechanical translation and thus its output (for instance, `p.wasm`) corresponds to a binary representation of `p.wat`.
 
 To run the program, simply type `wasmtime wasmout/p.wasm`
 
 ### Installing wat2wasm
 
-- Install `wat2wasm` using your favorite package manager, the name of the package is usually `wabt` (`apt install wabt`, `pacman -Sy wabt`, `brew install wabt`, etc). If you are not on linux or MacOS, you can download it here:  <https://github.com/WebAssembly/wabt/releases/tag/1.0.31>, then copy the file `bin/wat2wasm` (or `/bin/wat2wasm.exe` for windows) from the archive to `/<root of the project>/bin`
-- Make sure the `wat2wasm` executable is visible: either in a system path, or in the `/<root of the project\>/bin` folder (that you may have to create).
-- Install `wasmtime` using the following command (on linux and MacOS): `curl https://wasmtime.dev/install.sh -sSf | bash`. If you are not on linux or MacOS, you can download it here: <https://docs.wasmtime.dev/cli-install.html> or copy it from `/<root of the project>/bin` (if you are using the provided binaries). Make sure the `wasmtime` executable is visible: either in a system path, or in the `/<root of the project\>/bin` folder (that you may have to create).
+- Install `wat2wasm` using your favorite package manager, the name of the package is usually `wabt` (`apt install wabt`, `pacman -Sy wabt`, `brew install wabt`, etc). If you are not on linux or MacOS, you can download it here: <https://github.com/WebAssembly/wabt/releases/tag/1.0.31>, then copy the file `bin/wat2wasm` (or `/bin/wat2wasm.exe` for windows) from the archive to `/<root of the project>/bin`
+- Make sure the `wat2wasm` executable is visible: either in a system path, or in the `/<root of the project>/bin` folder (that you may have to create).
+- Install `wasmtime` using the following command (on linux and MacOS): `curl https://wasmtime.dev/install.sh -sSf | bash`. If you are not on linux or MacOS, you can download it here: <https://docs.wasmtime.dev/cli-install.html> or copy it from `/<root of the project>/bin` (if you are using the provided binaries). Make sure the `wasmtime` executable is visible: either in a system path, or in the `/<root of the project>/bin` folder (that you may have to create).
 
 ## WebAssembly and Amy
 
@@ -40,7 +40,7 @@ The code for the assignment is divided into two directories: `wasm` for the mode
   - A `Function` contains a field called `isMain` which is used to denote a main function without a return value, which will be handled differently when printing.
   - The only way to create a `Function` is using `Function.apply`. Its last argument is a function from a `LocalsHandler` to `Code`. The reason for this unusual choice is to make sure the `Function` object is instantiated with the number of local variables that will be requested from the LocalsHandler. To see how it is used, you can look in `codegen/Utils.scala` (but you won't have to use it directly).
 - `wasm/Module.scala` and `wasm/ModulePrinter.scala` describe a wasm module, which you can think of as a set of functions and the corresponding module headers.
-- `codegen/Utils.scala` contains a few utility functions (which you should use!) and implementations of the built-in functions of Amy. Use the builtins as examples. The builtins to read and write from and to StdIn and StdOut are particularly interesting; you might want to have a look at them (the comments are particulary insightful to understand the code).
+- `codegen/Utils.scala` contains a few utility functions (which you should use!) and implementations of the built-in functions of Amy. Use the builtins as examples. The builtins to read and write from and to StdIn and StdOut are particularly interesting; you might want to have a look at them (the comments are particularly insightful to understand the code).
 - `codegen/CodeGen.scala` is the focus of the assignment. It contains code to translate Amy modules, functions and expressions to wasm code. It is a pipeline and returns a wasm Module.
 - `codegen/CodePrinter.scala` is a Pipeline which will print output files from the wasm module.
 
@@ -50,7 +50,7 @@ The focus of this assignment is the `cgExpr` function, which takes an expression
 
 ## Skeleton
 
-As usual, you can find the skeleton for this lab in a new branch of yourgroup's repository. After merging it with your existing work, thestructure of your project `src` directory should be as follows:
+As usual, you can find the skeleton for this lab in a new branch of your group's repository. After merging it with your existing work, the structure of your project `src` directory should be as follows:
 
 ```plaintext
 bin                                (new)
@@ -139,4 +139,4 @@ Deadline: **02.05.2025 23:59:59**
 
 You should submit the following files:
 
-- `CodeGen.scala`: The implementation of the type checker.
+- `CodeGen.scala`: The implementation of the code generator.

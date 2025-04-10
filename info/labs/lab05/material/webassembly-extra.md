@@ -1,4 +1,3 @@
-
 ## Demo
 
 ```
@@ -20,7 +19,7 @@
   local.get 2
 )
 
-(func $Factorial_fact (param i32) (result i32) 
+(func $Factorial_fact (param i32) (result i32)
   ;;> fn fact(i: Int(32)): Int(32) = {
   ;;|   (if((i < 2)) {
   ;;|     1
@@ -76,7 +75,7 @@
     - global.get x : get xth global
     - global.set x : set xth global
 - Control flow.
-    - if   : pop value from stack, if 0 goto else otherwise continue.
+    - if   : pop value from stack, if 0 goto else, otherwise continue.
     - call : pop arguments from the stack, jump to function.
 
 
@@ -88,7 +87,7 @@ How to call a function:
 - The result will be placed on top of the stack.
 
 ```
-(func $f (param i32 i32) (result i32) 
+(func $f (param i32 i32) (result i32)
     local.get 0
     local.get 1
     i32.add
@@ -104,7 +103,7 @@ How to call a function:
 
 A:
 |       |
-|   4   | <-- arg 1 
+|   4   | <-- arg 1
 |   3   | <-- arg 0
 |-------|
 
@@ -188,7 +187,7 @@ Very similar to java.
 
 ### ADTs
 
-- store the value on the heap to reduced the size to the size of a pointer. 
+- store the value on the heap to reduced the size to the size of a pointer.
 - store which constructor the value holds.
 
 ```scala
@@ -204,7 +203,7 @@ Cons(42, Nil())
 
 | address |  value  |
 |---------|---------|
-|    0    |    1    | \ 
+|    0    |    1    | \
 |    1    |         | | constructor id.
 |    2    |         | | Cons
 |    3    |         | /
@@ -302,6 +301,5 @@ matchAndBind is equivalent to this:
         C_1 == C_2 &&
         matchAndBind(v_1, p_1) &&
         ...
-        matchAndBind(v_m, p_m) 
+        matchAndBind(v_m, p_m)
     }
-
