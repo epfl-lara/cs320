@@ -44,7 +44,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
 |      |        |     |            |       |        |                           | 
 | 8    | ...45. | Wed | 09.04.2025 | 13:15 | BC 01  | Lab 5 | [Solutions](info/past-exams/2025/exam2025-solutions.pdf) of last week's [Exam](info/past-exams/2025/exam2025-with-points.pdf). [Lab 05](info/labs/lab05/) |
-|      | ...45. | Fri | 11.04.2025 | 13:15 | ELA 2  | Lecture 9 | [Simple Code Generation for If](https://mediaspace.epfl.ch/media/09-03%2C+Simple+Code+Generation+for+if+/0_wnn3dyxk), [Translating Control with Destination Parameters](https://mediaspace.epfl.ch/media/10-01%2C+Translating+Control+with+Destination+Parameters/0_d6vyszy4), [Register Machines](https://mediaspace.epfl.ch/media/11-01%2C+Register+Machine/0_ukhf4yxp) |
+|      | ...45. | Fri | 11.04.2025 | 13:15 | ELA 2  | Lecture 9 | [Simple Code Generation for If](https://mediaspace.epfl.ch/media/09-03%2C+Simple+Code+Generation+for+if+/0_wnn3dyxk) [(PDF)](info/lectures/lec09-ifs.pdf), [Translating Control with Destination Parameters](https://mediaspace.epfl.ch/media/10-01%2C+Translating+Control+with+Destination+Parameters/0_d6vyszy4) [(PDF)](info/lectures/lec09-destination-params.pdf), [Register Machines](https://mediaspace.epfl.ch/media/11-01%2C+Register+Machine/0_ukhf4yxp) [(PDF)](info/lectures/lec09-register.pdf) |
 |      | ...45. | Fri | 11.04.2025 | 15:15 | ELA 2  | Lab 5 | [Lab 05](info/labs/lab05/) |
 |      |        |     |            |       |        |                           | 
 | 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | Codegen lab. Pick projects |
