@@ -37,17 +37,16 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 | 7    | ...4.. | Wed | 02.04.2025 | 13:15 | BC 01  | Exercises 5 | [Type checking and more](info/exercises/ex-05.pdf) [(solutions)](info/exercises/ex-05-sol.pdf); [Review exercises](info/exercises/ex-review.pdf) [(solutions)](info/exercises/ex-review-sol.pdf)|
 |      | ...4.. | Fri | 04.04.2025 | 13:15 | ELA+CM | **EXAM** |  |
 |      | ...4.. | Fri | 04.04.2025 | 15:15 | ELA+CM | **EXAM** |  |
+| 8    | ...45. | Wed | 09.04.2025 | 13:15 | BC 01  | Lab 5 | [Solutions](info/past-exams/2025/exam2025-solutions.pdf) of last week's [Exam](info/past-exams/2025/exam2025-with-points.pdf). [Lab 05](info/labs/lab05/) |
+|      | ...45. | Fri | 11.04.2025 | 13:15 | ELA 2  | Lecture 9 | [Simple Code Generation for If](https://mediaspace.epfl.ch/media/09-03%2C+Simple+Code+Generation+for+if+/0_wnn3dyxk) [(PDF)](info/lectures/lec09-ifs.pdf), [Translating Control with Destination Parameters](https://mediaspace.epfl.ch/media/10-01%2C+Translating+Control+with+Destination+Parameters/0_d6vyszy4) [(PDF)](info/lectures/lec09-destination-params.pdf), [Register Machines](https://mediaspace.epfl.ch/media/11-01%2C+Register+Machine/0_ukhf4yxp) [(PDF)](info/lectures/lec09-register.pdf) |
+|      | ...45. | Fri | 11.04.2025 | 15:15 | ELA 2  | Lab 5 | [Lab 05](info/labs/lab05/) |
+|      |        |     |            |       |        |                           | 
 
 ## Schedule and Materials - Current
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
-|      |        |     |            |       |        |                           | 
-| 8    | ...45. | Wed | 09.04.2025 | 13:15 | BC 01  | Lab 5 | [Solutions](info/past-exams/2025/exam2025-solutions.pdf) of last week's [Exam](info/past-exams/2025/exam2025-with-points.pdf). [Lab 05](info/labs/lab05/) |
-|      | ...45. | Fri | 11.04.2025 | 13:15 | ELA 2  | Lecture 9 | [Simple Code Generation for If](https://mediaspace.epfl.ch/media/09-03%2C+Simple+Code+Generation+for+if+/0_wnn3dyxk) [(PDF)](info/lectures/lec09-ifs.pdf), [Translating Control with Destination Parameters](https://mediaspace.epfl.ch/media/10-01%2C+Translating+Control+with+Destination+Parameters/0_d6vyszy4) [(PDF)](info/lectures/lec09-destination-params.pdf), [Register Machines](https://mediaspace.epfl.ch/media/11-01%2C+Register+Machine/0_ukhf4yxp) [(PDF)](info/lectures/lec09-register.pdf) |
-|      | ...45. | Fri | 11.04.2025 | 15:15 | ELA 2  | Lab 5 | [Lab 05](info/labs/lab05/) |
-|      |        |     |            |       |        |                           | 
-| 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | Codegen lab. Pick projects |
+| 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | [Lab 05](info/labs/lab05/). Pick Lab 6 projects |
 |      |        | Fri | 18.04.2025 | 13:15 | ELA 2  | **HOLIDAY** |  |
 |      |        | Fri | 18.04.2025 | 15:15 | ELA 2  | **HOLIDAY** |  |
 |      |        |     |            |       |        |                           | 
@@ -60,7 +59,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 |      | ....56 | Fri | 02.05.2025 | 15:15 | ELA 2  | Lecture 10 | [Compiler correctness 1](https://mediaspace.epfl.ch/media/13-01-Live1%2C+Correctness+of+Compilers%2C+Part+1/0_x118n11k), [Compiler Correctness 2](https://mediaspace.epfl.ch/media/13-02-Live2%2C+Correctness+of+Compilers%2C+Part+2/0_lipv3d1b) |
 |      |        |     |            |       |        |                           | 
 | 11   | .....6 | Wed | 07.05.2025 | 13:15 | BC 01  | Lecture 10 | Parsing general grammars |
-|      | .....6 | Fri | 09.05.2025 | 13:15 | ELA 2  | Labs |  |
+|      | .....6 | Fri | 09.05.2025 | 13:15 | ELA 2  | Guest Lecture | [Sebastien Doeraene](https://people.epfl.ch/sebastien.doeraene):  Scala's Wasm backend [(docs)](https://www.scala-js.org/doc/project/webassembly.html) |
 |      | .....6 | Fri | 09.05.2025 | 15:15 | ELA 2  | Labs |  |
 |      |        |     |            |       |        |                           | 
 | 12   | .....6 | Wed | 14.05.2025 | 13:15 | BC 01  | Labs |  |
