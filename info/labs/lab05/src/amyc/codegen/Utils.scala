@@ -176,7 +176,7 @@ object Utils {
       // This is a decently reasonable assumption.
       // The only consequence of having a null byte is that any input after that in that read will be lost.
 
-      // Notice that due to how host_read *works*,
+      // Notice that due to how fd_read *works*,
       // this might read multiple lines of user input.
       // We thus need to proceed as follows:
       // - Keep a global pointer of buffered reading
@@ -200,12 +200,12 @@ object Utils {
       // 3. Std_readString -> fd_read already called but empty -> fd_read -> obtains `44` -> return 44
       //
       //
-      //
-      // TODO: when we read an input that doesn't have a newline, we might have been unlucky.
-      //       we thus might need to read again and concatenate these two strings.
+      // TODO: when we reach the end of the input buffer, but a full line wasn't read
+      //       this code considers the line ended. This is not correct, but is only relevant if more than 4096 bytes of
+      //       input are read.
 
       // NOTE: must keep alignment
-      val bufferSize = 1024
+      val bufferSize = 4096
       assert(bufferSize % 4 == 0)
 
       // host_read takes a pointer and a length, and returns the number of bytes read.
@@ -218,7 +218,7 @@ object Utils {
         // 1) Set the pointer to the buffer in a definitely-free position
         // 2) Set the length
         // 3) Call fd_read
-        // 4) Check the return value (if an error occured, we trap)
+        // 4) Check the return value (if an error occurred, we trap)
         // 5) Get the number of bytes read
         // 6) Get the pointer to the buffer
 
@@ -239,7 +239,7 @@ object Utils {
         GetGlobal(memoryBoundary) <:> Const(bufferSize+8) <:> Add <:>
         // 3.5) Call fd_read
         Call("fd_read") <:>
-        // 4) Check the return value (if an error occured, we trap)
+        // 4) Check the return value (if an error occurred, we trap)
         If_void <:>
           Unreachable <:>
         Else <:>
@@ -365,8 +365,7 @@ object Utils {
         GetLocal(ptr) <:> Load8_u <:>
         Const('0'.toInt) <:> Sub <:>
         SetLocal(tmp) <:> GetLocal(tmp) <:>
-          // TODO: this should be an unsigned comparison
-        Const(10) <:> Lt_s <:>
+        Const(10) <:> Lt_u <:>
         If_i32 <:>
           GetLocal(tmp) <:>
         Else <:>

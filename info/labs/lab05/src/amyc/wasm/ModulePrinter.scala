@@ -78,6 +78,8 @@ object ModulePrinter {
       case Eqz => "i32.eqz"
       case Lt_s => "i32.lt_s"
       case Le_s => "i32.le_s"
+      case Lt_u => "i32.lt_u"
+      case Le_u => "i32.le_u"
       case Eq => "i32.eq"
       case Drop => "drop"
       case If_void => "if"

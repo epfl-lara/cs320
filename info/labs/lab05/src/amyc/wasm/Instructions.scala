@@ -21,6 +21,8 @@ object Instructions {
   case object Eqz  extends Instruction // Return 1 if operand is 0, 0 otherwise
   case object Lt_s extends Instruction // Signed less-than
   case object Le_s extends Instruction // Signed less-equals
+  case object Lt_u extends Instruction // Unsigned less-than
+  case object Le_u extends Instruction // Unsigned less-equals
   case object Eq   extends Instruction
   case object Drop extends Instruction // Drops the top value of the stack
 
