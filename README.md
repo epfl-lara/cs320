@@ -57,9 +57,9 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 |      |        |     |            |       |        |                           | 
 | 10   | ....56 | Wed | 30.04.2025 | 13:15 | BC 01  | Labs | **Oral Lab Checks** |
 |      | ....56 | Fri | 02.05.2025 | 13:15 | ELA 2  | Labs | **Oral Lab Checks** |
-|      | ....56 | Fri | 02.05.2025 | 15:15 | ELA 2  | Lecture 10 | Parsing general grammars |
+|      | ....56 | Fri | 02.05.2025 | 15:15 | ELA 2  | Lecture 10 | [Compiler correctness 1](https://mediaspace.epfl.ch/media/13-01-Live1%2C+Correctness+of+Compilers%2C+Part+1/0_x118n11k), [Compiler Correctness 2](https://mediaspace.epfl.ch/media/13-02-Live2%2C+Correctness+of+Compilers%2C+Part+2/0_lipv3d1b) |
 |      |        |     |            |       |        |                           | 
-| 11   | .....6 | Wed | 07.05.2025 | 13:15 | BC 01  | Lecture 11 | Compiler correctness |
+| 11   | .....6 | Wed | 07.05.2025 | 13:15 | BC 01  | Lecture 10 | Parsing general grammars |
 |      | .....6 | Fri | 09.05.2025 | 13:15 | ELA 2  | Labs |  |
 |      | .....6 | Fri | 09.05.2025 | 15:15 | ELA 2  | Labs |  |
 |      |        |     |            |       |        |                           | 
