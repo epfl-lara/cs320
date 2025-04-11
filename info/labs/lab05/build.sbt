@@ -14,9 +14,10 @@ libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.4" % "test"
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-v")
 
 
-assembly / assemblyMergeStrategy  := {
+assembly / assemblyMergeStrategy  :=
   {
-    case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-    case _ => MergeStrategy.first
+    {
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case _ => MergeStrategy.first
+    }
   }
-}

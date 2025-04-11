@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the last common assignment for the Amy compiler. At this point, we are finally done with the frontend: we have translated source programs to ASTs and have checked that certain correctness conditions hold for our program. We are ready to generate code for our program. In our case the target language will be *WebAssembly*.
+Welcome to the last common assignment for the Amy compiler. At this point, we are finally done with the frontend: we have translated source programs to ASTs and have checked that certain correctness conditions hold for our program. We are ready to generate code for our program. In our case the target language will be _WebAssembly_.
 
 WebAssembly is "a new portable, size- and load-time-efficient format suitable for compilation to the web" (<http://webassembly.org>). WebAssembly was initially designed to be called from JavaScript in browsers and lends itself to highly-performant execution. Nowadays, WebAssembly is getting some traction in many different contexts, including server-side applications and embedded systems.
 
@@ -13,11 +13,12 @@ For simplicity, we will not use a browser, but execute the resulting WebAssembly
 
 To run the program, simply type `wasmtime wasmout/p.wasm`
 
-### Installing wat2wasm
+### Installing `wat2wasm` and `wasmtime`
 
-- Install `wat2wasm` using your favorite package manager, the name of the package is usually `wabt` (`apt install wabt`, `pacman -Sy wabt`, `brew install wabt`, etc). If you are not on linux or MacOS, you can download it here: <https://github.com/WebAssembly/wabt/releases/tag/1.0.31>, then copy the file `bin/wat2wasm` (or `/bin/wat2wasm.exe` for windows) from the archive to `/<root of the project>/bin`
-- Make sure the `wat2wasm` executable is visible: either in a system path, or in the `/<root of the project>/bin` folder (that you may have to create).
-- Install `wasmtime` using the following command (on linux and MacOS): `curl https://wasmtime.dev/install.sh -sSf | bash`. If you are not on linux or MacOS, you can download it here: <https://docs.wasmtime.dev/cli-install.html> or copy it from `/<root of the project>/bin` (if you are using the provided binaries). Make sure the `wasmtime` executable is visible: either in a system path, or in the `/<root of the project>/bin` folder (that you may have to create).
+Both `wat2wasm` and `wasmtime` are bundled for you under `/<root of the project>/bin/<platform>`. You may however install them yourself and place them either in your `PATH`, or in `/<root of the project>/bin/<platform>`.
+
+- To install `wat2wasm` using your favorite package manager, the name of the package is usually `wabt` (`apt install wabt`, `pacman -Sy wabt`, `brew install wabt`, etc). If you are not on linux or MacOS, you can download it here: <https://github.com/WebAssembly/wabt/releases/tag/1.0.31>
+- To install `wasmtime` use the following command (on linux and MacOS): `curl https://wasmtime.dev/install.sh -sSf | bash`. If you are not on linux or MacOS, you can download it here: <https://docs.wasmtime.dev/cli-install.html>
 
 ## WebAssembly and Amy
 
@@ -25,7 +26,7 @@ Here you have some resources to get you started with WebAssembly:
 
 - [WebAssembly demo](./material/webassembly-extra.md)
 - Presentation by Georg Schmid from a few years ago: [Video](https://mediaspace.epfl.ch/media/09-10%2C+Code+Generation+Lab/0_8r1ahhhq/30820), [slides](https://lara.epfl.ch/~gschmid/clp20/codegen.pdf)
-  
+
   The lab has changed a tiny bit, for instance `set_global`, `get_global`, `set_local` and `get_local` are outdated and replaced with `global.set`, `global.get`, `local.set` and `local.get`, but otherwise it is a very good resource.
 
 ## The assignment code
@@ -67,7 +68,7 @@ src/
 ├── amyc
 │    ├── Main.scala                (updated)
 │    │
-│    ├── analyzer   
+│    ├── analyzer
 │    │    ├── SymbolTable.scala
 │    │    ├── NameAnalyzer.scala
 │    │    └── TypeChecker.scala
@@ -77,7 +78,7 @@ src/
 │    │    ├── Printer.scala
 │    │    └── TreeModule.scala
 │    │
-│    ├── codegen                                (new)      
+│    ├── codegen                                (new)
 │    │    ├── CodeGen.scala
 │    │    ├── CodePrinter.scala
 │    │    └── Utils.scala
@@ -105,7 +106,7 @@ src/
 │    │
 │    └── wasm                                    (new)
 │         ├── Function.scala
-│         ├── Instructions.scala 
+│         ├── Instructions.scala
 │         ├── ModulePrinter.scala
 │         └── Module.scala
 │
@@ -117,19 +118,19 @@ src/
      │              ├── CodegenTests.scala
      │              ├── CompilerTest.scala
      │              ├── LexerTests.scala
-     │              ├── NameAnalyzerTests.scala  
+     │              ├── NameAnalyzerTests.scala
      │              ├── ParserTests.scala
      │              ├── TestSuite.scala
      │              ├── TestUtils.scala
-     │              └── TyperTests.scala         
+     │              └── TyperTests.scala
      └── resources
-          ├── analyzer                           
+          ├── analyzer
           │    └── ...
           ├── execution                           (new)
           │    └── ...
           ├── lexer
           │    └── ...
-          └── parser                          
+          └── parser
                └── ...
 ```
 
