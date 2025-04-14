@@ -46,7 +46,7 @@ The grade is based on a midterm (30%) as well as team project work (70%). Please
 
 | Week | Labs | Day | Date       | Time  | Room   | Topic                | Materials              |
 | :--  | :--  | :-- | :--        | :--   | :--    | :--                  | :--                    | 
-| 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | [Lab 05](info/labs/lab05/). Pick Lab 6 projects |
+| 9    | ....56 | Wed | 16.04.2025 | 13:15 | BC 01  | Lab 5 | [Lab 05](info/labs/lab05/). Pick [Lab 06](info/labs/lab06/lab06-README.md) projects |
 |      |        | Fri | 18.04.2025 | 13:15 | ELA 2  | **HOLIDAY** |  |
 |      |        | Fri | 18.04.2025 | 15:15 | ELA 2  | **HOLIDAY** |  |
 |      |        |     |            |       |        |                           | 
