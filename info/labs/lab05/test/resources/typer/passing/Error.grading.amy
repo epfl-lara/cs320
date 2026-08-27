@@ -1,6 +1,0 @@
-object Error
-  def test(): Unit :=
-    error("") // Stub implementation
-  end test
-  test()
-end Error

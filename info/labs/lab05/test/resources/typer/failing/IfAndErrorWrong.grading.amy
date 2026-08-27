@@ -1,4 +1,0 @@
-object IfAndErrorWrong
-  val x: Int(32) = if (true) then error("") else "" end if;
-  x
-end IfAndErrorWrong

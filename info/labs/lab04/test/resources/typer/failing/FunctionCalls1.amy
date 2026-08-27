@@ -1,5 +1,0 @@
-object FunctionCall
-  def foo(i: Int(32)): Boolean = i < 0 end foo
-  
-  foo(true)
-end FunctionCall

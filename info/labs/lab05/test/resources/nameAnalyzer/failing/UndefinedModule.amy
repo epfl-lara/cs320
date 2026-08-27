@@ -1,3 +1,0 @@
-object Foo
-  def foo(): Bar.Baz := 42 end foo
-end Foo

@@ -1,3 +1,0 @@
-object IfError
-  if (true) then () else false end if
-end IfError

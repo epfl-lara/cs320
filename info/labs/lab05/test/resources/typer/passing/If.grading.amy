@@ -1,6 +1,0 @@
-object If
-  if (true) then 1 else 2 end if;
-  if (true) then "" else error("") end if;
-  val x: Int(32) = if (true) then 1 else 2 end if;
-  x
-end If

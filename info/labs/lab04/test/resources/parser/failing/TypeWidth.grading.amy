@@ -1,3 +1,0 @@
-object TypeWidth
-  def foo(): Boolean(32) := true end foo
-end TypeWidth

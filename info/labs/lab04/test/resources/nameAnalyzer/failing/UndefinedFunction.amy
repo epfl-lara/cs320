@@ -1,3 +1,0 @@
-object UndefinedFunction
-  def foo(): Int(32) := bar() end foo
-end UndefinedFunction

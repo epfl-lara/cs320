@@ -1,3 +1,0 @@
-object IntError 
-  def foo(): Int := 42 end foo
-end IntError

@@ -1,5 +1,0 @@
-object FunctionCalls
-  def foo(i: Int(32), j: Boolean): String :=
-    if(j) then i < 0 || j; "Hello" else foo(i-1, !j) end if
-  end foo
-end FunctionCalls

@@ -1,3 +1,0 @@
-object FunDef
-  def foo: Int(32) := 42 end foo
-end FunDef

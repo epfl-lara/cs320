@@ -1,4 +1,0 @@
-object Constructor
-  abstract class Foo
-  def foo(): Foo := Bar(42) end foo
-end Constructor

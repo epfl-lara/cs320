@@ -1,6 +1,0 @@
-object DefOrder
-  def bar(): Foo := foo() end bar
-  def foo(): Foo := Bar(42) end foo
-  case class Bar(i: Int(32)) extends Foo
-  abstract class Foo
-end DefOrder
